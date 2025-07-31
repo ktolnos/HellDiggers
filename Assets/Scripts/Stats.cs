@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine.Serialization;
 
 [Serializable]
 public class Stats
@@ -6,7 +7,7 @@ public class Stats
     public int numJumps;
     public int numDashes;
     public float jumpHeight;
-    public float dashInvincibilityTime;
+    public float dashSize;
     public int numberOfBullets;
     public float reloadSpeedUp;
     public float explosionRadius;
@@ -17,7 +18,8 @@ public class Stats
     public float bulletDamage;
     public float grenadeDamage;
     public float lootCollectionDistance = 1f;
-
+    public float diggingDamage;
+    public float jetPackFuel;
 
     public static Stats operator +(Stats a, Stats b)
     {
@@ -26,7 +28,7 @@ public class Stats
             numJumps = a.numJumps + b.numJumps,
             numDashes = a.numDashes + b.numDashes,
             jumpHeight = a.jumpHeight + b.jumpHeight,
-            dashInvincibilityTime = a.dashInvincibilityTime + b.dashInvincibilityTime,
+            dashSize = a.dashSize + b.dashSize,
             numberOfBullets = a.numberOfBullets + b.numberOfBullets,
             reloadSpeedUp = a.reloadSpeedUp + b.reloadSpeedUp,
             explosionRadius = a.explosionRadius + b.explosionRadius,
@@ -47,7 +49,7 @@ public class Stats
             numJumps = a.numJumps - b.numJumps,
             numDashes = a.numDashes - b.numDashes,
             jumpHeight = a.jumpHeight - b.jumpHeight,
-            dashInvincibilityTime = a.dashInvincibilityTime - b.dashInvincibilityTime,
+            dashSize = a.dashSize - b.dashSize,
             numberOfBullets = a.numberOfBullets - b.numberOfBullets,
             reloadSpeedUp = a.reloadSpeedUp - b.reloadSpeedUp,
             explosionRadius = a.explosionRadius - b.explosionRadius,

@@ -15,6 +15,7 @@ public class Level : MonoBehaviour
     public int width = 100;
     public int height = 100;
     public int wallsHeight = 100;
+    public float damagedProb = 0.1f;
 
     private float transitionHeight;
     
@@ -76,6 +77,11 @@ public class Level : MonoBehaviour
                 if (tileData != null)
                 {
                     tileInfos[tilePositions[index]] = new TileInfo(tileData);
+                    if (tileData.maxHp > 1 && UnityEngine.Random.value < damagedProb)
+                    {
+                        tileInfos[tilePositions[index]].hp = tileData.maxHp * UnityEngine.Random.Range(0.1f, 0.9f);
+                        tiles[index] = GetDamagedTile(tileInfos[tilePositions[index]]);
+                    }
                 }
                 index++;
             }
@@ -133,13 +139,7 @@ public class Level : MonoBehaviour
                         }
                         else
                         {
-                            var damagedTile = tileInfo.tileData.damagedTiles != null &&
-                                           tileInfo.tileData.damagedTiles.Length > 0
-                                ? tileInfo.tileData.damagedTiles[
-                                    Mathf.Clamp(Mathf.FloorToInt(tileInfo.hp / tileInfo.tileData.maxHp *
-                                                                 tileInfo.tileData.damagedTiles.Length),
-                                        0, tileInfo.tileData.damagedTiles.Length - 1)]
-                                : tileInfo.tileData.tile;
+                            var damagedTile = GetDamagedTile(tileInfo);
                             tilemap.SetTile(tilePos, damagedTile);
                         }
                     }
@@ -160,6 +160,17 @@ public class Level : MonoBehaviour
                 health.Damage(damage, isPlayerDamage);
             }
         }
+    }
+
+    private TileBase GetDamagedTile(TileInfo tileInfo)
+    {
+        return tileInfo.tileData.damagedTiles != null &&
+                          tileInfo.tileData.damagedTiles.Length > 0
+            ? tileInfo.tileData.damagedTiles[
+                Mathf.Clamp(Mathf.FloorToInt((1f - tileInfo.hp / tileInfo.tileData.maxHp) *
+                                             tileInfo.tileData.damagedTiles.Length),
+                    0, tileInfo.tileData.damagedTiles.Length - 1)]
+            : tileInfo.tileData.tile;
     }
     
     private bool CheckCircleCellIntersection(Vector3 position, float radius, Vector3Int cellPos)
@@ -228,6 +239,7 @@ public class Level : MonoBehaviour
     [Serializable]
     public class TileData
     {
+        public string name;
         public TileBase tile;
         public float maxHp = 1f;
         public float spawnChance = 1f;

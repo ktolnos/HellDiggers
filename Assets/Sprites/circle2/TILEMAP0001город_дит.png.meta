@@ -1,0 +1,969 @@
+fileFormatVersion: 2
+guid: 3922e11ea47dae74896aaf570b5e1bb7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5833330789726655595
+    second: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_0"
+  - first:
+      213: -1798749424872108750
+    second: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_1"
+  - first:
+      213: 6568266772490900792
+    second: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_2"
+  - first:
+      213: 3034650548796523712
+    second: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_3"
+  - first:
+      213: 3954341590558067910
+    second: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_4"
+  - first:
+      213: -3953391940388260067
+    second: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_5"
+  - first:
+      213: 1498696044406706171
+    second: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_6"
+  - first:
+      213: 5876664211072869481
+    second: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_7"
+  - first:
+      213: -3367779383649384924
+    second: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_8"
+  - first:
+      213: -6767765542688366310
+    second: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_9"
+  - first:
+      213: -5538088159635577873
+    second: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_10"
+  - first:
+      213: -6271233164157620422
+    second: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_11"
+  - first:
+      213: 4363967855421713968
+    second: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_12"
+  - first:
+      213: 3607766200432974972
+    second: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_13"
+  - first:
+      213: -8067560535720380213
+    second: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_14"
+  - first:
+      213: -6856911475496035742
+    second: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_15"
+  - first:
+      213: 3807879970156082431
+    second: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_16"
+  - first:
+      213: -8918116476005211679
+    second: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_17"
+  - first:
+      213: -8791232179441368760
+    second: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_18"
+  - first:
+      213: 7057151856326581397
+    second: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_19"
+  - first:
+      213: -1151050255928088586
+    second: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_20"
+  - first:
+      213: -1267460883810157131
+    second: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_21"
+  - first:
+      213: 8030018547165578780
+    second: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_22"
+  - first:
+      213: 2476578695048938894
+    second: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_23"
+  - first:
+      213: -6295991908435605725
+    second: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_24"
+  - first:
+      213: 8286432058765634379
+    second: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_25"
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_0"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 391
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59b6ef49d88db0fa0800000000000000
+      internalID: -5833330789726655595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_1"
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 391
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23d4f82adee8907e0800000000000000
+      internalID: -1798749424872108750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_2"
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 391
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 835525454db272b50800000000000000
+      internalID: 6568266772490900792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_3"
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 391
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c4067a889e3d1a20800000000000000
+      internalID: 3034650548796523712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_4"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 359
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cc44c1c9b4a0e630800000000000000
+      internalID: 3954341590558067910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_5"
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 359
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d17f347e9fab229c0800000000000000
+      internalID: -3953391940388260067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_6"
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 359
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bff0529ac107cc410800000000000000
+      internalID: 1498696044406706171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_7"
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 359
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 964ef3dc6fa1e8150800000000000000
+      internalID: 5876664211072869481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_8"
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 359
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 426c1bb6e7e3341d0800000000000000
+      internalID: -3367779383649384924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_9"
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 359
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a116ee898111412a0800000000000000
+      internalID: -6767765542688366310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_10"
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 359
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe3ef1e2922c423b0800000000000000
+      internalID: -5538088159635577873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_11"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 327
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3f6cb2e9aa18f8a0800000000000000
+      internalID: -6271233164157620422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_12"
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 327
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03e62a9a4adef8c30800000000000000
+      internalID: 4363967855421713968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_13"
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 327
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7cd7799e3c511230800000000000000
+      internalID: 3607766200432974972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_14"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 295
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc83d60cf644a0090800000000000000
+      internalID: -8067560535720380213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_15"
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 295
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26a52cea75b57d0a0800000000000000
+      internalID: -6856911475496035742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_16"
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 295
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff47a7868ae48d430800000000000000
+      internalID: 3807879970156082431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_17"
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 295
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e1a626b05c7c3480800000000000000
+      internalID: -8918116476005211679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_18"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 263
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8410a6629e44ff580800000000000000
+      internalID: -8791232179441368760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_19"
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 263
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59c9552193a00f160800000000000000
+      internalID: 7057151856326581397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_20"
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 263
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f7a8c804e5a600f0800000000000000
+      internalID: -1151050255928088586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_21"
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 263
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bdfacd9a03196ee0800000000000000
+      internalID: -1267460883810157131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_22"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 231
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c164a93e25b507f60800000000000000
+      internalID: 8030018547165578780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_23"
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 231
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8541b0a3339e5220800000000000000
+      internalID: 2476578695048938894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_24"
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 231
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32746f487b420a8a0800000000000000
+      internalID: -6295991908435605725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_25"
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 231
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4b6226dd025ff270800000000000000
+      internalID: 8286432058765634379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_26"
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 231
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e98082db933c24b4da025bf9d5ab1877
+      internalID: 2009002971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_27"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 199
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3de25734f78adc41a91477aeb62bdd2
+      internalID: 153590491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_28"
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 199
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68f288715007e264fa1fd8ec1dfd9e6c
+      internalID: 508979761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_29"
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 199
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54c835d2f693732448c22ea3fa13b1aa
+      internalID: 580605509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_30"
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 199
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b661d0ccc644ead43b21eb4a058bad22
+      internalID: -849333804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_31"
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 199
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a71b5e4a51bb85443aae7265ff157260
+      internalID: 1386365959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_32"
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 199
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ee9acfefdc8ab94d876e1ecf5cee586
+      internalID: 1524714542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 7487ba5cadcdf8844b44fcd4a912f10d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_0": -5833330789726655595
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_1": -1798749424872108750
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_10": -5538088159635577873
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_11": -6271233164157620422
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_12": 4363967855421713968
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_13": 3607766200432974972
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_14": -8067560535720380213
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_15": -6856911475496035742
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_16": 3807879970156082431
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_17": -8918116476005211679
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_18": -8791232179441368760
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_19": 7057151856326581397
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_2": 6568266772490900792
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_20": -1151050255928088586
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_21": -1267460883810157131
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_22": 8030018547165578780
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_23": 2476578695048938894
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_24": -6295991908435605725
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_25": 8286432058765634379
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_26": 2009002971
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_27": 153590491
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_28": 508979761
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_29": 580605509
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_3": 3034650548796523712
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_30": -849333804
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_31": 1386365959
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_32": 1524714542
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_4": 3954341590558067910
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_5": -3953391940388260067
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_6": 1498696044406706171
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_7": 5876664211072869481
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_8": -3367779383649384924
+      "TILEMAP0001\u0433\u043E\u0440\u043E\u0434_\u0434\u0438\u0442_9": -6767765542688366310
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

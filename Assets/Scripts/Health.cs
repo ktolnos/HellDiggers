@@ -12,10 +12,12 @@ public class Health: MonoBehaviour
         currentHealth = maxHealth;
     }
     
-    public void Damage(float damage, bool isPlayerDamage = false)
+    public void Damage(float damage, DamageDealerType type)
     {
-        if (isPlayer && isPlayerDamage)
+        if (isPlayer && type==DamageDealerType.Player)
             return; // no self damage
+        if (!isPlayer && type == DamageDealerType.Enemy)
+            return;
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
         if (currentHealth <= 0f)

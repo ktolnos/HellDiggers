@@ -35,7 +35,14 @@ public class Bullet: MonoBehaviour
     {
         var explosionRadiusStat = isGrenade ? Player.I.stats.grenadeExplosionRadius * 2 : Player.I.stats.explosionRadius;
         var explosionDamage = isGrenade ? Player.I.stats.grenadeDamage : Player.I.stats.bulletDamage;
-        Level.I.Explode(transform.position, explosionRadius + explosionRadiusStat, explosionDamage, isPlayerBullet);
+        if (isPlayerBullet)
+        {
+            Level.I.Explode(transform.position, explosionRadius + explosionRadiusStat, explosionDamage, DamageDealerType.Player);
+        }
+        else
+        {
+            Level.I.Explode(transform.position, explosionRadius + explosionRadiusStat, explosionDamage, DamageDealerType.Enemy);
+        }
         Destroy(gameObject);
     }
 

@@ -9,7 +9,7 @@ public class Level : MonoBehaviour
 {
     public RectTransform upgradesUI;
     public static Level I;
-    private Tilemap tilemap;
+    public Tilemap tilemap;
     
     public CircleConfig[] circles;
     public TileData wallTile;
@@ -113,8 +113,24 @@ public class Level : MonoBehaviour
         tilemap.RefreshAllTiles();
         transitionHeight = tilemap.layoutGrid.cellSize.y * (-height - wallsHeight / 2f);
     }
+    public void damageEntities(Vector3 position, float radius, float damage, DamageDealerType type)
+    {
+        var colliders = Physics2D.OverlapCircleAll(position, radius);
+        var healths = new HashSet<Health>();
+        foreach (var collider in colliders)
+        {
+            healths.Add(collider.GetComponentInParent<Health>());
+        }
+        foreach (var health in healths)
+        {
+            if (health != null)
+            {
+                health.Damage(damage, type);
+            }
+        }
+    }
 
-    public void Explode(Vector3 position, float radius, float damage, bool isPlayerDamage)
+    public void Explode(Vector3 position, float radius, float damage, DamageDealerType type)
     {
         var radiusCeil = Mathf.CeilToInt(radius);
         var cellPos = tilemap.layoutGrid.WorldToCell(position);
@@ -154,19 +170,7 @@ public class Level : MonoBehaviour
             }
         }
 
-        var colliders = Physics2D.OverlapCircleAll(position, radius);
-        var healths = new HashSet<Health>();
-        foreach (var collider in colliders)
-        {
-            healths.Add(collider.GetComponentInParent<Health>());
-        }
-        foreach (var health in healths)
-        {
-            if (health != null)
-            {
-                health.Damage(damage, isPlayerDamage);
-            }
-        }
+        damageEntities(position, radius, damage, type);
     }
 
     private TileBase GetDamagedTile(TileInfo tileInfo)
@@ -214,7 +218,7 @@ public class Level : MonoBehaviour
             yield return new WaitForSeconds(1f / tileData.explosionFPS);
         }
         RemoveTile(pos);
-        Explode(tilemap.CellToWorld(pos), tileData.explosionRadius, tileData.explosionDamage, isPlayerDamage:false);
+        Explode(tilemap.CellToWorld(pos), tileData.explosionRadius, tileData.explosionDamage, DamageDealerType.Environment);
     }
 
     private void RemoveTile(Vector3Int pos)
@@ -272,4 +276,11 @@ public class Level : MonoBehaviour
             hp = tileData.maxHp;
         }
     }
+}
+
+public enum DamageDealerType
+{
+    Player,
+    Enemy,
+    Environment
 }

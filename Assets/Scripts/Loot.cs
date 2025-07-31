@@ -45,6 +45,6 @@ public class Loot : MonoBehaviour
         }
         Destroy(gameObject);
         Player.I.money += money;
-        Player.I.health.Damage(-hp, isPlayerDamage:false);
+        Player.I.health.Damage(-hp, DamageDealerType.Environment);
     }
 }

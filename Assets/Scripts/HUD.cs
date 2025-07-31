@@ -16,7 +16,10 @@ public class HUD: MonoBehaviour
     private void Update()
     {
         moneyText.text = Player.I.money.ToString();
-        healthText.text = Mathf.CeilToInt(Player.I.health.currentHealth).ToString();
+        if (healthText != null)
+        {
+            healthText.text = Mathf.CeilToInt(Player.I.health.currentHealth).ToString();
+        }
         var healthPercent = Player.I.health.currentHealth / Player.I.health.maxHealth;
         healthMaterial.SetFloat(Progress, healthPercent);
         healthImage.SetMaterialDirty();

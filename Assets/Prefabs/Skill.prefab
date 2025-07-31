@@ -106,17 +106,17 @@ MonoBehaviour:
     grenadeExplosionRadius: 0
     bulletDamage: 0
     grenadeDamage: 0
-    lootCollectionDistance: 1
+    lootCollectionDistance: 0
     diggingDamage: 0
     jetPackFuel: 0
-  levelAmount: 1
   skillParent: {fileID: 0}
   isEnabled: 0
   popup: {fileID: 5609526949157186804}
   lockedColor: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
   unlockedColor: {r: 0.11053756, g: 0.8679245, b: 0.3673302, a: 1}
-  upgradedColor: {r: 0.745283, g: 0.09994376, b: 0, a: 1}
+  tooExpensiveColor: {r: 0.745283, g: 0.09994376, b: 0, a: 1}
   maxOutColor: {r: 0.9960785, g: 0.7058824, b: 0, a: 1}
+  prices: 
 --- !u!114 &971280314398438586
 MonoBehaviour:
   m_ObjectHideFlags: 0

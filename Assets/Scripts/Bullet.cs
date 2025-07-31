@@ -12,6 +12,7 @@ public class Bullet: MonoBehaviour
     public bool explodeOnCollision = true;
     public float explosionDelay = 0f;
     public bool isGrenade = false;
+    public bool isPlayerBullet = false;
 
     private void Awake()
     {
@@ -33,7 +34,8 @@ public class Bullet: MonoBehaviour
     private void Explode() 
     {
         var explosionRadiusStat = isGrenade ? Player.I.stats.grenadeExplosionRadius * 2 : Player.I.stats.explosionRadius;
-        Level.I.Explode(transform.position, explosionRadius + explosionRadiusStat);
+        var explosionDamage = isGrenade ? Player.I.stats.grenadeDamage : Player.I.stats.bulletDamage;
+        Level.I.Explode(transform.position, explosionRadius + explosionRadiusStat, explosionDamage, isPlayerBullet);
         Destroy(gameObject);
     }
 
@@ -42,4 +44,6 @@ public class Bullet: MonoBehaviour
         yield return new WaitForSeconds(explosionDelay);
         Explode();
     }
+    
+    
 }

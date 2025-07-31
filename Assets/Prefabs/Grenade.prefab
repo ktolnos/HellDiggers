@@ -140,6 +140,7 @@ MonoBehaviour:
   explodeOnCollision: 0
   explosionDelay: 3
   isGrenade: 1
+  isPlayerBullet: 1
 --- !u!96 &6453903382961364959
 TrailRenderer:
   serializedVersion: 3

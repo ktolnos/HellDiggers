@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     public static Player I;
+    public int money;
 
     public Stats stats;
     public float speed = 5f;
@@ -25,10 +26,12 @@ public class Player : MonoBehaviour
     private float lastGroundedTime;
     private float jumpPressTime;
     private int airJumpsLeft;
+    public Health health;
 
     private void Awake()
     {
         I = this;
+        health = GetComponent<Health>();
     }
 
     private void Start()

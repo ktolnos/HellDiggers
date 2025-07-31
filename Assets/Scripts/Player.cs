@@ -2,8 +2,11 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
+    public static Player I;
+
+    public Stats stats;
     public float speed = 5f;
     public float jumpForce = 300f;
     public float additionalGravity = 2f;
@@ -19,6 +22,12 @@ public class PlayerMovement : MonoBehaviour
 
     private float lastGroundedTime;
     private float jumpPressTime;
+    private int airJumpsLeft;
+
+    private void Awake()
+    {
+        I = this;
+    }
 
     private void Start()
     {
@@ -46,9 +55,14 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocityY -= additionalGravity * Time.deltaTime;
         }
 
-        if (Time.time <= jumpPressTime + 0.2f && Time.time - lastGroundedTime < 0.2f)
+        var isGroundedJump = Time.time - lastGroundedTime < 0.2f;
+        if (Time.time <= jumpPressTime + 0.2f && (isGroundedJump || airJumpsLeft > 0))
         {
-            rb.linearVelocityY = jumpForce;
+            rb.linearVelocityY = jumpForce + stats.jumpHeight * 3f;
+            if (!isGroundedJump)
+            {
+                airJumpsLeft--;
+            }
             isGrounded = false;
             jumpPressTime = -100f;
         }
@@ -88,6 +102,7 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded)
         {
             lastGroundedTime = Time.time;
+            airJumpsLeft = stats.numJumps;
         }
     }
 }

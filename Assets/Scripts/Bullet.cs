@@ -6,6 +6,7 @@ public class Bullet: MonoBehaviour
     public Rigidbody2D rb;
 
     private Vector2 velocity;
+    public float explosionRadius = 0.3f;
 
     private void Awake()
     {
@@ -16,7 +17,7 @@ public class Bullet: MonoBehaviour
     {
         if (other.gameObject == Level.I.gameObject)
         {
-            Level.I.Explode(transform.position, 0.3f);
+            Level.I.Explode(transform.position, explosionRadius);
             Destroy(gameObject);
             return;
         }

@@ -11,7 +11,12 @@ public class Stats
     public float reloadSpeedUp;
     public float explosionRadius;
     public int numberOfGrenades;
+    public float grenadeReloadSpeedUp;
+    public int numberOfGrenadesPerLaunch;
     public int grenadeExplosionRadius;
+    public float bulletDamage;
+    public float grenadeDamage;
+    public float lootCollectionDistance = 1f;
 
 
     public static Stats operator +(Stats a, Stats b)
@@ -26,7 +31,12 @@ public class Stats
             reloadSpeedUp = a.reloadSpeedUp + b.reloadSpeedUp,
             explosionRadius = a.explosionRadius + b.explosionRadius,
             numberOfGrenades = a.numberOfGrenades + b.numberOfGrenades,
-            grenadeExplosionRadius = a.grenadeExplosionRadius + b.grenadeExplosionRadius
+            grenadeExplosionRadius = a.grenadeExplosionRadius + b.grenadeExplosionRadius,
+            grenadeReloadSpeedUp = a.grenadeReloadSpeedUp + b.grenadeReloadSpeedUp,
+            numberOfGrenadesPerLaunch = a.numberOfGrenadesPerLaunch + b.numberOfGrenadesPerLaunch,
+            bulletDamage = a.bulletDamage + b.bulletDamage,
+            grenadeDamage = a.grenadeDamage + b.grenadeDamage,
+            lootCollectionDistance = a.lootCollectionDistance + b.lootCollectionDistance,
         };
     }
     
@@ -42,7 +52,12 @@ public class Stats
             reloadSpeedUp = a.reloadSpeedUp - b.reloadSpeedUp,
             explosionRadius = a.explosionRadius - b.explosionRadius,
             numberOfGrenades = a.numberOfGrenades - b.numberOfGrenades,
-            grenadeExplosionRadius = a.grenadeExplosionRadius - b.grenadeExplosionRadius
+            grenadeExplosionRadius = a.grenadeExplosionRadius - b.grenadeExplosionRadius,
+            grenadeReloadSpeedUp = a.grenadeReloadSpeedUp - b.grenadeReloadSpeedUp,
+            numberOfGrenadesPerLaunch = a.numberOfGrenadesPerLaunch - b.numberOfGrenadesPerLaunch,
+            bulletDamage = a.bulletDamage - b.bulletDamage,
+            grenadeDamage = a.grenadeDamage - b.grenadeDamage,
+            lootCollectionDistance = a.lootCollectionDistance - b.lootCollectionDistance,
         };
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -9,71 +10,95 @@ public class Level : MonoBehaviour
     public static Level I;
     private Tilemap tilemap;
     
-    public TileData[] usualTiles;
-    public TileData goldTile;
-    public TileData explosiveTile;
+    public CircleConfig[] circles;
     public TileData wallTile;
     public int width = 100;
     public int height = 100;
-    public float noiseThreshold = 0.5f;
-    public float noiseFrequency = 0.01f;
-    public float goldProbability = 0.01f;
-    public float explosiveProbability = 0.01f;
-    
-    public float explosionRadius = 10f;
-    public float explosionDamage = 10f;
-    public float explosionDelay = 1f;
-    public float explosionFPS = 10f;
+    public int wallsHeight = 100;
+
+    private float transitionHeight;
     
 
     private Dictionary<Vector3Int, TileInfo> tileInfos = new();
+    private int currentCircleIndex = 0;
     
     private void Awake()
     {
         I = this;
+        TryGetComponent(out tilemap);
     }
 
     private void Start()
     {
-        TryGetComponent(out tilemap);
-        var tilePositions = new Vector3Int[width * height];
-        var tiles = new TileBase[width * height];
+        GenerateLevel(circles[currentCircleIndex]);
+    }
+
+    private void GenerateLevel(CircleConfig circleConfig)
+    {
+        tileInfos.Clear();
+        tilemap.ClearAllTiles();
+        
+        var tilePositions = new Vector3Int[width * height + wallsHeight * 4];
+        var tiles = new TileBase[width * height + wallsHeight * 4];
+        var index = 0;
+        var totalProbability = circleConfig.tileData.Sum(x => x.spawnChance);
+        
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
             {
-                int index = x + y * width;
                 tilePositions[index] = new Vector3Int(x - width / 2, -y, 0);
-                TileData tileData;
+                TileData tileData = null;
                 if (x == 0 || x == width - 1)
                 {
                     tileData = wallTile;
                 }
-                else if (Noise.GradientNoise(x * noiseFrequency, y * noiseFrequency) < noiseThreshold)
+                else if (Noise.GradientNoise(x * circleConfig.noiseFrequency, y * circleConfig.noiseFrequency) <
+                         circleConfig.noiseThreshold)
                 {
                     tileData = null;
                 }
-                else if (UnityEngine.Random.value < explosiveProbability)
-                {
-                    tileData = explosiveTile;
-                }
-                else if (UnityEngine.Random.value < goldProbability)
-                {
-                    tileData = goldTile;
-                }
                 else
                 {
-                    tileData = usualTiles[UnityEngine.Random.Range(0, usualTiles.Length)];
+                    var randomValue = UnityEngine.Random.value * totalProbability;
+                    for (int i = 0; i < circleConfig.tileData.Length; i++)
+                    {
+                        var data = circleConfig.tileData[i];
+                        if (randomValue < data.spawnChance)
+                        {
+                            tileData = data;
+                            break;
+                        }
+                        randomValue -= data.spawnChance;
+                    }
                 }
                 tiles[index] = tileData?.tile;
                 if (tileData != null)
                 {
                     tileInfos[tilePositions[index]] = new TileInfo(tileData);
                 }
+                index++;
             }
+        }
+
+        void SetWall(Vector3Int pos)
+        {
+            tilePositions[index] = pos;
+            tiles[index] = wallTile.tile;
+            tileInfos[tilePositions[index]] = new TileInfo(wallTile);
+            index++;
+        }
+        
+        for (int i = 0; i < wallsHeight; i++)
+        {
+            SetWall(new Vector3Int(-width / 2, i, 0));
+            SetWall(new Vector3Int(width / 2 - 1, i, 0));
+            SetWall(new Vector3Int(-width / 2, -height - i, 0));
+            SetWall(new Vector3Int(width / 2 - 1, -height - i, 0));
         }
         tilemap.SetTiles(tilePositions, tiles);
         tilemap.RefreshAllTiles();
+        transitionHeight = tilemap.layoutGrid.cellSize.y * (-height - wallsHeight / 2f);
     }
 
     public void Explode(Vector3 position, float radius, float damage, bool isPlayerDamage)
@@ -91,7 +116,7 @@ public class Level : MonoBehaviour
                     {
                         continue;
                     }
-                    if (tileInfo.tileData == explosiveTile)
+                    if (tileInfo.tileData.explosionRadius > 0f)
                     {
                         StartCoroutine(ExplodeExplosive(tilePos, tileInfo.tileData));
                     }
@@ -165,13 +190,13 @@ public class Level : MonoBehaviour
 
     private IEnumerator ExplodeExplosive(Vector3Int pos, TileData tileData)
     {
-        for (var i = 0; i < explosionDelay * explosionFPS; i++)
+        for (var i = 0; i < tileData.explosionDelay * tileData.explosionFPS; i++)
         {
             tilemap.SetTile(pos, tileData.damagedTiles[i % tileData.damagedTiles.Length]);
-            yield return new WaitForSeconds(1f / explosionFPS);
+            yield return new WaitForSeconds(1f / tileData.explosionFPS);
         }
         RemoveTile(pos);
-        Explode(tilemap.CellToWorld(pos), explosionRadius, explosionDamage, isPlayerDamage:false);
+        Explode(tilemap.CellToWorld(pos), tileData.explosionRadius, tileData.explosionDamage, isPlayerDamage:false);
     }
 
     private void RemoveTile(Vector3Int pos)
@@ -179,16 +204,42 @@ public class Level : MonoBehaviour
         tilemap.SetTile(pos, null);
         tileInfos.Remove(pos);
     }
+
+    private void Update()
+    {
+        var playerPos = Player.I.transform.position;
+        if (playerPos.y < transitionHeight)
+        {
+            Player.I.transform.position = new Vector3(playerPos.x, wallsHeight / 2f, playerPos.z);
+            currentCircleIndex++;
+            currentCircleIndex = Mathf.Clamp(currentCircleIndex, 0, circles.Length - 1);
+            GenerateLevel(circles[currentCircleIndex]);
+        }
+    }
     
+    [Serializable]
+    public class CircleConfig
+    {
+        public TileData[] tileData;
+        public float noiseThreshold = -0.2f;
+        public float noiseFrequency = 0.15f;
+    }
+
     [Serializable]
     public class TileData
     {
         public TileBase tile;
         public float maxHp = 1f;
-        public float dropChance = 0f;
+        public float spawnChance = 1f;
+        
+        public float explosionRadius = 0f;
+        public float explosionDamage = 0f;
+        public float explosionDelay = 1f;
+        public float explosionFPS = 10f;
         
         public TileBase[] damagedTiles;
         public GameObject drop;
+        public float dropChance = 0f;
     }
     
     private class TileInfo

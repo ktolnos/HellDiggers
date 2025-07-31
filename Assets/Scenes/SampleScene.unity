@@ -1451,56 +1451,113 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3cd498039fee10449bef1e91dc8ce21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usualTiles:
-  - tile: {fileID: 11400000, guid: da7bb9b21bd92454c8cff656e3fe2454, type: 2}
-    maxHp: 5
-    dropChance: 0.01
-    damagedTiles:
-    - {fileID: 11400000, guid: 1a81aee0d0aad0d42adeeb8f36b9f8e3, type: 2}
-    - {fileID: 11400000, guid: 73e05a911d2c55145924206fa766bc8f, type: 2}
-    drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
-  - tile: {fileID: 11400000, guid: 1a81aee0d0aad0d42adeeb8f36b9f8e3, type: 2}
-    maxHp: 3
-    dropChance: 0
-    damagedTiles:
-    - {fileID: 0}
-    drop: {fileID: 0}
-  - tile: {fileID: 11400000, guid: 73e05a911d2c55145924206fa766bc8f, type: 2}
-    maxHp: 1
-    dropChance: 0
-    damagedTiles:
-    - {fileID: 0}
-    drop: {fileID: 0}
-  goldTile:
-    tile: {fileID: 11400000, guid: 30c89b9d0d5338649be7ecc520c75166, type: 2}
-    maxHp: 2
-    dropChance: 1
-    damagedTiles: []
-    drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
-  explosiveTile:
-    tile: {fileID: 11400000, guid: c58a38f40429d084da5c08bcb96aa14f, type: 2}
-    maxHp: 1
-    dropChance: 0
-    damagedTiles:
-    - {fileID: 11400000, guid: 388859747defa134cbd56746c5d71454, type: 2}
-    - {fileID: 11400000, guid: cef4cc573530c3d4b9b2533c15060e25, type: 2}
-    drop: {fileID: 0}
+  circles:
+  - tileData:
+    - tile: {fileID: 11400000, guid: 1a81aee0d0aad0d42adeeb8f36b9f8e3, type: 2}
+      maxHp: 1
+      spawnChance: 1
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles: []
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.01
+    - tile: {fileID: 11400000, guid: da7bb9b21bd92454c8cff656e3fe2454, type: 2}
+      maxHp: 2
+      spawnChance: 1
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 1a81aee0d0aad0d42adeeb8f36b9f8e3, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.01
+    - tile: {fileID: 11400000, guid: c58a38f40429d084da5c08bcb96aa14f, type: 2}
+      maxHp: 1
+      spawnChance: 0.05
+      explosionRadius: 5
+      explosionDamage: 10
+      explosionDelay: 1
+      explosionFPS: 10
+      damagedTiles:
+      - {fileID: 11400000, guid: 3dcfc4dd2cdd4f9429abe8ed62d105a1, type: 2}
+      - {fileID: 11400000, guid: cef4cc573530c3d4b9b2533c15060e25, type: 2}
+      drop: {fileID: 0}
+      dropChance: 0
+    - tile: {fileID: 11400000, guid: 30c89b9d0d5338649be7ecc520c75166, type: 2}
+      maxHp: 2
+      spawnChance: 0.05
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles: []
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 1
+    noiseThreshold: -0.15
+    noiseFrequency: 0.15
+  - tileData:
+    - tile: {fileID: 11400000, guid: ffdad1eccab6e9440b74817b3df01957, type: 2}
+      maxHp: 1
+      spawnChance: 1
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles: []
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.01
+    - tile: {fileID: 11400000, guid: 6c562b337741d1546b885324e78e5cf6, type: 2}
+      maxHp: 2
+      spawnChance: 1
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: ffdad1eccab6e9440b74817b3df01957, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.01
+    - tile: {fileID: 11400000, guid: c58a38f40429d084da5c08bcb96aa14f, type: 2}
+      maxHp: 1
+      spawnChance: 0.05
+      explosionRadius: 5
+      explosionDamage: 10
+      explosionDelay: 1
+      explosionFPS: 10
+      damagedTiles:
+      - {fileID: 11400000, guid: 3dcfc4dd2cdd4f9429abe8ed62d105a1, type: 2}
+      - {fileID: 11400000, guid: cef4cc573530c3d4b9b2533c15060e25, type: 2}
+      drop: {fileID: 0}
+      dropChance: 0
+    - tile: {fileID: 11400000, guid: 30c89b9d0d5338649be7ecc520c75166, type: 2}
+      maxHp: 2
+      spawnChance: 0.05
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles: []
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 1
+    noiseThreshold: -0.2
+    noiseFrequency: 0.2
   wallTile:
     tile: {fileID: 11400000, guid: 6c562b337741d1546b885324e78e5cf6, type: 2}
     maxHp: 1
-    dropChance: 0
+    spawnChance: 1
+    explosionRadius: 0
+    explosionDamage: 0
+    explosionDelay: 1
+    explosionFPS: 10
     damagedTiles: []
     drop: {fileID: 0}
+    dropChance: 0
   width: 100
   height: 100
-  noiseThreshold: -0.15
-  noiseFrequency: 0.1
-  goldProbability: 0.04
-  explosiveProbability: 0.01
-  explosionRadius: 5
-  explosionDamage: 10
-  explosionDelay: 1
-  explosionFPS: 10
+  wallsHeight: 100
 --- !u!4 &2019764389
 Transform:
   m_ObjectHideFlags: 0

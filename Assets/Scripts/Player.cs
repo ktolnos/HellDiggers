@@ -47,6 +47,10 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (health.currentHealth <= 0)
+        {
+            return;
+        }
         Vector2 moveInput = movementAction.ReadValue<Vector2>();
         Vector2 moveVelocity = moveInput * speed;
         rb.linearVelocityX = moveVelocity.x;

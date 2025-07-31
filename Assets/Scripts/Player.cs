@@ -14,7 +14,9 @@ public class Player : MonoBehaviour
     private InputAction movementAction;
     private InputAction jumpAction;
     private InputAction shootAction;
+    private InputAction grenadeAction;
     public Gun gun;
+    public Gun grenadeLauncher;
     public BoxCollider2D mainCollider;
 
     private bool isGrounded;
@@ -34,6 +36,7 @@ public class Player : MonoBehaviour
         movementAction = InputSystem.actions.FindAction("Move");
         jumpAction = InputSystem.actions.FindAction("Jump");
         shootAction = InputSystem.actions.FindAction("Attack");
+        grenadeAction = InputSystem.actions.FindAction("Grenade");
 
         rb = GetComponent<Rigidbody2D>();
         groundMask = LayerMask.GetMask("Ground");
@@ -74,6 +77,10 @@ public class Player : MonoBehaviour
         if (shootAction.IsPressed())
         {
             gun.Shoot();
+        }
+        if (grenadeAction.IsPressed())
+        {
+            grenadeLauncher.Shoot();
         }
     }
 

@@ -11,6 +11,8 @@ public class Stats
     public float reloadSpeedUp;
     public float explosionRadius;
     public int numberOfGrenades;
+    public float grenadeReloadSpeedUp;
+    public int numberOfGrenadesPerLaunch;
     public int grenadeExplosionRadius;
 
 
@@ -27,6 +29,7 @@ public class Stats
             explosionRadius = a.explosionRadius + b.explosionRadius,
             numberOfGrenades = a.numberOfGrenades + b.numberOfGrenades,
             grenadeExplosionRadius = a.grenadeExplosionRadius + b.grenadeExplosionRadius
+            
         };
     }
     

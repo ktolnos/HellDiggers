@@ -7,6 +7,7 @@ using UnityEngine.Tilemaps;
 
 public class Level : MonoBehaviour
 {
+    public RectTransform upgradesUI;
     public static Level I;
     private Tilemap tilemap;
     
@@ -31,6 +32,12 @@ public class Level : MonoBehaviour
 
     private void Start()
     {
+        PlayAgain();
+    }
+
+    public void PlayAgain()
+    {
+        currentCircleIndex = 0;
         GenerateLevel(circles[currentCircleIndex]);
     }
 

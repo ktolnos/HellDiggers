@@ -11,10 +11,19 @@ public class PlayerDeath: MonoBehaviour, IDeathHandler
     public GameObject upgradeUI;
     
     private InputAction restartAction;
-
+    
+    private float startIntensity;
+    private float startRadius;
+    private float startGlobalIntensity;
+    private bool isDying = false;
+    
     private void Awake()
     {
         restartAction = InputSystem.actions.FindAction("Restart");
+        
+        startIntensity = playerLight.intensity;
+        startRadius = playerLight.pointLightOuterRadius;
+        startGlobalIntensity = globalLight.intensity;
     }
 
     private void Update()
@@ -28,15 +37,26 @@ public class PlayerDeath: MonoBehaviour, IDeathHandler
 
     public void Die()
     {
-        StartCoroutine(DeathAnimation());
+        if (!isDying)
+        {
+            StartCoroutine(DeathAnimation());
+        }
+    }
+
+    public void PlayAgain()
+    {
+        Player.I.transform.position = new Vector3(0, 0, 0);
+        upgradeUI.gameObject.SetActive(false);
+        playerLight.intensity = startIntensity;
+        playerLight.pointLightOuterRadius = startRadius;
+        globalLight.intensity = startGlobalIntensity;
+        Level.I.PlayAgain();
+        Player.I.health.currentHealth = Player.I.health.maxHealth;
     }
 
     private IEnumerator DeathAnimation()
     {
         var startTime = Time.time;
-        var startIntensity = playerLight.intensity;
-        var startRadius = playerLight.pointLightOuterRadius;
-        var startGlobalIntensity = globalLight.intensity;
         var animationDuration = 0.5f;
         while (Time.time < startTime + animationDuration)
         {
@@ -49,5 +69,6 @@ public class PlayerDeath: MonoBehaviour, IDeathHandler
         playerLight.intensity = 0f;
         globalLight.intensity = 0f;
         upgradeUI.SetActive(true);
+        isDying = false;
     }
 }

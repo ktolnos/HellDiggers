@@ -8,12 +8,15 @@ public class Bullet: MonoBehaviour
     public Rigidbody2D rb;
 
     private Vector2 velocity;
+    public float enemyDamage;
+    public float groundDamage;
     public float explosionRadius = 0.3f;
     public bool explodeOnCollision = true;
     public float explosionDelay = 0f;
     public bool isGrenade = false;
     public bool isPlayerBullet = false;
-
+    public int ricochetCount = 0;
+    
     private void Awake()
     {
         TryGetComponent(out rb);
@@ -21,35 +24,43 @@ public class Bullet: MonoBehaviour
         {
             StartCoroutine(DelayedExplode());
         }
+
+        if (isPlayerBullet)
+        {
+            ricochetCount += Player.I.stats.bulletRicochetCount;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (explodeOnCollision)
         {
-            Explode();
+            Explode(ricochetCount <= 0);
         }
+        ricochetCount--;
     }
     
-    private void Explode() 
+    private void Explode(bool destroy)
     {
-        var explosionRadiusStat = isGrenade ? Player.I.stats.grenadeExplosionRadius * 2 : Player.I.stats.explosionRadius;
-        var explosionDamage = isGrenade ? Player.I.stats.grenadeDamage : Player.I.stats.bulletDamage;
-        if (isPlayerBullet)
+        var playerStatsMult = isPlayerBullet ? 1f : 0f;
+        var finalExplosionRadius = explosionRadius + 
+                                    (isGrenade 
+                                        ? Player.I.stats.grenadeExplosionRadius * playerStatsMult * 2f
+                                        : Player.I.stats.bulletExplosionRadius * playerStatsMult * 1f);
+        var finalEnemyDamage = enemyDamage + Player.I.stats.bulletEnemyDamage * playerStatsMult * 1f;
+        var finalGroundDamage = groundDamage + Player.I.stats.diggingDamage * playerStatsMult * 1f;
+        var damageType = isPlayerBullet ? DamageDealerType.Player : DamageDealerType.Enemy;
+        Level.I.Explode(transform.position, finalExplosionRadius, finalEnemyDamage, finalGroundDamage, damageType);
+        if (destroy)
         {
-            Level.I.Explode(transform.position, explosionRadius + explosionRadiusStat, explosionDamage, DamageDealerType.Player);
+            Destroy(gameObject);
         }
-        else
-        {
-            Level.I.Explode(transform.position, explosionRadius + explosionRadiusStat, explosionDamage, DamageDealerType.Enemy);
-        }
-        Destroy(gameObject);
     }
 
     private IEnumerator DelayedExplode()
     {
         yield return new WaitForSeconds(explosionDelay);
-        Explode();
+        Explode(true);
     }
     
     

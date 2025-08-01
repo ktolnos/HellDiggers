@@ -22,6 +22,7 @@ public class HUD: MonoBehaviour
         }
         var healthPercent = Player.I.health.currentHealth / Player.I.health.maxHealth;
         healthMaterial.SetFloat(Progress, healthPercent);
+        healthImage.rectTransform.sizeDelta = new Vector2(Player.I.health.maxHealth * 10f, healthImage.rectTransform.sizeDelta.y);
         healthImage.SetMaterialDirty();
     }
 }

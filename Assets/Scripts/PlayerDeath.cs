@@ -51,7 +51,7 @@ public class PlayerDeath: MonoBehaviour, IDeathHandler
         playerLight.pointLightOuterRadius = startRadius;
         globalLight.intensity = startGlobalIntensity;
         Level.I.PlayAgain();
-        Player.I.health.currentHealth = Player.I.health.maxHealth;
+        Player.I.Revive();
     }
 
     private IEnumerator DeathAnimation()

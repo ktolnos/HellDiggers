@@ -49,11 +49,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
+  enemyDamage: 1
+  groundDamage: 1
   explosionRadius: 0.3
   explodeOnCollision: 1
   explosionDelay: 0
   isGrenade: 0
   isPlayerBullet: 1
+  ricochetCount: 0
 --- !u!96 &1312267110476939897
 TrailRenderer:
   serializedVersion: 3
@@ -213,7 +216,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 7bf83621ee004e04b82532f3da6e9c6d, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

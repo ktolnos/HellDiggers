@@ -14,7 +14,7 @@ public class Loot : MonoBehaviour
     
     private void Update()
     {
-        var collectionDistance = Player.I.stats.lootCollectionDistance * 3f;
+        var collectionDistance = (Player.I.stats.lootCollectionDistance + 0.5f) * 5f;
         var distanceToPlayer = Vector2.Distance(transform.position, Player.I.transform.position);
         if (distanceToPlayer < collectionDistance)
         {
@@ -45,6 +45,6 @@ public class Loot : MonoBehaviour
         }
         Destroy(gameObject);
         Player.I.money += money;
-        Player.I.health.Damage(-hp, DamageDealerType.Environment);
+        Player.I.health.Heal(hp);
     }
 }

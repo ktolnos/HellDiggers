@@ -122,7 +122,7 @@ public class Enemy : MonoBehaviour
     {
         if (Time.time - timeOfLastAttack > attackCoolDown)
         {
-            Level.I.damageEntities(player.transform.position, 2f, damage, DamageDealerType.Enemy); 
+            Level.DamageEntities(player.transform.position, 2f, damage, DamageDealerType.Enemy); 
             timeOfLastAttack = Time.time;
         }
     }

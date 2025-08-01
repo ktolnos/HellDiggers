@@ -20,12 +20,13 @@ public class Gun: MonoBehaviour
             return;
         lastFireTime = Time.time;
 
-        var numberOfBulletsStat = grenadeMode ? Player.I.stats.numberOfGrenadesPerLaunch : Player.I.stats.numberOfBullets;
+        var numberOfBulletsStat = grenadeMode ? Player.I.stats.numberOfGrenadesPerLaunch : Player.I.stats.numberOfBullets * 2f;
         var bulletsCount = numberOfBullets + numberOfBulletsStat;
         for (var i = 0; i < bulletsCount; i++)
         {
             var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            bullet.transform.localEulerAngles = transform.eulerAngles + Vector3.forward * (i * spread - spread / 2f);
+            bullet.transform.localEulerAngles = transform.eulerAngles + Vector3.forward * 
+                (((i+1) / 2) * spread * (i%2 == 0 ? 1f : -1f));
             bullet.gameObject.SetActive(true);
             bullet.rb.linearVelocity = bullet.transform.right * bulletSpeed;
             Destroy(bullet.gameObject, bulletLifeTime);

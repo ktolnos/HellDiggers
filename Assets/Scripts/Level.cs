@@ -7,7 +7,6 @@ using UnityEngine.Tilemaps;
 
 public class Level : MonoBehaviour
 {
-    public RectTransform upgradesUI;
     public static Level I;
     public Tilemap tilemap;
     
@@ -113,7 +112,7 @@ public class Level : MonoBehaviour
         tilemap.RefreshAllTiles();
         transitionHeight = tilemap.layoutGrid.cellSize.y * (-height - wallsHeight / 2f);
     }
-    public void damageEntities(Vector3 position, float radius, float damage, DamageDealerType type)
+    public static void DamageEntities(Vector3 position, float radius, float damage, DamageDealerType type)
     {
         var colliders = Physics2D.OverlapCircleAll(position, radius);
         var healths = new HashSet<Health>();
@@ -130,7 +129,7 @@ public class Level : MonoBehaviour
         }
     }
 
-    public void Explode(Vector3 position, float radius, float damage, DamageDealerType type)
+    public void Explode(Vector3 position, float radius, float enemyDamage, float groundDamage, DamageDealerType type)
     {
         var radiusCeil = Mathf.CeilToInt(radius);
         var cellPos = tilemap.layoutGrid.WorldToCell(position);
@@ -147,11 +146,20 @@ public class Level : MonoBehaviour
                     }
                     if (tileInfo.tileData.explosionRadius > 0f)
                     {
-                        StartCoroutine(ExplodeExplosive(tilePos, tileInfo.tileData));
+                        if (tileInfo.hp > 0f && tileInfo.hp <= groundDamage)
+                        {
+                            tileInfo.hp = 0f;
+                            StartCoroutine(ExplodeExplosive(tilePos, tileInfo.tileData));
+                        }
+                        else
+                        {
+                            tileInfo.hp -= groundDamage;
+                        }
+                        continue;
                     }
                     if (CheckCircleCellIntersection(position, radius, tilePos))
                     {
-                        tileInfo.hp -= damage;
+                        tileInfo.hp -= groundDamage;
                         if (tileInfo.hp <= 0f)
                         {
                             RemoveTile(tilePos);
@@ -170,7 +178,7 @@ public class Level : MonoBehaviour
             }
         }
 
-        damageEntities(position, radius, damage, type);
+        DamageEntities(position, radius, enemyDamage, type);
     }
 
     private TileBase GetDamagedTile(TileInfo tileInfo)
@@ -218,7 +226,7 @@ public class Level : MonoBehaviour
             yield return new WaitForSeconds(1f / tileData.explosionFPS);
         }
         RemoveTile(pos);
-        Explode(tilemap.CellToWorld(pos), tileData.explosionRadius, tileData.explosionDamage, DamageDealerType.Environment);
+        Explode(tilemap.CellToWorld(pos), tileData.explosionRadius, tileData.explosionDamage,  tileData.explosionDamage,  DamageDealerType.Environment);
     }
 
     private void RemoveTile(Vector3Int pos)

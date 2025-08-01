@@ -16,12 +16,12 @@ public class Level : MonoBehaviour
     public int height = 100;
     public int wallsHeight = 100;
     public float damagedProb = 0.1f;
-
+    public int currentCircleIndex = 0;
     private float transitionHeight;
     
 
     private Dictionary<Vector3Int, TileInfo> tileInfos = new();
-    private int currentCircleIndex = 0;
+    
     private List<GameObject> spawnedObjects = new List<GameObject>();
     
     private void Awake()

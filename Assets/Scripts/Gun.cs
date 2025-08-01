@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 
 public class Gun: MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Gun: MonoBehaviour
 
     private float lastFireTime = -100f;
     public bool grenadeMode = false;
+    public SpriteAnimator animator;
     
     public void Shoot()
     {
@@ -19,6 +21,7 @@ public class Gun: MonoBehaviour
         if (Time.time - lastFireTime < fireDelayUpgraded)
             return;
         lastFireTime = Time.time;
+        animator.PlayOnce();
 
         var numberOfBulletsStat = grenadeMode ? Player.I.stats.numberOfGrenadesPerLaunch : Player.I.stats.numberOfBullets * 2f;
         var bulletsCount = numberOfBullets + numberOfBulletsStat;

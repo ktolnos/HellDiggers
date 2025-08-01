@@ -6,7 +6,9 @@ public class Player : MonoBehaviour
 {
     public static Player I;
     public int money;
-
+    
+    public SpriteAnimator.Animation walkAnimation;
+    public SpriteAnimator.Animation idleAnimation;
     public Stats stats;
     public float speed = 5f;
     public float jumpForce = 300f;
@@ -44,6 +46,7 @@ public class Player : MonoBehaviour
     private float dashDirection = 1f; // Direction of the dash, 1 for right, -1 for left
     
     private bool isPounding; // Time since the last ground pound action
+    public SpriteAnimator animator;
 
     private void Awake()
     {
@@ -102,6 +105,7 @@ public class Player : MonoBehaviour
                         (Vector2)Camera.main.WorldToScreenPoint(gun.transform.position);
 
         gun.transform.localEulerAngles = Vector3.back * (Mathf.Atan2(gunVector.x, gunVector.y) * Mathf.Rad2Deg - 90f);
+        gun.animator.spriteRenderer.flipY = gunVector.x < 0f;
         if (shootAction.IsPressed())
         {
             gun.Shoot();
@@ -145,6 +149,16 @@ public class Player : MonoBehaviour
         if (stats.healthRegen > 0)
         {
             health.Heal(stats.healthRegen * Time.deltaTime * 1f);
+        }
+
+        if (rb.linearVelocityX != 0f)
+        {
+            animator.animation = walkAnimation;
+            animator.spriteRenderer.flipX = rb.linearVelocityX < 0f;
+        }
+        else
+        {
+            animator.animation = idleAnimation;
         }
     }
 

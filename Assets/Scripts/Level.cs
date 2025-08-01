@@ -22,6 +22,7 @@ public class Level : MonoBehaviour
 
     private Dictionary<Vector3Int, TileInfo> tileInfos = new();
     private int currentCircleIndex = 0;
+    private List<GameObject> spawnedObjects = new List<GameObject>();
     
     private void Awake()
     {
@@ -38,6 +39,13 @@ public class Level : MonoBehaviour
     {
         currentCircleIndex = 0;
         GenerateLevel(circles[currentCircleIndex]);
+        foreach (var spawnedObject in spawnedObjects)
+        {
+            if (spawnedObject != null)
+            {
+                Destroy(spawnedObject);
+            }
+        }
     }
 
     private void GenerateLevel(CircleConfig circleConfig)
@@ -165,7 +173,8 @@ public class Level : MonoBehaviour
                             RemoveTile(tilePos);
                             if (tileInfo.tileData.drop != null && UnityEngine.Random.value < tileInfo.tileData.dropChance)
                             {
-                                Instantiate(tileInfo.tileData.drop, tilemap.CellToWorld(tilePos), Quaternion.identity);
+                                var spawned = Instantiate(tileInfo.tileData.drop, tilemap.CellToWorld(tilePos), Quaternion.identity);
+                                spawnedObjects.Add(spawned);
                             }
                         }
                         else

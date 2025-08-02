@@ -6912,11 +6912,8 @@ MonoBehaviour:
   timeOfLevelStart: 0
   startEnemyAmount: 7
   transitionPanel: {fileID: 502913743}
-<<<<<<< HEAD
   bossHeight: 20
-=======
   circleText: {fileID: 2065297097}
->>>>>>> 52be8c7 (Spawn overhaul)
   isLevelTransition: 0
 --- !u!4 &2019764389
 Transform:
@@ -7033,19 +7030,12 @@ MonoBehaviour:
     - 0
     - 0
     - 0
-<<<<<<< HEAD
-  portal: {fileID: 0}
-  spawnRadius: 8
-  spawnRate: 6
-  portalDelay: 0
-=======
   portal: {fileID: 6440795600749684546, guid: a4a2bb26aab6dbc4cb0c98279cb08078, type: 3}
   spawnRadius: 5
   enemyAmount: 2
   revertedHardometr: 20
   spawnRate: 1
   portalDelay: 1.5
->>>>>>> 52be8c7 (Spawn overhaul)
   randomSpawnDelayMax: 3
 --- !u!1001 &2028712905
 PrefabInstance:

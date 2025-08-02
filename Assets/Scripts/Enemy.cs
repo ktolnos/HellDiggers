@@ -13,12 +13,15 @@ public class Enemy : MonoBehaviour
     public float attackDelay = 0.7f;
     public BevaviorType bevaviorType;
     public AttackType attackType;
+    public bool enemyLookTowardsPlayer = false;
     public float attackCoolDown;
     public Gun gun;
     public SpriteAnimator.Animation movementAnimation;
     public SpriteAnimator.Animation attackAnimation;
     public SpriteAnimator animator;
     public bool invertSprite = false;
+    public bool aimGun = true;
+
     private GameObject player;
     private float lastJumpTime;
     private Rigidbody2D rb;
@@ -43,6 +46,11 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        if (enemyLookTowardsPlayer)
+        {
+            Vector3 gunVector = player.transform.position - gun.transform.position;
+            transform.localEulerAngles = Vector3.back * (Mathf.Atan2(gunVector.x, gunVector.y) * Mathf.Rad2Deg - 90f);
+        }
         if ((player.transform.position - transform.position).magnitude < stoppingDistance)
         {
             StartCoroutine(Attack(attackDelay));
@@ -63,6 +71,11 @@ public class Enemy : MonoBehaviour
             {
                 Fly();
             }
+        }
+
+        if (enemyLookTowardsPlayer)
+        {
+            animator.spriteRenderer.flipX = invertSprite;
         }
         
     }
@@ -122,7 +135,7 @@ public class Enemy : MonoBehaviour
     void Fly()
     {
         Vector3 movement = (player.transform.position - transform.position).normalized * speed * Time.deltaTime;
-        transform.position += movement;
+        rb.AddForce(movement, ForceMode2D.Impulse);
         animator.spriteRenderer.flipX = (movement.x < 0)^invertSprite;
     }
 
@@ -155,9 +168,12 @@ public class Enemy : MonoBehaviour
 
     void Shoot()
     {
-        Vector3 gunVector = player.transform.position - gun.transform.position;
-        gunSpriteRenderer.flipY = gunVector.x < 0f;
-        gun.transform.localEulerAngles = Vector3.back * (Mathf.Atan2(gunVector.x, gunVector.y) * Mathf.Rad2Deg - 90f);
+        if (aimGun)
+        {
+            Vector3 gunVector = player.transform.position - gun.transform.position;
+            gunSpriteRenderer.flipY = gunVector.x < 0f;
+            gun.transform.localEulerAngles = Vector3.back * (Mathf.Atan2(gunVector.x, gunVector.y) * Mathf.Rad2Deg - 90f);
+        }
         gun.Shoot();
     }
 }

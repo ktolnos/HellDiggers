@@ -50,7 +50,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
@@ -85,6 +85,7 @@ MonoBehaviour:
   attackDelay: 0.7
   bevaviorType: 1
   attackType: 1
+  enemyLookTowardsPlayer: 0
   attackCoolDown: 1
   gun: {fileID: 0}
   movementAnimation:
@@ -112,6 +113,7 @@ MonoBehaviour:
     fps: 10
   animator: {fileID: 8002352368254877654}
   invertSprite: 0
+  aimGun: 1
 --- !u!114 &2356477887498331919
 MonoBehaviour:
   m_ObjectHideFlags: 0

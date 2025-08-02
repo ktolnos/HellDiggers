@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
@@ -18,11 +19,14 @@ public class Level : MonoBehaviour
     public int height = 100;
     public int wallsHeight = 100;
     public float damagedProb = 0.1f;
-    public int currentCircleIndex = 0;
-    private float transitionHeight;
     public Transform spawnedObjectsParent;
+    public int currentCircleIndex = 0;
+    public float timeOfLevelStart;
+    private float transitionHeight;
+    public int startEnemyAmount;
     public Image transitionPanel;
     public int bossHeight = 20;
+    public TextMeshProUGUI circleText;
     
 
     private Dictionary<Vector3Int, TileInfo> tileInfos = new();
@@ -41,6 +45,7 @@ public class Level : MonoBehaviour
 
     public void PlayAgain()
     {
+        timeOfLevelStart = Time.time;
         currentCircleIndex = 0;
         GenerateLevel(circles[currentCircleIndex]);
     }
@@ -58,6 +63,8 @@ public class Level : MonoBehaviour
                 Destroy(child.gameObject);
             }
         }
+        EnemySpawner.I.Spawner(0f, startEnemyAmount, 0f, 40, true);
+    }
 
         var bossTiles = circleConfig.boss == null ? 0 : width;
         var totalTiles = width * height + wallsHeight * 4 + bossTiles;
@@ -284,9 +291,11 @@ public class Level : MonoBehaviour
         {
             isLevelTransition = true;
             currentCircleIndex++;
+            circleText.text = circles[currentCircleIndex].name;
             currentCircleIndex = Mathf.Clamp(currentCircleIndex, 0, circles.Length - 1);
             transitionPanel.gameObject.SetActive(true);
             var animationDuration = 0.5f;
+            circleText.DOFade(1f, animationDuration);
             transitionPanel.DOFade(1f, animationDuration).OnComplete(() =>
             {
                 Player.I.rb.bodyType = RigidbodyType2D.Kinematic;
@@ -299,6 +308,7 @@ public class Level : MonoBehaviour
                     Player.I.rb.bodyType = RigidbodyType2D.Dynamic;
                     isLevelTransition = false;
                 });
+                circleText.DOFade(0f, animationDuration);
             });
         }
     }

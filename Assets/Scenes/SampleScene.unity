@@ -2803,6 +2803,171 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1064240438}
   m_CullTransparentMesh: 1
+--- !u!43 &1155839158
+Mesh:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 11
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 0
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 0
+    localAABB:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_BonesAABB: []
+  m_VariableBoneCountWeights:
+    m_Data: 
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 
+  m_VertexData:
+    serializedVersion: 3
+    m_VertexCount: 0
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 0
+    _typelessdata: 
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_MeshUsageFlags: 0
+  m_CookingOptions: 30
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  'm_MeshMetrics[0]': 1
+  'm_MeshMetrics[1]': 1
+  m_MeshOptimizationFlags: 1
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 
 --- !u!224 &1221977334 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5609526949157186804, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
@@ -5402,7 +5567,1183 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemap: {fileID: 0}
   circles:
-  - name: 
+  - name: LIMB
+    tileData:
+    - name: bomb
+      tile: {fileID: 11400000, guid: c58a38f40429d084da5c08bcb96aa14f, type: 2}
+      maxHp: 1
+      spawnChance: 0.3
+      explosionRadius: 5
+      explosionDamage: 10
+      explosionDelay: 1
+      explosionFPS: 10
+      damagedTiles:
+      - {fileID: 11400000, guid: 3dcfc4dd2cdd4f9429abe8ed62d105a1, type: 2}
+      - {fileID: 11400000, guid: cef4cc573530c3d4b9b2533c15060e25, type: 2}
+      drop: {fileID: 0}
+      dropChance: 0
+    - name: copper
+      tile: {fileID: 11400000, guid: e305086530c26f840a86d21eae1cf7a9, type: 2}
+      maxHp: 2
+      spawnChance: 1
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 68757e135e166de41ab306b9917547f5, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 1
+    - name: iron
+      tile: {fileID: 11400000, guid: 8c9542a1f9893a545a968805a839d71a, type: 2}
+      maxHp: 3
+      spawnChance: 0.5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: ded70e319b62cab42bc7293f0bd47137, type: 2}
+      - {fileID: 11400000, guid: df05e800ef42fa5438a9c07c29961d2d, type: 2}
+      drop: {fileID: 3094065808536684211, guid: ac05320947c1b194e82e3a703fe395eb, type: 3}
+      dropChance: 1
+    - name: gold
+      tile: {fileID: 11400000, guid: 8aa510f2d17ff5244bf42060beca4937, type: 2}
+      maxHp: 3
+      spawnChance: 0.1
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 084d243347b808e4a8eba5626806deb3, type: 2}
+      - {fileID: 11400000, guid: 2190cb8a907cd7749b833a75eae3bf82, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 127f2309e80b55149b12f0629e9789cd, type: 3}
+      dropChance: 1
+    - name: emerald
+      tile: {fileID: 11400000, guid: c3c25a9f039f4da4e89ee138453c9f05, type: 2}
+      maxHp: 4
+      spawnChance: 0.05
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 9d592ca65ad16994395b823af10eb323, type: 2}
+      - {fileID: 11400000, guid: 236d620456c82e94f97ad9a8530c5c0d, type: 2}
+      - {fileID: 11400000, guid: 58359729e68b96c4b95f7afd69f2d89b, type: 2}
+      drop: {fileID: 3094065808536684211, guid: a642dc414c6b77348832dbfe7272e020, type: 3}
+      dropChance: 1
+    - name: magnesium
+      tile: {fileID: 11400000, guid: 803fdc571548fd44c942b38876db36a1, type: 2}
+      maxHp: 5
+      spawnChance: 0.01
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 7e7cee73b42d906469e5dd859252c26c, type: 2}
+      - {fileID: 11400000, guid: 7e7cee73b42d906469e5dd859252c26c, type: 2}
+      - {fileID: 11400000, guid: 0da66f2655d3480489ea4fbb7566040a, type: 2}
+      - {fileID: 11400000, guid: 814e041ac8f789b479ec7f4c8bb5130f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 5745f650d54b8564f879d13540c33256, type: 3}
+      dropChance: 1
+    - name: normal1
+      tile: {fileID: 11400000, guid: a93cbb80d6703eb49b364e3768bb783f, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal2
+      tile: {fileID: 11400000, guid: 1878a3cc99244b041adddce1ae9d295a, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal3
+      tile: {fileID: 11400000, guid: ce49f5b949b5d3643bea97a024bd35ec, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal4
+      tile: {fileID: 11400000, guid: 78e31bfb4fe95ee438045ded3c85d552, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal_easy
+      tile: {fileID: 11400000, guid: f27f40830b174eb43bdf1892c2ee4e00, type: 2}
+      maxHp: 1
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles: []
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    noiseThreshold: -0.3
+    noiseFrequency: 0.15
+  - name: LUST
+    tileData:
+    - name: bomb
+      tile: {fileID: 11400000, guid: c58a38f40429d084da5c08bcb96aa14f, type: 2}
+      maxHp: 1
+      spawnChance: 0.3
+      explosionRadius: 5
+      explosionDamage: 10
+      explosionDelay: 1
+      explosionFPS: 10
+      damagedTiles:
+      - {fileID: 11400000, guid: 3dcfc4dd2cdd4f9429abe8ed62d105a1, type: 2}
+      - {fileID: 11400000, guid: cef4cc573530c3d4b9b2533c15060e25, type: 2}
+      drop: {fileID: 0}
+      dropChance: 0
+    - name: copper
+      tile: {fileID: 11400000, guid: e305086530c26f840a86d21eae1cf7a9, type: 2}
+      maxHp: 2
+      spawnChance: 1
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 68757e135e166de41ab306b9917547f5, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 1
+    - name: iron
+      tile: {fileID: 11400000, guid: 8c9542a1f9893a545a968805a839d71a, type: 2}
+      maxHp: 3
+      spawnChance: 0.5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: ded70e319b62cab42bc7293f0bd47137, type: 2}
+      - {fileID: 11400000, guid: df05e800ef42fa5438a9c07c29961d2d, type: 2}
+      drop: {fileID: 3094065808536684211, guid: ac05320947c1b194e82e3a703fe395eb, type: 3}
+      dropChance: 1
+    - name: gold
+      tile: {fileID: 11400000, guid: 8aa510f2d17ff5244bf42060beca4937, type: 2}
+      maxHp: 3
+      spawnChance: 0.1
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 084d243347b808e4a8eba5626806deb3, type: 2}
+      - {fileID: 11400000, guid: 2190cb8a907cd7749b833a75eae3bf82, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 127f2309e80b55149b12f0629e9789cd, type: 3}
+      dropChance: 1
+    - name: emerald
+      tile: {fileID: 11400000, guid: c3c25a9f039f4da4e89ee138453c9f05, type: 2}
+      maxHp: 4
+      spawnChance: 0.05
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 9d592ca65ad16994395b823af10eb323, type: 2}
+      - {fileID: 11400000, guid: 236d620456c82e94f97ad9a8530c5c0d, type: 2}
+      - {fileID: 11400000, guid: 58359729e68b96c4b95f7afd69f2d89b, type: 2}
+      drop: {fileID: 3094065808536684211, guid: a642dc414c6b77348832dbfe7272e020, type: 3}
+      dropChance: 1
+    - name: magnesium
+      tile: {fileID: 11400000, guid: 803fdc571548fd44c942b38876db36a1, type: 2}
+      maxHp: 5
+      spawnChance: 0.01
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 7e7cee73b42d906469e5dd859252c26c, type: 2}
+      - {fileID: 11400000, guid: 7e7cee73b42d906469e5dd859252c26c, type: 2}
+      - {fileID: 11400000, guid: 0da66f2655d3480489ea4fbb7566040a, type: 2}
+      - {fileID: 11400000, guid: 814e041ac8f789b479ec7f4c8bb5130f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 5745f650d54b8564f879d13540c33256, type: 3}
+      dropChance: 1
+    - name: normal1
+      tile: {fileID: 11400000, guid: a93cbb80d6703eb49b364e3768bb783f, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal2
+      tile: {fileID: 11400000, guid: 1878a3cc99244b041adddce1ae9d295a, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal3
+      tile: {fileID: 11400000, guid: ce49f5b949b5d3643bea97a024bd35ec, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal4
+      tile: {fileID: 11400000, guid: 78e31bfb4fe95ee438045ded3c85d552, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal_easy
+      tile: {fileID: 11400000, guid: f27f40830b174eb43bdf1892c2ee4e00, type: 2}
+      maxHp: 1
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles: []
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    noiseThreshold: -0.3
+    noiseFrequency: 0.15
+  - name: Gluttony
+    tileData:
+    - name: bomb
+      tile: {fileID: 11400000, guid: c58a38f40429d084da5c08bcb96aa14f, type: 2}
+      maxHp: 1
+      spawnChance: 0.3
+      explosionRadius: 5
+      explosionDamage: 10
+      explosionDelay: 1
+      explosionFPS: 10
+      damagedTiles:
+      - {fileID: 11400000, guid: 3dcfc4dd2cdd4f9429abe8ed62d105a1, type: 2}
+      - {fileID: 11400000, guid: cef4cc573530c3d4b9b2533c15060e25, type: 2}
+      drop: {fileID: 0}
+      dropChance: 0
+    - name: copper
+      tile: {fileID: 11400000, guid: e305086530c26f840a86d21eae1cf7a9, type: 2}
+      maxHp: 2
+      spawnChance: 1
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 68757e135e166de41ab306b9917547f5, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 1
+    - name: iron
+      tile: {fileID: 11400000, guid: 8c9542a1f9893a545a968805a839d71a, type: 2}
+      maxHp: 3
+      spawnChance: 0.5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: ded70e319b62cab42bc7293f0bd47137, type: 2}
+      - {fileID: 11400000, guid: df05e800ef42fa5438a9c07c29961d2d, type: 2}
+      drop: {fileID: 3094065808536684211, guid: ac05320947c1b194e82e3a703fe395eb, type: 3}
+      dropChance: 1
+    - name: gold
+      tile: {fileID: 11400000, guid: 8aa510f2d17ff5244bf42060beca4937, type: 2}
+      maxHp: 3
+      spawnChance: 0.1
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 084d243347b808e4a8eba5626806deb3, type: 2}
+      - {fileID: 11400000, guid: 2190cb8a907cd7749b833a75eae3bf82, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 127f2309e80b55149b12f0629e9789cd, type: 3}
+      dropChance: 1
+    - name: emerald
+      tile: {fileID: 11400000, guid: c3c25a9f039f4da4e89ee138453c9f05, type: 2}
+      maxHp: 4
+      spawnChance: 0.05
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 9d592ca65ad16994395b823af10eb323, type: 2}
+      - {fileID: 11400000, guid: 236d620456c82e94f97ad9a8530c5c0d, type: 2}
+      - {fileID: 11400000, guid: 58359729e68b96c4b95f7afd69f2d89b, type: 2}
+      drop: {fileID: 3094065808536684211, guid: a642dc414c6b77348832dbfe7272e020, type: 3}
+      dropChance: 1
+    - name: magnesium
+      tile: {fileID: 11400000, guid: 803fdc571548fd44c942b38876db36a1, type: 2}
+      maxHp: 5
+      spawnChance: 0.01
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 7e7cee73b42d906469e5dd859252c26c, type: 2}
+      - {fileID: 11400000, guid: 7e7cee73b42d906469e5dd859252c26c, type: 2}
+      - {fileID: 11400000, guid: 0da66f2655d3480489ea4fbb7566040a, type: 2}
+      - {fileID: 11400000, guid: 814e041ac8f789b479ec7f4c8bb5130f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 5745f650d54b8564f879d13540c33256, type: 3}
+      dropChance: 1
+    - name: normal1
+      tile: {fileID: 11400000, guid: a93cbb80d6703eb49b364e3768bb783f, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal2
+      tile: {fileID: 11400000, guid: 1878a3cc99244b041adddce1ae9d295a, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal3
+      tile: {fileID: 11400000, guid: ce49f5b949b5d3643bea97a024bd35ec, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal4
+      tile: {fileID: 11400000, guid: 78e31bfb4fe95ee438045ded3c85d552, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal_easy
+      tile: {fileID: 11400000, guid: f27f40830b174eb43bdf1892c2ee4e00, type: 2}
+      maxHp: 1
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles: []
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    noiseThreshold: -0.3
+    noiseFrequency: 0.15
+  - name: Greed
+    tileData:
+    - name: bomb
+      tile: {fileID: 11400000, guid: c58a38f40429d084da5c08bcb96aa14f, type: 2}
+      maxHp: 1
+      spawnChance: 0.3
+      explosionRadius: 5
+      explosionDamage: 10
+      explosionDelay: 1
+      explosionFPS: 10
+      damagedTiles:
+      - {fileID: 11400000, guid: 3dcfc4dd2cdd4f9429abe8ed62d105a1, type: 2}
+      - {fileID: 11400000, guid: cef4cc573530c3d4b9b2533c15060e25, type: 2}
+      drop: {fileID: 0}
+      dropChance: 0
+    - name: copper
+      tile: {fileID: 11400000, guid: e305086530c26f840a86d21eae1cf7a9, type: 2}
+      maxHp: 2
+      spawnChance: 1
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 68757e135e166de41ab306b9917547f5, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 1
+    - name: iron
+      tile: {fileID: 11400000, guid: 8c9542a1f9893a545a968805a839d71a, type: 2}
+      maxHp: 3
+      spawnChance: 0.5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: ded70e319b62cab42bc7293f0bd47137, type: 2}
+      - {fileID: 11400000, guid: df05e800ef42fa5438a9c07c29961d2d, type: 2}
+      drop: {fileID: 3094065808536684211, guid: ac05320947c1b194e82e3a703fe395eb, type: 3}
+      dropChance: 1
+    - name: gold
+      tile: {fileID: 11400000, guid: 8aa510f2d17ff5244bf42060beca4937, type: 2}
+      maxHp: 3
+      spawnChance: 0.1
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 084d243347b808e4a8eba5626806deb3, type: 2}
+      - {fileID: 11400000, guid: 2190cb8a907cd7749b833a75eae3bf82, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 127f2309e80b55149b12f0629e9789cd, type: 3}
+      dropChance: 1
+    - name: emerald
+      tile: {fileID: 11400000, guid: c3c25a9f039f4da4e89ee138453c9f05, type: 2}
+      maxHp: 4
+      spawnChance: 0.05
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 9d592ca65ad16994395b823af10eb323, type: 2}
+      - {fileID: 11400000, guid: 236d620456c82e94f97ad9a8530c5c0d, type: 2}
+      - {fileID: 11400000, guid: 58359729e68b96c4b95f7afd69f2d89b, type: 2}
+      drop: {fileID: 3094065808536684211, guid: a642dc414c6b77348832dbfe7272e020, type: 3}
+      dropChance: 1
+    - name: magnesium
+      tile: {fileID: 11400000, guid: 803fdc571548fd44c942b38876db36a1, type: 2}
+      maxHp: 5
+      spawnChance: 0.01
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 7e7cee73b42d906469e5dd859252c26c, type: 2}
+      - {fileID: 11400000, guid: 7e7cee73b42d906469e5dd859252c26c, type: 2}
+      - {fileID: 11400000, guid: 0da66f2655d3480489ea4fbb7566040a, type: 2}
+      - {fileID: 11400000, guid: 814e041ac8f789b479ec7f4c8bb5130f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 5745f650d54b8564f879d13540c33256, type: 3}
+      dropChance: 1
+    - name: normal1
+      tile: {fileID: 11400000, guid: a93cbb80d6703eb49b364e3768bb783f, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal2
+      tile: {fileID: 11400000, guid: 1878a3cc99244b041adddce1ae9d295a, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal3
+      tile: {fileID: 11400000, guid: ce49f5b949b5d3643bea97a024bd35ec, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal4
+      tile: {fileID: 11400000, guid: 78e31bfb4fe95ee438045ded3c85d552, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal_easy
+      tile: {fileID: 11400000, guid: f27f40830b174eb43bdf1892c2ee4e00, type: 2}
+      maxHp: 1
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles: []
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    noiseThreshold: -0.3
+    noiseFrequency: 0.15
+  - name: Wrath
+    tileData:
+    - name: bomb
+      tile: {fileID: 11400000, guid: c58a38f40429d084da5c08bcb96aa14f, type: 2}
+      maxHp: 1
+      spawnChance: 0.3
+      explosionRadius: 5
+      explosionDamage: 10
+      explosionDelay: 1
+      explosionFPS: 10
+      damagedTiles:
+      - {fileID: 11400000, guid: 3dcfc4dd2cdd4f9429abe8ed62d105a1, type: 2}
+      - {fileID: 11400000, guid: cef4cc573530c3d4b9b2533c15060e25, type: 2}
+      drop: {fileID: 0}
+      dropChance: 0
+    - name: copper
+      tile: {fileID: 11400000, guid: e305086530c26f840a86d21eae1cf7a9, type: 2}
+      maxHp: 2
+      spawnChance: 1
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 68757e135e166de41ab306b9917547f5, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 1
+    - name: iron
+      tile: {fileID: 11400000, guid: 8c9542a1f9893a545a968805a839d71a, type: 2}
+      maxHp: 3
+      spawnChance: 0.5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: ded70e319b62cab42bc7293f0bd47137, type: 2}
+      - {fileID: 11400000, guid: df05e800ef42fa5438a9c07c29961d2d, type: 2}
+      drop: {fileID: 3094065808536684211, guid: ac05320947c1b194e82e3a703fe395eb, type: 3}
+      dropChance: 1
+    - name: gold
+      tile: {fileID: 11400000, guid: 8aa510f2d17ff5244bf42060beca4937, type: 2}
+      maxHp: 3
+      spawnChance: 0.1
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 084d243347b808e4a8eba5626806deb3, type: 2}
+      - {fileID: 11400000, guid: 2190cb8a907cd7749b833a75eae3bf82, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 127f2309e80b55149b12f0629e9789cd, type: 3}
+      dropChance: 1
+    - name: emerald
+      tile: {fileID: 11400000, guid: c3c25a9f039f4da4e89ee138453c9f05, type: 2}
+      maxHp: 4
+      spawnChance: 0.05
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 9d592ca65ad16994395b823af10eb323, type: 2}
+      - {fileID: 11400000, guid: 236d620456c82e94f97ad9a8530c5c0d, type: 2}
+      - {fileID: 11400000, guid: 58359729e68b96c4b95f7afd69f2d89b, type: 2}
+      drop: {fileID: 3094065808536684211, guid: a642dc414c6b77348832dbfe7272e020, type: 3}
+      dropChance: 1
+    - name: magnesium
+      tile: {fileID: 11400000, guid: 803fdc571548fd44c942b38876db36a1, type: 2}
+      maxHp: 5
+      spawnChance: 0.01
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 7e7cee73b42d906469e5dd859252c26c, type: 2}
+      - {fileID: 11400000, guid: 7e7cee73b42d906469e5dd859252c26c, type: 2}
+      - {fileID: 11400000, guid: 0da66f2655d3480489ea4fbb7566040a, type: 2}
+      - {fileID: 11400000, guid: 814e041ac8f789b479ec7f4c8bb5130f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 5745f650d54b8564f879d13540c33256, type: 3}
+      dropChance: 1
+    - name: normal1
+      tile: {fileID: 11400000, guid: a93cbb80d6703eb49b364e3768bb783f, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal2
+      tile: {fileID: 11400000, guid: 1878a3cc99244b041adddce1ae9d295a, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal3
+      tile: {fileID: 11400000, guid: ce49f5b949b5d3643bea97a024bd35ec, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal4
+      tile: {fileID: 11400000, guid: 78e31bfb4fe95ee438045ded3c85d552, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal_easy
+      tile: {fileID: 11400000, guid: f27f40830b174eb43bdf1892c2ee4e00, type: 2}
+      maxHp: 1
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles: []
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    noiseThreshold: -0.3
+    noiseFrequency: 0.15
+  - name: Heresy
+    tileData:
+    - name: bomb
+      tile: {fileID: 11400000, guid: c58a38f40429d084da5c08bcb96aa14f, type: 2}
+      maxHp: 1
+      spawnChance: 0.3
+      explosionRadius: 5
+      explosionDamage: 10
+      explosionDelay: 1
+      explosionFPS: 10
+      damagedTiles:
+      - {fileID: 11400000, guid: 3dcfc4dd2cdd4f9429abe8ed62d105a1, type: 2}
+      - {fileID: 11400000, guid: cef4cc573530c3d4b9b2533c15060e25, type: 2}
+      drop: {fileID: 0}
+      dropChance: 0
+    - name: copper
+      tile: {fileID: 11400000, guid: e305086530c26f840a86d21eae1cf7a9, type: 2}
+      maxHp: 2
+      spawnChance: 1
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 68757e135e166de41ab306b9917547f5, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 1
+    - name: iron
+      tile: {fileID: 11400000, guid: 8c9542a1f9893a545a968805a839d71a, type: 2}
+      maxHp: 3
+      spawnChance: 0.5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: ded70e319b62cab42bc7293f0bd47137, type: 2}
+      - {fileID: 11400000, guid: df05e800ef42fa5438a9c07c29961d2d, type: 2}
+      drop: {fileID: 3094065808536684211, guid: ac05320947c1b194e82e3a703fe395eb, type: 3}
+      dropChance: 1
+    - name: gold
+      tile: {fileID: 11400000, guid: 8aa510f2d17ff5244bf42060beca4937, type: 2}
+      maxHp: 3
+      spawnChance: 0.1
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 084d243347b808e4a8eba5626806deb3, type: 2}
+      - {fileID: 11400000, guid: 2190cb8a907cd7749b833a75eae3bf82, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 127f2309e80b55149b12f0629e9789cd, type: 3}
+      dropChance: 1
+    - name: emerald
+      tile: {fileID: 11400000, guid: c3c25a9f039f4da4e89ee138453c9f05, type: 2}
+      maxHp: 4
+      spawnChance: 0.05
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 9d592ca65ad16994395b823af10eb323, type: 2}
+      - {fileID: 11400000, guid: 236d620456c82e94f97ad9a8530c5c0d, type: 2}
+      - {fileID: 11400000, guid: 58359729e68b96c4b95f7afd69f2d89b, type: 2}
+      drop: {fileID: 3094065808536684211, guid: a642dc414c6b77348832dbfe7272e020, type: 3}
+      dropChance: 1
+    - name: magnesium
+      tile: {fileID: 11400000, guid: 803fdc571548fd44c942b38876db36a1, type: 2}
+      maxHp: 5
+      spawnChance: 0.01
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 7e7cee73b42d906469e5dd859252c26c, type: 2}
+      - {fileID: 11400000, guid: 7e7cee73b42d906469e5dd859252c26c, type: 2}
+      - {fileID: 11400000, guid: 0da66f2655d3480489ea4fbb7566040a, type: 2}
+      - {fileID: 11400000, guid: 814e041ac8f789b479ec7f4c8bb5130f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 5745f650d54b8564f879d13540c33256, type: 3}
+      dropChance: 1
+    - name: normal1
+      tile: {fileID: 11400000, guid: a93cbb80d6703eb49b364e3768bb783f, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal2
+      tile: {fileID: 11400000, guid: 1878a3cc99244b041adddce1ae9d295a, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal3
+      tile: {fileID: 11400000, guid: ce49f5b949b5d3643bea97a024bd35ec, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal4
+      tile: {fileID: 11400000, guid: 78e31bfb4fe95ee438045ded3c85d552, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal_easy
+      tile: {fileID: 11400000, guid: f27f40830b174eb43bdf1892c2ee4e00, type: 2}
+      maxHp: 1
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles: []
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    noiseThreshold: -0.3
+    noiseFrequency: 0.15
+  - name: Violence
+    tileData:
+    - name: bomb
+      tile: {fileID: 11400000, guid: c58a38f40429d084da5c08bcb96aa14f, type: 2}
+      maxHp: 1
+      spawnChance: 0.3
+      explosionRadius: 5
+      explosionDamage: 10
+      explosionDelay: 1
+      explosionFPS: 10
+      damagedTiles:
+      - {fileID: 11400000, guid: 3dcfc4dd2cdd4f9429abe8ed62d105a1, type: 2}
+      - {fileID: 11400000, guid: cef4cc573530c3d4b9b2533c15060e25, type: 2}
+      drop: {fileID: 0}
+      dropChance: 0
+    - name: copper
+      tile: {fileID: 11400000, guid: e305086530c26f840a86d21eae1cf7a9, type: 2}
+      maxHp: 2
+      spawnChance: 1
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 68757e135e166de41ab306b9917547f5, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 1
+    - name: iron
+      tile: {fileID: 11400000, guid: 8c9542a1f9893a545a968805a839d71a, type: 2}
+      maxHp: 3
+      spawnChance: 0.5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: ded70e319b62cab42bc7293f0bd47137, type: 2}
+      - {fileID: 11400000, guid: df05e800ef42fa5438a9c07c29961d2d, type: 2}
+      drop: {fileID: 3094065808536684211, guid: ac05320947c1b194e82e3a703fe395eb, type: 3}
+      dropChance: 1
+    - name: gold
+      tile: {fileID: 11400000, guid: 8aa510f2d17ff5244bf42060beca4937, type: 2}
+      maxHp: 3
+      spawnChance: 0.1
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 084d243347b808e4a8eba5626806deb3, type: 2}
+      - {fileID: 11400000, guid: 2190cb8a907cd7749b833a75eae3bf82, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 127f2309e80b55149b12f0629e9789cd, type: 3}
+      dropChance: 1
+    - name: emerald
+      tile: {fileID: 11400000, guid: c3c25a9f039f4da4e89ee138453c9f05, type: 2}
+      maxHp: 4
+      spawnChance: 0.05
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 9d592ca65ad16994395b823af10eb323, type: 2}
+      - {fileID: 11400000, guid: 236d620456c82e94f97ad9a8530c5c0d, type: 2}
+      - {fileID: 11400000, guid: 58359729e68b96c4b95f7afd69f2d89b, type: 2}
+      drop: {fileID: 3094065808536684211, guid: a642dc414c6b77348832dbfe7272e020, type: 3}
+      dropChance: 1
+    - name: magnesium
+      tile: {fileID: 11400000, guid: 803fdc571548fd44c942b38876db36a1, type: 2}
+      maxHp: 5
+      spawnChance: 0.01
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 7e7cee73b42d906469e5dd859252c26c, type: 2}
+      - {fileID: 11400000, guid: 7e7cee73b42d906469e5dd859252c26c, type: 2}
+      - {fileID: 11400000, guid: 0da66f2655d3480489ea4fbb7566040a, type: 2}
+      - {fileID: 11400000, guid: 814e041ac8f789b479ec7f4c8bb5130f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 5745f650d54b8564f879d13540c33256, type: 3}
+      dropChance: 1
+    - name: normal1
+      tile: {fileID: 11400000, guid: a93cbb80d6703eb49b364e3768bb783f, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal2
+      tile: {fileID: 11400000, guid: 1878a3cc99244b041adddce1ae9d295a, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal3
+      tile: {fileID: 11400000, guid: ce49f5b949b5d3643bea97a024bd35ec, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal4
+      tile: {fileID: 11400000, guid: 78e31bfb4fe95ee438045ded3c85d552, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal_easy
+      tile: {fileID: 11400000, guid: f27f40830b174eb43bdf1892c2ee4e00, type: 2}
+      maxHp: 1
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles: []
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    noiseThreshold: -0.3
+    noiseFrequency: 0.15
+  - name: Fraud
+    tileData:
+    - name: bomb
+      tile: {fileID: 11400000, guid: c58a38f40429d084da5c08bcb96aa14f, type: 2}
+      maxHp: 1
+      spawnChance: 0.3
+      explosionRadius: 5
+      explosionDamage: 10
+      explosionDelay: 1
+      explosionFPS: 10
+      damagedTiles:
+      - {fileID: 11400000, guid: 3dcfc4dd2cdd4f9429abe8ed62d105a1, type: 2}
+      - {fileID: 11400000, guid: cef4cc573530c3d4b9b2533c15060e25, type: 2}
+      drop: {fileID: 0}
+      dropChance: 0
+    - name: copper
+      tile: {fileID: 11400000, guid: e305086530c26f840a86d21eae1cf7a9, type: 2}
+      maxHp: 2
+      spawnChance: 1
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 68757e135e166de41ab306b9917547f5, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 1
+    - name: iron
+      tile: {fileID: 11400000, guid: 8c9542a1f9893a545a968805a839d71a, type: 2}
+      maxHp: 3
+      spawnChance: 0.5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: ded70e319b62cab42bc7293f0bd47137, type: 2}
+      - {fileID: 11400000, guid: df05e800ef42fa5438a9c07c29961d2d, type: 2}
+      drop: {fileID: 3094065808536684211, guid: ac05320947c1b194e82e3a703fe395eb, type: 3}
+      dropChance: 1
+    - name: gold
+      tile: {fileID: 11400000, guid: 8aa510f2d17ff5244bf42060beca4937, type: 2}
+      maxHp: 3
+      spawnChance: 0.1
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 084d243347b808e4a8eba5626806deb3, type: 2}
+      - {fileID: 11400000, guid: 2190cb8a907cd7749b833a75eae3bf82, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 127f2309e80b55149b12f0629e9789cd, type: 3}
+      dropChance: 1
+    - name: emerald
+      tile: {fileID: 11400000, guid: c3c25a9f039f4da4e89ee138453c9f05, type: 2}
+      maxHp: 4
+      spawnChance: 0.05
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 9d592ca65ad16994395b823af10eb323, type: 2}
+      - {fileID: 11400000, guid: 236d620456c82e94f97ad9a8530c5c0d, type: 2}
+      - {fileID: 11400000, guid: 58359729e68b96c4b95f7afd69f2d89b, type: 2}
+      drop: {fileID: 3094065808536684211, guid: a642dc414c6b77348832dbfe7272e020, type: 3}
+      dropChance: 1
+    - name: magnesium
+      tile: {fileID: 11400000, guid: 803fdc571548fd44c942b38876db36a1, type: 2}
+      maxHp: 5
+      spawnChance: 0.01
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 7e7cee73b42d906469e5dd859252c26c, type: 2}
+      - {fileID: 11400000, guid: 7e7cee73b42d906469e5dd859252c26c, type: 2}
+      - {fileID: 11400000, guid: 0da66f2655d3480489ea4fbb7566040a, type: 2}
+      - {fileID: 11400000, guid: 814e041ac8f789b479ec7f4c8bb5130f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 5745f650d54b8564f879d13540c33256, type: 3}
+      dropChance: 1
+    - name: normal1
+      tile: {fileID: 11400000, guid: a93cbb80d6703eb49b364e3768bb783f, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal2
+      tile: {fileID: 11400000, guid: 1878a3cc99244b041adddce1ae9d295a, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal3
+      tile: {fileID: 11400000, guid: ce49f5b949b5d3643bea97a024bd35ec, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal4
+      tile: {fileID: 11400000, guid: 78e31bfb4fe95ee438045ded3c85d552, type: 2}
+      maxHp: 4
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles:
+      - {fileID: 11400000, guid: 4f87f2a50bb39984287850a3e94d2b52, type: 2}
+      - {fileID: 11400000, guid: 23846bf37f13a0d4f820959a7e810c1f, type: 2}
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    - name: normal_easy
+      tile: {fileID: 11400000, guid: f27f40830b174eb43bdf1892c2ee4e00, type: 2}
+      maxHp: 1
+      spawnChance: 5
+      explosionRadius: 0
+      explosionDamage: 0
+      explosionDelay: 0
+      explosionFPS: 0
+      damagedTiles: []
+      drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+      dropChance: 0.02
+    noiseThreshold: -0.3
+    noiseFrequency: 0.15
+  - name: Treachery
     tileData:
     - name: bomb
       tile: {fileID: 11400000, guid: c58a38f40429d084da5c08bcb96aa14f, type: 2}
@@ -5566,10 +6907,16 @@ MonoBehaviour:
   height: 100
   wallsHeight: 50
   damagedProb: 0.1
-  currentCircleIndex: 0
   spawnedObjectsParent: {fileID: 522492781}
+  currentCircleIndex: 0
+  timeOfLevelStart: 0
+  startEnemyAmount: 7
   transitionPanel: {fileID: 502913743}
+<<<<<<< HEAD
   bossHeight: 20
+=======
+  circleText: {fileID: 2065297097}
+>>>>>>> 52be8c7 (Spawn overhaul)
   isLevelTransition: 0
 --- !u!4 &2019764389
 Transform:
@@ -5620,7 +6967,7 @@ MonoBehaviour:
     rid: 4421164441171657291
   m_ShadowCastingSource: 2
   m_ShadowMesh:
-    m_Mesh: {fileID: 1702532363}
+    m_Mesh: {fileID: 1155839158}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
       m_Extent: {x: 0, y: 0, z: 0}
@@ -5686,10 +7033,19 @@ MonoBehaviour:
     - 0
     - 0
     - 0
+<<<<<<< HEAD
   portal: {fileID: 0}
   spawnRadius: 8
   spawnRate: 6
   portalDelay: 0
+=======
+  portal: {fileID: 6440795600749684546, guid: a4a2bb26aab6dbc4cb0c98279cb08078, type: 3}
+  spawnRadius: 5
+  enemyAmount: 2
+  revertedHardometr: 20
+  spawnRate: 1
+  portalDelay: 1.5
+>>>>>>> 52be8c7 (Spawn overhaul)
   randomSpawnDelayMax: 3
 --- !u!1001 &2028712905
 PrefabInstance:

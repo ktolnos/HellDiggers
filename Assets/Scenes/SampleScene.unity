@@ -24959,11 +24959,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-<<<<<<< HEAD
   m_IsActive: 1
-=======
-  m_IsActive: 0
->>>>>>> origin/master
 --- !u!223 &8860017691958800855
 Canvas:
   m_ObjectHideFlags: 0

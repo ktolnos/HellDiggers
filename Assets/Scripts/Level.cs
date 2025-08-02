@@ -28,6 +28,7 @@ public class Level : MonoBehaviour
     public Image transitionPanel;
     public int bossHeight = 20;
     public TextMeshProUGUI circleText;
+    public BombAnimator bompExplosionPrefab;
 
 
     private Dictionary<Vector3Int, TileInfo> tileInfos = new();
@@ -53,6 +54,8 @@ public class Level : MonoBehaviour
         var playerPos = Player.I.transform.position;
         Player.I.transform.position = new Vector3(playerPos.x, wallsHeight / 2f, playerPos.z);
         GenerateLevel(circles[currentCircleIndex]);
+        currentCircleIndex--;
+        AnimateNextLevel(skipIn:true);
     }
 
     private void GenerateLevel(HellCircleSettings circleConfig)
@@ -273,6 +276,8 @@ public class Level : MonoBehaviour
 
     private IEnumerator ExplodeExplosive(Vector3Int pos, TileData tileData)
     {
+        var bombExplosion = Instantiate(bompExplosionPrefab, tilemap.GetCellCenterWorld(pos), Quaternion.identity, spawnedObjectsParent);
+        bombExplosion.Explode(tileData.explosionDelay);
         for (var i = 0; i < tileData.explosionDelay * tileData.explosionFPS; i++)
         {
             tilemap.SetTile(pos, tileData.damagedTiles[i % tileData.damagedTiles.Length]);
@@ -293,28 +298,35 @@ public class Level : MonoBehaviour
         var playerPos = Player.I.transform.position;
         if (playerPos.y < transitionHeight && !isLevelTransition && Player.I.health.currentHealth > 0)
         {
-            isLevelTransition = true;
-            currentCircleIndex++;
-            currentCircleIndex = Mathf.Clamp(currentCircleIndex, 0, circles.Length - 1);
-            circleText.text = circles[currentCircleIndex].name;
-            transitionPanel.gameObject.SetActive(true);
-            var animationDuration = 0.5f;
-            circleText.DOFade(1f, animationDuration);
-            transitionPanel.DOFade(1f, animationDuration).OnComplete(() =>
-            {
-                Player.I.rb.bodyType = RigidbodyType2D.Kinematic;
-                Player.I.transform.position = new Vector3(playerPos.x, wallsHeight / 2f, playerPos.z);
-                GenerateLevel(circles[currentCircleIndex]);
-                Player.I.rb.linearVelocityY = -20f;
-                transitionPanel.DOFade(0f, animationDuration).SetDelay(1f).OnComplete(() =>
-                {
-                    transitionPanel.gameObject.SetActive(false);
-                    Player.I.rb.bodyType = RigidbodyType2D.Dynamic;
-                    isLevelTransition = false;
-                });
-                circleText.DOFade(0f, animationDuration);
-            });
+            AnimateNextLevel(skipIn:false);
         }
+    }
+
+    private void AnimateNextLevel(bool skipIn)
+    {
+        var playerPos = Player.I.transform.position;
+        isLevelTransition = true;
+        currentCircleIndex++;
+        currentCircleIndex = Mathf.Clamp(currentCircleIndex, 0, circles.Length - 1);
+        circleText.text = circles[currentCircleIndex].name;
+        transitionPanel.gameObject.SetActive(true);
+        var animationDuration = 0.5f;
+        circleText.DOFade(1f, animationDuration);
+        var inDuration = skipIn ? 0f : animationDuration;
+        transitionPanel.DOFade(1f, inDuration).OnComplete(() =>
+        {
+            Player.I.rb.bodyType = RigidbodyType2D.Kinematic;
+            Player.I.transform.position = new Vector3(playerPos.x, wallsHeight / 2f, playerPos.z);
+            GenerateLevel(circles[currentCircleIndex]);
+            Player.I.rb.linearVelocityY = -20f;
+            transitionPanel.DOFade(0f, animationDuration).SetDelay(1f).OnComplete(() =>
+            {
+                transitionPanel.gameObject.SetActive(false);
+                Player.I.rb.bodyType = RigidbodyType2D.Dynamic;
+                isLevelTransition = false;
+            });
+            circleText.DOFade(0f, animationDuration);
+        });
     }
 
     public void Clear()

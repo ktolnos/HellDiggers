@@ -148,7 +148,7 @@ public class Player : MonoBehaviour
 
         if (stats.healthRegen > 0)
         {
-            health.Heal(stats.healthRegen * Time.deltaTime * 10f);
+            health.Heal(stats.healthRegen * Time.deltaTime * 5f);
         }
 
         if (rb.linearVelocityX != 0f)

@@ -87,5 +87,6 @@ public class PlayerDeath: MonoBehaviour, IDeathHandler
         globalLight.intensity = 0f;
         Player.I.health.currentHealth = 0;
         upgradeUI.SetActive(true);
+        Level.I.Clear();
     }
 }

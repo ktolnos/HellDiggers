@@ -57,22 +57,7 @@ public class Level : MonoBehaviour
 
     private void GenerateLevel(HellCircleSettings circleConfig)
     {
-        tileInfos.Clear();
-        tilemap.ClearAllTiles();
-        
-        for (int i = spawnedObjectsParent.childCount - 1; i >= 0; i--)
-        {
-            var child = spawnedObjectsParent.GetChild(i);
-            if (child != null)
-            {
-                Destroy(child.gameObject);
-            }
-        }
-        foreach (var explosionsCoroutine in explosionsCoroutines)
-        {
-            StopCoroutine(explosionsCoroutine);
-        }
-        explosionsCoroutines.Clear();
+        Clear();
         EnemySpawner.I.Spawner(0f, startEnemyAmount, 0f, 40, true);
 
         var bossTiles = circleConfig.boss == null ? 0 : width;
@@ -319,8 +304,8 @@ public class Level : MonoBehaviour
             {
                 Player.I.rb.bodyType = RigidbodyType2D.Kinematic;
                 Player.I.transform.position = new Vector3(playerPos.x, wallsHeight / 2f, playerPos.z);
-                Player.I.rb.linearVelocity = Vector2.zero;
                 GenerateLevel(circles[currentCircleIndex]);
+                Player.I.rb.linearVelocityY = -20f;
                 transitionPanel.DOFade(0f, animationDuration).SetDelay(1f).OnComplete(() =>
                 {
                     transitionPanel.gameObject.SetActive(false);
@@ -330,6 +315,26 @@ public class Level : MonoBehaviour
                 circleText.DOFade(0f, animationDuration);
             });
         }
+    }
+
+    public void Clear()
+    {
+        tileInfos.Clear();
+        tilemap.ClearAllTiles();
+        
+        for (int i = spawnedObjectsParent.childCount - 1; i >= 0; i--)
+        {
+            var child = spawnedObjectsParent.GetChild(i);
+            if (child != null)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+        foreach (var explosionsCoroutine in explosionsCoroutines)
+        {
+            StopCoroutine(explosionsCoroutine);
+        }
+        explosionsCoroutines.Clear();
     }
     
     private class TileInfo

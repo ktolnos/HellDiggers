@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class Enemy : MonoBehaviour
     public float jumpForce;
     public float jumpReload;
     public float stoppingDistance;
+    public float attackDelay = 0.7f;
     public BevaviorType bevaviorType;
     public AttackType attackType;
     public float attackCoolDown;
@@ -32,7 +34,7 @@ public class Enemy : MonoBehaviour
     {
         if ((player.transform.position - transform.position).magnitude < stoppingDistance)
         {
-            Attack();
+            StartCoroutine(Attack(attackDelay));
         }
         else
         {
@@ -105,8 +107,9 @@ public class Enemy : MonoBehaviour
         transform.position += (player.transform.position - transform.position).normalized * speed * Time.deltaTime;
     }
 
-    void Attack()
+    public IEnumerator Attack(float attackDelay)
     {
+        yield return new WaitForSeconds(this.attackDelay);
         if (attackType == AttackType.Beat)
         {
             Beat();

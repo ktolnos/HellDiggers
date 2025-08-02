@@ -10,8 +10,10 @@ using UnityEngine.Tilemaps;
 public class EnemySpawner : MonoBehaviour
 {
     public List<EnemyData> enemies;
+    public GameObject portal;
     public int spawnRadius;
     public float spawnRate;
+    public float portalDelay;
     public float randomSpawnDelayMax;
     private float timeOfLastSpawn; 
     void Start()
@@ -69,6 +71,8 @@ public class EnemySpawner : MonoBehaviour
             randomValue -= data.chanceToSpawnOnCircle[Level.I.currentCircleIndex];
         }
         yield return new WaitForSeconds(UnityEngine.Random.Range(0f, randomSpawnDelayMax));
+        Destroy(Instantiate(portal, Level.I.tilemap.CellToWorld(location), Quaternion.identity, Level.I.spawnedObjectsParent), portalDelay);
+        yield return new WaitForSeconds(portalDelay);
         if (enemy != null)
         {
             Instantiate(enemy, Level.I.tilemap.CellToWorld(location), Quaternion.identity, Level.I.spawnedObjectsParent);

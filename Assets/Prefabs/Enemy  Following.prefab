@@ -168,6 +168,7 @@ MonoBehaviour:
   jumpForce: 13
   jumpReload: 1
   stoppingDistance: 2
+  attackDelay: 0.7
   bevaviorType: 1
   attackType: 1
   attackCoolDown: 1
@@ -187,6 +188,7 @@ MonoBehaviour:
   maxHealth: 5
   currentHealth: 0
   isPlayer: 0
+  isInvulnerable: 0
 --- !u!114 &3463454152866909319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,6 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c26e1fcc3a28084da5814bb4a36b689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loot: {fileID: 3094065808536684211, guid: ac05320947c1b194e82e3a703fe395eb, type: 3}
+  effect: {fileID: 0}
 --- !u!58 &1357439274134275161
 CircleCollider2D:
   m_ObjectHideFlags: 0

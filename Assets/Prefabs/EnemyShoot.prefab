@@ -51,6 +51,7 @@ MonoBehaviour:
   spread: 10
   bulletSpeed: 15
   grenadeMode: 1
+  animator: {fileID: 0}
 --- !u!1 &4756907778912265882
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,6 +134,7 @@ MonoBehaviour:
   jumpForce: 13
   jumpReload: 2
   stoppingDistance: 7
+  attackDelay: 0.7
   bevaviorType: 0
   attackType: 0
   attackCoolDown: 1
@@ -152,6 +154,7 @@ MonoBehaviour:
   maxHealth: 3
   currentHealth: 0
   isPlayer: 0
+  isInvulnerable: 0
 --- !u!114 &5971972172716879629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c26e1fcc3a28084da5814bb4a36b689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loot: {fileID: 3094065808536684211, guid: 5745f650d54b8564f879d13540c33256, type: 3}
+  effect: {fileID: 0}
 --- !u!58 &1987329669404106224
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -340,6 +345,7 @@ MonoBehaviour:
   spread: 8
   bulletSpeed: 15
   grenadeMode: 0
+  animator: {fileID: 0}
 --- !u!1 &6392279237769222616
 GameObject:
   m_ObjectHideFlags: 0

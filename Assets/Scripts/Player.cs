@@ -1,6 +1,9 @@
 using System;
+using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -47,6 +50,13 @@ public class Player : MonoBehaviour
     
     private bool isPounding; // Time since the last ground pound action
     public SpriteAnimator animator;
+    
+    public ParticleSystem jumpParticleSystem;
+    public ParticleSystem dashParticleSystem;
+    public ParticleSystem jetPackParticleSystem;
+    public Image[] dashIndicators;
+    public Image jetFuelIndicator;
+    private float jetFuelMult = 10f;
 
     private void Awake()
     {
@@ -71,6 +81,17 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        for (int i = 0; i < dashIndicators.Length; i++)
+        {
+            var isActive = i < stats.numDashes;
+            dashIndicators[i].gameObject.SetActive(isActive);
+            if (!isActive)
+            {
+                continue;
+            }
+            dashIndicators[i].fillAmount = Mathf.Clamp01(numDashesLeft - i);
+            dashIndicators[i].color = numDashesLeft + Mathf.Epsilon >= i+1 ? Color.cyan : new Color(0f, 1f, 1f, 0.5f);
+        }
         if (health.currentHealth <= 0 || Level.I.isLevelTransition)
         {
             return;
@@ -99,6 +120,7 @@ public class Player : MonoBehaviour
             }
             isGrounded = false;
             jumpPressTime = -100f;
+            AnimateJump();
         }
 
         var gunVector = Mouse.current.position.ReadValue() -
@@ -117,9 +139,19 @@ public class Player : MonoBehaviour
 
         if (jetPackAction.IsPressed() && jetPackFuel > 0f)
         {
+            if (!jetPackParticleSystem.isPlaying)
+            {
+                jetPackParticleSystem.Play();
+            }
             jetPackFuel -= Time.deltaTime * jetPackFuelConsumptionRate;
             rb.linearVelocityY = jetPackSpeed;
         }
+        else
+        {
+            jetPackParticleSystem.Stop();
+        }
+        jetFuelIndicator.fillAmount = jetPackFuel / (stats.jetPackFuel * jetFuelMult);
+        jetFuelIndicator.rectTransform.sizeDelta = new Vector2(jetFuelIndicator.rectTransform.sizeDelta.x,  stats.jetPackFuel * 150f);
 
         numDashesLeft += Time.deltaTime * dashRechargeRate;
         numDashesLeft = Mathf.Min(numDashesLeft, stats.numDashes);
@@ -129,11 +161,13 @@ public class Player : MonoBehaviour
             numDashesLeft--;
             dashStartTime = Time.time;
         }
+        
         if (Time.time - dashStartTime < dashDuration)
         {
             rb.linearVelocityX = dashDirection * dashSpeed;
             rb.linearVelocityY = 0f; // Reset vertical velocity during dash
             health.isInvulnerable = true; // Make player invulnerable during dash
+            AnimateDash();
         }
         else
         {
@@ -203,9 +237,25 @@ public class Player : MonoBehaviour
 
     public void Revive()
     {
-        jetPackFuel = stats.jetPackFuel * 10f;
+        jetPackFuel = stats.jetPackFuel * jetFuelMult;
         numDashesLeft = stats.numDashes;
         health.maxHealth = 300f + stats.health * 100f;
         health.Revive();
+    }
+
+    private void AnimateJump()
+    {
+        var main = jumpParticleSystem.main;
+        main.startSpeedMultiplier = -5f * (stats.jumpHeight + 1.1f);
+        jumpParticleSystem.Play();
+        transform.DOScale(0.8f, 0.1f)
+            .OnComplete(() => transform.DOScale(1.2f, 0.3f))
+            .OnComplete(() => transform.DOScale(1f, 0.1f));
+    }
+    
+    private void AnimateDash()
+    {
+        dashParticleSystem.transform.parent.localRotation = Quaternion.Euler(0f, 0f, dashDirection <= 0f ? 90f : -90f);
+        dashParticleSystem.Play();
     }
 }

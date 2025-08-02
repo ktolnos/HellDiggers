@@ -31,7 +31,11 @@ public class EnemySpawner : MonoBehaviour
     }
 
     void Update()
-    {        
+    {
+        if (Player.I.health.currentHealth <= 0)
+        {
+            return;
+        }
         if (Time.time - timeOfLastSpawn > spawnRate/((Time.time - Level.I.timeOfLevelStart)/revertedHardometr) && !Level.I.isLevelTransition)
         {
             Spawner(randomSpawnDelayMax, enemyAmount, portalDelay, spawnRadius, false);

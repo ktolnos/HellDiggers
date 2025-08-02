@@ -64,7 +64,6 @@ public class Level : MonoBehaviour
             }
         }
         EnemySpawner.I.Spawner(0f, startEnemyAmount, 0f, 40, true);
-    }
 
         var bossTiles = circleConfig.boss == null ? 0 : width;
         var totalTiles = width * height + wallsHeight * 4 + bossTiles;

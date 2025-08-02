@@ -19,9 +19,10 @@ public class CameraController: MonoBehaviour
     {
         transform.position = Player.I.transform.position * (1f - scopeBias) + cam.ScreenToWorldPoint(Mouse.current.position.value) * scopeBias;
         var halfViewport = (cam.orthographicSize * cam.aspect);
-        var worldSize = Level.I.width / 2f;
+        var left = Level.I.tilemap.CellToWorld(new Vector3Int(-Level.I.width / 2, 0, 0)).x;
+        var right = Level.I.tilemap.CellToWorld(new Vector3Int(Level.I.width / 2 - 1, 0, 0)).x;
         transform.position = new Vector3(
-            Mathf.Clamp(transform.position.x, -worldSize + halfViewport + 1f, worldSize - halfViewport + 1f),
+            Mathf.Clamp(transform.position.x, left + halfViewport + 2.6667f, right - halfViewport + 1.6667f),
             transform.position.y,
             transform.position.z
         );

@@ -52,6 +52,8 @@ public class PlayerDeath: MonoBehaviour, IDeathHandler
         globalLight.intensity = startGlobalIntensity;
         Level.I.PlayAgain();
         Player.I.Revive();
+        Player.I.rb.bodyType = RigidbodyType2D.Dynamic;
+        Player.I.rb.linearVelocity = Vector2.zero;
     }
 
     private IEnumerator DeathAnimation()
@@ -66,6 +68,7 @@ public class PlayerDeath: MonoBehaviour, IDeathHandler
             globalLight.intensity = Mathf.Lerp(startGlobalIntensity, 0f, t);
             yield return null;
         }
+        Player.I.rb.bodyType = RigidbodyType2D.Kinematic;
         playerLight.intensity = 0f;
         globalLight.intensity = 0f;
         upgradeUI.SetActive(true);

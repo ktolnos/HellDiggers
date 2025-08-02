@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4bd969c681fbcaa479000e7bcdcd7656
+guid: 543f7f47062b23743b7d0cb61db31dd1
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Gome Pixel
+  - Monster Blood
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

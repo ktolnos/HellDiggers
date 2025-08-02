@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0f70a4d3c93534341babbf553260fd12
+guid: 4c9c3d4188d23974b81e8e0b344e93da
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Gome Pixel
+  - Pak Presiden
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

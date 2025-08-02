@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public float speed = 5f;
     public float jumpForce = 300f;
     public float additionalGravity = 2f;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private InputAction movementAction;
     private InputAction jumpAction;
     private InputAction shootAction;
@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (health.currentHealth <= 0)
+        if (health.currentHealth <= 0 || Level.I.isLevelTransition)
         {
             return;
         }

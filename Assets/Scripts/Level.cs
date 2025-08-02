@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class Level : MonoBehaviour
 {
@@ -19,10 +21,11 @@ public class Level : MonoBehaviour
     public int currentCircleIndex = 0;
     private float transitionHeight;
     public Transform spawnedObjectsParent;
+    public Image transitionPanel;
     
 
     private Dictionary<Vector3Int, TileInfo> tileInfos = new();
-    
+    public bool isLevelTransition;
     
     private void Awake()
     {
@@ -58,19 +61,22 @@ public class Level : MonoBehaviour
         var tiles = new TileBase[width * height + wallsHeight * 4];
         var index = 0;
         var totalProbability = circleConfig.tileData.Sum(x => x.spawnChance);
+        var noiseSeed = UnityEngine.Random.Range(0, 10000);
         
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
             {
+                var thresholdSub = y < height/2  ? 1f - Mathf.Clamp01((float) y / height) : Mathf.Clamp01((float)y / height);
+                thresholdSub -= 0.5f;
                 tilePositions[index] = new Vector3Int(x - width / 2, -y, 0);
                 TileData tileData = null;
                 if (x == 0 || x == width - 1)
                 {
                     tileData = wallTile;
                 }
-                else if (Noise.GradientNoise(x * circleConfig.noiseFrequency, y * circleConfig.noiseFrequency) <
-                         circleConfig.noiseThreshold)
+                else if (Noise.GradientNoise(x * circleConfig.noiseFrequency, y * circleConfig.noiseFrequency, noiseSeed) <
+                         circleConfig.noiseThreshold + thresholdSub)
                 {
                     tileData = null;
                 }
@@ -119,7 +125,7 @@ public class Level : MonoBehaviour
         }
         tilemap.SetTiles(tilePositions, tiles);
         tilemap.RefreshAllTiles();
-        transitionHeight = tilemap.layoutGrid.cellSize.y * (-height - wallsHeight / 2f);
+        transitionHeight = tilemap.layoutGrid.cellSize.y * (-height - wallsHeight / 10f);
     }
     public static void DamageEntities(Vector3 position, float radius, float damage, DamageDealerType type)
     {
@@ -247,18 +253,33 @@ public class Level : MonoBehaviour
     private void Update()
     {
         var playerPos = Player.I.transform.position;
-        if (playerPos.y < transitionHeight)
+        if (playerPos.y < transitionHeight && !isLevelTransition && Player.I.health.currentHealth > 0)
         {
-            Player.I.transform.position = new Vector3(playerPos.x, wallsHeight / 2f, playerPos.z);
+            isLevelTransition = true;
             currentCircleIndex++;
             currentCircleIndex = Mathf.Clamp(currentCircleIndex, 0, circles.Length - 1);
-            GenerateLevel(circles[currentCircleIndex]);
+            transitionPanel.gameObject.SetActive(true);
+            var animationDuration = 0.5f;
+            transitionPanel.DOFade(1f, animationDuration).OnComplete(() =>
+            {
+                Player.I.rb.bodyType = RigidbodyType2D.Kinematic;
+                Player.I.transform.position = new Vector3(playerPos.x, wallsHeight / 2f, playerPos.z);
+                Player.I.rb.linearVelocity = Vector2.zero;
+                GenerateLevel(circles[currentCircleIndex]);
+                transitionPanel.DOFade(0f, animationDuration).SetDelay(1f).OnComplete(() =>
+                {
+                    transitionPanel.gameObject.SetActive(false);
+                    Player.I.rb.bodyType = RigidbodyType2D.Dynamic;
+                    isLevelTransition = false;
+                });
+            });
         }
     }
     
     [Serializable]
     public class CircleConfig
     {
+        public string name;
         public TileData[] tileData;
         public float noiseThreshold = -0.2f;
         public float noiseFrequency = 0.15f;

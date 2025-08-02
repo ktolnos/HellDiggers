@@ -246,15 +246,15 @@ MonoBehaviour:
     numJumps: 0
     numDashes: 0
     jumpHeight: 0
-    dashSize: 0
+    groundPound: 0
     numberOfBullets: 0
     reloadSpeedUp: 0
-    explosionRadius: 0
+    bulletExplosionRadius: 0
     numberOfGrenades: 0
     grenadeReloadSpeedUp: 0
     numberOfGrenadesPerLaunch: 0
     grenadeExplosionRadius: 0
-    bulletDamage: 0
+    bulletEnemyDamage: 0
     grenadeDamage: 0
     lootCollectionDistance: 0
     diggingDamage: 0
@@ -596,8 +596,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Jump amount
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7ce3ee4c2d0e9bf4aa7fb60e5e0dd0ee, type: 2}
+  m_sharedMaterial: {fileID: 6396139839806110228, guid: 7ce3ee4c2d0e9bf4aa7fb60e5e0dd0ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -844,8 +844,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7ce3ee4c2d0e9bf4aa7fb60e5e0dd0ee, type: 2}
+  m_sharedMaterial: {fileID: 6396139839806110228, guid: 7ce3ee4c2d0e9bf4aa7fb60e5e0dd0ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1114,10 +1114,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0/0
+  m_text: 1/1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7ce3ee4c2d0e9bf4aa7fb60e5e0dd0ee, type: 2}
+  m_sharedMaterial: {fileID: 6396139839806110228, guid: 7ce3ee4c2d0e9bf4aa7fb60e5e0dd0ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1252,8 +1252,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Click RMB to launch grenade
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7ce3ee4c2d0e9bf4aa7fb60e5e0dd0ee, type: 2}
+  m_sharedMaterial: {fileID: 6396139839806110228, guid: 7ce3ee4c2d0e9bf4aa7fb60e5e0dd0ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

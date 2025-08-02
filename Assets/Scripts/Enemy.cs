@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Enemy : MonoBehaviour
 {
@@ -14,11 +15,16 @@ public class Enemy : MonoBehaviour
     public AttackType attackType;
     public float attackCoolDown;
     public Gun gun;
+    public SpriteAnimator.Animation movementAnimation;
+    public SpriteAnimator.Animation attackAnimation;
+    public SpriteAnimator animator;
+    public bool invertSprite = false;
     private GameObject player;
     private float lastJumpTime;
     private Rigidbody2D rb;
     private Vector3Int direction;
     private float timeOfLastAttack;
+    
     
     void Start()
     {
@@ -27,9 +33,10 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         direction = Vector3Int.right;
         timeOfLastAttack = Time.time;
+        animator = GetComponent<SpriteAnimator>();
+        animator.animation = movementAnimation;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if ((player.transform.position - transform.position).magnitude < stoppingDistance)
@@ -80,6 +87,7 @@ public class Enemy : MonoBehaviour
                 }
             }  
         }
+        animator.spriteRenderer.flipX = (rb.linearVelocity.x < 0)^invertSprite;
     }
 
     void Stray()
@@ -100,34 +108,41 @@ public class Enemy : MonoBehaviour
         {
             direction.x = -direction.x;
         }
+        animator.spriteRenderer.flipX = (rb.linearVelocity.x < 0)^invertSprite;
     }
 
     void Fly()
     {
-        transform.position += (player.transform.position - transform.position).normalized * speed * Time.deltaTime;
+        Vector3 movement = (player.transform.position - transform.position).normalized * speed * Time.deltaTime;
+        transform.position += movement;
+        animator.spriteRenderer.flipX = (movement.x < 0)^invertSprite;
     }
 
     public IEnumerator Attack(float attackDelay)
     {
-        yield return new WaitForSeconds(attackDelay);
-        if (attackType == AttackType.Beat)
+        if (Time.time - timeOfLastAttack > attackCoolDown)
         {
-            Beat();
-        }
+            timeOfLastAttack = Time.time;
+            if (attackAnimation != null)
+            {
+               animator.PlayOnce(attackAnimation); 
+            }
+            yield return new WaitForSeconds(attackDelay);
+            if (attackType == AttackType.Beat)
+            {
+                Beat();
+            }
 
-        if (attackType == AttackType.Shoot)
-        {
-            Shoot();
+            if (attackType == AttackType.Shoot)
+            {
+                Shoot();
+            }
         }
     }
 
     void Beat()
     {
-        if (Time.time - timeOfLastAttack > attackCoolDown)
-        {
-            Level.DamageEntities(player.transform.position, 2f, damage, DamageDealerType.Enemy); 
-            timeOfLastAttack = Time.time;
-        }
+        Level.DamageEntities(player.transform.position, 2f, damage, DamageDealerType.Enemy); 
     }
 
     void Shoot()

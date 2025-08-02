@@ -16,6 +16,7 @@ public class Bullet: MonoBehaviour
     public bool isGrenade = false;
     public bool isPlayerBullet = false;
     public int ricochetCount = 0;
+    public GameObject effect;
     
     private void Awake()
     {
@@ -54,6 +55,10 @@ public class Bullet: MonoBehaviour
         if (destroy)
         {
             Destroy(gameObject);
+            if (effect != null)
+            {
+                Destroy(Instantiate(effect, transform.position, Quaternion.identity, Level.I.spawnedObjectsParent), 2f);
+            }
         }
     }
 

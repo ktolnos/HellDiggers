@@ -6,17 +6,28 @@ public class SpriteAnimator: MonoBehaviour
 {
     public new Animation animation;
     public bool autoplay = true;
-    
+    public bool loop = true;
     public SpriteRenderer spriteRenderer;
-
+    private bool pause;
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null)
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+    }
+
+    private void Start()
+    {
+        if (!loop && autoplay)
+        {
+            PlayOnce();
+        }
     }
 
     private void Update()
     {
-        if (animation.frames.Length == 0 || !autoplay)
+        if (animation.frames.Length == 0 || !autoplay || pause || !loop)
         {
             return;
         }
@@ -38,15 +49,22 @@ public class SpriteAnimator: MonoBehaviour
 
     public void PlayOnce()
     {
-        StartCoroutine(PlayOnceCoroutine());
+        PlayOnce(animation);
     }
 
-    private IEnumerator PlayOnceCoroutine()
+    public void PlayOnce(Animation anim)
     {
-        foreach (var animationFrame in animation.frames)
+        StartCoroutine(PlayOnceCoroutine(anim));
+    }
+
+    private IEnumerator PlayOnceCoroutine(Animation anim)
+    {        
+        pause = true;
+        foreach (var animationFrame in anim.frames)
         {
             spriteRenderer.sprite = animationFrame;
-            yield return new WaitForSeconds(1f / animation.fps);
+            yield return new WaitForSeconds(1f / anim.fps);
         }
+        pause = false;
     }
 }

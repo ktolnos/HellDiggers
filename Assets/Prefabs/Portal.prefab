@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3208134286047242171}
   - component: {fileID: 8420179565900708378}
+  - component: {fileID: 3414711117616120436}
   m_Layer: 0
   m_Name: Portal
   m_TagString: Untagged
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -63788704, guid: eacec59fb133af44391eb6bbe4d5c6cd, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,6 +85,37 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3414711117616120436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6440795600749684546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 737404f5195a454881de196b212a9436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animation:
+    frames:
+    - {fileID: -6568312758539879555, guid: c0a551dbe42d00244b50793eae46041b, type: 3}
+    - {fileID: -4838959222932225846, guid: c0a551dbe42d00244b50793eae46041b, type: 3}
+    - {fileID: -3824026192828444351, guid: c0a551dbe42d00244b50793eae46041b, type: 3}
+    - {fileID: -1253083802431333065, guid: c0a551dbe42d00244b50793eae46041b, type: 3}
+    - {fileID: -109277025116039915, guid: c0a551dbe42d00244b50793eae46041b, type: 3}
+    - {fileID: -4193642253365279565, guid: c0a551dbe42d00244b50793eae46041b, type: 3}
+    - {fileID: -2881012907921115365, guid: c0a551dbe42d00244b50793eae46041b, type: 3}
+    - {fileID: 3379978553736336461, guid: c0a551dbe42d00244b50793eae46041b, type: 3}
+    - {fileID: 2975843521042324742, guid: c0a551dbe42d00244b50793eae46041b, type: 3}
+    - {fileID: -4749209131736914064, guid: c0a551dbe42d00244b50793eae46041b, type: 3}
+    - {fileID: -3796472990557559138, guid: c0a551dbe42d00244b50793eae46041b, type: 3}
+    - {fileID: -2069458308935390791, guid: c0a551dbe42d00244b50793eae46041b, type: 3}
+    - {fileID: -4749209131736914064, guid: c0a551dbe42d00244b50793eae46041b, type: 3}
+    fps: 10
+  autoplay: 1
+  loop: 0
+  spriteRenderer: {fileID: 0}

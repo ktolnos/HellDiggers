@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 
 
@@ -14,13 +15,14 @@ public class EnemySpawner : MonoBehaviour
     public GameObject portal;
     public int spawnRadius;
     public int enemyAmount;
-    public float revertedHardometr;
-    public float spawnRate;
+    [FormerlySerializedAs("spawnRate")] public float hardometer;
     public float portalDelay;
     public float randomSpawnDelayMax;
     public int cellSize;
     private float timeOfLastSpawn;
-    
+    public List<int> numPrespawnedEnemies = new();
+    public float timeHardnessMult;
+
     private void Awake()
     {
         I = this;
@@ -37,7 +39,14 @@ public class EnemySpawner : MonoBehaviour
         {
             return;
         }
-        if (Time.time - timeOfLastSpawn > spawnRate/((Time.time - Level.I.timeOfLevelStart)/revertedHardometr) && !Level.I.isLevelTransition)
+
+        var timeSinceStart = Time.time - Level.I.timeOfLevelStart;
+        if (Level.I.isLevelTransition)
+        {
+            timeOfLastSpawn = Time.time;
+        }
+
+        if (Time.time - timeOfLastSpawn > (1f / hardometer) / (Mathf.Pow(timeSinceStart, 2f)))
         {
             Spawner(randomSpawnDelayMax, enemyAmount, portalDelay, spawnRadius, false);
             timeOfLastSpawn = Time.time;
@@ -46,6 +55,11 @@ public class EnemySpawner : MonoBehaviour
 
     public void Spawner(float spawnDelay, int amount, float portalDelay, int spawnRadius, bool startSpawn)
     {
+        if (startSpawn)
+        {
+            amount = numPrespawnedEnemies[Level.I.currentCircleIndex];
+        }
+
         for (int i = 0; i < amount; i++)
         {
             StartCoroutine(Spawn(spawnDelay, portalDelay, spawnRadius, startSpawn));
@@ -57,58 +71,91 @@ public class EnemySpawner : MonoBehaviour
         bool foundLocation = false;
         Vector3Int location = Vector3Int.zero;
         int count = 0;
-        
+
         while (!foundLocation && count < 100)
         {
             Vector3Int tryPosition = Vector3Int.one;
             if (startSpawn)
             {
-                tryPosition = new Vector3Int(UnityEngine.Random.Range(-spawnRadius+Level.I.tilemap.WorldToCell(Player.I.gameObject.transform.position).x, spawnRadius+Level.I.tilemap.WorldToCell(Player.I.gameObject.transform.position).x),
-                              -5, 0);  
+                var left = -Level.I.width / 2f + 5f;
+                var right = Level.I.width / 2f - 5f;
+                var height = -Level.I.height;
+                tryPosition = new Vector3Int(Mathf.RoundToInt(UnityEngine.Random.Range(left, right)),
+                    Mathf.RoundToInt(UnityEngine.Random.Range(-spawnRadius - 5f, height)), 0);
             }
             else
             {
-                tryPosition = new Vector3Int(UnityEngine.Random.Range(-spawnRadius+Level.I.tilemap.WorldToCell(Player.I.gameObject.transform.position).x, spawnRadius+Level.I.tilemap.WorldToCell(Player.I.gameObject.transform.position).x),
-                    UnityEngine.Random.Range(-spawnRadius+Level.I.tilemap.WorldToCell(Player.I.gameObject.transform.position).y, spawnRadius+Level.I.tilemap.WorldToCell(Player.I.gameObject.transform.position).y), 0); 
+                tryPosition = new Vector3Int(
+                    UnityEngine.Random.Range(
+                        -spawnRadius + Level.I.tilemap.WorldToCell(Player.I.gameObject.transform.position).x,
+                        spawnRadius + Level.I.tilemap.WorldToCell(Player.I.gameObject.transform.position).x),
+                    UnityEngine.Random.Range(
+                        -spawnRadius + Level.I.tilemap.WorldToCell(Player.I.gameObject.transform.position).y,
+                        spawnRadius + Level.I.tilemap.WorldToCell(Player.I.gameObject.transform.position).y), 0);
             }
-            
+
             if (!Level.I.tilemap.HasTile(Level.I.tilemap.WorldToCell(tryPosition)))
             {
                 location = tryPosition;
                 foundLocation = true;
             }
 
-            count ++;
+            count++;
         }
+
         if (foundLocation)
         {
-            var totalProbability = enemies.Sum(x => x.chanceToSpawnOnCircle[Level.I.currentCircleIndex]);
-            var randomValue = UnityEngine.Random.value * totalProbability;
-            GameObject enemy = null;
-            for (int i = 0; i < enemies.Count; i++)
-            {
-                var data = enemies[i];
-                if (randomValue < data.chanceToSpawnOnCircle[Level.I.currentCircleIndex])
-                {
-                    enemy = data.gameObject;
-                    break;
-                }
-                randomValue -= data.chanceToSpawnOnCircle[Level.I.currentCircleIndex];
-            }
-            yield return new WaitForSeconds(UnityEngine.Random.Range(0f, spawnDelay));
-            Destroy(Instantiate(portal, Level.I.tilemap.GetCellCenterWorld(location), Quaternion.identity, Level.I.spawnedObjectsParent), portalDelay);
-            yield return new WaitForSeconds(portalDelay);
+            var enemy = startSpawn ? SelectStartSpawnEnemy() : SelectPortalEnemy();
             if (enemy != null)
             {
-                Instantiate(enemy, Level.I.tilemap.GetCellCenterWorld(location), Quaternion.identity, Level.I.spawnedObjectsParent);
+                if (!startSpawn)
+                {
+                    yield return new WaitForSeconds(UnityEngine.Random.Range(0f, spawnDelay));
+                    Destroy(
+                        Instantiate(portal, Level.I.tilemap.GetCellCenterWorld(location), Quaternion.identity,
+                            Level.I.spawnedObjectsParent), portalDelay);
+                    yield return new WaitForSeconds(portalDelay);
+                }
+
+                Instantiate(enemy, Level.I.tilemap.GetCellCenterWorld(location), Quaternion.identity,
+                    Level.I.spawnedObjectsParent);
             }
         }
     }
-    
+
+    private Enemy SelectStartSpawnEnemy()
+    {
+        var totalProbability = enemies.Sum(x => x.chanceToSpawnOnCircle[Level.I.currentCircleIndex]);
+        var randomValue = UnityEngine.Random.value * totalProbability;
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            var data = enemies[i];
+            if (randomValue < data.chanceToSpawnOnCircle[Level.I.currentCircleIndex])
+            {
+                return data.enemy;
+            }
+
+            randomValue -= data.chanceToSpawnOnCircle[Level.I.currentCircleIndex];
+        }
+
+        return null;
+    }
+
+    private Enemy SelectPortalEnemy()
+    {
+        var availableEnemies = enemies.Where(x => x.enemy.hardness < timeHardnessMult * (Time.time - Level.I.timeOfLevelStart)).ToList();
+        if (availableEnemies.Count == 0)
+        {
+            return null;
+        }
+
+        return availableEnemies[UnityEngine.Random.Range(0, availableEnemies.Count)].enemy;
+    }
+
     [Serializable]
     public class EnemyData
     {
-        public GameObject gameObject;
-        public List<float> chanceToSpawnOnCircle = new List<float>(9); 
+        public Enemy enemy;
+        public List<float> chanceToSpawnOnCircle = new(9);
     }
 }

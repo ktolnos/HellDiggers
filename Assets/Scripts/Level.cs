@@ -61,7 +61,7 @@ public class Level : MonoBehaviour
     private void GenerateLevel(HellCircleSettings circleConfig)
     {
         Clear();
-        EnemySpawner.I.Spawner(0f, startEnemyAmount, 0f, 40, true);
+        EnemySpawner.I.Spawner(0f, 0, 0f, 40, true);
 
         var bossTiles = circleConfig.boss == null ? 0 : width;
         var totalTiles = width * height + wallsHeight * 4 + bossTiles;
@@ -316,7 +316,7 @@ public class Level : MonoBehaviour
         transitionPanel.DOFade(1f, inDuration).OnComplete(() =>
         {
             Player.I.rb.bodyType = RigidbodyType2D.Kinematic;
-            Player.I.transform.position = new Vector3(playerPos.x, wallsHeight / 2f, playerPos.z);
+            Player.I.transform.position = new Vector3(playerPos.x, 40f, playerPos.z);
             GenerateLevel(circles[currentCircleIndex]);
             Player.I.rb.linearVelocityY = -20f;
             transitionPanel.DOFade(0f, animationDuration).SetDelay(1f).OnComplete(() =>

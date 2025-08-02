@@ -5,11 +5,13 @@ using UnityEngine.Serialization;
 
 public class Enemy : MonoBehaviour
 {
+    public float hardness = 1f;
     public float speed;
     public float damage;
     public float jumpForce;
     public float jumpReload;
     public float stoppingDistance;
+    public float attackRadius = 2f;
     public float attackDelay = 0.7f;
     public BevaviorType bevaviorType;
     public AttackType attackType;
@@ -163,7 +165,7 @@ public class Enemy : MonoBehaviour
 
     void Beat()
     {
-        Level.DamageEntities(player.transform.position, 2f, damage, DamageDealerType.Enemy); 
+        Level.DamageEntities(player.transform.position, attackRadius, damage, DamageDealerType.Enemy); 
     }
 
     void Shoot()

@@ -51,7 +51,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   enemyDamage: 1
   groundDamage: 1
-  explosionRadius: 0.5
+  explosionRadius: 0.75
   explodeOnCollision: 1
   explosionDelay: 0
   isGrenade: 0

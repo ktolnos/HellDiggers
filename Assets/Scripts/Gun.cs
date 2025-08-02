@@ -27,7 +27,7 @@ public class Gun: MonoBehaviour
         var bulletsCount = numberOfBullets + numberOfBulletsStat;
         for (var i = 0; i < bulletsCount; i++)
         {
-            var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity, Level.I.spawnedObjectsParent);
             bullet.transform.localEulerAngles = transform.eulerAngles + Vector3.forward * 
                 (((i+1) / 2) * spread * (i%2 == 0 ? 1f : -1f));
             bullet.gameObject.SetActive(true);

@@ -13,7 +13,6 @@ public class EnemySpawner : MonoBehaviour
     public int spawnRadius;
     public float spawnRate;
     public float randomSpawnDelayMax;
-    private float totalProbability;
     private float timeOfLastSpawn; 
     void Start()
     {
@@ -48,14 +47,15 @@ public class EnemySpawner : MonoBehaviour
             count ++;
         }
 
-        StartCoroutine(Spawn(location));
-
-        
+        if (foundLocation)
+        {
+            StartCoroutine(Spawn(location));
+        }
     }
 
     public IEnumerator Spawn(Vector3Int location)
     {
-        totalProbability = enemies.Sum(x => x.chanceToSpawnOnCircle[Level.I.currentCircleIndex]);
+        var totalProbability = enemies.Sum(x => x.chanceToSpawnOnCircle[Level.I.currentCircleIndex]);
         var randomValue = UnityEngine.Random.value * totalProbability;
         GameObject enemy = null;
         for (int i = 0; i < enemies.Count; i++)
@@ -71,7 +71,7 @@ public class EnemySpawner : MonoBehaviour
         yield return new WaitForSeconds(UnityEngine.Random.Range(0f, randomSpawnDelayMax));
         if (enemy != null)
         {
-            Instantiate(enemy, Level.I.tilemap.CellToWorld(location), Quaternion.identity);
+            Instantiate(enemy, Level.I.tilemap.CellToWorld(location), Quaternion.identity, Level.I.spawnedObjectsParent);
         }
     }
     

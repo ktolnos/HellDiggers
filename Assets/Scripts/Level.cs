@@ -18,11 +18,11 @@ public class Level : MonoBehaviour
     public float damagedProb = 0.1f;
     public int currentCircleIndex = 0;
     private float transitionHeight;
+    public Transform spawnedObjectsParent;
     
 
     private Dictionary<Vector3Int, TileInfo> tileInfos = new();
     
-    private List<GameObject> spawnedObjects = new List<GameObject>();
     
     private void Awake()
     {
@@ -39,11 +39,12 @@ public class Level : MonoBehaviour
     {
         currentCircleIndex = 0;
         GenerateLevel(circles[currentCircleIndex]);
-        foreach (var spawnedObject in spawnedObjects)
+        for (int i = spawnedObjectsParent.childCount - 1; i >= 0; i--)
         {
-            if (spawnedObject != null)
+            var child = spawnedObjectsParent.GetChild(i);
+            if (child != null)
             {
-                Destroy(spawnedObject);
+                Destroy(child.gameObject);
             }
         }
     }
@@ -173,8 +174,7 @@ public class Level : MonoBehaviour
                             RemoveTile(tilePos);
                             if (tileInfo.tileData.drop != null && UnityEngine.Random.value < tileInfo.tileData.dropChance)
                             {
-                                var spawned = Instantiate(tileInfo.tileData.drop, tilemap.CellToWorld(tilePos), Quaternion.identity);
-                                spawnedObjects.Add(spawned);
+                                Instantiate(tileInfo.tileData.drop, tilemap.CellToWorld(tilePos), Quaternion.identity, spawnedObjectsParent);
                             }
                         }
                         else

@@ -7,13 +7,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using TileData = HellCircleSettings.TileData;
 
 public class Level : MonoBehaviour
 {
     public static Level I;
     public Tilemap tilemap;
     
-    public CircleConfig[] circles;
+    public HellCircleSettings[] circles;
     public TileData wallTile;
     public int width = 100;
     public int height = 100;
@@ -27,10 +28,12 @@ public class Level : MonoBehaviour
     public Image transitionPanel;
     public int bossHeight = 20;
     public TextMeshProUGUI circleText;
-    
+
 
     private Dictionary<Vector3Int, TileInfo> tileInfos = new();
     public bool isLevelTransition;
+
+    private List<IEnumerator> explosionsCoroutines = new();
     
     private void Awake()
     {
@@ -47,10 +50,12 @@ public class Level : MonoBehaviour
     {
         timeOfLevelStart = Time.time;
         currentCircleIndex = 0;
+        var playerPos = Player.I.transform.position;
+        Player.I.transform.position = new Vector3(playerPos.x, wallsHeight / 2f, playerPos.z);
         GenerateLevel(circles[currentCircleIndex]);
     }
 
-    private void GenerateLevel(CircleConfig circleConfig)
+    private void GenerateLevel(HellCircleSettings circleConfig)
     {
         tileInfos.Clear();
         tilemap.ClearAllTiles();
@@ -63,6 +68,11 @@ public class Level : MonoBehaviour
                 Destroy(child.gameObject);
             }
         }
+        foreach (var explosionsCoroutine in explosionsCoroutines)
+        {
+            StopCoroutine(explosionsCoroutine);
+        }
+        explosionsCoroutines.Clear();
         EnemySpawner.I.Spawner(0f, startEnemyAmount, 0f, 40, true);
 
         var bossTiles = circleConfig.boss == null ? 0 : width;
@@ -107,6 +117,14 @@ public class Level : MonoBehaviour
                 tiles[index] = tileData?.tile;
                 if (tileData != null)
                 {
+                    if (tileData.variants.Length > 0)
+                    {
+                        var randomIndex = Mathf.FloorToInt(UnityEngine.Random.value * (tileData.variants.Length + 1));
+                        if (randomIndex < tileData.variants.Length)
+                        {
+                            tiles[index] = tileData.variants[randomIndex];
+                        }
+                    }
                     tileInfos[tilePositions[index]] = new TileInfo(tileData);
                     if (tileData.maxHp > 1 && UnityEngine.Random.value < damagedProb)
                     {
@@ -185,7 +203,9 @@ public class Level : MonoBehaviour
                         if (tileInfo.hp > 0f && tileInfo.hp <= groundDamage)
                         {
                             tileInfo.hp = 0f;
-                            StartCoroutine(ExplodeExplosive(tilePos, tileInfo.tileData));
+                            var enumerator = ExplodeExplosive(tilePos, tileInfo.tileData);
+                            explosionsCoroutines.Add(enumerator);
+                            StartCoroutine(enumerator);
                         }
                         else
                         {
@@ -290,8 +310,8 @@ public class Level : MonoBehaviour
         {
             isLevelTransition = true;
             currentCircleIndex++;
-            circleText.text = circles[currentCircleIndex].name;
             currentCircleIndex = Mathf.Clamp(currentCircleIndex, 0, circles.Length - 1);
+            circleText.text = circles[currentCircleIndex].name;
             transitionPanel.gameObject.SetActive(true);
             var animationDuration = 0.5f;
             circleText.DOFade(1f, animationDuration);
@@ -310,34 +330,6 @@ public class Level : MonoBehaviour
                 circleText.DOFade(0f, animationDuration);
             });
         }
-    }
-    
-    [Serializable]
-    public class CircleConfig
-    {
-        public string name;
-        public TileData[] tileData;
-        public float noiseThreshold = -0.2f;
-        public float noiseFrequency = 0.15f;
-        public GameObject boss;
-    }
-
-    [Serializable]
-    public class TileData
-    {
-        public string name;
-        public TileBase tile;
-        public float maxHp = 1f;
-        public float spawnChance = 1f;
-        
-        public float explosionRadius = 0f;
-        public float explosionDamage = 0f;
-        public float explosionDelay = 1f;
-        public float explosionFPS = 10f;
-        
-        public TileBase[] damagedTiles;
-        public GameObject drop;
-        public float dropChance = 0f;
     }
     
     private class TileInfo

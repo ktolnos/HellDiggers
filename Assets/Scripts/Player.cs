@@ -148,7 +148,7 @@ public class Player : MonoBehaviour
 
         if (stats.healthRegen > 0)
         {
-            health.Heal(stats.healthRegen * Time.deltaTime * 1f);
+            health.Heal(stats.healthRegen * Time.deltaTime * 10f);
         }
 
         if (rb.linearVelocityX != 0f)
@@ -205,7 +205,7 @@ public class Player : MonoBehaviour
     {
         jetPackFuel = stats.jetPackFuel * 10f;
         numDashesLeft = stats.numDashes;
-        health.maxHealth = 30f + stats.health * 10f;
+        health.maxHealth = 300f + stats.health * 100f;
         health.Revive();
     }
 }

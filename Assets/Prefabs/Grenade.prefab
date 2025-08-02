@@ -136,13 +136,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  enemyDamage: 10
-  groundDamage: 10
+  enemyDamage: 100
+  groundDamage: 100
   explosionRadius: 3
   explodeOnCollision: 0
   explosionDelay: 1
   isGrenade: 1
   isPlayerBullet: 1
+  ricochetCount: 0
 --- !u!96 &6453903382961364959
 TrailRenderer:
   serializedVersion: 3

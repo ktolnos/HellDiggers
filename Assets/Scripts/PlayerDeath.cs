@@ -26,6 +26,14 @@ public class PlayerDeath: MonoBehaviour, IDeathHandler
         startGlobalIntensity = globalLight.intensity;
     }
 
+    private void Start()
+    {
+        if (upgradeUI.gameObject.activeSelf)
+        {
+            SetPlayerDead();
+        }
+    }
+
     private void Update()
     {
         if (restartAction.WasPerformedThisFrame())
@@ -68,10 +76,16 @@ public class PlayerDeath: MonoBehaviour, IDeathHandler
             globalLight.intensity = Mathf.Lerp(startGlobalIntensity, 0f, t);
             yield return null;
         }
+        SetPlayerDead();
+        isDying = false;
+    }
+
+    private void SetPlayerDead()
+    {
         Player.I.rb.bodyType = RigidbodyType2D.Kinematic;
         playerLight.intensity = 0f;
         globalLight.intensity = 0f;
+        Player.I.health.currentHealth = 0;
         upgradeUI.SetActive(true);
-        isDying = false;
     }
 }

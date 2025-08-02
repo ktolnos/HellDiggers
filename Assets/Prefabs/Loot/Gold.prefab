@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8918116476005211679, guid: 3922e11ea47dae74896aaf570b5e1bb7, type: 3}
+  m_Sprite: {fileID: -1267460883810157131, guid: 3922e11ea47dae74896aaf570b5e1bb7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 4526997702681546504}
   - component: {fileID: -411065040263735008}
   m_Layer: 0
-  m_Name: Iron
+  m_Name: Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,6 +197,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7600f38e7480d304b87d058cee5b471d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 5
+  money: 50
   hp: 0
   rb: {fileID: 4526997702681546504}

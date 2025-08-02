@@ -21,8 +21,10 @@ public class Gun: MonoBehaviour
         if (Time.time - lastFireTime < fireDelayUpgraded)
             return;
         lastFireTime = Time.time;
-        animator.PlayOnce();
-
+        if (animator != null)
+        {
+            animator.PlayOnce();
+        }
         var numberOfBulletsStat = grenadeMode ? Player.I.stats.numberOfGrenadesPerLaunch : Player.I.stats.numberOfBullets * 2f;
         var bulletsCount = numberOfBullets + numberOfBulletsStat;
         for (var i = 0; i < bulletsCount; i++)

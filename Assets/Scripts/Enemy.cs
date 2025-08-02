@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rb;
     private Vector3Int direction;
     private float timeOfLastAttack;
-    
+    private SpriteRenderer gunSpriteRenderer;
     
     void Start()
     {
@@ -35,6 +35,10 @@ public class Enemy : MonoBehaviour
         timeOfLastAttack = Time.time;
         animator = GetComponent<SpriteAnimator>();
         animator.animation = movementAnimation;
+        if (gun != null)
+        {
+            gunSpriteRenderer = gun.gameObject.GetComponentInChildren<SpriteRenderer>();
+        }
     }
 
     void Update()
@@ -96,6 +100,10 @@ public class Enemy : MonoBehaviour
         {
             rb.linearVelocityX = 0;
         }
+        else if (Level.I.tilemap.HasTile(Level.I.tilemap.WorldToCell(transform.position) + 2*direction) && Level.I.tilemap.HasTile(Level.I.tilemap.WorldToCell(transform.position) - direction))
+        {
+            rb.linearVelocityX = 0;
+        }
         else if (!Level.I.tilemap.HasTile(Level.I.tilemap.WorldToCell(transform.position) - 2*direction + Vector3Int.down) && !Level.I.tilemap.HasTile(Level.I.tilemap.WorldToCell(transform.position) + direction + Vector3Int.down))
         {
             rb.linearVelocityX = 0;
@@ -148,6 +156,7 @@ public class Enemy : MonoBehaviour
     void Shoot()
     {
         Vector3 gunVector = player.transform.position - gun.transform.position;
+        gunSpriteRenderer.flipY = gunVector.x < 0f;
         gun.transform.localEulerAngles = Vector3.back * (Mathf.Atan2(gunVector.x, gunVector.y) * Mathf.Rad2Deg - 90f);
         gun.Shoot();
     }

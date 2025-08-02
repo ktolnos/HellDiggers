@@ -18,6 +18,7 @@ public class EnemySpawner : MonoBehaviour
     public float spawnRate;
     public float portalDelay;
     public float randomSpawnDelayMax;
+    public int cellSize;
     private float timeOfLastSpawn;
     
     private void Awake()

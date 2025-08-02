@@ -109,7 +109,7 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator Attack(float attackDelay)
     {
-        yield return new WaitForSeconds(this.attackDelay);
+        yield return new WaitForSeconds(attackDelay);
         if (attackType == AttackType.Beat)
         {
             Beat();

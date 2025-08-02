@@ -22,6 +22,7 @@ public class Level : MonoBehaviour
     private float transitionHeight;
     public Transform spawnedObjectsParent;
     public Image transitionPanel;
+    public int bossHeight = 20;
     
 
     private Dictionary<Vector3Int, TileInfo> tileInfos = new();
@@ -42,6 +43,13 @@ public class Level : MonoBehaviour
     {
         currentCircleIndex = 0;
         GenerateLevel(circles[currentCircleIndex]);
+    }
+
+    private void GenerateLevel(CircleConfig circleConfig)
+    {
+        tileInfos.Clear();
+        tilemap.ClearAllTiles();
+        
         for (int i = spawnedObjectsParent.childCount - 1; i >= 0; i--)
         {
             var child = spawnedObjectsParent.GetChild(i);
@@ -50,15 +58,11 @@ public class Level : MonoBehaviour
                 Destroy(child.gameObject);
             }
         }
-    }
 
-    private void GenerateLevel(CircleConfig circleConfig)
-    {
-        tileInfos.Clear();
-        tilemap.ClearAllTiles();
-        
-        var tilePositions = new Vector3Int[width * height + wallsHeight * 4];
-        var tiles = new TileBase[width * height + wallsHeight * 4];
+        var bossTiles = circleConfig.boss == null ? 0 : width;
+        var totalTiles = width * height + wallsHeight * 4 + bossTiles;
+        var tilePositions = new Vector3Int[totalTiles];
+        var tiles = new TileBase[totalTiles];
         var index = 0;
         var totalProbability = circleConfig.tileData.Sum(x => x.spawnChance);
         var noiseSeed = UnityEngine.Random.Range(0, 10000);
@@ -123,9 +127,20 @@ public class Level : MonoBehaviour
             SetWall(new Vector3Int(-width / 2, -height - i, 0));
             SetWall(new Vector3Int(width / 2 - 1, -height - i, 0));
         }
+
+        if (bossTiles != 0)
+        {
+            for (int x = 0; x < bossTiles; x++)
+            {
+                SetWall(new Vector3Int(x - width / 2, -height - bossHeight, 0));
+            }
+            Instantiate(circleConfig.boss, 
+                tilemap.CellToWorld(new Vector3Int(0, -height - bossHeight + 3, 0)), Quaternion.identity, spawnedObjectsParent);
+            Debug.Log("Instantiated boss");
+        }
         tilemap.SetTiles(tilePositions, tiles);
         tilemap.RefreshAllTiles();
-        transitionHeight = tilemap.layoutGrid.cellSize.y * (-height - wallsHeight / 10f);
+        transitionHeight = tilemap.layoutGrid.cellSize.y * (-height - wallsHeight / 2f);
     }
     public static void DamageEntities(Vector3 position, float radius, float damage, DamageDealerType type)
     {
@@ -206,6 +221,18 @@ public class Level : MonoBehaviour
                     0, tileInfo.tileData.damagedTiles.Length - 1)]
             : tileInfo.tileData.tile;
     }
+
+    public void RemoveBossFloor()
+    {
+        for (var x = -width / 2; x < width / 2; x++)
+        {
+            var pos = new Vector3Int(x, -height - bossHeight, 0);
+            if (tileInfos.ContainsKey(pos))
+            {
+                RemoveTile(pos);
+            }
+        }
+    }
     
     private bool CheckCircleCellIntersection(Vector3 position, float radius, Vector3Int cellPos)
     {
@@ -283,6 +310,7 @@ public class Level : MonoBehaviour
         public TileData[] tileData;
         public float noiseThreshold = -0.2f;
         public float noiseFrequency = 0.15f;
+        public GameObject boss;
     }
 
     [Serializable]

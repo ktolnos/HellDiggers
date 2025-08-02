@@ -16,7 +16,9 @@ public class Gun: MonoBehaviour
     
     public void Shoot()
     {
+        var statMult = bulletPrefab.isPlayerBullet ? 1f : 0f;
         var fireRateStat = grenadeMode ? Player.I.stats.grenadeReloadSpeedUp : Player.I.stats.reloadSpeedUp;
+        fireRateStat *= statMult;
         var fireDelayUpgraded = fireDelay / (fireRateStat + 1f);
         if (Time.time - lastFireTime < fireDelayUpgraded)
             return;
@@ -26,7 +28,7 @@ public class Gun: MonoBehaviour
             animator.PlayOnce();
         }
         var numberOfBulletsStat = grenadeMode ? Player.I.stats.numberOfGrenadesPerLaunch : Player.I.stats.numberOfBullets * 2f;
-        var bulletsCount = numberOfBullets + numberOfBulletsStat;
+        var bulletsCount = numberOfBullets + numberOfBulletsStat * statMult;
         for (var i = 0; i < bulletsCount; i++)
         {
             var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity, Level.I.spawnedObjectsParent);

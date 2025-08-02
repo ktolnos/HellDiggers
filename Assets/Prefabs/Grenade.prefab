@@ -136,15 +136,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  enemyDamage: 10
-  groundDamage: 10
+  enemyDamage: 100
+  groundDamage: 100
   explosionRadius: 3
   explodeOnCollision: 0
   explosionDelay: 1
   isGrenade: 1
   isPlayerBullet: 1
   ricochetCount: 0
+<<<<<<< HEAD
   effect: {fileID: 320268223314983013, guid: 9ad82804a7a53f7489b5f1e21d110130, type: 3}
+=======
+>>>>>>> origin/master
 --- !u!96 &6453903382961364959
 TrailRenderer:
   serializedVersion: 3

@@ -417,7 +417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: prices.Array.size
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[0]'
@@ -429,11 +429,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[2]'
-      value: 500
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[3]'
-      value: 800
+      value: 8000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: 'prices.Array.data[4]'
+      value: 80000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: 'prices.Array.data[5]'
+      value: 800000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: 'prices.Array.data[6]'
+      value: 8000000
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: stats.dashInvincibilityTime
@@ -2860,7 +2872,7 @@ MonoBehaviour:
   numberOfBullets: 1
   bulletLifeTime: 5
   spread: 5
-  bulletSpeed: 15
+  bulletSpeed: 30
   grenadeMode: 0
   animator: {fileID: 1815846767}
 --- !u!114 &1254419609 stripped
@@ -3460,7 +3472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bce33ebefe03c1049a5477c990ad3070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 7000
+  money: 70000
   walkAnimation:
     frames:
     - {fileID: 8361941628011419897, guid: dc0591d220070da4c81ed15d7ccadf86, type: 3}
@@ -3612,7 +3624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53980114da74a3c93d4e48995964951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 30
+  maxHealth: 300
   currentHealth: 0
   isPlayer: 1
   isInvulnerable: 0
@@ -3929,7 +3941,7 @@ PrefabInstance:
       objectReference: {fileID: 69520075}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: prices.Array.size
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: stats.healthRegen
@@ -3942,6 +3954,18 @@ PrefabInstance:
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[1]'
       value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: 'prices.Array.data[2]'
+      value: 20000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: 'prices.Array.data[3]'
+      value: 200000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: 'prices.Array.data[4]'
+      value: 2000000
       objectReference: {fileID: 0}
     - target: {fileID: 7424529843976034270, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4330,11 +4354,19 @@ PrefabInstance:
       objectReference: {fileID: 2126850265}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: prices.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[0]'
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: 'prices.Array.data[1]'
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: 'prices.Array.data[2]'
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: stats.grenadeExplosionRadius
@@ -4434,6 +4466,174 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 851592773613188119, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
   m_PrefabInstance: {fileID: 1633325803}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+=======
+--- !u!43 &1661009279
+Mesh:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 11
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 0
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 0
+    localAABB:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_BonesAABB: []
+  m_VariableBoneCountWeights:
+    m_Data: 
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 
+  m_VertexData:
+    serializedVersion: 3
+    m_VertexCount: 0
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 0
+    _typelessdata: 
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_MeshUsageFlags: 0
+  m_CookingOptions: 30
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  'm_MeshMetrics[0]': 1
+  'm_MeshMetrics[1]': 1
+  m_MeshOptimizationFlags: 1
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 
+>>>>>>> origin/master
 --- !u!114 &1689178570 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
@@ -4869,15 +5069,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[0]'
-      value: 500
+      value: 50000
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[1]'
-      value: 1500
+      value: 150000
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[2]'
-      value: 3000
+      value: 3000000
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: stats.bulletRicochetCount
@@ -5404,6 +5604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemap: {fileID: 0}
   circles:
+<<<<<<< HEAD
   - name: LIMB
     tileData:
     - name: bomb
@@ -6736,9 +6937,21 @@ MonoBehaviour:
     noiseThreshold: -0.3
     noiseFrequency: 0.15
     boss: {fileID: 4756907778912265882, guid: 6d5a626eaf0f33645841ae65417da9e4, type: 3}
+=======
+  - {fileID: 245593588932310992, guid: 0a8c85cb78b37c94cb1ba571d892345d, type: 3}
+  - {fileID: 6545331332269278171, guid: 1e1782e1b2b89f447aa43785f8d779e1, type: 3}
+  - {fileID: 1155373073488495022, guid: 608356ba9e8cc8d45bc0e1d61ac99c5f, type: 3}
+  - {fileID: 2191764017992561770, guid: 45cbd6738b3e43c49a0e56f06d29d5ba, type: 3}
+  - {fileID: 4303970680763909627, guid: 23897665ccbd3ef4ba25c2c2ea8854ad, type: 3}
+  - {fileID: 6679535857576739097, guid: 743d2752cf5fa7e4e9b613fd791d0c2c, type: 3}
+  - {fileID: 4366304315878596492, guid: 2d1a06473fe3a0c4c85c183c7c31326f, type: 3}
+  - {fileID: 6701397797751504125, guid: ea900fa6aa0a2254db8dd501158c9dc7, type: 3}
+  - {fileID: 8376696389960901637, guid: 2dfe1ec93b2591c42be5897bb0f3ea5d, type: 3}
+>>>>>>> origin/master
   wallTile:
     name: 
-    tile: {fileID: 11400000, guid: 6c562b337741d1546b885324e78e5cf6, type: 2}
+    tile: {fileID: 0}
+    variants: []
     maxHp: 1
     spawnChance: 1
     explosionRadius: 0
@@ -8247,7 +8460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: prices.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: stats.groundPound
@@ -8260,6 +8473,10 @@ PrefabInstance:
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[1]'
       value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: 'prices.Array.data[2]'
+      value: 15000
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: stats.dashInvincibilityTime
@@ -8620,19 +8837,23 @@ PrefabInstance:
       objectReference: {fileID: 1254419609}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: prices.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[0]'
-      value: 500
+      value: 50000
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[1]'
-      value: 1500
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[2]'
-      value: 3000
+      value: 5000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: 'prices.Array.data[3]'
+      value: 50000000
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: stats.explosionRadius
@@ -9775,7 +9996,7 @@ PrefabInstance:
       objectReference: {fileID: 768690076}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: prices.Array.size
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[0]'
@@ -9783,15 +10004,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[1]'
-      value: 100
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[2]'
-      value: 200
+      value: 1000000
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[3]'
-      value: 300
+      value: 10000000
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[4]'
@@ -10156,7 +10377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: prices.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: stats.diggingDamage
@@ -10172,11 +10393,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[2]'
-      value: 200
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[3]'
-      value: 500
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: 'prices.Array.data[4]'
+      value: 100000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: 'prices.Array.data[5]'
+      value: 1000000
       objectReference: {fileID: 0}
     - target: {fileID: 7424529843976034270, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_AnchorMax.x

@@ -1,19 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class WonDeath: MonoBehaviour, IDeathHandler
 {
-    public GameObject wonScreen;
-    
+    private WonScreenHelper wonScreen;
+    private void Awake()
+    {
+        wonScreen = GameObject.Find("WonHelper").GetComponent<WonScreenHelper>();
+    }
     public void Die()
     {
         DeathAnimation();
     }
     
     private void DeathAnimation()
-    {
-        Time.timeScale = 0f;
+    {        
         wonScreen.gameObject.SetActive(true);
+        Time.timeScale = 0f;
     }
-        
 }

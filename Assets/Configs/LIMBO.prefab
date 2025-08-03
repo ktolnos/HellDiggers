@@ -165,4 +165,4 @@ MonoBehaviour:
     dropChance: 0.05
   noiseThreshold: -0.2
   noiseFrequency: 0.15
-  boss: {fileID: 0}
+  boss: {fileID: 6887165084737152310, guid: eedf8be3953065b4eb3a51f03a1e32c5, type: 3}

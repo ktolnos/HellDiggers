@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
     public SpriteAnimator animator;
     public bool invertSprite = false;
     public bool aimGun = true;
+    public bool isBoss;
     public AudioClip beatSound;
 
     private GameObject player;
@@ -50,32 +51,52 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (enemyLookTowardsPlayer)
+        if (isBoss)
         {
-            Vector3 gunVector = player.transform.position - gun.transform.position;
-            transform.localEulerAngles = Vector3.back * (Mathf.Atan2(gunVector.x, gunVector.y) * Mathf.Rad2Deg - 90f);
-        }
-
-        if ((player.transform.position - transform.position).magnitude < attackDistance)
-        {
-            StartCoroutine(Attack(attackDelay));
-        }
-        if ((player.transform.position - transform.position).magnitude > stoppingDistance)
-        {
-            if (bevaviorType == BevaviorType.Follow)
+            if ((player.transform.position - transform.position).magnitude < attackDistance)
+            {
+                Stay();
+                StartCoroutine(Attack(attackDelay, AttackType.Shoot));
+            }
+            if ((player.transform.position - transform.position).magnitude > stoppingDistance)
             {
                 Follow();
             }
-    
-            if (bevaviorType == BevaviorType.Stay)
+            else
             {
-                Stay();
+                StartCoroutine(Attack(attackDelay, AttackType.Beat));
+            }
+        }
+        else
+        {
+            if (enemyLookTowardsPlayer)
+            {
+                Vector3 gunVector = player.transform.position - gun.transform.position;
+                transform.localEulerAngles = Vector3.back * (Mathf.Atan2(gunVector.x, gunVector.y) * Mathf.Rad2Deg - 90f);
             }
     
-            if (bevaviorType == BevaviorType.Fly)
+            if ((player.transform.position - transform.position).magnitude < attackDistance)
             {
-                Fly();
+                StartCoroutine(Attack(attackDelay, attackType));
             }
+            if ((player.transform.position - transform.position).magnitude > stoppingDistance)
+            {
+                if (bevaviorType == BevaviorType.Follow)
+                {
+                    Follow();
+                }
+        
+                if (bevaviorType == BevaviorType.Stay)
+                {
+                    Stay();
+                }
+        
+                if (bevaviorType == BevaviorType.Fly)
+                {
+                    Fly();
+                }
+            }
+        
         }
 
         if (enemyLookTowardsPlayer)
@@ -109,14 +130,18 @@ public class Enemy : MonoBehaviour
                 }
             }  
         }
-        animator.spriteRenderer.flipX = (rb.linearVelocity.x < 0)^invertSprite;
+
+        if (rb.linearVelocity.x != 0)
+        {
+            animator.spriteRenderer.flipX = (rb.linearVelocity.x < 0)^invertSprite;
+        }
     }
 
     void Stay()
     {
         rb.linearVelocityX = 0;
         Vector3 gunVector = player.transform.position - gun.transform.position;
-        animator.spriteRenderer.flipX = (gunVector.x < 0)^invertSprite;
+        animator.spriteRenderer.flipX = (gunVector.x <= 0)^invertSprite;
     }
 
     void Fly()
@@ -126,7 +151,7 @@ public class Enemy : MonoBehaviour
         animator.spriteRenderer.flipX = (movement.x < 0)^invertSprite;
     }
 
-    public IEnumerator Attack(float attackDelay)
+    public IEnumerator Attack(float _attackDelay, AttackType attackType)
     {
         if (Time.time - timeOfLastAttack > attackCoolDown)
         {
@@ -135,7 +160,7 @@ public class Enemy : MonoBehaviour
             {
                animator.PlayOnce(attackAnimation); 
             }
-            yield return new WaitForSeconds(attackDelay);
+            yield return new WaitForSeconds(_attackDelay);
             if (attackType == AttackType.Beat)
             {
                 Beat();

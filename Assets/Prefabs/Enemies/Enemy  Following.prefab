@@ -77,12 +77,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f121e5e62a2946948a33511c460cc6da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+=======
+  hardness: 70
+>>>>>>> origin/master
   speed: 5
   damage: 50
   jumpForce: 18
   jumpReload: 1
   stoppingDistance: 2
+<<<<<<< HEAD
   attackDistance: 2
+=======
+  attackRadius: 0
+>>>>>>> origin/master
   attackDelay: 0.7
   bevaviorType: 1
   attackType: 1
@@ -127,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53980114da74a3c93d4e48995964951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 300
   currentHealth: 0
   isPlayer: 0
   isInvulnerable: 0
@@ -143,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c26e1fcc3a28084da5814bb4a36b689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loot: {fileID: 3094065808536684211, guid: ac05320947c1b194e82e3a703fe395eb, type: 3}
+  loot: {fileID: 3094065808536684211, guid: a642dc414c6b77348832dbfe7272e020, type: 3}
   effect: {fileID: 0}
 --- !u!114 &8002352368254877654
 MonoBehaviour:

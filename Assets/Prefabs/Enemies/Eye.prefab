@@ -51,12 +51,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f121e5e62a2946948a33511c460cc6da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  hardness: 100
+  speed: 200
   damage: 5
   jumpForce: 13
   jumpReload: 2
+<<<<<<< HEAD
   stoppingDistance: 4
   attackDistance: 9
+=======
+  stoppingDistance: 8
+  attackRadius: 2
+>>>>>>> origin/master
   attackDelay: 1
   bevaviorType: 2
   attackType: 0
@@ -92,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53980114da74a3c93d4e48995964951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 500
   currentHealth: 0
   isPlayer: 0
   isInvulnerable: 0

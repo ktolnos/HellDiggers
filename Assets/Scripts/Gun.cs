@@ -1,5 +1,7 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Gun: MonoBehaviour
 {
@@ -14,12 +16,31 @@ public class Gun: MonoBehaviour
     public bool grenadeMode = false;
     public SpriteAnimator animator;
     
-    public void Shoot()
+    public Image reloadIndicator;
+
+    private void Update()
+    {
+        if (bulletPrefab.isPlayerBullet && reloadIndicator != null)
+        {
+            reloadIndicator.gameObject.SetActive(Player.I.stats.numberOfGrenadesPerLaunch  > 0);
+            reloadIndicator.fillAmount = Mathf.Clamp01((Time.time - lastFireTime) / GetFireRate());
+            reloadIndicator.color = reloadIndicator.fillAmount > 0.999f ? new Color(0.8f, 0.8f, 0.8f) : Color.gray;
+        }
+    }
+
+    private float GetFireRate()
     {
         var statMult = bulletPrefab.isPlayerBullet ? 1f : 0f;
         var fireRateStat = grenadeMode ? Player.I.stats.grenadeReloadSpeedUp : Player.I.stats.reloadSpeedUp;
         fireRateStat *= statMult;
         var fireDelayUpgraded = fireDelay / (fireRateStat + 1f);
+        return fireDelayUpgraded;
+    }
+
+    public void Shoot()
+    {
+        var statMult = bulletPrefab.isPlayerBullet ? 1f : 0f;
+        var fireDelayUpgraded = GetFireRate();
         if (Time.time - lastFireTime < fireDelayUpgraded)
             return;
         lastFireTime = Time.time;

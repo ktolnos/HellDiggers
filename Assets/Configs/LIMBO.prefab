@@ -66,7 +66,7 @@ MonoBehaviour:
     tile: {fileID: 11400000, guid: 1a2c3922f78c2f24abd8bd1728d32cfc, type: 2}
     variants: []
     maxHp: 1
-    spawnChance: 2
+    spawnChance: 0.7
     explosionRadius: 5
     explosionDamage: 100
     explosionDelay: 2
@@ -93,7 +93,7 @@ MonoBehaviour:
     tile: {fileID: 11400000, guid: 8c9542a1f9893a545a968805a839d71a, type: 2}
     variants: []
     maxHp: 15
-    spawnChance: 3
+    spawnChance: 1
     explosionRadius: 0
     explosionDamage: 0
     explosionDelay: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
     tile: {fileID: 11400000, guid: 8aa510f2d17ff5244bf42060beca4937, type: 2}
     variants: []
     maxHp: 50
-    spawnChance: 1
+    spawnChance: 0
     explosionRadius: 0
     explosionDamage: 0
     explosionDelay: 0
@@ -163,6 +163,6 @@ MonoBehaviour:
     damagedTiles: []
     drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
     dropChance: 0.05
-  noiseThreshold: -0.3
+  noiseThreshold: -0.2
   noiseFrequency: 0.15
   boss: {fileID: 0}

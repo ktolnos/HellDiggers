@@ -155,7 +155,7 @@ public class Player : MonoBehaviour
 
         numDashesLeft += Time.deltaTime * dashRechargeRate;
         numDashesLeft = Mathf.Min(numDashesLeft, stats.numDashes);
-        dashDirection = Mathf.Sign(moveInput.x) == 0f ? dashDirection : Mathf.Sign(moveInput.x);
+        dashDirection = Mathf.Abs(moveInput.x) <= 0.01f ? dashDirection : Mathf.Sign(moveInput.x);
         if (dashAction.WasPerformedThisFrame() && numDashesLeft > 0)
         {
             numDashesLeft--;
@@ -182,7 +182,7 @@ public class Player : MonoBehaviour
 
         if (stats.healthRegen > 0)
         {
-            health.Heal(stats.healthRegen * Time.deltaTime * 5f);
+            health.Heal(stats.healthRegen * Time.deltaTime * 2f);
         }
 
         if (rb.linearVelocityX != 0f)

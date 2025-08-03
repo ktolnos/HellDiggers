@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f121e5e62a2946948a33511c460cc6da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hardness: 150
+  hardness: 190
   speed: 200
   damage: 5
   jumpForce: 13

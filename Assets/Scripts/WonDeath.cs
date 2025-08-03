@@ -10,7 +10,7 @@ public class WonDeath: MonoBehaviour, IDeathHandler
         DeathAnimation();
     }
     
-    private async void DeathAnimation()
+    private void DeathAnimation()
     {
         Time.timeScale = 0f;
         wonScreen.gameObject.SetActive(true);

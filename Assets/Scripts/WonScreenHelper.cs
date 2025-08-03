@@ -10,5 +10,4 @@ public class WonScreenHelper: MonoBehaviour
         wonScreen.gameObject.SetActive(false);
         Player.I.health.Damage(100000000000, DamageDealerType.Environment);
     }
-        
 }

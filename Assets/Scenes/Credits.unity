@@ -316,7 +316,7 @@ MonoBehaviour:
   m_text: Play
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: de3bd642e97af7c43b7f4dde982d663e, type: 2}
-  m_sharedMaterial: {fileID: 2393474303197508706, guid: de3bd642e97af7c43b7f4dde982d663e, type: 2}
+  m_sharedMaterial: {fileID: 7766119235227557665, guid: de3bd642e97af7c43b7f4dde982d663e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -776,6 +776,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &899448535
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7107944103044133122, guid: 0f0bad4ea3932514cabc2d1f007fd72d, type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7890718508336603642, guid: 0f0bad4ea3932514cabc2d1f007fd72d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1907.8875
+      objectReference: {fileID: 0}
+    - target: {fileID: 7890718508336603642, guid: 0f0bad4ea3932514cabc2d1f007fd72d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -441.6892
+      objectReference: {fileID: 0}
+    - target: {fileID: 7890718508336603642, guid: 0f0bad4ea3932514cabc2d1f007fd72d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7890718508336603642, guid: 0f0bad4ea3932514cabc2d1f007fd72d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7890718508336603642, guid: 0f0bad4ea3932514cabc2d1f007fd72d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7890718508336603642, guid: 0f0bad4ea3932514cabc2d1f007fd72d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7890718508336603642, guid: 0f0bad4ea3932514cabc2d1f007fd72d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7890718508336603642, guid: 0f0bad4ea3932514cabc2d1f007fd72d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7890718508336603642, guid: 0f0bad4ea3932514cabc2d1f007fd72d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7890718508336603642, guid: 0f0bad4ea3932514cabc2d1f007fd72d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0f0bad4ea3932514cabc2d1f007fd72d, type: 3}
 --- !u!1 &1346460272
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,7 +1241,7 @@ MonoBehaviour:
   m_text: Credits
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: de3bd642e97af7c43b7f4dde982d663e, type: 2}
-  m_sharedMaterial: {fileID: 2393474303197508706, guid: de3bd642e97af7c43b7f4dde982d663e, type: 2}
+  m_sharedMaterial: {fileID: 7766119235227557665, guid: de3bd642e97af7c43b7f4dde982d663e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1399,7 +1456,7 @@ MonoBehaviour:
   m_text: Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: de3bd642e97af7c43b7f4dde982d663e, type: 2}
-  m_sharedMaterial: {fileID: 2393474303197508706, guid: de3bd642e97af7c43b7f4dde982d663e, type: 2}
+  m_sharedMaterial: {fileID: 7766119235227557665, guid: de3bd642e97af7c43b7f4dde982d663e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1484,3 +1541,4 @@ SceneRoots:
   - {fileID: 514202496}
   - {fileID: 311567642}
   - {fileID: 1984962911}
+  - {fileID: 899448535}

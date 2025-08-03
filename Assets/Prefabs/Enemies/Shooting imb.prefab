@@ -108,6 +108,7 @@ MonoBehaviour:
   animator: {fileID: 7893958323361135372}
   invertSprite: 0
   aimGun: 1
+  beatSound: {fileID: 0}
 --- !u!114 &5575930699715242445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +125,10 @@ MonoBehaviour:
   currentHealth: 0
   isPlayer: 0
   isInvulnerable: 0
+  hurt: {fileID: 8300000, guid: a25d3d3b925d1b54da31c71a73ebfd24, type: 3}
+  deathSound: {fileID: 8300000, guid: 870a48ed36cf1294aad3525d5796e1fd, type: 3}
+  hurtAnimation: {fileID: 1116116627678673484}
+  hurtMaterial: {fileID: 2100000, guid: bfe122b358b5b644b8c55eadb8c88ebb, type: 2}
 --- !u!114 &5971972172716879629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,6 +336,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gun
       objectReference: {fileID: 0}
+    - target: {fileID: 8685728998280293237, guid: 14ba2285c0d6ef444bfe2e6a1c983e4b, type: 3}
+      propertyPath: shootSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ff24952f23dd0bb44bb218c9c01bcdee, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

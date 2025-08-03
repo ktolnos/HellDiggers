@@ -58,14 +58,12 @@ public class Player : MonoBehaviour
     public Image jetFuelIndicator;
     private float jetFuelMult = 10f;
     
-    public AudioClip shootSound;
     public AudioClip jumpSound;
     public AudioClip dashSound;
-    public AudioClip jetPackSound;
+    public AudioSource jetAudio;
     public AudioClip groundPoundSound;
-    public AudioClip landSound;
-    public AudioClip grenadeSound;
-
+    public AudioClip groundPoundStartSound;
+    
     private void Awake()
     {
         I = this;
@@ -153,10 +151,18 @@ public class Player : MonoBehaviour
             }
             jetPackFuel -= Time.deltaTime * jetPackFuelConsumptionRate;
             rb.linearVelocityY = jetPackSpeed;
+            if (!jetAudio.isPlaying)
+            {
+                jetAudio.Play();
+            }
         }
         else
         {
             jetPackParticleSystem.Stop();
+            if (jetAudio.isPlaying)
+            {
+                jetAudio.Stop();
+            }
         }
         jetFuelIndicator.fillAmount = jetPackFuel / (stats.jetPackFuel * jetFuelMult);
         jetFuelIndicator.rectTransform.sizeDelta = new Vector2(jetFuelIndicator.rectTransform.sizeDelta.x,  stats.jetPackFuel * 150f);
@@ -186,6 +192,7 @@ public class Player : MonoBehaviour
         {
             rb.linearVelocityY = -jumpForce * 2f; // Increase downward force for ground pound
             isPounding = true;
+            SoundManager.I.PlaySfx(groundPoundStartSound, transform.position);
         }
 
         if (stats.healthRegen > 0)
@@ -239,6 +246,7 @@ public class Player : MonoBehaviour
                     groundDamage:stats.groundPound,
                     DamageDealerType.Player);
                 isPounding = false;
+                SoundManager.I.PlaySfx(groundPoundSound, transform.position, 10f);
             }
         }
     }
@@ -253,6 +261,7 @@ public class Player : MonoBehaviour
 
     private void AnimateJump()
     {
+        SoundManager.I.PlaySfx(jumpSound, transform.position);
         var main = jumpParticleSystem.main;
         main.startSpeedMultiplier = -5f * (stats.jumpHeight + 1.1f);
         jumpParticleSystem.Play();
@@ -263,6 +272,7 @@ public class Player : MonoBehaviour
     
     private void AnimateDash()
     {
+        SoundManager.I.PlaySfx(dashSound, transform.position);
         dashParticleSystem.transform.parent.localRotation = Quaternion.Euler(0f, 0f, dashDirection <= 0f ? 90f : -90f);
         dashParticleSystem.Play();
     }

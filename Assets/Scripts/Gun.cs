@@ -17,6 +17,7 @@ public class Gun: MonoBehaviour
     public SpriteAnimator animator;
     
     public Image reloadIndicator;
+    public AudioClip shootSound;
 
     private void Update()
     {
@@ -44,6 +45,10 @@ public class Gun: MonoBehaviour
         if (Time.time - lastFireTime < fireDelayUpgraded)
             return;
         lastFireTime = Time.time;
+        if (shootSound != null)
+        {
+            SoundManager.I.PlaySfx(shootSound, transform.position);
+        }
         if (animator != null)
         {
             animator.PlayOnce();

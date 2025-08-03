@@ -36,6 +36,6 @@ public class SoundManager: MonoBehaviour
 
     private void PlaySfxInternal(AudioClip clip, Vector3 position, float relativeValue = 1f)
     {
-        AudioSource.PlayClipAtPoint(clip, position, Mathf.Clamp(relativeValue * sfxBaseVolume, 0, sfxVolume));
+        AudioSource.PlayClipAtPoint(clip, position, Mathf.Clamp(relativeValue * sfxBaseVolume * sfxVolume, 0, sfxVolume));
     }
 }

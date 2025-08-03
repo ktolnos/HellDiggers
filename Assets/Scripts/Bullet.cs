@@ -17,6 +17,8 @@ public class Bullet: MonoBehaviour
     public bool isPlayerBullet = false;
     public int ricochetCount = 0;
     public GameObject effect;
+    public bool hasSound;
+    public AudioClip sound;
     
     private void Awake()
     {
@@ -54,6 +56,10 @@ public class Bullet: MonoBehaviour
         Level.I.Explode(transform.position, finalExplosionRadius, finalEnemyDamage, finalGroundDamage, damageType);
         if (destroy)
         {
+            if (hasSound)
+            {
+                SoundManager.I.PlaySfx(sound, transform.position, 10f);
+            }
             Destroy(gameObject);
             if (effect != null)
             {
@@ -64,7 +70,7 @@ public class Bullet: MonoBehaviour
 
     private IEnumerator DelayedExplode()
     {
-        yield return new WaitForSeconds(explosionDelay);
+        yield return new WaitForSeconds(explosionDelay + UnityEngine.Random.Range(-0.1f, 0.1f));
         Explode(true);
     }
     

@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
     public SpriteAnimator animator;
     public bool invertSprite = false;
     public bool aimGun = true;
+    public AudioClip beatSound;
 
     private GameObject player;
     private float lastJumpTime;
@@ -150,6 +151,10 @@ public class Enemy : MonoBehaviour
     void Beat()
     {
         Level.DamageEntities(player.transform.position, attackRadius, damage, DamageDealerType.Enemy); 
+        if (beatSound != null)
+        {
+            SoundManager.I.PlaySfx(beatSound, transform.position, 5f);
+        }
     }
 
     void Shoot()

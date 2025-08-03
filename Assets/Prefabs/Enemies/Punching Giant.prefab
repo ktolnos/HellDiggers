@@ -117,6 +117,7 @@ MonoBehaviour:
   animator: {fileID: 8002352368254877654}
   invertSprite: 0
   aimGun: 1
+  beatSound: {fileID: 8300000, guid: 7f1c4732b98cb0741aff7991e7e6f1f6, type: 3}
 --- !u!114 &2356477887498331919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,6 +134,10 @@ MonoBehaviour:
   currentHealth: 0
   isPlayer: 0
   isInvulnerable: 0
+  hurt: {fileID: 8300000, guid: a25d3d3b925d1b54da31c71a73ebfd24, type: 3}
+  deathSound: {fileID: 8300000, guid: 870a48ed36cf1294aad3525d5796e1fd, type: 3}
+  hurtAnimation: {fileID: 2916147809689092128}
+  hurtMaterial: {fileID: 2100000, guid: bfe122b358b5b644b8c55eadb8c88ebb, type: 2}
 --- !u!114 &3463454152866909319
 MonoBehaviour:
   m_ObjectHideFlags: 0

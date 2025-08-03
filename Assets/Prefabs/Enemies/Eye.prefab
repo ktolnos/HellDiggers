@@ -82,6 +82,7 @@ MonoBehaviour:
   animator: {fileID: 6192451480533484078}
   invertSprite: 1
   aimGun: 0
+  beatSound: {fileID: 0}
 --- !u!114 &6326658846326912912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,6 +99,10 @@ MonoBehaviour:
   currentHealth: 0
   isPlayer: 0
   isInvulnerable: 0
+  hurt: {fileID: 8300000, guid: a25d3d3b925d1b54da31c71a73ebfd24, type: 3}
+  deathSound: {fileID: 8300000, guid: 870a48ed36cf1294aad3525d5796e1fd, type: 3}
+  hurtAnimation: {fileID: 221777621848407505}
+  hurtMaterial: {fileID: 2100000, guid: bfe122b358b5b644b8c55eadb8c88ebb, type: 2}
 --- !u!114 &4561176998936719293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,6 +405,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8685728998280293237, guid: 14ba2285c0d6ef444bfe2e6a1c983e4b, type: 3}
+      propertyPath: shootSound
+      value: 
+      objectReference: {fileID: 8300000, guid: df1bb0c10c6063f4987c38cf285be07b, type: 3}
     - target: {fileID: 8685728998280293237, guid: 14ba2285c0d6ef444bfe2e6a1c983e4b, type: 3}
       propertyPath: bulletSpeed
       value: 17

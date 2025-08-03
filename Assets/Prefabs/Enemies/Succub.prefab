@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6192451480533484078}
   - component: {fileID: -4968738020616550190}
   m_Layer: 11
-  m_Name: Enemy Flying
+  m_Name: Succub
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,11 +56,8 @@ MonoBehaviour:
   jumpForce: 13
   jumpReload: 2
   stoppingDistance: 2
-<<<<<<< HEAD
   attackDistance: 2
-=======
   attackRadius: 2.5
->>>>>>> origin/master
   attackDelay: 1
   bevaviorType: 2
   attackType: 1
@@ -118,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loot: {fileID: 3094065808536684211, guid: 127f2309e80b55149b12f0629e9789cd, type: 3}
-  effect: {fileID: 0}
+  effect: {fileID: 8550663166000491436, guid: f7590b10fe1023d4781edc2d207cb3f4, type: 3}
 --- !u!58 &5388221814552815758
 CircleCollider2D:
   m_ObjectHideFlags: 0

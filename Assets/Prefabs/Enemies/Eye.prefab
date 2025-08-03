@@ -51,18 +51,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f121e5e62a2946948a33511c460cc6da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hardness: 100
+  hardness: 150
   speed: 200
   damage: 5
   jumpForce: 13
   jumpReload: 2
-<<<<<<< HEAD
   stoppingDistance: 4
   attackDistance: 9
-=======
-  stoppingDistance: 8
   attackRadius: 2
->>>>>>> origin/master
   attackDelay: 1
   bevaviorType: 2
   attackType: 0
@@ -115,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loot: {fileID: 3094065808536684211, guid: 127f2309e80b55149b12f0629e9789cd, type: 3}
-  effect: {fileID: 0}
+  effect: {fileID: 8550663166000491436, guid: f7590b10fe1023d4781edc2d207cb3f4, type: 3}
 --- !u!58 &5388221814552815758
 CircleCollider2D:
   m_ObjectHideFlags: 0

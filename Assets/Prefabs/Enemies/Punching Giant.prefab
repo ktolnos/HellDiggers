@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8002352368254877654}
   - component: {fileID: 1195731185210220517}
   m_Layer: 9
-  m_Name: Enemy  Following
+  m_Name: Punching Giant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,20 +77,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f121e5e62a2946948a33511c460cc6da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-=======
   hardness: 70
->>>>>>> origin/master
-  speed: 5
+  speed: 7
   damage: 50
   jumpForce: 18
   jumpReload: 1
   stoppingDistance: 2
-<<<<<<< HEAD
   attackDistance: 2
-=======
   attackRadius: 0
->>>>>>> origin/master
   attackDelay: 0.7
   bevaviorType: 1
   attackType: 1
@@ -152,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loot: {fileID: 3094065808536684211, guid: a642dc414c6b77348832dbfe7272e020, type: 3}
-  effect: {fileID: 0}
+  effect: {fileID: 8550663166000491436, guid: f7590b10fe1023d4781edc2d207cb3f4, type: 3}
 --- !u!114 &8002352368254877654
 MonoBehaviour:
   m_ObjectHideFlags: 0

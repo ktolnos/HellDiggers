@@ -200,3 +200,4 @@ MonoBehaviour:
   money: 1000
   hp: 0
   rb: {fileID: 4526997702681546504}
+  collectSound: {fileID: 8300000, guid: ba9747c360cea0e4e9be4fcd4f9985bd, type: 3}

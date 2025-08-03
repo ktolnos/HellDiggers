@@ -29,7 +29,10 @@ public class Level : MonoBehaviour
     public int bossHeight = 20;
     public TextMeshProUGUI circleText;
     public BombAnimator bompExplosionPrefab;
-
+    public AudioClip blockBreak;
+    public AudioClip explosionSound;
+    public AudioClip explosionBip;
+    public int explosionBipFrequency = 1;
 
     private Dictionary<Vector3Int, TileInfo> tileInfos = new();
     public bool isLevelTransition;
@@ -207,6 +210,7 @@ public class Level : MonoBehaviour
                         if (tileInfo.hp <= 0f)
                         {
                             RemoveTile(tilePos);
+                            SoundManager.I.PlaySfx(blockBreak, tilemap.GetCellCenterWorld(tilePos));
                             if (tileInfo.tileData.drop != null && UnityEngine.Random.value < tileInfo.tileData.dropChance)
                             {
                                 Instantiate(tileInfo.tileData.drop, tilemap.CellToWorld(tilePos), Quaternion.identity, spawnedObjectsParent);
@@ -281,9 +285,14 @@ public class Level : MonoBehaviour
         for (var i = 0; i < tileData.explosionDelay * tileData.explosionFPS; i++)
         {
             tilemap.SetTile(pos, tileData.damagedTiles[i % tileData.damagedTiles.Length]);
+            if (i % explosionBipFrequency == 0)
+            {
+                SoundManager.I.PlaySfx(explosionBip, tilemap.GetCellCenterWorld(pos));
+            }
             yield return new WaitForSeconds(1f / tileData.explosionFPS);
         }
         RemoveTile(pos);
+        SoundManager.I.PlaySfx(explosionSound, tilemap.GetCellCenterWorld(pos), 20f);
         Explode(tilemap.CellToWorld(pos), tileData.explosionRadius, tileData.explosionDamage,  tileData.explosionDamage,  DamageDealerType.Environment);
     }
 

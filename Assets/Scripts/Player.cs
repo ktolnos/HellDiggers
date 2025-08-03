@@ -57,6 +57,14 @@ public class Player : MonoBehaviour
     public Image[] dashIndicators;
     public Image jetFuelIndicator;
     private float jetFuelMult = 10f;
+    
+    public AudioClip shootSound;
+    public AudioClip jumpSound;
+    public AudioClip dashSound;
+    public AudioClip jetPackSound;
+    public AudioClip groundPoundSound;
+    public AudioClip landSound;
+    public AudioClip grenadeSound;
 
     private void Awake()
     {

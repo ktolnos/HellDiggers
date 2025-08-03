@@ -11,6 +11,7 @@ public class Loot : MonoBehaviour
     
     private float collectionTime = 0.5f;
     public Rigidbody2D rb;
+    public AudioClip collectSound;
     
     private void Update()
     {
@@ -36,15 +37,21 @@ public class Loot : MonoBehaviour
         }
         var startPosition = transform.position;
         var startTime = Time.time;
+        var timeToPlayer = Mathf.Clamp01((Player.I.transform.position - startPosition).magnitude / 10f) * collectionTime;
 
-        while (Time.time < startTime + collectionTime)
+        while (Time.time < startTime + timeToPlayer)
         {
             var t = (Time.time - startTime) / collectionTime;
             transform.position = DOVirtual.EasedValue(startPosition, Player.I.transform.position, t, Ease.InCubic);
             yield return null;
         }
+        if (collectSound != null)
+        {
+            SoundManager.I.PlaySfx(collectSound, Player.I.transform.position);
+        }
         Destroy(gameObject);
         Player.I.money += money;
         Player.I.health.Heal(hp);
+        
     }
 }

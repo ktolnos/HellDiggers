@@ -163,6 +163,6 @@ MonoBehaviour:
     damagedTiles: []
     drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
     dropChance: 0.05
-  noiseThreshold: -0.3
+  noiseThreshold: -0.2
   noiseFrequency: 0.15
   boss: {fileID: 0}

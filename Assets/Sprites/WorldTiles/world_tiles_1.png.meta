@@ -1,0 +1,988 @@
+fileFormatVersion: 2
+guid: dab029077717aac4a9bbf7771f58ccad
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5704521394980549549
+    second: world_tiles_1_0
+  - first:
+      213: -6678418250882391414
+    second: world_tiles_1_1
+  - first:
+      213: -871868956406265342
+    second: world_tiles_1_2
+  - first:
+      213: 5787524890981585034
+    second: world_tiles_1_3
+  - first:
+      213: 528639297682013838
+    second: world_tiles_1_4
+  - first:
+      213: 8443451677597789222
+    second: world_tiles_1_5
+  - first:
+      213: -2694497896088507673
+    second: world_tiles_1_6
+  - first:
+      213: 7152123039621142044
+    second: world_tiles_1_7
+  - first:
+      213: -2342546201396330906
+    second: world_tiles_1_8
+  - first:
+      213: 146999815611101729
+    second: world_tiles_1_9
+  - first:
+      213: 3684004005748353461
+    second: world_tiles_1_10
+  - first:
+      213: -8926354208260404159
+    second: world_tiles_1_11
+  - first:
+      213: 2939614597584247339
+    second: world_tiles_1_12
+  - first:
+      213: 6297356407038541800
+    second: world_tiles_1_13
+  - first:
+      213: -861301193630154915
+    second: world_tiles_1_14
+  - first:
+      213: -7344303942895607316
+    second: world_tiles_1_15
+  - first:
+      213: -3293533554276281436
+    second: world_tiles_1_16
+  - first:
+      213: 5934995203356942998
+    second: world_tiles_1_17
+  - first:
+      213: 729167754096511135
+    second: world_tiles_1_18
+  - first:
+      213: 53906073780003782
+    second: world_tiles_1_19
+  - first:
+      213: 2909355671050488909
+    second: world_tiles_1_20
+  - first:
+      213: 5973133641777665592
+    second: world_tiles_1_21
+  - first:
+      213: 4077343964013551550
+    second: world_tiles_1_22
+  - first:
+      213: 701563159796948454
+    second: world_tiles_1_23
+  - first:
+      213: -5247479006406179539
+    second: world_tiles_1_24
+  - first:
+      213: 8494413652858011635
+    second: world_tiles_1_25
+  - first:
+      213: -3233169723813055622
+    second: world_tiles_1_26
+  - first:
+      213: -6884054386981478258
+    second: world_tiles_1_27
+  - first:
+      213: 7353614383141814451
+    second: world_tiles_1_28
+  - first:
+      213: -1672650707015953817
+    second: world_tiles_1_29
+  - first:
+      213: 7843116749942051144
+    second: world_tiles_1_30
+  - first:
+      213: -3147188165601931836
+    second: world_tiles_1_31
+  - first:
+      213: -6871146128028445498
+    second: world_tiles_1_32
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: world_tiles_1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 390
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35c819ed30875d0b0800000000000000
+      internalID: -5704521394980549549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_1
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 390
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a826bae0cfd7153a0800000000000000
+      internalID: -6678418250882391414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_2
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 390
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20ac6b2bdcf76e3f0800000000000000
+      internalID: -871868956406265342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_3
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 390
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8050b7893b615050800000000000000
+      internalID: 5787524890981585034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 358
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8ef5a0f3aa165700800000000000000
+      internalID: 528639297682013838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_5
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 358
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62c6461c09a2d2570800000000000000
+      internalID: 8443451677597789222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_6
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 358
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ea6b9780783b9ad0800000000000000
+      internalID: -2694497896088507673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_7
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 358
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c16518ec202714360800000000000000
+      internalID: 7152123039621142044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_8
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 358
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66eb4d324aa9d7fd0800000000000000
+      internalID: -2342546201396330906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_9
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 358
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1223c8fad8f3a0200800000000000000
+      internalID: 146999815611101729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_10
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 361
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b92fb1ef16302330800000000000000
+      internalID: 3684004005748353461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 326
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14c435534283f1480800000000000000
+      internalID: -8926354208260404159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_12
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 326
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2adf89d6eb9bc820800000000000000
+      internalID: 2939614597584247339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_13
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 329
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8efff819944b46750800000000000000
+      internalID: 6297356407038541800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 294
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5ffd05b02b0c04f0800000000000000
+      internalID: -861301193630154915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_15
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 294
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce1e439c97ac31a90800000000000000
+      internalID: -7344303942895607316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_16
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 294
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a35889aea40b42d0800000000000000
+      internalID: -3293533554276281436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_17
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 298
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 692ecb741b65d5250800000000000000
+      internalID: 5934995203356942998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 262
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f98879485368e1a00800000000000000
+      internalID: 729167754096511135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_19
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 262
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c3a4ead9438fb000800000000000000
+      internalID: 53906073780003782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_20
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 262
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4c8b32819b106820800000000000000
+      internalID: 2909355671050488909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_21
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 266
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 836d7127665d4e250800000000000000
+      internalID: 5973133641777665592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 230
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebf5c1a8bb2a59830800000000000000
+      internalID: 4077343964013551550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_23
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 230
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ed923f0af37cb900800000000000000
+      internalID: 701563159796948454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_24
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 230
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2507d065a53d27b0800000000000000
+      internalID: -5247479006406179539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_25
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 230
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ff74d1463832e570800000000000000
+      internalID: 8494413652858011635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_26
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 234
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a73339924497123d0800000000000000
+      internalID: -3233169723813055622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 198
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e80ef71220de670a0800000000000000
+      internalID: -6884054386981478258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_28
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 198
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b00f5202594d0660800000000000000
+      internalID: 7353614383141814451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_29
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 198
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76212074b0d89c8e0800000000000000
+      internalID: -1672650707015953817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_30
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 198
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8415634212958dc60800000000000000
+      internalID: 7843116749942051144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_31
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 198
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cdcbf3b901f254d0800000000000000
+      internalID: -3147188165601931836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tiles_1_32
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 152
+        width: 66
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c4501f5009c4a0a0800000000000000
+      internalID: -6871146128028445498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      world_tiles_1_0: -5704521394980549549
+      world_tiles_1_1: -6678418250882391414
+      world_tiles_1_10: 3684004005748353461
+      world_tiles_1_11: -8926354208260404159
+      world_tiles_1_12: 2939614597584247339
+      world_tiles_1_13: 6297356407038541800
+      world_tiles_1_14: -861301193630154915
+      world_tiles_1_15: -7344303942895607316
+      world_tiles_1_16: -3293533554276281436
+      world_tiles_1_17: 5934995203356942998
+      world_tiles_1_18: 729167754096511135
+      world_tiles_1_19: 53906073780003782
+      world_tiles_1_2: -871868956406265342
+      world_tiles_1_20: 2909355671050488909
+      world_tiles_1_21: 5973133641777665592
+      world_tiles_1_22: 4077343964013551550
+      world_tiles_1_23: 701563159796948454
+      world_tiles_1_24: -5247479006406179539
+      world_tiles_1_25: 8494413652858011635
+      world_tiles_1_26: -3233169723813055622
+      world_tiles_1_27: -6884054386981478258
+      world_tiles_1_28: 7353614383141814451
+      world_tiles_1_29: -1672650707015953817
+      world_tiles_1_3: 5787524890981585034
+      world_tiles_1_30: 7843116749942051144
+      world_tiles_1_31: -3147188165601931836
+      world_tiles_1_32: -6871146128028445498
+      world_tiles_1_4: 528639297682013838
+      world_tiles_1_5: 8443451677597789222
+      world_tiles_1_6: -2694497896088507673
+      world_tiles_1_7: 7152123039621142044
+      world_tiles_1_8: -2342546201396330906
+      world_tiles_1_9: 146999815611101729
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

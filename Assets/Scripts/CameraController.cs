@@ -17,7 +17,9 @@ public class CameraController: MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = Player.I.transform.position * (1f - scopeBias) + cam.ScreenToWorldPoint(Mouse.current.position.value) * scopeBias;
+        var mousePosOffset = Mouse.current.position.ReadValue() - new Vector2(Screen.width / 2f, Screen.height / 2f);
+        mousePosOffset /= Screen.height / 2f; // Normalize to viewport coordinates
+        transform.position = Player.I.transform.position + (Vector3)mousePosOffset * scopeBias;
         var halfViewport = (cam.orthographicSize * cam.aspect);
         var left = Level.I.tilemap.GetCellCenterWorld(new Vector3Int(-Level.I.width / 2, 0, 0)).x;
         var right = Level.I.tilemap.GetCellCenterWorld(new Vector3Int(Level.I.width / 2 - 1, 0, 0)).x;

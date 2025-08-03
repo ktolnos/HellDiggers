@@ -77,11 +77,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f121e5e62a2946948a33511c460cc6da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 5
   damage: 50
-  jumpForce: 13
+  jumpForce: 18
   jumpReload: 1
   stoppingDistance: 2
+  attackDistance: 2
   attackDelay: 0.7
   bevaviorType: 1
   attackType: 1

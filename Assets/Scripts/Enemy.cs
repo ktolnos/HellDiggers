@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public float jumpForce;
     public float jumpReload;
     public float stoppingDistance;
+    public float attackDistance;
     public float attackDelay = 0.7f;
     public BevaviorType bevaviorType;
     public AttackType attackType;
@@ -51,20 +52,21 @@ public class Enemy : MonoBehaviour
             Vector3 gunVector = player.transform.position - gun.transform.position;
             transform.localEulerAngles = Vector3.back * (Mathf.Atan2(gunVector.x, gunVector.y) * Mathf.Rad2Deg - 90f);
         }
-        if ((player.transform.position - transform.position).magnitude < stoppingDistance)
+
+        if ((player.transform.position - transform.position).magnitude < attackDistance)
         {
             StartCoroutine(Attack(attackDelay));
         }
-        else
+        if ((player.transform.position - transform.position).magnitude > stoppingDistance)
         {
             if (bevaviorType == BevaviorType.Follow)
             {
                 Follow();
             }
     
-            if (bevaviorType == BevaviorType.Stray)
+            if (bevaviorType == BevaviorType.Stay)
             {
-                Stray();
+                Stay();
             }
     
             if (bevaviorType == BevaviorType.Fly)
@@ -107,29 +109,11 @@ public class Enemy : MonoBehaviour
         animator.spriteRenderer.flipX = (rb.linearVelocity.x < 0)^invertSprite;
     }
 
-    void Stray()
+    void Stay()
     {
-        if (Level.I.tilemap.HasTile(Level.I.tilemap.WorldToCell(transform.position) + direction) && Level.I.tilemap.HasTile(Level.I.tilemap.WorldToCell(transform.position) - direction))
-        {
-            rb.linearVelocityX = 0;
-        }
-        else if (Level.I.tilemap.HasTile(Level.I.tilemap.WorldToCell(transform.position) + 2*direction) && Level.I.tilemap.HasTile(Level.I.tilemap.WorldToCell(transform.position) - direction))
-        {
-            rb.linearVelocityX = 0;
-        }
-        else if (!Level.I.tilemap.HasTile(Level.I.tilemap.WorldToCell(transform.position) - 2*direction + Vector3Int.down) && !Level.I.tilemap.HasTile(Level.I.tilemap.WorldToCell(transform.position) + direction + Vector3Int.down))
-        {
-            rb.linearVelocityX = 0;
-        }
-        else if (!Level.I.tilemap.HasTile(Level.I.tilemap.WorldToCell(transform.position) + direction) && Level.I.tilemap.HasTile(Level.I.tilemap.WorldToCell(transform.position) + direction + Vector3Int.down))
-        {
-            rb.linearVelocityX = direction.x*speed;
-        }
-        else
-        {
-            direction.x = -direction.x;
-        }
-        animator.spriteRenderer.flipX = (rb.linearVelocity.x < 0)^invertSprite;
+        rb.linearVelocityX = 0;
+        Vector3 gunVector = player.transform.position - gun.transform.position;
+        animator.spriteRenderer.flipX = (gunVector.x < 0)^invertSprite;
     }
 
     void Fly()
@@ -180,7 +164,7 @@ public class Enemy : MonoBehaviour
 
 public enum BevaviorType
 {
-    Stray,
+    Stay,
     Follow,
     Fly
 }

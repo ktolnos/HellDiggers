@@ -55,7 +55,8 @@ MonoBehaviour:
   damage: 5
   jumpForce: 13
   jumpReload: 2
-  stoppingDistance: 8
+  stoppingDistance: 4
+  attackDistance: 9
   attackDelay: 1
   bevaviorType: 2
   attackType: 0

@@ -43,7 +43,7 @@ Material:
     m_Floats:
     - _ColorMask: 15
     - _OutlineThickness: 0.4
-    - _Progress: 0
+    - _Progress: 0.7752638
     - _Speed: 1
     - _Stencil: 0
     - _StencilComp: 8

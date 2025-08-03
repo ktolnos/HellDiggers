@@ -80,11 +80,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3.5
   damage: 5
-  jumpForce: 13
-  jumpReload: 2
-  stoppingDistance: 7
+  jumpForce: 15
+  jumpReload: 1
+  stoppingDistance: 3
+  attackDistance: 10
   attackDelay: 0.7
-  bevaviorType: 0
+  bevaviorType: 1
   attackType: 0
   enemyLookTowardsPlayer: 0
   attackCoolDown: 1

@@ -55,6 +55,7 @@ MonoBehaviour:
   jumpForce: 13
   jumpReload: 2
   stoppingDistance: 2
+  attackDistance: 2
   attackDelay: 1
   bevaviorType: 2
   attackType: 1

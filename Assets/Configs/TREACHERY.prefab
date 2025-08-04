@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6701397797751504125, guid: ea900fa6aa0a2254db8dd501158c9dc7, type: 3}
+      propertyPath: boss
+      value: 
+      objectReference: {fileID: 6887165084737152310, guid: eedf8be3953065b4eb3a51f03a1e32c5, type: 3}
+    - target: {fileID: 6701397797751504125, guid: ea900fa6aa0a2254db8dd501158c9dc7, type: 3}
       propertyPath: tileData.Array.data[0].tile
       value: 
       objectReference: {fileID: 11400000, guid: 7f7f50836711ea84595705950de22f82, type: 2}
@@ -35,6 +39,10 @@ PrefabInstance:
     - target: {fileID: 6701397797751504125, guid: ea900fa6aa0a2254db8dd501158c9dc7, type: 3}
       propertyPath: tileData.Array.data[6].dropChance
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701397797751504125, guid: ea900fa6aa0a2254db8dd501158c9dc7, type: 3}
+      propertyPath: tileData.Array.data[1].spawnChance
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6701397797751504125, guid: ea900fa6aa0a2254db8dd501158c9dc7, type: 3}
       propertyPath: tileData.Array.data[5].spawnChance

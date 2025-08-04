@@ -16,6 +16,8 @@ public class PlayerDeath: MonoBehaviour, IDeathHandler
     private float startRadius;
     private float startGlobalIntensity;
     private bool isDying = false;
+
+    private int startGold = 0;
     
     private void Awake()
     {
@@ -62,6 +64,7 @@ public class PlayerDeath: MonoBehaviour, IDeathHandler
         Player.I.Revive();
         Player.I.rb.bodyType = RigidbodyType2D.Dynamic;
         Player.I.rb.linearVelocity = Vector2.zero;
+        startGold = Player.I.money;
     }
 
     private IEnumerator DeathAnimation()
@@ -88,5 +91,6 @@ public class PlayerDeath: MonoBehaviour, IDeathHandler
         Player.I.health.currentHealth = 0;
         upgradeUI.SetActive(true);
         Level.I.Clear();
+        HighScoreManager.Instance.UpdateHighScore(Player.I.money - startGold);
     }
 }

@@ -894,7 +894,7 @@ MonoBehaviour:
     minor assets were taken from Brackeys' Platformer Bundle\n\n<b>Code</b>: evgeek,
     maxivitop\n\n<b>Sounds</b>:  Downloaded from https://freesound.org/\nincluding
     sounds by Edimar_Ramide,  ajanhallinta, LukeSharples, GokhanBiyik, LloydEvans09,
-    LeMudCrab \n\n<b>Soundtrack</b>:  TODO"
+    LeMudCrab \n\n<b>Soundtracks</b>:  \nKevin MacLeod (incompetech.com)\r\n\r\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7ce3ee4c2d0e9bf4aa7fb60e5e0dd0ee, type: 2}
   m_sharedMaterial: {fileID: 6396139839806110228, guid: 7ce3ee4c2d0e9bf4aa7fb60e5e0dd0ee, type: 2}

@@ -63,6 +63,7 @@ public class Player : MonoBehaviour
     public AudioSource jetAudio;
     public AudioClip groundPoundSound;
     public AudioClip groundPoundStartSound;
+    public GameObject groundPoundEffectPrefab;
     
     private void Awake()
     {
@@ -242,9 +243,10 @@ public class Player : MonoBehaviour
             {
                 Level.I.Explode(transform.position, 
                     radius:stats.groundPound * 3f, 
-                    enemyDamage:stats.groundPound * 2f,
-                    groundDamage:stats.groundPound,
+                    enemyDamage:stats.groundPound * 20f,
+                    groundDamage:stats.groundPound * 20f,
                     DamageDealerType.Player);
+                Destroy(Instantiate(groundPoundEffectPrefab, transform.position, Quaternion.identity, Level.I.spawnedObjectsParent), 2f);
                 isPounding = false;
                 SoundManager.I.PlaySfx(groundPoundSound, transform.position, 10f);
             }

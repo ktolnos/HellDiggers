@@ -10,6 +10,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2053792760603664003, guid: 45cbd6738b3e43c49a0e56f06d29d5ba, type: 3}
       propertyPath: m_Name
+      value: 5_WRATH
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191764017992561770, guid: 45cbd6738b3e43c49a0e56f06d29d5ba, type: 3}
+      propertyPath: circleName
       value: WRATH
       objectReference: {fileID: 0}
     - target: {fileID: 2191764017992561770, guid: 45cbd6738b3e43c49a0e56f06d29d5ba, type: 3}
@@ -46,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: c82d6472702df24488a0f44a9a92e2ce, type: 2}
     - target: {fileID: 2191764017992561770, guid: 45cbd6738b3e43c49a0e56f06d29d5ba, type: 3}
       propertyPath: tileData.Array.data[0].maxHp
-      value: 16
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 2191764017992561770, guid: 45cbd6738b3e43c49a0e56f06d29d5ba, type: 3}
       propertyPath: tileData.Array.data[7].maxHp

@@ -48,13 +48,14 @@ public class EnemySpawner : MonoBehaviour
 
         if (Time.time - timeOfLastSpawn > (1f / hardometer) / (Mathf.Pow(timeSinceStart, 2f)))
         {
-            Spawner(randomSpawnDelayMax, enemyAmount, portalDelay, spawnRadius, false);
+            Spawner(false);
             timeOfLastSpawn = Time.time;
         }
     }
 
-    public void Spawner(float spawnDelay, int amount, float portalDelay, int spawnRadius, bool startSpawn)
+    public void Spawner(bool startSpawn)
     {
+        var amount = enemyAmount;
         if (startSpawn)
         {
             amount = numPrespawnedEnemies[Level.I.currentCircleIndex];
@@ -62,11 +63,11 @@ public class EnemySpawner : MonoBehaviour
 
         for (int i = 0; i < amount; i++)
         {
-            StartCoroutine(Spawn(spawnDelay, portalDelay, spawnRadius, startSpawn));
+            StartCoroutine(Spawn(startSpawn));
         }
     }
 
-    public IEnumerator Spawn(float spawnDelay, float portalDelay, int spawnRadius, bool startSpawn)
+    public IEnumerator Spawn(bool startSpawn)
     {
         bool foundLocation = false;
         Vector3Int location = Vector3Int.zero;
@@ -81,20 +82,21 @@ public class EnemySpawner : MonoBehaviour
                 var right = Level.I.width / 2f - 5f;
                 var height = -Level.I.height;
                 tryPosition = new Vector3Int(Mathf.RoundToInt(UnityEngine.Random.Range(left, right)),
-                    Mathf.RoundToInt(UnityEngine.Random.Range(-spawnRadius - 5f, height)), 0);
+                    Mathf.RoundToInt(UnityEngine.Random.Range(0, height)), 0);
             }
             else
             {
+                var playerPos = Level.I.tilemap.WorldToCell(Player.I.gameObject.transform.position);
                 tryPosition = new Vector3Int(
                     UnityEngine.Random.Range(
-                        -spawnRadius + Level.I.tilemap.WorldToCell(Player.I.gameObject.transform.position).x,
-                        spawnRadius + Level.I.tilemap.WorldToCell(Player.I.gameObject.transform.position).x),
+                        -spawnRadius + playerPos.x,
+                        spawnRadius + playerPos.x),
                     UnityEngine.Random.Range(
-                        -spawnRadius + Level.I.tilemap.WorldToCell(Player.I.gameObject.transform.position).y,
-                        spawnRadius + Level.I.tilemap.WorldToCell(Player.I.gameObject.transform.position).y), 0);
+                        -spawnRadius + playerPos.y,
+                        spawnRadius * 2 + playerPos.y), 0);
             }
 
-            if (!Level.I.tilemap.HasTile(Level.I.tilemap.WorldToCell(tryPosition)))
+            if (!Level.I.tilemap.HasTile(tryPosition))
             {
                 location = tryPosition;
                 foundLocation = true;
@@ -110,7 +112,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 if (!startSpawn)
                 {
-                    yield return new WaitForSeconds(UnityEngine.Random.Range(0f, spawnDelay));
+                    yield return new WaitForSeconds(UnityEngine.Random.Range(0f, randomSpawnDelayMax));
                     Destroy(
                         Instantiate(portal, Level.I.tilemap.GetCellCenterWorld(location), Quaternion.identity,
                             Level.I.spawnedObjectsParent), portalDelay);

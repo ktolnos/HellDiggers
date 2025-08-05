@@ -117,6 +117,7 @@ MonoBehaviour:
   animator: {fileID: 8002352368254877654}
   invertSprite: 0
   aimGun: 1
+  isBoss: 0
   beatSound: {fileID: 8300000, guid: 7f1c4732b98cb0741aff7991e7e6f1f6, type: 3}
 --- !u!114 &2356477887498331919
 MonoBehaviour:
@@ -167,7 +168,7 @@ MonoBehaviour:
   animation:
     frames: []
     fps: 0
-  autoplay: 0
+  autoplay: 1
   loop: 1
   spriteRenderer: {fileID: 2916147809689092128}
 --- !u!70 &1195731185210220517

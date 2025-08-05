@@ -10,6 +10,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 108854331386453305, guid: 0a8c85cb78b37c94cb1ba571d892345d, type: 3}
       propertyPath: m_Name
+      value: 2_LUST
+      objectReference: {fileID: 0}
+    - target: {fileID: 245593588932310992, guid: 0a8c85cb78b37c94cb1ba571d892345d, type: 3}
+      propertyPath: circleName
       value: LUST
       objectReference: {fileID: 0}
     - target: {fileID: 245593588932310992, guid: 0a8c85cb78b37c94cb1ba571d892345d, type: 3}
@@ -46,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: fab6b854c13ba394bbae3b756cc4e8a3, type: 2}
     - target: {fileID: 245593588932310992, guid: 0a8c85cb78b37c94cb1ba571d892345d, type: 3}
       propertyPath: tileData.Array.data[0].maxHp
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 245593588932310992, guid: 0a8c85cb78b37c94cb1ba571d892345d, type: 3}
       propertyPath: tileData.Array.data[0].spawnChance

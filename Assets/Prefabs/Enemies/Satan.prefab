@@ -362,7 +362,7 @@ MonoBehaviour:
   animation:
     frames: []
     fps: 0
-  autoplay: 0
+  autoplay: 1
   loop: 1
   spriteRenderer: {fileID: 4782767171181684939}
 --- !u!70 &1195731185210220517

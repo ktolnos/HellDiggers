@@ -10,6 +10,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6358955450150693170, guid: 1e1782e1b2b89f447aa43785f8d779e1, type: 3}
       propertyPath: m_Name
+      value: 3_GLUTTONY
+      objectReference: {fileID: 0}
+    - target: {fileID: 6545331332269278171, guid: 1e1782e1b2b89f447aa43785f8d779e1, type: 3}
+      propertyPath: circleName
       value: GLUTTONY
       objectReference: {fileID: 0}
     - target: {fileID: 6545331332269278171, guid: 1e1782e1b2b89f447aa43785f8d779e1, type: 3}
@@ -46,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 7fa302cf68c6d2e4499c051e598eccc4, type: 2}
     - target: {fileID: 6545331332269278171, guid: 1e1782e1b2b89f447aa43785f8d779e1, type: 3}
       propertyPath: tileData.Array.data[0].maxHp
-      value: 6
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6545331332269278171, guid: 1e1782e1b2b89f447aa43785f8d779e1, type: 3}
       propertyPath: tileData.Array.data[7].maxHp

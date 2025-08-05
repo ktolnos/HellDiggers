@@ -165,14 +165,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f121e5e62a2946948a33511c460cc6da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hardness: 2
+  hardness: 20
   speed: 4.5
   damage: 5
   jumpForce: 110
   jumpReload: 0.7
-  stoppingDistance: 2
-  attackDistance: 3
-  attackRadius: 2
+  stoppingDistance: 1
+  attackDistance: 2
+  attackRadius: 1
   attackDelay: 0.7
   bevaviorType: 1
   attackType: 1
@@ -200,6 +200,7 @@ MonoBehaviour:
   animator: {fileID: 7893958323361135372}
   invertSprite: 0
   aimGun: 1
+  isBoss: 0
   beatSound: {fileID: 0}
 --- !u!114 &5575930699715242445
 MonoBehaviour:
@@ -213,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53980114da74a3c93d4e48995964951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 5
   currentHealth: 0
   isPlayer: 0
   isInvulnerable: 0

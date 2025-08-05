@@ -50,6 +50,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4130076727122603794, guid: 23897665ccbd3ef4ba25c2c2ea8854ad, type: 3}
       propertyPath: m_Name
+      value: 6_HERESY
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303970680763909627, guid: 23897665ccbd3ef4ba25c2c2ea8854ad, type: 3}
+      propertyPath: circleName
       value: HERESY
       objectReference: {fileID: 0}
     - target: {fileID: 4303970680763909627, guid: 23897665ccbd3ef4ba25c2c2ea8854ad, type: 3}
@@ -80,6 +84,10 @@ PrefabInstance:
       propertyPath: tileData.Array.data[7].tile
       value: 
       objectReference: {fileID: 11400000, guid: 83a99bc70d5c23e43b2b2eb5fdd44654, type: 2}
+    - target: {fileID: 4303970680763909627, guid: 23897665ccbd3ef4ba25c2c2ea8854ad, type: 3}
+      propertyPath: tileData.Array.data[0].maxHp
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 4303970680763909627, guid: 23897665ccbd3ef4ba25c2c2ea8854ad, type: 3}
       propertyPath: tileData.Array.data[0].spawnChance
       value: 0

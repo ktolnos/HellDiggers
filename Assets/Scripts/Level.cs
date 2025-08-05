@@ -24,7 +24,6 @@ public class Level : MonoBehaviour
     public int currentCircleIndex = 0;
     public float timeOfLevelStart;
     private float transitionHeight;
-    public int startEnemyAmount;
     public Image transitionPanel;
     public int bossHeight = 20;
     public TextMeshProUGUI circleText;
@@ -64,7 +63,7 @@ public class Level : MonoBehaviour
     private void GenerateLevel(HellCircleSettings circleConfig)
     {
         Clear();
-        EnemySpawner.I.Spawner(0f, 0, 0f, 40, true);
+        EnemySpawner.I.Spawner(true);
 
         var bossTiles = circleConfig.boss == null ? 0 : width;
         var totalTiles = width * height + wallsHeight * 4 + bossTiles;
@@ -317,7 +316,7 @@ public class Level : MonoBehaviour
         isLevelTransition = true;
         currentCircleIndex++;
         currentCircleIndex = Mathf.Clamp(currentCircleIndex, 0, circles.Length - 1);
-        circleText.text = circles[currentCircleIndex].name;
+        circleText.text = circles[currentCircleIndex].circleName;
         transitionPanel.gameObject.SetActive(true);
         var animationDuration = 0.5f;
         circleText.DOFade(1f, animationDuration);

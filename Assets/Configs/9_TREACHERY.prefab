@@ -13,6 +13,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6887165084737152310, guid: eedf8be3953065b4eb3a51f03a1e32c5, type: 3}
     - target: {fileID: 6701397797751504125, guid: ea900fa6aa0a2254db8dd501158c9dc7, type: 3}
+      propertyPath: circleName
+      value: TREACHERY
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701397797751504125, guid: ea900fa6aa0a2254db8dd501158c9dc7, type: 3}
       propertyPath: tileData.Array.data[0].tile
       value: 
       objectReference: {fileID: 11400000, guid: 7f7f50836711ea84595705950de22f82, type: 2}
@@ -36,6 +40,10 @@ PrefabInstance:
       propertyPath: tileData.Array.data[7].tile
       value: 
       objectReference: {fileID: 11400000, guid: 0a57e32021954e941bb1994928ca5e28, type: 2}
+    - target: {fileID: 6701397797751504125, guid: ea900fa6aa0a2254db8dd501158c9dc7, type: 3}
+      propertyPath: tileData.Array.data[0].maxHp
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 6701397797751504125, guid: ea900fa6aa0a2254db8dd501158c9dc7, type: 3}
       propertyPath: tileData.Array.data[6].dropChance
       value: 1
@@ -126,7 +134,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 6aac9220c09db8a46bf84714fbb55065, type: 2}
     - target: {fileID: 6911364803746403860, guid: ea900fa6aa0a2254db8dd501158c9dc7, type: 3}
       propertyPath: m_Name
-      value: TREACHERY
+      value: 9_TREACHERY
       objectReference: {fileID: 0}
     - target: {fileID: 7382034417215186067, guid: ea900fa6aa0a2254db8dd501158c9dc7, type: 3}
       propertyPath: m_LocalPosition.x

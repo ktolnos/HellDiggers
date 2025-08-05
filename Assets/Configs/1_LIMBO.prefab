@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4042793114852519870}
   - component: {fileID: 245593588932310992}
   m_Layer: 0
-  m_Name: LIMBO
+  m_Name: 1_LIMBO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1758a309424d8da820e3ad577586f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  circleName: LIMBO
   tileData:
   - name: Normal
     tile: {fileID: 11400000, guid: afa8252c764dbfe45af6a1608da2b011, type: 2}
@@ -92,7 +93,7 @@ MonoBehaviour:
   - name: Iron
     tile: {fileID: 11400000, guid: 22028242e3079ff44982f0313acc99ef, type: 2}
     variants: []
-    maxHp: 15
+    maxHp: 20
     spawnChance: 1
     explosionRadius: 0
     explosionDamage: 0
@@ -106,7 +107,7 @@ MonoBehaviour:
   - name: Gold
     tile: {fileID: 11400000, guid: 1041fa3160d56554bbb862e7549258b0, type: 2}
     variants: []
-    maxHp: 50
+    maxHp: 100
     spawnChance: 0
     explosionRadius: 0
     explosionDamage: 0
@@ -120,7 +121,7 @@ MonoBehaviour:
   - name: Emerald
     tile: {fileID: 11400000, guid: 85180b315cdd24642a16ab3fe6fc88ec, type: 2}
     variants: []
-    maxHp: 100
+    maxHp: 1000
     spawnChance: 0
     explosionRadius: 0
     explosionDamage: 0
@@ -135,7 +136,7 @@ MonoBehaviour:
   - name: Magnesium
     tile: {fileID: 11400000, guid: f8cbc58b950a1834a92ca410ab9767b8, type: 2}
     variants: []
-    maxHp: 300
+    maxHp: 10000
     spawnChance: 0
     explosionRadius: 0
     explosionDamage: 0

@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f121e5e62a2946948a33511c460cc6da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hardness: 50
+  hardness: 60
   speed: 200
   damage: 50
   jumpForce: 13
@@ -86,6 +86,7 @@ MonoBehaviour:
   animator: {fileID: 6192451480533484078}
   invertSprite: 1
   aimGun: 1
+  isBoss: 0
   beatSound: {fileID: 8300000, guid: 7f1c4732b98cb0741aff7991e7e6f1f6, type: 3}
 --- !u!114 &6326658846326912912
 MonoBehaviour:

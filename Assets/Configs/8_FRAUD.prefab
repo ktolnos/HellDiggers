@@ -49,6 +49,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4366304315878596492, guid: 2d1a06473fe3a0c4c85c183c7c31326f, type: 3}
+      propertyPath: circleName
+      value: FRAUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 4366304315878596492, guid: 2d1a06473fe3a0c4c85c183c7c31326f, type: 3}
       propertyPath: tileData.Array.data[0].tile
       value: 
       objectReference: {fileID: 11400000, guid: f5e1c7ac323d8a342b28489920ea4ab7, type: 2}
@@ -77,12 +81,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 693d6e77989dc47419e60ad28a7ec5ff, type: 2}
     - target: {fileID: 4366304315878596492, guid: 2d1a06473fe3a0c4c85c183c7c31326f, type: 3}
+      propertyPath: tileData.Array.data[0].maxHp
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 4366304315878596492, guid: 2d1a06473fe3a0c4c85c183c7c31326f, type: 3}
       propertyPath: tileData.Array.data[6].dropChance
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4366304315878596492, guid: 2d1a06473fe3a0c4c85c183c7c31326f, type: 3}
       propertyPath: tileData.Array.data[1].spawnChance
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4366304315878596492, guid: 2d1a06473fe3a0c4c85c183c7c31326f, type: 3}
       propertyPath: tileData.Array.data[2].spawnChance
@@ -98,11 +106,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4366304315878596492, guid: 2d1a06473fe3a0c4c85c183c7c31326f, type: 3}
       propertyPath: tileData.Array.data[5].spawnChance
-      value: 90
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 4366304315878596492, guid: 2d1a06473fe3a0c4c85c183c7c31326f, type: 3}
       propertyPath: tileData.Array.data[6].spawnChance
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4366304315878596492, guid: 2d1a06473fe3a0c4c85c183c7c31326f, type: 3}
       propertyPath: 'tileData.Array.data[0].variants.Array.data[0]'
@@ -186,7 +194,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 6493986f5be0be84b94cc00ea9bf9932, type: 2}
     - target: {fileID: 4499666421559850341, guid: 2d1a06473fe3a0c4c85c183c7c31326f, type: 3}
       propertyPath: m_Name
-      value: FRAUD
+      value: 8_FRAUD
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6679535857576739097, guid: 743d2752cf5fa7e4e9b613fd791d0c2c, type: 3}
+      propertyPath: circleName
+      value: VIOLENCE
+      objectReference: {fileID: 0}
+    - target: {fileID: 6679535857576739097, guid: 743d2752cf5fa7e4e9b613fd791d0c2c, type: 3}
       propertyPath: noiseThreshold
       value: -0.6
       objectReference: {fileID: 0}
@@ -40,6 +44,10 @@ PrefabInstance:
       propertyPath: tileData.Array.data[7].tile
       value: 
       objectReference: {fileID: 11400000, guid: 62848bb006f00424caf0726710038f91, type: 2}
+    - target: {fileID: 6679535857576739097, guid: 743d2752cf5fa7e4e9b613fd791d0c2c, type: 3}
+      propertyPath: tileData.Array.data[0].maxHp
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 6679535857576739097, guid: 743d2752cf5fa7e4e9b613fd791d0c2c, type: 3}
       propertyPath: tileData.Array.data[1].spawnChance
       value: 10
@@ -134,7 +142,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 38858ef9b45d8ab469f22dac22d82871, type: 2}
     - target: {fileID: 6798260708266585072, guid: 743d2752cf5fa7e4e9b613fd791d0c2c, type: 3}
       propertyPath: m_Name
-      value: VIOLENCE
+      value: 7_VIOLENCE
       objectReference: {fileID: 0}
     - target: {fileID: 7476008931355597175, guid: 743d2752cf5fa7e4e9b613fd791d0c2c, type: 3}
       propertyPath: m_LocalPosition.x

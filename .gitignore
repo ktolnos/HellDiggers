@@ -72,3 +72,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 /Recordings
+/Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans\ SDF\ -\ Fallback.asset
+/Assets/Fonts/SinisterSunday-9Yw07\ SDF.asset
+/Assets/Fonts/PakPresiden-zrm53\ Bitmap.asset
+

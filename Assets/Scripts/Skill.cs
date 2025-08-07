@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -21,11 +22,13 @@ public class Skill : MonoBehaviour
     public TextMeshProUGUI priceText;
     public TextMeshProUGUI descriptionText;
     public bool hasDescription = false;
-    private int currentLevel = 0;
+    private int CurrentLevel => (int) myStatField.GetValue(Player.I.stats);
     private Player player;
     private Button button;
     private Image image;
     public List<int> prices;
+    private FieldInfo myStatField;
+    
     void Start()
     {
         player = Player.I;
@@ -38,27 +41,41 @@ public class Skill : MonoBehaviour
         {
             descriptionText.gameObject.SetActive(false);
         }
+        
+        foreach (var fieldInfo in typeof(Stats).GetFields())
+        {
+            if (fieldInfo.GetValue(stats) is > 0)
+            {
+                if (myStatField != null)
+                {
+                    Debug.LogWarning("Multiple stat fields found in Stats class: " + myStatField.Name + " and " + fieldInfo.Name);
+                    break;
+                }
+                myStatField = fieldInfo;
+            }
+        }
     }
+    
     void AddStats()
     {
-        if (currentLevel >= prices.Count) return;
+        if (CurrentLevel >= prices.Count) return;
+        Player.I.money -= prices[CurrentLevel];
         player.stats += stats;
-        Player.I.money -= prices[currentLevel];
-        currentLevel++;
+        SaveManager.I.SaveGame();
     }
 
     private void Update()
     {
-        if ((skillParent == null || skillParent.currentLevel > 0) && currentLevel < prices.Count)
+        if ((skillParent == null || skillParent.CurrentLevel > 0) && CurrentLevel < prices.Count)
         {
             button.interactable = true;
-            var canAfford = prices[currentLevel] < Player.I.money;
+            var canAfford = prices[CurrentLevel] < Player.I.money;
             image.color = canAfford ? unlockedColor : tooExpensiveColor;
             button.interactable = canAfford;
         }else
         {
             button.interactable = false;
-            if (currentLevel == prices.Count)
+            if (CurrentLevel == prices.Count)
             {
                 image.color = maxOutColor;
             }
@@ -68,8 +85,8 @@ public class Skill : MonoBehaviour
             }
         }
         
-        lvlText.text = currentLevel + "/" + prices.Count;
-        priceText.text = currentLevel < prices.Count ? prices[currentLevel].ToString() : "Maxed";
+        lvlText.text = CurrentLevel + "/" + prices.Count;
+        priceText.text = CurrentLevel < prices.Count ? prices[CurrentLevel].ToString() : "Maxed";
     }
 
     public void ShowPopup()

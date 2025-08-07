@@ -81,6 +81,7 @@ public class PlayerDeath: MonoBehaviour, IDeathHandler
         }
         SetPlayerDead();
         isDying = false;
+        SaveManager.I.SaveGame();
     }
 
     private void SetPlayerDead()
@@ -91,6 +92,6 @@ public class PlayerDeath: MonoBehaviour, IDeathHandler
         Player.I.health.currentHealth = 0;
         upgradeUI.SetActive(true);
         Level.I.Clear();
-        HighScoreManager.Instance.UpdateHighScore(Player.I.money - startGold);
+        HighScoreManager.I.UpdateHighScore(Player.I.money - startGold);
     }
 }

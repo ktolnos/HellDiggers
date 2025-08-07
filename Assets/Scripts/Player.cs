@@ -189,7 +189,7 @@ public class Player : MonoBehaviour
             health.isInvulnerable = false; // Reset invulnerability after dash
         }
         
-        if (groundPoundAction.WasPerformedThisFrame() && !isGrounded && stats.groundPound > 0f && !isPounding)
+        if (groundPoundAction.WasPerformedThisFrame() && !isGrounded && stats.groundPound > 0 && !isPounding)
         {
             rb.linearVelocityY = -jumpForce * 2f; // Increase downward force for ground pound
             isPounding = true;

@@ -1,21 +1,21 @@
+using System;
 using TMPro;
 using UnityEngine;
 
 public class HighScoreManager : MonoBehaviour
 {
-    public static HighScoreManager Instance;
-    private TextMeshProUGUI highscoreText;
+    public static HighScoreManager I;
+    public TextMeshProUGUI highScoreText;
     
-    private int highScore;
-    private int latestScore;
-    private int previousScore;
+    public int highScore;
+    public int latestScore;
+    public int previousScore;
     
     private void Awake()
     {
-        highscoreText = GetComponent<TextMeshProUGUI>();
-        Instance = this;
+        I = this;
     }
-    
+
     public void UpdateHighScore(int score)
     {
         previousScore = latestScore;
@@ -25,7 +25,7 @@ public class HighScoreManager : MonoBehaviour
             highScore = latestScore;
         }
 
-        highscoreText.text = "Your latest income:\n\n"+ latestScore + 
+        highScoreText.text = "Your latest income:\n\n"+ latestScore + 
                              "\n\nYour previous income:\n\n" + previousScore + "\n\nYour best run:\n\n" + highScore;
     }
 }

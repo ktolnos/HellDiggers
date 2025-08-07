@@ -32,7 +32,7 @@ public class Gun: MonoBehaviour
     private float GetFireRate()
     {
         var statMult = bulletPrefab.isPlayerBullet ? 1f : 0f;
-        var fireRateStat = grenadeMode ? Player.I.stats.grenadeReloadSpeedUp : Player.I.stats.reloadSpeedUp;
+        float fireRateStat = grenadeMode ? Player.I.stats.grenadeReloadSpeedUp : Player.I.stats.reloadSpeedUp;
         fireRateStat *= statMult;
         var fireDelayUpgraded = fireDelay / (fireRateStat + 1f);
         return fireDelayUpgraded;

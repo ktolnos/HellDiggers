@@ -58,8 +58,12 @@ public class Skill : MonoBehaviour
     
     void AddStats()
     {
-        if (CurrentLevel >= prices.Count) return;
-        Player.I.money -= prices[CurrentLevel];
+        if (!GM.I.isFree)
+        {
+            if (CurrentLevel >= prices.Count) return;
+            GM.I.money -= prices[CurrentLevel];
+        }
+        
         player.stats += stats;
         SaveManager.I.SaveGame();
     }
@@ -69,8 +73,9 @@ public class Skill : MonoBehaviour
         if ((skillParent == null || skillParent.CurrentLevel > 0) && CurrentLevel < prices.Count)
         {
             button.interactable = true;
-            var canAfford = prices[CurrentLevel] < Player.I.money;
+            var canAfford = prices[CurrentLevel] < GM.I.money;
             image.color = canAfford ? unlockedColor : tooExpensiveColor;
+            canAfford |= GM.I.isFree; // Allow free upgrades
             button.interactable = canAfford;
         }else
         {

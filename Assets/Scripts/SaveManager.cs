@@ -33,7 +33,7 @@ public class SaveManager: MonoBehaviour
     {
         var saveState = new SaveState
         {
-            money = Player.I.money,
+            money = GM.I.money,
             stats = Player.I.stats,
             prevScore = HighScoreManager.I.previousScore,
             latestScore = HighScoreManager.I.latestScore,
@@ -62,7 +62,7 @@ public class SaveManager: MonoBehaviour
         }
         var json = System.IO.File.ReadAllText(loadPath);
         var saveState = JsonUtility.FromJson<SaveState>(json);
-        Player.I.money = saveState.money;
+        GM.I.money = saveState.money;
         Player.I.stats = saveState.stats;
         HighScoreManager.I.previousScore = saveState.prevScore;
         HighScoreManager.I.latestScore = saveState.latestScore;

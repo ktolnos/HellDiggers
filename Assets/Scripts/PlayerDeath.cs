@@ -64,7 +64,7 @@ public class PlayerDeath: MonoBehaviour, IDeathHandler
         Player.I.Revive();
         Player.I.rb.bodyType = RigidbodyType2D.Dynamic;
         Player.I.rb.linearVelocity = Vector2.zero;
-        startGold = Player.I.money;
+        startGold = GM.I.money;
     }
 
     private IEnumerator DeathAnimation()
@@ -92,6 +92,6 @@ public class PlayerDeath: MonoBehaviour, IDeathHandler
         Player.I.health.currentHealth = 0;
         upgradeUI.SetActive(true);
         Level.I.Clear();
-        HighScoreManager.I.UpdateHighScore(Player.I.money - startGold);
+        HighScoreManager.I.UpdateHighScore(GM.I.money - startGold);
     }
 }

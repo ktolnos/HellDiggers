@@ -292,7 +292,8 @@ public class Level : MonoBehaviour
         }
         RemoveTile(pos);
         SoundManager.I.PlaySfx(explosionSound, tilemap.GetCellCenterWorld(pos), 20f);
-        Explode(tilemap.CellToWorld(pos), tileData.explosionRadius, tileData.explosionDamage,  tileData.explosionDamage,  DamageDealerType.Environment);
+        Explode(tilemap.CellToWorld(pos), tileData.explosionRadius, tileData.explosionEnemyDamage, 
+            tileData.explosionDamage,  DamageDealerType.Environment);
     }
 
     private void RemoveTile(Vector3Int pos)

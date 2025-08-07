@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     public static Player I;
-    public int money;
     
     public SpriteAnimator.Animation walkAnimation;
     public SpriteAnimator.Animation idleAnimation;

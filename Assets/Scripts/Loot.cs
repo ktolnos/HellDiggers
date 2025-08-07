@@ -50,7 +50,7 @@ public class Loot : MonoBehaviour
             SoundManager.I.PlaySfx(collectSound, Player.I.transform.position);
         }
         Destroy(gameObject);
-        Player.I.money += money;
+        GM.I.money += money;
         Player.I.health.Heal(hp);
         
     }

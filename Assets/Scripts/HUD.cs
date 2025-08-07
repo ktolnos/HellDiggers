@@ -15,7 +15,7 @@ public class HUD: MonoBehaviour
 
     private void Update()
     {
-        moneyText.text = Player.I.money.ToString();
+        moneyText.text = GM.I.money.ToString();
         if (healthText != null)
         {
             healthText.text = Mathf.CeilToInt(Player.I.health.currentHealth).ToString();

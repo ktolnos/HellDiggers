@@ -22,6 +22,7 @@ public class HellCircleSettings: MonoBehaviour
         
         public float explosionRadius = 0f;
         public float explosionDamage = 0f;
+        public float explosionEnemyDamage = 0f;
         public float explosionDelay = 1f;
         public float explosionFPS = 10f;
         

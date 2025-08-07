@@ -36,10 +36,6 @@ public class SaveManagerEditor : Editor
                 System.IO.File.Delete(saveManager.SaveTempFilePath);
                 Debug.Log("Temporary save file deleted.");
             }
-            else
-            {
-                Debug.LogWarning("No temporary save file found to delete.");
-            }
         }
         
         if (GUILayout.Button("Print Save File"))

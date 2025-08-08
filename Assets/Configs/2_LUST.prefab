@@ -13,6 +13,18 @@ PrefabInstance:
       value: 2_LUST
       objectReference: {fileID: 0}
     - target: {fileID: 245593588932310992, guid: 0a8c85cb78b37c94cb1ba571d892345d, type: 3}
+      propertyPath: color.b
+      value: 0.06666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 245593588932310992, guid: 0a8c85cb78b37c94cb1ba571d892345d, type: 3}
+      propertyPath: color.g
+      value: 0.027450982
+      objectReference: {fileID: 0}
+    - target: {fileID: 245593588932310992, guid: 0a8c85cb78b37c94cb1ba571d892345d, type: 3}
+      propertyPath: color.r
+      value: 0.08627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 245593588932310992, guid: 0a8c85cb78b37c94cb1ba571d892345d, type: 3}
       propertyPath: circleName
       value: LUST
       objectReference: {fileID: 0}

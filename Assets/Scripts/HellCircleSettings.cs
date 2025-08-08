@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 public class HellCircleSettings: MonoBehaviour
 {
     public string circleName;
+    public Color color;
     public TileData[] tileData;
     public float noiseThreshold = -0.2f;
     public float noiseFrequency = 0.15f;

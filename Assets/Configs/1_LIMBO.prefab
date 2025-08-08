@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circleName: LIMBO
+  color: {r: 0.08627451, g: 0.043137256, b: 0.027450982, a: 1}
   tileData:
   - name: Normal
     tile: {fileID: 11400000, guid: afa8252c764dbfe45af6a1608da2b011, type: 2}

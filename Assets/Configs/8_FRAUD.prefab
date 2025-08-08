@@ -49,6 +49,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4366304315878596492, guid: 2d1a06473fe3a0c4c85c183c7c31326f, type: 3}
+      propertyPath: color.b
+      value: 0.16078432
+      objectReference: {fileID: 0}
+    - target: {fileID: 4366304315878596492, guid: 2d1a06473fe3a0c4c85c183c7c31326f, type: 3}
+      propertyPath: color.g
+      value: 0.10196079
+      objectReference: {fileID: 0}
+    - target: {fileID: 4366304315878596492, guid: 2d1a06473fe3a0c4c85c183c7c31326f, type: 3}
+      propertyPath: color.r
+      value: 0.098039225
+      objectReference: {fileID: 0}
+    - target: {fileID: 4366304315878596492, guid: 2d1a06473fe3a0c4c85c183c7c31326f, type: 3}
       propertyPath: circleName
       value: FRAUD
       objectReference: {fileID: 0}

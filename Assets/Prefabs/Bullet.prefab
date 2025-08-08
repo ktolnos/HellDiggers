@@ -58,6 +58,8 @@ MonoBehaviour:
   isPlayerBullet: 1
   ricochetCount: 0
   effect: {fileID: 8550663166000491436, guid: 92569d1d4cb5613449b2a57975e310ab, type: 3}
+  hasSound: 0
+  sound: {fileID: 0}
 --- !u!96 &1312267110476939897
 TrailRenderer:
   serializedVersion: 3
@@ -283,7 +285,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 66c9dc39e8b4d9f419b7013209b5b641, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

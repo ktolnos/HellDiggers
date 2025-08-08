@@ -9,6 +9,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1155373073488495022, guid: 608356ba9e8cc8d45bc0e1d61ac99c5f, type: 3}
+      propertyPath: color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155373073488495022, guid: 608356ba9e8cc8d45bc0e1d61ac99c5f, type: 3}
+      propertyPath: color.g
+      value: 0.08235294
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155373073488495022, guid: 608356ba9e8cc8d45bc0e1d61ac99c5f, type: 3}
+      propertyPath: color.r
+      value: 0.1137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155373073488495022, guid: 608356ba9e8cc8d45bc0e1d61ac99c5f, type: 3}
       propertyPath: circleName
       value: GREED
       objectReference: {fileID: 0}

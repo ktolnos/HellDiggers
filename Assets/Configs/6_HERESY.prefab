@@ -53,6 +53,18 @@ PrefabInstance:
       value: 6_HERESY
       objectReference: {fileID: 0}
     - target: {fileID: 4303970680763909627, guid: 23897665ccbd3ef4ba25c2c2ea8854ad, type: 3}
+      propertyPath: color.b
+      value: 0.13333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303970680763909627, guid: 23897665ccbd3ef4ba25c2c2ea8854ad, type: 3}
+      propertyPath: color.g
+      value: 0.13333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303970680763909627, guid: 23897665ccbd3ef4ba25c2c2ea8854ad, type: 3}
+      propertyPath: color.r
+      value: 0.13333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303970680763909627, guid: 23897665ccbd3ef4ba25c2c2ea8854ad, type: 3}
       propertyPath: circleName
       value: HERESY
       objectReference: {fileID: 0}
@@ -76,6 +88,10 @@ PrefabInstance:
       propertyPath: tileData.Array.data[4].tile
       value: 
       objectReference: {fileID: 11400000, guid: 106df9f5d36fd4147a3c10aba7885d0b, type: 2}
+    - target: {fileID: 4303970680763909627, guid: 23897665ccbd3ef4ba25c2c2ea8854ad, type: 3}
+      propertyPath: tileData.Array.data[5].tile
+      value: 
+      objectReference: {fileID: 11400000, guid: cefa2741f38b5604c8f09b17ce23c348, type: 2}
     - target: {fileID: 4303970680763909627, guid: 23897665ccbd3ef4ba25c2c2ea8854ad, type: 3}
       propertyPath: tileData.Array.data[6].tile
       value: 

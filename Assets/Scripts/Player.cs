@@ -100,6 +100,8 @@ public class Player : MonoBehaviour
         }
         if (health.currentHealth <= 0 || Level.I.isLevelTransition)
         {
+            jetAudio.Stop();
+            jetPackParticleSystem.Stop();
             return;
         }
         Vector2 moveInput = movementAction.ReadValue<Vector2>();

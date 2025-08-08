@@ -9,6 +9,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6679535857576739097, guid: 743d2752cf5fa7e4e9b613fd791d0c2c, type: 3}
+      propertyPath: color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6679535857576739097, guid: 743d2752cf5fa7e4e9b613fd791d0c2c, type: 3}
+      propertyPath: color.g
+      value: 0.027450982
+      objectReference: {fileID: 0}
+    - target: {fileID: 6679535857576739097, guid: 743d2752cf5fa7e4e9b613fd791d0c2c, type: 3}
+      propertyPath: color.r
+      value: 0.13725491
+      objectReference: {fileID: 0}
+    - target: {fileID: 6679535857576739097, guid: 743d2752cf5fa7e4e9b613fd791d0c2c, type: 3}
       propertyPath: circleName
       value: VIOLENCE
       objectReference: {fileID: 0}

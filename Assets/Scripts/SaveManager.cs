@@ -5,8 +5,19 @@ public class SaveManager: MonoBehaviour
 {
     public static SaveManager I;
     
-    public string SaveFilePath => Application.persistentDataPath + "/save.json";
-    public string SaveTempFilePath => Application.persistentDataPath + "/save_tmp.json";
+    private string PersistentDataPath
+    {
+        get
+        {
+#if UNITY_WEBGL
+            return "idbfs/Vicious-Loop-cGFwZXJjbG90aGVzcGxhbm5lZGRpbm5lcmV";
+#else
+            return Application.persistentDataPath;
+#endif
+        }
+    }
+
+    public string SaveFilePath => PersistentDataPath + "/save.json";
 
     public delegate void OnLoad();
     public OnLoad onLoad;
@@ -40,21 +51,17 @@ public class SaveManager: MonoBehaviour
             highScore = HighScoreManager.I.highScore
         };
         var json = JsonUtility.ToJson(saveState, true);
-        System.IO.File.WriteAllText(SaveTempFilePath, json);
-        if (System.IO.File.Exists(SaveFilePath))
-        {
-            System.IO.File.Delete(SaveFilePath);
-        }
-        System.IO.File.Move(SaveTempFilePath, SaveFilePath);
+        System.IO.FileInfo file = new System.IO.FileInfo(SaveFilePath);
+        file.Directory.Create();
+        System.IO.File.WriteAllText(SaveFilePath, json);
+        #if UNITY_WEBGL
+                Application.ExternalEval("_JS_FileSystem_Sync();");
+        #endif
     }
 
     public void LoadGame()
     {
         var loadPath = SaveFilePath;
-        if (!System.IO.File.Exists(loadPath))
-        {
-            loadPath = SaveTempFilePath;
-        }
         if (!System.IO.File.Exists(loadPath))
         {
             Debug.LogWarning("Save file not found at " + loadPath);

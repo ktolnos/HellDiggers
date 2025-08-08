@@ -13,6 +13,18 @@ PrefabInstance:
       value: 5_WRATH
       objectReference: {fileID: 0}
     - target: {fileID: 2191764017992561770, guid: 45cbd6738b3e43c49a0e56f06d29d5ba, type: 3}
+      propertyPath: color.b
+      value: 0.027450982
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191764017992561770, guid: 45cbd6738b3e43c49a0e56f06d29d5ba, type: 3}
+      propertyPath: color.g
+      value: 0.08627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191764017992561770, guid: 45cbd6738b3e43c49a0e56f06d29d5ba, type: 3}
+      propertyPath: color.r
+      value: 0.058823533
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191764017992561770, guid: 45cbd6738b3e43c49a0e56f06d29d5ba, type: 3}
       propertyPath: circleName
       value: WRATH
       objectReference: {fileID: 0}

@@ -35,6 +35,7 @@ public class Level : MonoBehaviour
 
     private Dictionary<Vector3Int, TileInfo> tileInfos = new();
     public bool isLevelTransition;
+    public SpriteRenderer levelBg;
 
     private List<IEnumerator> explosionsCoroutines = new();
     
@@ -64,6 +65,7 @@ public class Level : MonoBehaviour
     {
         Clear();
         EnemySpawner.I.Spawner(true);
+        levelBg.color = circleConfig.color;
 
         var bossTiles = circleConfig.boss == null ? 0 : width;
         var totalTiles = width * height + wallsHeight * 4 + bossTiles;
@@ -212,7 +214,7 @@ public class Level : MonoBehaviour
                             SoundManager.I.PlaySfx(blockBreak, tilemap.GetCellCenterWorld(tilePos));
                             if (tileInfo.tileData.drop != null && UnityEngine.Random.value < tileInfo.tileData.dropChance)
                             {
-                                Instantiate(tileInfo.tileData.drop, tilemap.CellToWorld(tilePos), Quaternion.identity, spawnedObjectsParent);
+                                Destroy(Instantiate(tileInfo.tileData.drop, tilemap.CellToWorld(tilePos), Quaternion.identity, spawnedObjectsParent), 10f);
                             }
                         }
                         else
@@ -319,7 +321,7 @@ public class Level : MonoBehaviour
         currentCircleIndex = Mathf.Clamp(currentCircleIndex, 0, circles.Length - 1);
         circleText.text = circles[currentCircleIndex].circleName;
         transitionPanel.gameObject.SetActive(true);
-        var animationDuration = 0.5f;
+        var animationDuration = 0.3f;
         circleText.DOFade(1f, animationDuration);
         var inDuration = skipIn ? 0f : animationDuration;
         transitionPanel.DOFade(1f, inDuration).OnComplete(() =>
@@ -328,7 +330,8 @@ public class Level : MonoBehaviour
             Player.I.transform.position = new Vector3(playerPos.x, 40f, playerPos.z);
             GenerateLevel(circles[currentCircleIndex]);
             Player.I.rb.linearVelocityY = -20f;
-            transitionPanel.DOFade(0f, animationDuration).SetDelay(1f).OnComplete(() =>
+            
+            transitionPanel.DOFade(0f, animationDuration).SetDelay(0.5f).OnComplete(() =>
             {
                 transitionPanel.gameObject.SetActive(false);
                 Player.I.rb.bodyType = RigidbodyType2D.Dynamic;

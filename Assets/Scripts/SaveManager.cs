@@ -1,10 +1,10 @@
 ﻿using System;
 using UnityEngine;
 
-public class SaveManager: MonoBehaviour
+public class SaveManager : MonoBehaviour
 {
     public static SaveManager I;
-    
+
     private string PersistentDataPath
     {
         get
@@ -20,19 +20,12 @@ public class SaveManager: MonoBehaviour
     public string SaveFilePath => PersistentDataPath + "/save.json";
 
     public delegate void OnLoad();
+
     public OnLoad onLoad;
 
     private void Awake()
     {
-        if (I == null)
-        {
-            I = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        I = this;
     }
 
     private void Start()
@@ -54,9 +47,11 @@ public class SaveManager: MonoBehaviour
         System.IO.FileInfo file = new System.IO.FileInfo(SaveFilePath);
         file.Directory.Create();
         System.IO.File.WriteAllText(SaveFilePath, json);
-        #if UNITY_WEBGL
-                Application.ExternalEval("_JS_FileSystem_Sync();");
-        #endif
+#if UNITY_WEBGL
+#pragma warning disable CS0618 // Type or member is obsolete
+        Application.ExternalEval("_JS_FileSystem_Sync();");
+#pragma warning restore CS0618 // Type or member is obsolete
+#endif
     }
 
     public void LoadGame()
@@ -67,6 +62,7 @@ public class SaveManager: MonoBehaviour
             Debug.LogWarning("Save file not found at " + loadPath);
             return;
         }
+
         var json = System.IO.File.ReadAllText(loadPath);
         var saveState = JsonUtility.FromJson<SaveState>(json);
         GM.I.money = saveState.money;

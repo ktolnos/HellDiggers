@@ -55,11 +55,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 0e9bdccf70c658f469d1fff689c757c7, type: 2}
     maxHp: 2
     spawnChance: 50
-    explosionRadius: 0
-    explosionDamage: 0
-    explosionEnemyDamage: 0
-    explosionDelay: 0
-    explosionFPS: 0
+    randomRotation: 1
     damagedTiles:
     - {fileID: 11400000, guid: b029ec3830f89014c877cdbf9132f889, type: 2}
     - {fileID: 11400000, guid: 24f5693cb6a6a134c947cb4b696401c1, type: 2}
@@ -70,26 +66,16 @@ MonoBehaviour:
     variants: []
     maxHp: 1
     spawnChance: 0.7
-    explosionRadius: 5
-    explosionDamage: 9000
-    explosionEnemyDamage: 100
-    explosionDelay: 1.5
-    explosionFPS: 10
-    damagedTiles:
-    - {fileID: 11400000, guid: 8edc0db6d9d4df64f90e768ce0f4ebe2, type: 2}
-    - {fileID: 11400000, guid: 7c73114f1d1b3904ab799802611927ca, type: 2}
-    drop: {fileID: 0}
-    dropChance: 0
+    randomRotation: 0
+    damagedTiles: []
+    drop: {fileID: 8642613160540180333, guid: 5fdd2eef803fcc6479ed051ae90d3d33, type: 3}
+    dropChance: 1
   - name: Copper
     tile: {fileID: 11400000, guid: 857f6ad8aa7f93a4f94207ba5a00e962, type: 2}
     variants: []
     maxHp: 5
     spawnChance: 10
-    explosionRadius: 0
-    explosionDamage: 0
-    explosionEnemyDamage: 0
-    explosionDelay: 0
-    explosionFPS: 0
+    randomRotation: 1
     damagedTiles:
     - {fileID: 11400000, guid: 4554298867211f44c9b8fbec13d2aeed, type: 2}
     drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
@@ -99,11 +85,7 @@ MonoBehaviour:
     variants: []
     maxHp: 20
     spawnChance: 1
-    explosionRadius: 0
-    explosionDamage: 0
-    explosionEnemyDamage: 0
-    explosionDelay: 0
-    explosionFPS: 0
+    randomRotation: 1
     damagedTiles:
     - {fileID: 11400000, guid: 4b9a9724783c55748b37fe46501ed786, type: 2}
     - {fileID: 11400000, guid: 43ea9d9c3340b0645b448f8fe3633a0a, type: 2}
@@ -114,11 +96,7 @@ MonoBehaviour:
     variants: []
     maxHp: 100
     spawnChance: 0
-    explosionRadius: 0
-    explosionDamage: 0
-    explosionEnemyDamage: 0
-    explosionDelay: 0
-    explosionFPS: 0
+    randomRotation: 1
     damagedTiles:
     - {fileID: 11400000, guid: a612daf8829ef0a4daf6ccbb10432c89, type: 2}
     - {fileID: 11400000, guid: cc37f80e7fa92bd4884e6056b3321b96, type: 2}
@@ -129,11 +107,7 @@ MonoBehaviour:
     variants: []
     maxHp: 1000
     spawnChance: 0
-    explosionRadius: 0
-    explosionDamage: 0
-    explosionEnemyDamage: 0
-    explosionDelay: 0
-    explosionFPS: 0
+    randomRotation: 1
     damagedTiles:
     - {fileID: 11400000, guid: a864cba25b38cd745b8fa3495cac477c, type: 2}
     - {fileID: 11400000, guid: 72af8a794afd9d5418b0d4abcc90e6f9, type: 2}
@@ -145,11 +119,7 @@ MonoBehaviour:
     variants: []
     maxHp: 10000
     spawnChance: 0
-    explosionRadius: 0
-    explosionDamage: 0
-    explosionEnemyDamage: 0
-    explosionDelay: 0
-    explosionFPS: 0
+    randomRotation: 1
     damagedTiles:
     - {fileID: 11400000, guid: 43b1590dc9cf26045b3096137381d5c5, type: 2}
     - {fileID: 11400000, guid: 3393e7d917cbe39448c08f7ed3ea8d77, type: 2}
@@ -165,11 +135,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a15f22345f9e07744b547b9fc3198b9f, type: 2}
     maxHp: 1
     spawnChance: 50
-    explosionRadius: 0
-    explosionDamage: 0
-    explosionEnemyDamage: 0
-    explosionDelay: 0
-    explosionFPS: 0
+    randomRotation: 1
     damagedTiles: []
     drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
     dropChance: 0.05

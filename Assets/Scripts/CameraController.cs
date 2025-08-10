@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CameraController: MonoBehaviour
+public class CameraController : MonoBehaviour
 {
     public static CameraController I;
 
@@ -21,12 +21,16 @@ public class CameraController: MonoBehaviour
         mousePosOffset /= Screen.height / 2f; // Normalize to viewport coordinates
         transform.position = Player.I.transform.position + (Vector3)mousePosOffset * scopeBias;
         var halfViewport = (cam.orthographicSize * cam.aspect);
-        var left = Level.I.tilemap.GetCellCenterWorld(new Vector3Int(-Level.I.width / 2, 0, 0)).x;
-        var right = Level.I.tilemap.GetCellCenterWorld(new Vector3Int(Level.I.width / 2 - 1, 0, 0)).x;
-        transform.position = new Vector3(
-            Mathf.Clamp(transform.position.x, left + halfViewport + 1.6667f, right - halfViewport + 1.6667f),
-            transform.position.y,
-            transform.position.z
-        );
+        var left = Level.I.grid.GetCellCenterWorld(new Vector3Int(-Level.I.width / 2, 0, 0)).x;
+        var right = Level.I.grid.GetCellCenterWorld(new Vector3Int(Level.I.width / 2 - 1, 0, 0)).x;
+        var leftPos = left + halfViewport + 1.6667f;
+        var rightPos = right - halfViewport + 1.6667f;
+        var posX = Mathf.Clamp(transform.position.x, leftPos, rightPos);
+        if (leftPos > rightPos)
+        {
+            posX = (leftPos + rightPos) / 2f;
+        }
+
+        transform.position = new Vector3(posX, transform.position.y, transform.position.z);
     }
 }

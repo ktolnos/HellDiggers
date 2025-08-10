@@ -19,22 +19,17 @@ public class SoundManager: MonoBehaviour
 
     private void Awake()
     {
-        if (I != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
         I = this;
-        DontDestroyOnLoad(gameObject);
         soundtrackSource = gameObject.GetComponent<AudioSource>();
     }
 
-    public void PlaySfx(AudioClip clip, Vector3 position, float relativeValue = 1f)
+    public void PlaySfx(AudioClip clip, Vector3 position, float relativeValue = 1f, bool randomizePitch = true)
     {
         sfxCache[clip] = sfxCache.GetValueOrDefault(clip, 0) + 1;
         if (sfxCache[clip] < limitPerFrame)
         {
-            AudioSource.PlayClipAtPoint(clip, position, relativeValue * sfxVolume);
+            var pitch = randomizePitch ? UnityEngine.Random.Range(0.8f, 1.2f) : 1f;
+            PlayClipAtPoint(clip, position, relativeValue * sfxVolume, pitch);
         }
     }
 
@@ -63,5 +58,19 @@ public class SoundManager: MonoBehaviour
     public class Soundtrack
     {
         public AudioClip clip;
+    }
+    
+    private static void PlayClipAtPoint(AudioClip clip, Vector3 position, 
+        [UnityEngine.Internal.DefaultValue("1.0F")] float volume, float pitch = 1f)
+    {
+        GameObject gameObject = new GameObject("One shot audio");
+        gameObject.transform.position = position;
+        AudioSource audioSource = (AudioSource) gameObject.AddComponent(typeof (AudioSource));
+        audioSource.clip = clip;
+        audioSource.spatialBlend = 1f;
+        audioSource.volume = volume;
+        audioSource.pitch = pitch;
+        audioSource.Play();
+        Destroy(gameObject, clip.length * ((double) Time.timeScale < 0.009999999776482582 ? 0.01f : Time.timeScale));
     }
 }

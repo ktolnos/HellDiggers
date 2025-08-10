@@ -86,7 +86,7 @@ public class EnemySpawner : MonoBehaviour
             }
             else
             {
-                var playerPos = Level.I.tilemap.WorldToCell(Player.I.gameObject.transform.position);
+                var playerPos = Level.I.grid.WorldToCell(Player.I.gameObject.transform.position);
                 tryPosition = new Vector3Int(
                     UnityEngine.Random.Range(
                         -spawnRadius + playerPos.x,
@@ -96,7 +96,7 @@ public class EnemySpawner : MonoBehaviour
                         spawnRadius * 2 + playerPos.y), 0);
             }
 
-            if (!Level.I.tilemap.HasTile(tryPosition))
+            if (!Level.I.HasTile(tryPosition))
             {
                 location = tryPosition;
                 foundLocation = true;
@@ -114,12 +114,12 @@ public class EnemySpawner : MonoBehaviour
                 {
                     yield return new WaitForSeconds(UnityEngine.Random.Range(0f, randomSpawnDelayMax));
                     Destroy(
-                        Instantiate(portal, Level.I.tilemap.GetCellCenterWorld(location), Quaternion.identity,
+                        Instantiate(portal, Level.I.grid.GetCellCenterWorld(location), Quaternion.identity,
                             Level.I.spawnedObjectsParent), portalDelay);
                     yield return new WaitForSeconds(portalDelay);
                 }
 
-                Instantiate(enemy, Level.I.tilemap.GetCellCenterWorld(location), Quaternion.identity,
+                Instantiate(enemy, Level.I.grid.GetCellCenterWorld(location), Quaternion.identity,
                     Level.I.spawnedObjectsParent);
             }
         }

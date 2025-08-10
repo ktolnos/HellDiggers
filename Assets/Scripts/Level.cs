@@ -5,15 +5,17 @@ using System.Linq;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Pool;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 using TileData = HellCircleSettings.TileData;
 
 public class Level : MonoBehaviour
 {
     public static Level I;
-    public Tilemap tilemap;
-    
+    public Grid grid;
+
     public HellCircleSettings[] circles;
     public TileData wallTile;
     public int width = 100;
@@ -21,33 +23,46 @@ public class Level : MonoBehaviour
     public int wallsHeight = 100;
     public float damagedProb = 0.1f;
     public Transform spawnedObjectsParent;
-    public int currentCircleIndex = 0;
+    public int currentCircleIndex;
     public float timeOfLevelStart;
     private float transitionHeight;
     public Image transitionPanel;
     public int bossHeight = 20;
     public TextMeshProUGUI circleText;
-    public BombAnimator bompExplosionPrefab;
     public AudioClip blockBreak;
-    public AudioClip explosionSound;
-    public AudioClip explosionBip;
-    public int explosionBipFrequency = 1;
 
     private Dictionary<Vector3Int, TileInfo> tileInfos = new();
     public bool isLevelTransition;
     public SpriteRenderer levelBg;
 
-    private List<IEnumerator> explosionsCoroutines = new();
+    private List<Vector3Int> tilesToRemove = new();
+
+    public int tilemapNumber;
+    public int tilemapRenderDistance = 2;
+    private Tilemap[] _tilemaps;
+    public Tilemap tilemapPrefab;
+    public Transform tilemapParent;
+    
+    public Transform pooledObjectsParent;
     
     private void Awake()
     {
         I = this;
-        TryGetComponent(out tilemap);
+        _tilemaps = new Tilemap[tilemapNumber];
+        for (int i = 0; i < tilemapNumber; i++)
+        {
+            var tilemap = Instantiate(tilemapPrefab, tilemapParent);
+            tilemap.gameObject.name = "Tilemap " + i;
+            _tilemaps[i] = tilemap;
+        }
+
+        grid = GetComponent<Grid>();
     }
 
     private void Start()
     {
         PlayAgain();
+        StartCoroutine(TileRemover());
     }
 
     public void PlayAgain()
@@ -58,7 +73,7 @@ public class Level : MonoBehaviour
         Player.I.transform.position = new Vector3(playerPos.x, wallsHeight / 2f, playerPos.z);
         GenerateLevel(circles[currentCircleIndex]);
         currentCircleIndex--;
-        AnimateNextLevel(skipIn:true);
+        AnimateNextLevel(skipIn: true);
     }
 
     private void GenerateLevel(HellCircleSettings circleConfig)
@@ -73,57 +88,38 @@ public class Level : MonoBehaviour
         var tiles = new TileBase[totalTiles];
         var index = 0;
         var totalProbability = circleConfig.tileData.Sum(x => x.spawnChance);
-        var noiseSeed = UnityEngine.Random.Range(0, 10000);
-        
+        var noiseSeed = Random.Range(0, 10000);
+
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
             {
-                var thresholdSub = y < height/2  ? 1f - Mathf.Clamp01((float) y / height) : Mathf.Clamp01((float)y / height);
+                var thresholdSub = y < height / 2
+                    ? 1f - Mathf.Clamp01((float)y / height)
+                    : Mathf.Clamp01((float)y / height);
                 thresholdSub -= 0.5f;
                 tilePositions[index] = new Vector3Int(x - width / 2, -y, 0);
-                TileData tileData = null;
-                if (x == 0 || x == width - 1)
-                {
-                    tileData = wallTile;
-                }
-                else if (Noise.GradientNoise(x * circleConfig.noiseFrequency, y * circleConfig.noiseFrequency, noiseSeed) <
-                         circleConfig.noiseThreshold + thresholdSub)
-                {
-                    tileData = null;
-                }
-                else
-                {
-                    var randomValue = UnityEngine.Random.value * totalProbability;
-                    for (int i = 0; i < circleConfig.tileData.Length; i++)
-                    {
-                        var data = circleConfig.tileData[i];
-                        if (randomValue < data.spawnChance)
-                        {
-                            tileData = data;
-                            break;
-                        }
-                        randomValue -= data.spawnChance;
-                    }
-                }
+                var tileData = GetTile(tilePositions[index], circleConfig, noiseSeed, thresholdSub, totalProbability);
                 tiles[index] = tileData?.tile;
                 if (tileData != null)
                 {
                     if (tileData.variants.Length > 0)
                     {
-                        var randomIndex = Mathf.FloorToInt(UnityEngine.Random.value * (tileData.variants.Length + 1));
+                        var randomIndex = Mathf.FloorToInt(Random.value * (tileData.variants.Length + 1));
                         if (randomIndex < tileData.variants.Length)
                         {
                             tiles[index] = tileData.variants[randomIndex];
                         }
                     }
+
                     tileInfos[tilePositions[index]] = new TileInfo(tileData);
-                    if (tileData.maxHp > 1 && UnityEngine.Random.value < damagedProb)
+                    if (tileData.maxHp > 1 && Random.value < damagedProb)
                     {
-                        tileInfos[tilePositions[index]].hp = tileData.maxHp * UnityEngine.Random.Range(0.1f, 0.9f);
+                        tileInfos[tilePositions[index]].hp = tileData.maxHp * Random.Range(0.1f, 0.9f);
                         tiles[index] = GetDamagedTile(tileInfos[tilePositions[index]]);
                     }
                 }
+
                 index++;
             }
         }
@@ -135,7 +131,7 @@ public class Level : MonoBehaviour
             tileInfos[tilePositions[index]] = new TileInfo(wallTile);
             index++;
         }
-        
+
         for (int i = 0; i < wallsHeight; i++)
         {
             SetWall(new Vector3Int(-width / 2, i, 0));
@@ -150,38 +146,24 @@ public class Level : MonoBehaviour
             {
                 SetWall(new Vector3Int(x - width / 2, -height - bossHeight, 0));
             }
-            Instantiate(circleConfig.boss, 
-                tilemap.CellToWorld(new Vector3Int(0, -height - bossHeight + 3, 0)), Quaternion.identity, spawnedObjectsParent);
-            Debug.Log("Instantiated boss");
+
+            Instantiate(circleConfig.boss,
+                grid.CellToWorld(new Vector3Int(0, -height - bossHeight + 3, 0)), Quaternion.identity,
+                spawnedObjectsParent);
         }
-        tilemap.SetTiles(tilePositions, tiles);
-        tilemap.RefreshAllTiles();
-        transitionHeight = tilemap.layoutGrid.cellSize.y * (-height - wallsHeight / 2f);
-    }
-    public static void DamageEntities(Vector3 position, float radius, float damage, DamageDealerType type)
-    {
-        var colliders = Physics2D.OverlapCircleAll(position, radius);
-        var healths = new HashSet<Health>();
-        foreach (var collider in colliders)
-        {
-            healths.Add(collider.GetComponentInParent<Health>());
-        }
-        foreach (var health in healths)
-        {
-            if (health != null)
-            {
-                health.Damage(damage, type);
-            }
-        }
+
+        SetTiles(tilePositions, tiles);
+        transitionHeight = grid.cellSize.y * (-height - wallsHeight / 2f);
     }
 
     public void Explode(Vector3 position, float radius, float enemyDamage, float groundDamage, DamageDealerType type)
     {
         var radiusCeil = Mathf.CeilToInt(radius);
-        var cellPos = tilemap.layoutGrid.WorldToCell(position);
+        var cellPos = grid.WorldToCell(position);
         for (var x = -radiusCeil; x <= radiusCeil; x++)
         {
-            for (var y = -radiusCeil; y <= radiusCeil; y++) {
+            for (var y = -radiusCeil; y <= radiusCeil; y++)
+            {
                 var tilePos = new Vector3Int(cellPos.x + x, cellPos.y + y, 0);
                 var tileInfo = tileInfos.GetValueOrDefault(tilePos, null);
                 if (tileInfo != null)
@@ -190,50 +172,39 @@ public class Level : MonoBehaviour
                     {
                         continue;
                     }
-                    if (tileInfo.tileData.explosionRadius > 0f)
-                    {
-                        if (tileInfo.hp > 0f && tileInfo.hp <= groundDamage)
-                        {
-                            tileInfo.hp = 0f;
-                            var enumerator = ExplodeExplosive(tilePos, tileInfo.tileData);
-                            explosionsCoroutines.Add(enumerator);
-                            StartCoroutine(enumerator);
-                        }
-                        else
-                        {
-                            tileInfo.hp -= groundDamage;
-                        }
-                        continue;
-                    }
+
                     if (CheckCircleCellIntersection(position, radius, tilePos))
                     {
                         tileInfo.hp -= groundDamage;
                         if (tileInfo.hp <= 0f)
                         {
                             RemoveTile(tilePos);
-                            SoundManager.I.PlaySfx(blockBreak, tilemap.GetCellCenterWorld(tilePos));
-                            if (tileInfo.tileData.drop != null && UnityEngine.Random.value < tileInfo.tileData.dropChance)
+                            SoundManager.I.PlaySfx(blockBreak, grid.GetCellCenterWorld(tilePos));
+                            if (tileInfo.tileData.drop != null && Random.value < tileInfo.tileData.dropChance)
                             {
-                                Destroy(Instantiate(tileInfo.tileData.drop, tilemap.CellToWorld(tilePos), Quaternion.identity, spawnedObjectsParent), 10f);
+                                var rotation = tileInfo.tileData.randomRotation ? Random.Range(0, 360f) : 0f;
+                                var quaternion = Quaternion.Euler(0f, 0f, rotation);
+                                var pool = GameObjectPoolManager.I.GetOrRegisterPool(tileInfo.tileData.drop, pooledObjectsParent);
+                                pool.InstantiateTemporarily(grid.GetCellCenterWorld(tilePos), quaternion, 10f);
                             }
                         }
                         else
                         {
                             var damagedTile = GetDamagedTile(tileInfo);
-                            tilemap.SetTile(tilePos, damagedTile);
+                            SetTile(tilePos, damagedTile);
                         }
                     }
                 }
             }
         }
 
-        DamageEntities(position, radius, enemyDamage, type);
+        GM.DamageEntities(position, radius, enemyDamage, type);
     }
 
     private TileBase GetDamagedTile(TileInfo tileInfo)
     {
         return tileInfo.tileData.damagedTiles != null &&
-                          tileInfo.tileData.damagedTiles.Length > 0
+               tileInfo.tileData.damagedTiles.Length > 0
             ? tileInfo.tileData.damagedTiles[
                 Mathf.Clamp(Mathf.FloorToInt((1f - tileInfo.hp / tileInfo.tileData.maxHp) *
                                              tileInfo.tileData.damagedTiles.Length),
@@ -241,9 +212,50 @@ public class Level : MonoBehaviour
             : tileInfo.tileData.tile;
     }
 
+    private TileData GetTile(Vector3Int pos,
+        HellCircleSettings circleConfig,
+        int noiseSeed,
+        float thresholdSub,
+        float totalProbability
+    )
+    {
+        var x = pos.x;
+        var y = pos.y;
+        if (x == -width / 2 || x == width / 2 - 1)
+        {
+            return wallTile;
+        }
+
+        if (Noise.GradientNoise(x * circleConfig.noiseFrequency, y * circleConfig.noiseFrequency, noiseSeed) <
+            circleConfig.noiseThreshold + thresholdSub)
+        {
+            return null;
+        }
+
+        var randomValue = Random.value * totalProbability;
+        for (int i = 0; i < circleConfig.tileData.Length; i++)
+        {
+            var data = circleConfig.tileData[i];
+            if (randomValue < data.spawnChance)
+            {
+                return data;
+            }
+
+            randomValue -= data.spawnChance;
+        }
+
+        Debug.LogWarning("No tile found for position: " + pos);
+        return null;
+    }
+
+    public bool HasTile(Vector3Int pos)
+    {
+        return tileInfos.ContainsKey(pos);
+    }
+
     public void RemoveBossFloor()
     {
-        for (var x = -width / 2; x < width / 2; x++)
+        for (var x = -width / 2 + 1; x < width / 2 - 1; x++)
         {
             var pos = new Vector3Int(x, -height - bossHeight, 0);
             if (tileInfos.ContainsKey(pos))
@@ -252,56 +264,85 @@ public class Level : MonoBehaviour
             }
         }
     }
-    
+
     private bool CheckCircleCellIntersection(Vector3 position, float radius, Vector3Int cellPos)
     {
-        var cellCenter = tilemap.layoutGrid.GetCellCenterWorld(cellPos);
+        var cellCenter = grid.GetCellCenterWorld(cellPos);
         var circleDistanceX = Math.Abs(cellCenter.x - position.x);
         var circleDistanceY = Math.Abs(cellCenter.y - position.y);
-        
-        if (circleDistanceX > (tilemap.layoutGrid.cellSize.x / 2 + radius) ||
-            circleDistanceY > (tilemap.layoutGrid.cellSize.y / 2 + radius))
+
+        if (circleDistanceX > (grid.cellSize.x / 2 + radius) ||
+            circleDistanceY > (grid.cellSize.y / 2 + radius))
         {
             return false;
         }
-        
-        if (circleDistanceX <= (tilemap.layoutGrid.cellSize.x / 2) ||
-            circleDistanceY <= (tilemap.layoutGrid.cellSize.y / 2))
+
+        if (circleDistanceX <= (grid.cellSize.x / 2) ||
+            circleDistanceY <= (grid.cellSize.y / 2))
         {
             return true;
         }
-        
-        var cornerDistanceSq = (circleDistanceX - tilemap.layoutGrid.cellSize.x / 2) *
-                               (circleDistanceX - tilemap.layoutGrid.cellSize.x / 2) +
-                               (circleDistanceY - tilemap.layoutGrid.cellSize.y / 2) *
-                               (circleDistanceY - tilemap.layoutGrid.cellSize.y / 2);
-        
+
+        var cornerDistanceSq = (circleDistanceX - grid.cellSize.x / 2) *
+                               (circleDistanceX - grid.cellSize.x / 2) +
+                               (circleDistanceY - grid.cellSize.y / 2) *
+                               (circleDistanceY - grid.cellSize.y / 2);
+
         return cornerDistanceSq <= (radius * radius);
     }
 
-    private IEnumerator ExplodeExplosive(Vector3Int pos, TileData tileData)
+
+    private int GetTilemapIdx(Vector3Int pos)
     {
-        var bombExplosion = Instantiate(bompExplosionPrefab, tilemap.GetCellCenterWorld(pos), Quaternion.identity, spawnedObjectsParent);
-        bombExplosion.Explode(tileData.explosionDelay);
-        for (var i = 0; i < tileData.explosionDelay * tileData.explosionFPS; i++)
+        var index = -pos.y * tilemapNumber / height;
+        index = Mathf.Clamp(index, 0, tilemapNumber - 1);
+        return index;
+    }
+
+
+    private Tilemap GetTilemap(Vector3Int pos)
+    {
+        return _tilemaps[GetTilemapIdx(pos)];
+    }
+
+
+    private void SetTile(Vector3Int pos, TileBase tileData)
+    {
+        GetTilemap(pos).SetTile(pos, tileData);
+    }
+
+    private void SetTiles(Vector3Int[] positions, TileBase[] tileData)
+    {
+        for (var i = 0; i < _tilemaps.Length; i++)
         {
-            tilemap.SetTile(pos, tileData.damagedTiles[i % tileData.damagedTiles.Length]);
-            if (i % explosionBipFrequency == 0)
+            var indices = positions
+                .Select((pos, idx) => new { pos, idx })
+                .Where(x => GetTilemapIdx(x.pos) == i)
+                .Select(x => x.idx)
+                .ToArray();
+            var posSubset = indices.Select(x => positions[x]).ToArray();
+            var tileSubset = indices.Select(x => tileData[x]).ToArray();
+            if (posSubset.Length > 0)
             {
-                SoundManager.I.PlaySfx(explosionBip, tilemap.GetCellCenterWorld(pos));
+                _tilemaps[i].SetTiles(posSubset, tileSubset);
             }
-            yield return new WaitForSeconds(1f / tileData.explosionFPS);
         }
-        RemoveTile(pos);
-        SoundManager.I.PlaySfx(explosionSound, tilemap.GetCellCenterWorld(pos), 20f);
-        Explode(tilemap.CellToWorld(pos), tileData.explosionRadius, tileData.explosionEnemyDamage, 
-            tileData.explosionDamage,  DamageDealerType.Environment);
     }
 
     private void RemoveTile(Vector3Int pos)
     {
-        tilemap.SetTile(pos, null);
+        tilesToRemove.Add(pos);
         tileInfos.Remove(pos);
+    }
+
+    private IEnumerator TileRemover()
+    {
+        while (true)
+        {
+            SetTiles(tilesToRemove.ToArray(), Enumerable.Repeat<TileBase>(null, tilesToRemove.Count).ToArray());
+            tilesToRemove.Clear();
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 
     private void Update()
@@ -309,7 +350,12 @@ public class Level : MonoBehaviour
         var playerPos = Player.I.transform.position;
         if (playerPos.y < transitionHeight && !isLevelTransition && Player.I.health.currentHealth > 0)
         {
-            AnimateNextLevel(skipIn:false);
+            AnimateNextLevel(skipIn: false);
+        }
+        var playerTilemapIdx = GetTilemapIdx(grid.WorldToCell(playerPos));
+        for (int i = 0; i < _tilemaps.Length; i++)
+        {
+            _tilemaps[i].gameObject.SetActive(Mathf.Abs(i - playerTilemapIdx) <= tilemapRenderDistance);
         }
     }
 
@@ -330,7 +376,7 @@ public class Level : MonoBehaviour
             Player.I.transform.position = new Vector3(playerPos.x, 40f, playerPos.z);
             GenerateLevel(circles[currentCircleIndex]);
             Player.I.rb.linearVelocityY = -20f;
-            
+
             transitionPanel.DOFade(0f, animationDuration).SetDelay(0.5f).OnComplete(() =>
             {
                 transitionPanel.gameObject.SetActive(false);
@@ -344,8 +390,11 @@ public class Level : MonoBehaviour
     public void Clear()
     {
         tileInfos.Clear();
-        tilemap.ClearAllTiles();
-        
+        foreach (var tilemap in _tilemaps)
+        {
+            tilemap.ClearAllTiles();
+        }
+
         for (int i = spawnedObjectsParent.childCount - 1; i >= 0; i--)
         {
             var child = spawnedObjectsParent.GetChild(i);
@@ -354,18 +403,19 @@ public class Level : MonoBehaviour
                 Destroy(child.gameObject);
             }
         }
-        foreach (var explosionsCoroutine in explosionsCoroutines)
+        
+        for (int i = pooledObjectsParent.childCount - 1; i >= 0; i--)
         {
-            StopCoroutine(explosionsCoroutine);
+            var child = pooledObjectsParent.GetChild(i);
+            GameObjectPoolManager.I.Release(child.gameObject);
         }
-        explosionsCoroutines.Clear();
     }
-    
+
     private class TileInfo
     {
         public TileData tileData;
         public float hp;
-        
+
         public TileInfo(TileData tileData)
         {
             this.tileData = tileData;

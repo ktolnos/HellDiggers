@@ -13,7 +13,8 @@ public class DestroyOnDeath : MonoBehaviour, IDeathHandler
 
         if (loot != null)
         {
-            Destroy(Instantiate(loot, transform.position, Quaternion.identity, Level.I.spawnedObjectsParent), 10f);
+            GameObjectPoolManager.I.GetOrRegisterPool(loot,  Level.I.pooledObjectsParent).InstantiateTemporarily(
+                transform.position, Quaternion.identity, 10f);
         }
         Destroy(gameObject);
     }

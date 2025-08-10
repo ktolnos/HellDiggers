@@ -12,46 +12,67 @@ public class Loot : MonoBehaviour
     private float collectionTime = 0.5f;
     public Rigidbody2D rb;
     public AudioClip collectSound;
+
+    private Transform t;
+    private Transform playerTransform;
     
-    private void Update()
+    private void OnEnable()
     {
-        var collectionDistance = (Player.I.stats.lootCollectionDistance + 0.5f) * 5f;
-        var distanceToPlayer = Vector2.Distance(transform.position, Player.I.transform.position);
-        if (distanceToPlayer < collectionDistance)
+        if (rb != null)
         {
-            StartCoroutine(Collect());
+            rb.simulated = true;
+        }
+        StartCoroutine(DistanceCheck());
+    }
+
+    private IEnumerator DistanceCheck()
+    {
+        t = transform;
+        playerTransform = Player.I.transform;
+        var waitForSeconds = new WaitForSeconds(0.1f);
+        while (true)
+        {
+            var collectionDistance = GetCollectionDistance();
+            var distanceToPlayer = Vector2.Distance(t.position, playerTransform.position);
+            if (distanceToPlayer < collectionDistance)
+            {
+                StartCoroutine(Collect());
+                yield break;
+            }
+
+            yield return waitForSeconds;
         }
     }
 
     private IEnumerator Collect()
     {
+        yield return null;
         if (rb != null)
         {
-            rb.bodyType = RigidbodyType2D.Kinematic;
-            var colliders = new List<Collider2D>();
-            rb.GetAttachedColliders(colliders);
-            foreach (var coll in colliders)
-            {
-                coll.enabled = false;
-            }
+            rb.simulated = false;
         }
-        var startPosition = transform.position;
+        var startPosition = t.position;
         var startTime = Time.time;
-        var timeToPlayer = Mathf.Clamp01((Player.I.transform.position - startPosition).magnitude / 10f) * collectionTime;
-
+        var timeToPlayer = (Mathf.Clamp01((playerTransform.position - startPosition).magnitude / GetCollectionDistance()) + 0.2f) *
+                           collectionTime;
         while (Time.time < startTime + timeToPlayer)
         {
-            var t = (Time.time - startTime) / collectionTime;
-            transform.position = DOVirtual.EasedValue(startPosition, Player.I.transform.position, t, Ease.InCubic);
+            var lerp = (Time.time - startTime) / timeToPlayer;
+            t.position = DOVirtual.EasedValue(startPosition, playerTransform.position, lerp, Ease.InCubic);
             yield return null;
         }
         if (collectSound != null)
         {
-            SoundManager.I.PlaySfx(collectSound, Player.I.transform.position);
+            SoundManager.I.PlaySfx(collectSound, playerTransform.position);
         }
-        Destroy(gameObject);
+        GameObjectPoolManager.I.Release(gameObject);
         GM.I.money += money;
         Player.I.health.Heal(hp);
         
+    }
+
+    private float GetCollectionDistance()
+    {
+        return (Player.I.stats.lootCollectionDistance + 0.5f) * 5f;
     }
 }

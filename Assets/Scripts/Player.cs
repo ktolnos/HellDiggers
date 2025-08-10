@@ -268,9 +268,9 @@ public class Player : MonoBehaviour
         var main = jumpParticleSystem.main;
         main.startSpeedMultiplier = -5f * (stats.jumpHeight + 1.1f);
         jumpParticleSystem.Play();
-        transform.DOScale(0.8f, 0.1f)
-            .OnComplete(() => transform.DOScale(1.2f, 0.3f))
-            .OnComplete(() => transform.DOScale(1f, 0.1f));
+        transform.DOScaleY(transform.localScale.z * 0.8f, 0.1f)
+            .OnComplete(() => transform.DOScaleY(transform.localScale.z * 1.2f, 0.3f))
+            .OnComplete(() => transform.DOScaleY(transform.localScale.z * 1f, 0.1f));
     }
     
     private void AnimateDash()

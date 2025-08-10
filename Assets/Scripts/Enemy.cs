@@ -175,7 +175,7 @@ public class Enemy : MonoBehaviour
 
     void Beat()
     {
-        Level.DamageEntities(player.transform.position, attackRadius, damage, DamageDealerType.Enemy); 
+        GM.DamageEntities(player.transform.position, attackRadius, damage, DamageDealerType.Enemy); 
         if (beatSound != null)
         {
             SoundManager.I.PlaySfx(beatSound, transform.position, 5f);

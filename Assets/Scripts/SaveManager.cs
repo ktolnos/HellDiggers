@@ -82,4 +82,20 @@ public class SaveManager : MonoBehaviour
         public int highScore;
         public Stats stats;
     }
+    
+    
+    public bool DeleteSaveFile()
+    {
+        if (System.IO.File.Exists(SaveFilePath))
+        {
+            System.IO.File.Delete(SaveFilePath);
+            Debug.Log("Save file deleted.");
+            return true;
+        }
+        else
+        {
+            Debug.LogWarning("No save file to delete at " + SaveFilePath);
+            return false;
+        }
+    }
 }

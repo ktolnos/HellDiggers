@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Serialization;
 
 public class BombAnimator: MonoBehaviour
 {
     public Color[] circleColors;
     public Sprite fullSprite;
+    [FormerlySerializedAs("light")] public Light2D explosionLight;
 
     public void Explode(float time)
     {
@@ -27,8 +30,11 @@ public class BombAnimator: MonoBehaviour
         particleSys.Play();
         spriteRenderer.sprite = fullSprite;
         spriteRenderer.color = Color.white;
+        explosionLight.enabled = true;
         yield return new WaitForSeconds(0.1f);
         spriteRenderer.color = Color.clear;
+        yield return new WaitForSeconds(0.1f);
+        explosionLight.enabled = false;
         Destroy(gameObject, 2f);
     }
     

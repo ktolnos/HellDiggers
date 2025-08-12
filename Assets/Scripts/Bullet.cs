@@ -54,6 +54,10 @@ public class Bullet: MonoBehaviour
         var finalGroundDamage = groundDamage + Mathf.Pow(Player.I.stats.diggingDamage, 1.5f) * playerStatsMult * 1f;
         var damageType = isPlayerBullet ? DamageDealerType.Player : DamageDealerType.Enemy;
         Level.I.Explode(transform.position, finalExplosionRadius, finalEnemyDamage, finalGroundDamage, damageType);
+        if (effect != null)
+        {
+            Destroy(Instantiate(effect, transform.position, Quaternion.identity, Level.I.spawnedObjectsParent), 2f);
+        }
         if (destroy)
         {
             if (hasSound)
@@ -61,10 +65,6 @@ public class Bullet: MonoBehaviour
                 SoundManager.I.PlaySfx(sound, transform.position, 10f);
             }
             Destroy(gameObject);
-            if (effect != null)
-            {
-                Destroy(Instantiate(effect, transform.position, Quaternion.identity, Level.I.spawnedObjectsParent), 2f);
-            }
         }
     }
 

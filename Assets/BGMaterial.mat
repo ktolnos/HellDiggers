@@ -38,7 +38,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Add: 0.2
-    - _Scale: 1
+    - _Scale: 3
     - _Speed: 0.1
     m_Colors: []
   m_BuildTextureStacks: []

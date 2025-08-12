@@ -51,6 +51,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        rb.simulated = Mathf.Abs(transform.position.y - player.transform.position.y) < 15f;
         if (isBoss)
         {
             if ((player.transform.position - transform.position).magnitude < attackDistance)

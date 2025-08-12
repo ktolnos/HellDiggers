@@ -407,7 +407,10 @@ public class Level : MonoBehaviour
         for (int i = pooledObjectsParent.childCount - 1; i >= 0; i--)
         {
             var child = pooledObjectsParent.GetChild(i);
-            GameObjectPoolManager.I.Release(child.gameObject);
+            if (child != null && child.gameObject.activeInHierarchy)
+            {
+                GameObjectPoolManager.I.Release(child.gameObject);
+            }
         }
     }
 

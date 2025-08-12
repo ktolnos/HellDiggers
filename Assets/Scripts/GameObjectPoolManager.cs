@@ -19,7 +19,7 @@ public class GameObjectPoolManager: MonoBehaviour
     }
     
     public GameObjectPool GetOrRegisterPool(GameObject prefab, Transform parent, 
-        int initialCapacity = 100, int maxSize = 100)
+        int initialCapacity = 25, int maxSize = 1000)
     {
         if (pools.TryGetValue(prefab, out var pool))
         {

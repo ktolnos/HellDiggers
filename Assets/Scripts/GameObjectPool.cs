@@ -20,7 +20,7 @@ public class GameObjectPool
             OnGet,
             OnRelease,
             OnDestroy,
-            false,
+            true,
             initialCapacity,
             maxSize
         );
@@ -68,6 +68,10 @@ public class GameObjectPool
     
     private void OnGet(GameObject obj)
     {
+        if (obj == null)
+        {
+            Debug.LogWarning("Destroyed object requested from pool: " + prefab.name);
+        }
         obj.SetActive(true);
     }
     
@@ -78,6 +82,7 @@ public class GameObjectPool
     
     private void OnDestroy(GameObject obj)
     {
+        pendingRelease.Remove(obj);
         Object.Destroy(obj);
         GameObjectPoolManager.I.OnObjectDestroyed(obj);
     }

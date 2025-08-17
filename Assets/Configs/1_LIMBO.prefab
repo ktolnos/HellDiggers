@@ -55,58 +55,84 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 0e9bdccf70c658f469d1fff689c757c7, type: 2}
     maxHp: 2
     spawnChance: 50
+    surfaceSpawnChanceMult: 1
     randomRotation: 1
     damagedTiles:
     - {fileID: 11400000, guid: b029ec3830f89014c877cdbf9132f889, type: 2}
     - {fileID: 11400000, guid: 24f5693cb6a6a134c947cb4b696401c1, type: 2}
     drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
     dropChance: 0.1
+    contactDamage: 0
+    isSlippery: 0
+    isMud: 0
+    outForce: 0
   - name: Bomb
     tile: {fileID: 11400000, guid: 1a2c3922f78c2f24abd8bd1728d32cfc, type: 2}
     variants: []
     maxHp: 1
     spawnChance: 0.7
+    surfaceSpawnChanceMult: 1
     randomRotation: 0
     damagedTiles: []
     drop: {fileID: 8642613160540180333, guid: 5fdd2eef803fcc6479ed051ae90d3d33, type: 3}
     dropChance: 1
+    contactDamage: 0
+    isSlippery: 0
+    isMud: 0
+    outForce: 0
   - name: Copper
     tile: {fileID: 11400000, guid: 857f6ad8aa7f93a4f94207ba5a00e962, type: 2}
     variants: []
     maxHp: 5
     spawnChance: 10
+    surfaceSpawnChanceMult: 1
     randomRotation: 1
     damagedTiles:
     - {fileID: 11400000, guid: 4554298867211f44c9b8fbec13d2aeed, type: 2}
     drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
     dropChance: 1
+    contactDamage: 0
+    isSlippery: 0
+    isMud: 0
+    outForce: 0
   - name: Iron
     tile: {fileID: 11400000, guid: 22028242e3079ff44982f0313acc99ef, type: 2}
     variants: []
     maxHp: 20
     spawnChance: 1
+    surfaceSpawnChanceMult: 1
     randomRotation: 1
     damagedTiles:
     - {fileID: 11400000, guid: 4b9a9724783c55748b37fe46501ed786, type: 2}
     - {fileID: 11400000, guid: 43ea9d9c3340b0645b448f8fe3633a0a, type: 2}
     drop: {fileID: 3094065808536684211, guid: ac05320947c1b194e82e3a703fe395eb, type: 3}
     dropChance: 1
+    contactDamage: 0
+    isSlippery: 0
+    isMud: 0
+    outForce: 0
   - name: Gold
     tile: {fileID: 11400000, guid: 1041fa3160d56554bbb862e7549258b0, type: 2}
     variants: []
     maxHp: 100
     spawnChance: 0
+    surfaceSpawnChanceMult: 1
     randomRotation: 1
     damagedTiles:
     - {fileID: 11400000, guid: a612daf8829ef0a4daf6ccbb10432c89, type: 2}
     - {fileID: 11400000, guid: cc37f80e7fa92bd4884e6056b3321b96, type: 2}
     drop: {fileID: 3094065808536684211, guid: 127f2309e80b55149b12f0629e9789cd, type: 3}
     dropChance: 1
+    contactDamage: 0
+    isSlippery: 0
+    isMud: 0
+    outForce: 0
   - name: Emerald
     tile: {fileID: 11400000, guid: 85180b315cdd24642a16ab3fe6fc88ec, type: 2}
     variants: []
     maxHp: 1000
     spawnChance: 0
+    surfaceSpawnChanceMult: 1
     randomRotation: 1
     damagedTiles:
     - {fileID: 11400000, guid: a864cba25b38cd745b8fa3495cac477c, type: 2}
@@ -114,11 +140,16 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 5751fb129f0ffb34894c4dba36b5749c, type: 2}
     drop: {fileID: 3094065808536684211, guid: a642dc414c6b77348832dbfe7272e020, type: 3}
     dropChance: 1
+    contactDamage: 0
+    isSlippery: 0
+    isMud: 0
+    outForce: 0
   - name: Magnesium
     tile: {fileID: 11400000, guid: f8cbc58b950a1834a92ca410ab9767b8, type: 2}
     variants: []
     maxHp: 10000
     spawnChance: 0
+    surfaceSpawnChanceMult: 1
     randomRotation: 1
     damagedTiles:
     - {fileID: 11400000, guid: 43b1590dc9cf26045b3096137381d5c5, type: 2}
@@ -127,6 +158,10 @@ MonoBehaviour:
     - {fileID: 11400000, guid: d9cadc71c34ac644cb5aae5b59e78af9, type: 2}
     drop: {fileID: 3094065808536684211, guid: 5745f650d54b8564f879d13540c33256, type: 3}
     dropChance: 1
+    contactDamage: 0
+    isSlippery: 0
+    isMud: 0
+    outForce: 0
   - name: Easy
     tile: {fileID: 11400000, guid: f00329ac9bd4b064cb63934dc3122936, type: 2}
     variants:
@@ -135,10 +170,85 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a15f22345f9e07744b547b9fc3198b9f, type: 2}
     maxHp: 1
     spawnChance: 50
+    surfaceSpawnChanceMult: 1
     randomRotation: 1
     damagedTiles: []
     drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
     dropChance: 0.05
+    contactDamage: 0
+    isSlippery: 0
+    isMud: 0
+    outForce: 0
+  - name: Spikes
+    tile: {fileID: 11400000, guid: c58a38f40429d084da5c08bcb96aa14f, type: 2}
+    variants: []
+    maxHp: 10000
+    spawnChance: 1
+    surfaceSpawnChanceMult: 1
+    randomRotation: 0
+    damagedTiles: []
+    drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+    dropChance: 0
+    contactDamage: 20
+    isSlippery: 0
+    isMud: 0
+    outForce: 5
+  - name: Ice
+    tile: {fileID: 11400000, guid: 3a41c84629c17f64bb0305cae7d1eac1, type: 2}
+    variants: []
+    maxHp: 100
+    spawnChance: 0.1
+    surfaceSpawnChanceMult: 100000
+    randomRotation: 0
+    damagedTiles: []
+    drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+    dropChance: 0
+    contactDamage: 0
+    isSlippery: 1
+    isMud: 0
+    outForce: 0
+  - name: Mud
+    tile: {fileID: 11400000, guid: 33a1d6232192b6f43965bed7d5f2febd, type: 2}
+    variants: []
+    maxHp: 10
+    spawnChance: 1
+    surfaceSpawnChanceMult: 1000
+    randomRotation: 0
+    damagedTiles: []
+    drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+    dropChance: 0
+    contactDamage: 0
+    isSlippery: 0
+    isMud: 1
+    outForce: 0
+  - name: Tar
+    tile: {fileID: 11400000, guid: fc2c2a1a65501ea4e98e8e72eab7c631, type: 2}
+    variants: []
+    maxHp: 100
+    spawnChance: 1
+    surfaceSpawnChanceMult: 1000
+    randomRotation: 0
+    damagedTiles: []
+    drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+    dropChance: 0
+    contactDamage: 3
+    isSlippery: 0
+    isMud: 1
+    outForce: 0
+  - name: Bouncy
+    tile: {fileID: 11400000, guid: 51d50996c4641b945a0d490e5d52c008, type: 2}
+    variants: []
+    maxHp: 100
+    spawnChance: 1
+    surfaceSpawnChanceMult: 3000
+    randomRotation: 0
+    damagedTiles: []
+    drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+    dropChance: 0
+    contactDamage: 0
+    isSlippery: 0
+    isMud: 0
+    outForce: 20
   noiseThreshold: -0.2
   noiseFrequency: 0.15
   boss: {fileID: 0}

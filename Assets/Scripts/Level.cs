@@ -42,9 +42,9 @@ public class Level : MonoBehaviour
     private Tilemap[] _tilemaps;
     public Tilemap tilemapPrefab;
     public Transform tilemapParent;
-    
+
     public Transform pooledObjectsParent;
-    
+
     private void Awake()
     {
         I = this;
@@ -87,6 +87,7 @@ public class Level : MonoBehaviour
         var tiles = new TileBase[totalTiles];
         var index = 0;
         var totalProbability = circleConfig.tileData.Sum(x => x.spawnChance);
+        var totalSurfaceProbability = circleConfig.tileData.Sum(x => x.spawnChance * x.surfaceSpawnChanceMult);
         var noiseSeed = Random.Range(0, 10000);
 
         for (int x = 0; x < width; x++)
@@ -98,7 +99,8 @@ public class Level : MonoBehaviour
                     : Mathf.Clamp01((float)y / height);
                 thresholdSub -= 0.5f;
                 tilePositions[index] = new Vector3Int(x - width / 2, -y, 0);
-                var tileData = GetTile(tilePositions[index], circleConfig, noiseSeed, thresholdSub, totalProbability);
+                var tileData = GetTile(tilePositions[index], circleConfig, noiseSeed, thresholdSub, 
+                    totalProbability, totalSurfaceProbability);
                 tiles[index] = tileData?.tile;
                 if (tileData != null)
                 {
@@ -111,11 +113,12 @@ public class Level : MonoBehaviour
                         }
                     }
 
-                    tileInfos[tilePositions[index]] = new TileInfo(tileData);
+                    var pos = tilePositions[index];
+                    tileInfos[pos] = new TileInfo(tileData, pos);
                     if (tileData.maxHp > 1 && Random.value < damagedProb)
                     {
-                        tileInfos[tilePositions[index]].hp = tileData.maxHp * Random.Range(0.1f, 0.9f);
-                        tiles[index] = GetDamagedTile(tileInfos[tilePositions[index]]);
+                        tileInfos[pos].hp = tileData.maxHp * Random.Range(0.1f, 0.9f);
+                        tiles[index] = GetDamagedTile(tileInfos[pos]);
                     }
                 }
 
@@ -127,7 +130,7 @@ public class Level : MonoBehaviour
         {
             tilePositions[index] = pos;
             tiles[index] = wallTile.tile;
-            tileInfos[tilePositions[index]] = new TileInfo(wallTile);
+            tileInfos[pos] = new TileInfo(wallTile, pos);
             index++;
         }
 
@@ -184,7 +187,8 @@ public class Level : MonoBehaviour
                             {
                                 var rotation = tileInfo.tileData.randomRotation ? Random.Range(0, 360f) : 0f;
                                 var quaternion = Quaternion.Euler(0f, 0f, rotation);
-                                var pool = GameObjectPoolManager.I.GetOrRegisterPool(tileInfo.tileData.drop, pooledObjectsParent);
+                                var pool = GameObjectPoolManager.I.GetOrRegisterPool(tileInfo.tileData.drop,
+                                    pooledObjectsParent);
                                 pool.InstantiateTemporarily(grid.GetCellCenterWorld(tilePos), quaternion, 10f);
                             }
                         }
@@ -216,7 +220,8 @@ public class Level : MonoBehaviour
         HellCircleSettings circleConfig,
         int noiseSeed,
         float thresholdSub,
-        float totalProbability
+        float totalProbability,
+        float totalSurfaceProbability
     )
     {
         var x = pos.x;
@@ -232,16 +237,19 @@ public class Level : MonoBehaviour
             return null;
         }
 
-        var randomValue = Random.value * totalProbability;
+        var isSurface = !HasTile(pos + Vector3Int.up);
+        var totalProb = isSurface ? totalSurfaceProbability : totalProbability;
+        var randomValue = Random.value * totalProb;
         for (int i = 0; i < circleConfig.tileData.Length; i++)
         {
             var data = circleConfig.tileData[i];
-            if (randomValue < data.spawnChance)
+            var chance = !isSurface ? data.spawnChance : data.spawnChance * data.surfaceSpawnChanceMult;
+            if (randomValue < chance)
             {
                 return data;
             }
 
-            randomValue -= data.spawnChance;
+            randomValue -= chance;
         }
 
         Debug.LogWarning("No tile found for position: " + pos);
@@ -253,7 +261,17 @@ public class Level : MonoBehaviour
         return tileInfos.ContainsKey(pos);
     }
 
-    public void RemoveBossFloor()
+    public TileInfo GetTileInfo(Vector3Int pos)
+    {
+        return tileInfos.GetValueOrDefault(pos, null);
+    }
+    
+    public TileInfo GetTileInfo(Vector3 pos)
+    {
+        return tileInfos.GetValueOrDefault(grid.WorldToCell(pos), null);
+    }
+
+public void RemoveBossFloor()
     {
         for (var x = -width / 2 + 1; x < width / 2 - 1; x++)
         {
@@ -414,15 +432,17 @@ public class Level : MonoBehaviour
         }
     }
 
-    private class TileInfo
+    public class TileInfo
     {
         public TileData tileData;
         public float hp;
+        public Vector3Int pos;
 
-        public TileInfo(TileData tileData)
+        public TileInfo(TileData tileData, Vector3Int position)
         {
             this.tileData = tileData;
             hp = tileData.maxHp;
+            pos = position;
         }
     }
 }

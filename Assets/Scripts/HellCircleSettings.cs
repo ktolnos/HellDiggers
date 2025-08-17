@@ -21,10 +21,15 @@ public class HellCircleSettings: MonoBehaviour
         public TileBase[] variants;
         public float maxHp = 1f;
         public float spawnChance = 1f;
+        public float surfaceSpawnChanceMult = 1f;
         public bool randomRotation = true;
         
         public TileBase[] damagedTiles;
         public GameObject drop;
         public float dropChance = 0f;
+        public float contactDamage = 0f;
+        public bool isSlippery = false;
+        public bool isMud = false;
+        public float outForce = 0f;
     }
 }

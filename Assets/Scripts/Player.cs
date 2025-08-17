@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -62,6 +64,8 @@ public class Player : MonoBehaviour
     public AudioClip groundPoundSound;
     public AudioClip groundPoundStartSound;
     public GameObject groundPoundEffectPrefab;
+    private bool isOnIce;
+    private bool isInMud;
     
     private void Awake()
     {
@@ -104,8 +108,19 @@ public class Player : MonoBehaviour
             return;
         }
         Vector2 moveInput = movementAction.ReadValue<Vector2>();
-        Vector2 moveVelocity = moveInput * speed;
-        rb.linearVelocityX = moveVelocity.x;
+        var movementSpeed = isInMud ? 0.1f * speed : speed;
+        Vector2 moveVelocity = moveInput * movementSpeed;
+        dashDirection = Mathf.Abs(moveInput.x) <= 0.01f ? dashDirection : Mathf.Sign(moveInput.x);
+        if (isOnIce)
+        {
+            rb.linearVelocityX = rb.linearVelocityX == 0f
+                ? dashDirection * movementSpeed
+                : movementSpeed * Mathf.Sign(rb.linearVelocityX);
+        }
+        else
+        {
+            rb.linearVelocityX = moveVelocity.x;
+        }
 
         if (jumpAction.WasPerformedThisFrame())
         {
@@ -120,7 +135,13 @@ public class Player : MonoBehaviour
         var isGroundedJump = Time.time - lastGroundedTime < 0.2f;
         if (Time.time <= jumpPressTime + 0.2f && (isGroundedJump || airJumpsLeft > 0))
         {
-            rb.linearVelocityY = jumpForce + stats.jumpHeight * 3f;
+            var jumpHeight = jumpForce + stats.jumpHeight * 3f;
+            if (isInMud)
+            {
+                jumpHeight *= 0.5f;
+            }
+
+            rb.linearVelocityY = jumpHeight;
             if (!isGroundedJump)
             {
                 airJumpsLeft--;
@@ -168,7 +189,6 @@ public class Player : MonoBehaviour
 
         numDashesLeft += Time.deltaTime * dashRechargeRate;
         numDashesLeft = Mathf.Min(numDashesLeft, stats.numDashes);
-        dashDirection = Mathf.Abs(moveInput.x) <= 0.01f ? dashDirection : Mathf.Sign(moveInput.x);
         if (dashAction.WasPerformedThisFrame() && numDashesLeft > 0)
         {
             numDashesLeft--;
@@ -217,12 +237,24 @@ public class Player : MonoBehaviour
         var bottomRight = new Vector2(bounds.max.x, bounds.min.y);
         var topLeft = new Vector2(bounds.min.x, bounds.max.y);
         var topRight = new Vector2(bounds.max.x, bounds.max.y);
-        
-        var rightHit = Physics2D.Raycast(topRight, Vector2.right, 0.1f, groundMask) ||
-                       Physics2D.Raycast(bottomRight, Vector2.right, 0.1f, groundMask);
-        var leftHit = Physics2D.Raycast(topLeft, Vector2.left, 0.1f, groundMask) ||
-                      Physics2D.Raycast(bottomLeft, Vector2.left, 0.1f, groundMask);
 
+        var topRightTile = Level.I.GetTileInfo(topRight + Vector2.right * 0.1f);
+        var bottomRightTile = Level.I.GetTileInfo(bottomRight + Vector2.right * 0.1f);
+        var topLeftTile = Level.I.GetTileInfo(topLeft + Vector2.left * 0.1f);
+        var bottomLeftTile = Level.I.GetTileInfo(bottomLeft + Vector2.left * 0.1f);
+        var leftTopTile = Level.I.GetTileInfo(topLeft + Vector2.up * 0.1f);
+        var rightTopTile = Level.I.GetTileInfo(topRight + Vector2.up * 0.1f);
+        var leftBottomTile = Level.I.GetTileInfo(bottomLeft + Vector2.down * 0.1f);
+        var rightBottomTile = Level.I.GetTileInfo(bottomRight + Vector2.down * 0.1f);
+        var allContacts = new[]{ topRightTile, bottomRightTile, topLeftTile, bottomLeftTile,
+            leftBottomTile, rightBottomTile, leftTopTile, rightTopTile }.Where(x => x != null);
+        foreach (var contact in allContacts)
+        {
+            HandleContact(contact);
+        }
+
+        var rightHit = bottomRightTile != null || topRightTile != null;
+        var leftHit = bottomLeftTile != null || topLeftTile != null;
 
         if (rightHit && rb.linearVelocityX > 0 ||
             leftHit && rb.linearVelocityX < 0)
@@ -230,8 +262,9 @@ public class Player : MonoBehaviour
             rb.linearVelocityX = 0;
         }
 
-        isGrounded = Physics2D.Raycast(bottomLeft, Vector2.down, 0.1f, groundMask) ||
-                     Physics2D.Raycast(bottomRight, Vector2.down, 0.1f, groundMask);
+        isGrounded = leftBottomTile != null || rightBottomTile != null;
+        isOnIce = leftBottomTile?.tileData.isSlippery == true || rightBottomTile?.tileData.isSlippery == true;
+        isInMud = leftBottomTile?.tileData.isMud == true || rightBottomTile?.tileData.isMud == true;
         if (isGrounded)
         {
             lastGroundedTime = Time.time;
@@ -275,5 +308,35 @@ public class Player : MonoBehaviour
         SoundManager.I.PlaySfx(dashSound, transform.position);
         dashParticleSystem.transform.parent.localRotation = Quaternion.Euler(0f, 0f, dashDirection <= 0f ? 90f : -90f);
         dashParticleSystem.Play();
+    }
+
+    private void HandleContact(Level.TileInfo tile)
+    {
+        if (tile.tileData.contactDamage != 0)
+        {
+            health.Damage(tile.tileData.contactDamage, DamageDealerType.Environment);
+        }
+
+        if (tile.tileData.outForce != 0f)
+        {
+            var diff = transform.position - Level.I.grid.GetCellCenterWorld(tile.pos);
+            diff.z = 0;
+            if (diff.y >= 0.25f)
+            {
+                diff.y = 1f;
+                diff.x = 0f;
+            } else if (diff.y < -0.5f)
+            {
+                diff.y = -1f;
+                diff.x = 0f;
+            } 
+            else
+            {
+                diff.x = Mathf.Sign(diff.x);
+                diff.y = 0f;
+            }
+            
+            rb.linearVelocity = diff.normalized * tile.tileData.outForce;
+        }
     }
 }

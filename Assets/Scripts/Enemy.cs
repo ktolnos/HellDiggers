@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public float hardness = 1f;
     public float speed;
     public float damage;
+    public float groundDamage;
     public float jumpForce;
     public float jumpReload;
     public float stoppingDistance;
@@ -51,7 +52,11 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        rb.simulated = Mathf.Abs(transform.position.y - player.transform.position.y) < 15f;
+        rb.simulated = animator.spriteRenderer.isVisible || player.transform.position.y < transform.position.y;
+        if (!rb.simulated)
+        {
+            return;
+        }
         if (isBoss)
         {
             if ((player.transform.position - transform.position).magnitude < attackDistance)
@@ -114,27 +119,31 @@ public class Enemy : MonoBehaviour
             if (Time.time - lastJumpTime > jumpReload)
             {
                 lastJumpTime = Time.time;
-                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                rb.linearVelocityY = jumpForce;
             }
         }
         else
-        {
-            if (player.transform.position.x > transform.position.x + stoppingDistance)
+        { 
+            rb.linearVelocityX = speed * Mathf.Sign(player.transform.position.x - transform.position.x);
+            if (Mathf.Abs(player.transform.position.x - transform.position.x) < stoppingDistance)
             {
-                rb.linearVelocityX = speed;
+                rb.linearVelocityX = 0;
             }
             else
             {
-                if (player.transform.position.x < transform.position.x - stoppingDistance)
+                var tilePos = Level.I.grid.WorldToCell(transform.position);
+                var dir = rb.linearVelocityX < 0 ? Vector3Int.left : Vector3Int.right;
+                if (Level.I.HasTile(tilePos + dir))
                 {
-                    rb.linearVelocityX = -speed;
+                    rb.linearVelocityX = 0;
+                    StartCoroutine(Attack(attackDelay, attackType));
                 }
-            }  
+            }
         }
 
-        if (rb.linearVelocity.x != 0)
+        if (rb.linearVelocityX != 0)
         {
-            animator.spriteRenderer.flipX = (rb.linearVelocity.x < 0)^invertSprite;
+            animator.spriteRenderer.flipX = (rb.linearVelocityX < 0)^invertSprite;
         }
     }
 
@@ -154,29 +163,27 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator Attack(float _attackDelay, AttackType attackType)
     {
-        if (Time.time - timeOfLastAttack > attackCoolDown)
+        if (!(Time.time - timeOfLastAttack > attackCoolDown)) yield break;
+        timeOfLastAttack = Time.time;
+        if (attackAnimation != null)
         {
-            timeOfLastAttack = Time.time;
-            if (attackAnimation != null)
-            {
-               animator.PlayOnce(attackAnimation); 
-            }
-            yield return new WaitForSeconds(_attackDelay);
-            if (attackType == AttackType.Beat)
-            {
-                Beat();
-            }
+            animator.PlayOnce(attackAnimation); 
+        }
+        yield return new WaitForSeconds(_attackDelay);
+        if (attackType == AttackType.Beat)
+        {
+            Beat();
+        }
 
-            if (attackType == AttackType.Shoot)
-            {
-                Shoot();
-            }
+        if (attackType == AttackType.Shoot)
+        {
+            Shoot();
         }
     }
 
     void Beat()
     {
-        GM.DamageEntities(player.transform.position, attackRadius, damage, DamageDealerType.Enemy); 
+        Level.I.Explode(transform.position, attackRadius, damage, groundDamage, DamageDealerType.Enemy); 
         if (beatSound != null)
         {
             SoundManager.I.PlaySfx(beatSound, transform.position, 5f);

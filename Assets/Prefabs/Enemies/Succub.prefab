@@ -53,6 +53,7 @@ MonoBehaviour:
   hardness: 60
   speed: 200
   damage: 50
+  groundDamage: 100
   jumpForce: 13
   jumpReload: 2
   stoppingDistance: 2

@@ -23,8 +23,8 @@ public class CameraController : MonoBehaviour
         var halfViewport = (cam.orthographicSize * cam.aspect);
         var left = Level.I.grid.GetCellCenterWorld(new Vector3Int(-Level.I.width / 2, 0, 0)).x;
         var right = Level.I.grid.GetCellCenterWorld(new Vector3Int(Level.I.width / 2 - 1, 0, 0)).x;
-        var leftPos = left + halfViewport + 1.6667f;
-        var rightPos = right - halfViewport + 1.6667f;
+        var leftPos = left + halfViewport;
+        var rightPos = right - halfViewport;
         var posX = Mathf.Clamp(transform.position.x, leftPos, rightPos);
         if (leftPos > rightPos)
         {

@@ -53,7 +53,7 @@ Rigidbody2D:
   m_Mass: 10
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 4
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -78,14 +78,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hardness: 80
-  speed: 7
+  speed: 40
   damage: 50
-  jumpForce: 100
+  groundDamage: 1000
+  jumpForce: 80
   jumpReload: 1
   stoppingDistance: 2
-  attackDistance: 2
-  attackRadius: 0
-  attackDelay: 0.7
+  attackDistance: 3
+  attackRadius: 3
+  attackDelay: 0.5
   bevaviorType: 1
   attackType: 1
   enemyLookTowardsPlayer: 0

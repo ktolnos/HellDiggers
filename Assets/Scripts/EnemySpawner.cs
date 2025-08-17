@@ -69,25 +69,24 @@ public class EnemySpawner : MonoBehaviour
 
     public IEnumerator Spawn(bool startSpawn)
     {
-        bool foundLocation = false;
-        Vector3Int location = Vector3Int.zero;
-        int count = 0;
+        var foundLocation = false;
+        var location = Vector3Int.zero;
+        var count = 0;
 
-        while (!foundLocation && count < 100)
+        while (count < 100)
         {
-            Vector3Int tryPosition = Vector3Int.one;
             if (startSpawn)
             {
                 var left = -Level.I.width / 2f + 5f;
                 var right = Level.I.width / 2f - 5f;
                 var height = -Level.I.height;
-                tryPosition = new Vector3Int(Mathf.RoundToInt(UnityEngine.Random.Range(left, right)),
+                location = new Vector3Int(Mathf.RoundToInt(UnityEngine.Random.Range(left, right)),
                     Mathf.RoundToInt(UnityEngine.Random.Range(0, height)), 0);
             }
             else
             {
                 var playerPos = Level.I.grid.WorldToCell(Player.I.gameObject.transform.position);
-                tryPosition = new Vector3Int(
+                location = new Vector3Int(
                     UnityEngine.Random.Range(
                         -spawnRadius + playerPos.x,
                         spawnRadius + playerPos.x),
@@ -96,13 +95,17 @@ public class EnemySpawner : MonoBehaviour
                         spawnRadius * 2 + playerPos.y), 0);
             }
 
-            if (!Level.I.HasTile(tryPosition))
+            if (!Level.I.HasTile(location))
             {
-                location = tryPosition;
                 foundLocation = true;
+                break;
             }
 
             count++;
+            if (count >= 100)
+            {
+                Debug.Log("Could not find location to spawn enemy");
+            }
         }
 
         if (foundLocation)
@@ -119,7 +122,9 @@ public class EnemySpawner : MonoBehaviour
                     yield return new WaitForSeconds(portalDelay);
                 }
 
-                Instantiate(enemy, Level.I.grid.GetCellCenterWorld(location), Quaternion.identity,
+                var enemyPos = Level.I.grid.GetCellCenterWorld(location);
+                enemyPos.z = enemy.transform.position.z;
+                Instantiate(enemy, enemyPos, Quaternion.identity,
                     Level.I.spawnedObjectsParent);
             }
         }

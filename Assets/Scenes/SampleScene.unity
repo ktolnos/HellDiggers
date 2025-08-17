@@ -7221,7 +7221,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.63587, y: -2.63066, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7468,8 +7468,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Loop Again
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: de3bd642e97af7c43b7f4dde982d663e, type: 2}
-  m_sharedMaterial: {fileID: 7766119235227557665, guid: de3bd642e97af7c43b7f4dde982d663e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c246aa2b851495b4fa8f159241c1c899, type: 2}
+  m_sharedMaterial: {fileID: -6410948068797592068, guid: c246aa2b851495b4fa8f159241c1c899, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7499,7 +7499,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -8951,6 +8951,7 @@ MonoBehaviour:
   moneyText: {fileID: 1315435323}
   healthImage: {fileID: 1547251032}
   healthMaterial: {fileID: 2100000, guid: dbcc502ae45d11a45957db6c235e0263, type: 2}
+  jetFuelIndicator: {fileID: 1952385040}
 --- !u!224 &1390184211 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 851592773613188119, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
@@ -9222,6 +9223,7 @@ MonoBehaviour:
   grenadeLauncher: {fileID: 1964884246}
   mainCollider: {fileID: 1563105267}
   health: {fileID: 0}
+  jetPackFuel: 0
   jetPackFuelConsumptionRate: 1
   jetPackSpeed: 8
   dashRechargeRate: 1
@@ -9236,7 +9238,7 @@ MonoBehaviour:
   - {fileID: 1648895480}
   - {fileID: 96142118}
   - {fileID: 209936073}
-  jetFuelIndicator: {fileID: 1952385040}
+  jetFuelMult: 10
   jumpSound: {fileID: 8300000, guid: 1f26744b684d5104abe0badb13704dba, type: 3}
   dashSound: {fileID: 8300000, guid: 7e82059ee8ed04847905d02995d4f4ee, type: 3}
   jetAudio: {fileID: 189560106}
@@ -15657,7 +15659,7 @@ Transform:
   m_GameObject: {fileID: 1689243473}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.63587, y: 2.63066, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15676,7 +15678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a220898bbb8a45219cb11d8f855e0b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scopeBias: 3
+  scopeBias: 0
 --- !u!1 &1706460491
 GameObject:
   m_ObjectHideFlags: 0
@@ -21794,7 +21796,7 @@ MonoBehaviour:
   portalDelay: 1.2
   randomSpawnDelayMax: 3
   cellSize: 0
-  numPrespawnedEnemies: 000000000a0000000a000000140000001e00000028000000280000002800000028000000
+  numPrespawnedEnemies: 00000000140000001e00000028000000320000003c00000046000000500000005a000000
   timeHardnessMult: 1
 --- !u!1001 &2028712905
 PrefabInstance:
@@ -22301,8 +22303,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: GREED
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: de3bd642e97af7c43b7f4dde982d663e, type: 2}
-  m_sharedMaterial: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: c246aa2b851495b4fa8f159241c1c899, type: 2}
+  m_sharedMaterial: {fileID: -6410948068797592068, guid: c246aa2b851495b4fa8f159241c1c899, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -22367,7 +22369,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2065297098
@@ -25174,7 +25176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: prices.Array.size
-      value: 16
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: stats.diggingDamage
@@ -25242,6 +25244,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[15]'
+      value: 1000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: 'prices.Array.data[16]'
+      value: 1000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: 'prices.Array.data[17]'
+      value: 1000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: 'prices.Array.data[18]'
+      value: 1000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: 'prices.Array.data[19]'
+      value: 1000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: 'prices.Array.data[20]'
+      value: 1000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: 'prices.Array.data[21]'
       value: 1000000
       objectReference: {fileID: 0}
     - target: {fileID: 7424529843976034270, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}

@@ -11,6 +11,8 @@ public class HUD: MonoBehaviour
     public Image healthImage;
     public Material healthMaterial;
     
+    public Image jetFuelIndicator;
+    
     private static readonly int Progress = Shader.PropertyToID("_Progress");
 
     private void Update()
@@ -24,5 +26,10 @@ public class HUD: MonoBehaviour
         healthMaterial.SetFloat(Progress, healthPercent);
         healthImage.rectTransform.sizeDelta = new Vector2(Player.I.health.maxHealth * 1f, healthImage.rectTransform.sizeDelta.y);
         healthImage.SetMaterialDirty();
+        
+        jetFuelIndicator.gameObject.SetActive(Player.I.health.currentHealth > 0f);
+        var stats = Player.I.stats;
+        jetFuelIndicator.fillAmount =  Player.I.jetPackFuel / (Player.I.stats.jetPackFuel * Player.I.jetFuelMult);
+        jetFuelIndicator.rectTransform.sizeDelta = new Vector2(jetFuelIndicator.rectTransform.sizeDelta.x,  stats.jetPackFuel * 150f);
     }
 }

@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     private int airJumpsLeft;
     public Health health;
     
-    private float jetPackFuel;
+    [HideInInspector] public float jetPackFuel;
     
     public float jetPackFuelConsumptionRate = 1f; // Fuel consumed per second while using jetpack
     public float jetPackSpeed = 2f; // Force applied by the jetpack
@@ -54,8 +54,7 @@ public class Player : MonoBehaviour
     public ParticleSystem dashParticleSystem;
     public ParticleSystem jetPackParticleSystem;
     public Image[] dashIndicators;
-    public Image jetFuelIndicator;
-    private float jetFuelMult = 10f;
+    [HideInInspector] public float jetFuelMult = 10f;
     
     public AudioClip jumpSound;
     public AudioClip dashSound;
@@ -166,8 +165,6 @@ public class Player : MonoBehaviour
                 jetAudio.Stop();
             }
         }
-        jetFuelIndicator.fillAmount = jetPackFuel / (stats.jetPackFuel * jetFuelMult);
-        jetFuelIndicator.rectTransform.sizeDelta = new Vector2(jetFuelIndicator.rectTransform.sizeDelta.x,  stats.jetPackFuel * 150f);
 
         numDashesLeft += Time.deltaTime * dashRechargeRate;
         numDashesLeft = Mathf.Min(numDashesLeft, stats.numDashes);
@@ -192,7 +189,7 @@ public class Player : MonoBehaviour
         
         if (groundPoundAction.WasPerformedThisFrame() && !isGrounded && stats.groundPound > 0 && !isPounding)
         {
-            rb.linearVelocityY = -jumpForce * 2f; // Increase downward force for ground pound
+            rb.linearVelocityY = -jumpForce * 5f; // Increase downward force for ground pound
             isPounding = true;
             SoundManager.I.PlaySfx(groundPoundStartSound, transform.position);
         }

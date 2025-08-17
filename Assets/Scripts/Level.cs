@@ -79,7 +79,6 @@ public class Level : MonoBehaviour
     private void GenerateLevel(HellCircleSettings circleConfig)
     {
         Clear();
-        EnemySpawner.I.Spawner(true);
         levelBg.color = circleConfig.color;
 
         var bossTiles = circleConfig.boss == null ? 0 : width;
@@ -154,6 +153,7 @@ public class Level : MonoBehaviour
 
         SetTiles(tilePositions, tiles);
         transitionHeight = grid.cellSize.y * (-height - wallsHeight / 2f);
+        EnemySpawner.I.Spawner(true);
     }
 
     public void Explode(Vector3 position, float radius, float enemyDamage, float groundDamage, DamageDealerType type)

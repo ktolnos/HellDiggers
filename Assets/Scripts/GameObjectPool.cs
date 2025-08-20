@@ -1,35 +1,33 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Pool;
+using Object = UnityEngine.Object;
 
 public class GameObjectPool
 {
     private GameObject prefab;
     private Transform parent;
-    private ObjectPool<GameObject> pool;
-    private HashSet<GameObject> pendingRelease = new();
+    private Dictionary<GameObject, Awaitable> pendingRelease = new();
+    private HashSet<GameObject> inactiveObjects = new();
+    private LinkedList<GameObject> activeObjects = new();
     
-    public GameObjectPool(GameObject prefab, Transform parent,
-                          int initialCapacity, int maxSize)
+    private int maxSize;
+    
+    public GameObjectPool(GameObject prefab, Transform parent, int maxSize)
     {
         this.prefab = prefab;
         this.parent = parent;
-        pool = new ObjectPool<GameObject>(
-            CreatePooledObject,
-            OnGet,
-            OnRelease,
-            OnDestroy,
-            true,
-            initialCapacity,
-            maxSize
-        );
+        this.maxSize = maxSize;
     }
     
     public GameObject Instantiate(Vector3 position, Quaternion rotation)
     {
-        var obj = pool.Get();
+        GameObject obj = GetFromPool();
         obj.transform.SetPositionAndRotation(position, rotation);
+        obj.SetActive(true); // Activate after setting position and rotation to have correct position OnEnable
         return obj;
     }
     
@@ -42,20 +40,66 @@ public class GameObjectPool
     
     public async void Release(GameObject obj, float time=0f)
     {
+        if (pendingRelease.ContainsKey(obj))
+        {
+            try
+            {
+                pendingRelease[obj].Cancel();
+            }
+            catch (InvalidOperationException)
+            {
+                // This can happen if the awaitable was already completed or cancelled
+            }
+            pendingRelease.Remove(obj);
+        }
         if (time != 0f)
         {
-            pendingRelease.Add(obj);
-            await Awaitable.WaitForSecondsAsync(time);
-            if (!pendingRelease.Remove(obj))
+            var awaitable = Awaitable.WaitForSecondsAsync(time);
+            pendingRelease[obj] = awaitable;
+            try
+            {
+                await awaitable;
+            }
+            catch (OperationCanceledException)
             {
                 return;
             }
+            finally
+            {
+                pendingRelease.Remove(obj);
+            }
+        }
+      
+        ReleaseToPool(obj);
+    }
+
+    private GameObject GetFromPool()
+    {
+        GameObject obj;
+        if (activeObjects.Count == maxSize)
+        {
+            Release(activeObjects.First.Value);
+        }
+        if (inactiveObjects.Count > 0)
+        {
+            obj = inactiveObjects.First();
+            inactiveObjects.Remove(obj);
         }
         else
         {
-            pendingRelease.Remove(obj);
+            obj = CreatePooledObject();
         }
-        pool.Release(obj);
+
+        activeObjects.AddLast(obj);
+        return obj;
+    }
+
+    private void ReleaseToPool(GameObject obj)
+    {
+        obj.SetActive(false);
+
+        if (!inactiveObjects.Add(obj)) return;
+        activeObjects.Remove(obj);
     }
     
     private GameObject CreatePooledObject()
@@ -65,25 +109,10 @@ public class GameObjectPool
         obj.SetActive(false);
         return obj;
     }
-    
-    private void OnGet(GameObject obj)
+
+    private IEnumerator RemoveFromPoolDelayed(GameObject obj, float delay)
     {
-        if (obj == null)
-        {
-            Debug.LogWarning("Destroyed object requested from pool: " + prefab.name);
-        }
-        obj.SetActive(true);
-    }
-    
-    private void OnRelease(GameObject obj)
-    {
-        obj.SetActive(false);
-    }
-    
-    private void OnDestroy(GameObject obj)
-    {
-        pendingRelease.Remove(obj);
-        Object.Destroy(obj);
-        GameObjectPoolManager.I.OnObjectDestroyed(obj);
+        yield return new WaitForSeconds(delay);
+        Release(obj);
     }
 }

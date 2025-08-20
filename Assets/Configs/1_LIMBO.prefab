@@ -66,6 +66,7 @@ MonoBehaviour:
     isSlippery: 0
     isMud: 0
     outForce: 0
+    lootLifetime: 10
   - name: Bomb
     tile: {fileID: 11400000, guid: 1a2c3922f78c2f24abd8bd1728d32cfc, type: 2}
     variants: []
@@ -80,6 +81,7 @@ MonoBehaviour:
     isSlippery: 0
     isMud: 0
     outForce: 0
+    lootLifetime: 10
   - name: Copper
     tile: {fileID: 11400000, guid: 857f6ad8aa7f93a4f94207ba5a00e962, type: 2}
     variants: []
@@ -95,6 +97,7 @@ MonoBehaviour:
     isSlippery: 0
     isMud: 0
     outForce: 0
+    lootLifetime: 10
   - name: Iron
     tile: {fileID: 11400000, guid: 22028242e3079ff44982f0313acc99ef, type: 2}
     variants: []
@@ -111,6 +114,7 @@ MonoBehaviour:
     isSlippery: 0
     isMud: 0
     outForce: 0
+    lootLifetime: 10
   - name: Gold
     tile: {fileID: 11400000, guid: 1041fa3160d56554bbb862e7549258b0, type: 2}
     variants: []
@@ -127,6 +131,7 @@ MonoBehaviour:
     isSlippery: 0
     isMud: 0
     outForce: 0
+    lootLifetime: 10
   - name: Emerald
     tile: {fileID: 11400000, guid: 85180b315cdd24642a16ab3fe6fc88ec, type: 2}
     variants: []
@@ -144,6 +149,7 @@ MonoBehaviour:
     isSlippery: 0
     isMud: 0
     outForce: 0
+    lootLifetime: 10
   - name: Magnesium
     tile: {fileID: 11400000, guid: f8cbc58b950a1834a92ca410ab9767b8, type: 2}
     variants: []
@@ -162,6 +168,7 @@ MonoBehaviour:
     isSlippery: 0
     isMud: 0
     outForce: 0
+    lootLifetime: 10
   - name: Easy
     tile: {fileID: 11400000, guid: f00329ac9bd4b064cb63934dc3122936, type: 2}
     variants:
@@ -179,26 +186,28 @@ MonoBehaviour:
     isSlippery: 0
     isMud: 0
     outForce: 0
+    lootLifetime: 10
   - name: Spikes
     tile: {fileID: 11400000, guid: c58a38f40429d084da5c08bcb96aa14f, type: 2}
     variants: []
     maxHp: 10000
     spawnChance: 1
-    surfaceSpawnChanceMult: 1
+    surfaceSpawnChanceMult: 0
     randomRotation: 0
     damagedTiles: []
     drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
     dropChance: 0
-    contactDamage: 20
+    contactDamage: 100
     isSlippery: 0
     isMud: 0
-    outForce: 5
+    outForce: 10
+    lootLifetime: 10
   - name: Ice
     tile: {fileID: 11400000, guid: 3a41c84629c17f64bb0305cae7d1eac1, type: 2}
     variants: []
     maxHp: 100
     spawnChance: 0.1
-    surfaceSpawnChanceMult: 100000
+    surfaceSpawnChanceMult: 0
     randomRotation: 0
     damagedTiles: []
     drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
@@ -207,12 +216,13 @@ MonoBehaviour:
     isSlippery: 1
     isMud: 0
     outForce: 0
+    lootLifetime: 10
   - name: Mud
     tile: {fileID: 11400000, guid: 33a1d6232192b6f43965bed7d5f2febd, type: 2}
     variants: []
     maxHp: 10
     spawnChance: 1
-    surfaceSpawnChanceMult: 1000
+    surfaceSpawnChanceMult: 0
     randomRotation: 0
     damagedTiles: []
     drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
@@ -221,26 +231,28 @@ MonoBehaviour:
     isSlippery: 0
     isMud: 1
     outForce: 0
+    lootLifetime: 10
   - name: Tar
     tile: {fileID: 11400000, guid: fc2c2a1a65501ea4e98e8e72eab7c631, type: 2}
     variants: []
     maxHp: 100
     spawnChance: 1
-    surfaceSpawnChanceMult: 1000
+    surfaceSpawnChanceMult: 0
     randomRotation: 0
     damagedTiles: []
     drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
     dropChance: 0
-    contactDamage: 3
+    contactDamage: 20
     isSlippery: 0
     isMud: 1
     outForce: 0
+    lootLifetime: 10
   - name: Bouncy
     tile: {fileID: 11400000, guid: 51d50996c4641b945a0d490e5d52c008, type: 2}
     variants: []
     maxHp: 100
     spawnChance: 1
-    surfaceSpawnChanceMult: 3000
+    surfaceSpawnChanceMult: 0
     randomRotation: 0
     damagedTiles: []
     drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
@@ -249,6 +261,22 @@ MonoBehaviour:
     isSlippery: 0
     isMud: 0
     outForce: 20
+    lootLifetime: 10
+  - name: Gravel
+    tile: {fileID: 11400000, guid: 38889df796c9b424a9567d72ff4e236f, type: 2}
+    variants: []
+    maxHp: 1
+    spawnChance: 5
+    surfaceSpawnChanceMult: 0
+    randomRotation: 0
+    damagedTiles: []
+    drop: {fileID: 6693581337699708166, guid: 4268a60b24ec1694f814e16c129c821a, type: 3}
+    dropChance: 1
+    contactDamage: 0
+    isSlippery: 0
+    isMud: 0
+    outForce: 0
+    lootLifetime: 10
   noiseThreshold: -0.2
   noiseFrequency: 0.15
   boss: {fileID: 0}

@@ -21,7 +21,7 @@ public class SaveManagerEditor : Editor
         }
         if (GUILayout.Button("Delete Save File"))
         {
-            var saveFilePath = SaveManager.I.SaveFilePath;
+            var saveFilePath = saveManager.SaveFilePath;
             if (System.IO.File.Exists(saveFilePath))
             {
                 System.IO.File.Delete(saveFilePath);

@@ -31,5 +31,6 @@ public class HellCircleSettings: MonoBehaviour
         public bool isSlippery = false;
         public bool isMud = false;
         public float outForce = 0f;
+        public float lootLifetime = 10f;
     }
 }

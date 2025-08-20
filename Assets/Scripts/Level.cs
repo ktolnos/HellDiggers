@@ -99,7 +99,7 @@ public class Level : MonoBehaviour
                     : Mathf.Clamp01((float)y / height);
                 thresholdSub -= 0.5f;
                 tilePositions[index] = new Vector3Int(x - width / 2, -y, 0);
-                var tileData = GetTile(tilePositions[index], circleConfig, noiseSeed, thresholdSub, 
+                var tileData = GetTile(tilePositions[index], circleConfig, noiseSeed, thresholdSub,
                     totalProbability, totalSurfaceProbability);
                 tiles[index] = tileData?.tile;
                 if (tileData != null)
@@ -181,7 +181,6 @@ public class Level : MonoBehaviour
                         tileInfo.hp -= groundDamage;
                         if (tileInfo.hp <= 0f)
                         {
-                            RemoveTile(tilePos);
                             SoundManager.I.PlaySfx(blockBreak, grid.GetCellCenterWorld(tilePos));
                             if (tileInfo.tileData.drop != null && Random.value < tileInfo.tileData.dropChance)
                             {
@@ -189,8 +188,10 @@ public class Level : MonoBehaviour
                                 var quaternion = Quaternion.Euler(0f, 0f, rotation);
                                 var pool = GameObjectPoolManager.I.GetOrRegisterPool(tileInfo.tileData.drop,
                                     pooledObjectsParent);
-                                pool.InstantiateTemporarily(grid.GetCellCenterWorld(tilePos), quaternion, 10f);
+                                pool.InstantiateTemporarily(grid.GetCellCenterWorld(tilePos), quaternion,
+                                    tileInfo.tileData.lootLifetime);
                             }
+                            RemoveTile(tilePos); // has to be after instantiate so drop can get the tileInfo
                         }
                         else
                         {
@@ -261,17 +262,28 @@ public class Level : MonoBehaviour
         return tileInfos.ContainsKey(pos);
     }
 
+    public bool HasTile(Vector3 pos)
+    {
+        return tileInfos.ContainsKey(WorldToCell(pos));
+    }
+    
+    public Vector3Int WorldToCell(Vector3 worldPos)
+    {
+        worldPos.z = 0;
+        return grid.WorldToCell(worldPos);
+    }
+
     public TileInfo GetTileInfo(Vector3Int pos)
     {
         return tileInfos.GetValueOrDefault(pos, null);
     }
-    
+
     public TileInfo GetTileInfo(Vector3 pos)
     {
-        return tileInfos.GetValueOrDefault(grid.WorldToCell(pos), null);
+        return GetTileInfo(grid.WorldToCell(pos));
     }
 
-public void RemoveBossFloor()
+    public void RemoveBossFloor()
     {
         for (var x = -width / 2 + 1; x < width / 2 - 1; x++)
         {
@@ -329,6 +341,13 @@ public void RemoveBossFloor()
         GetTilemap(pos).SetTile(pos, tileData);
     }
 
+    public void SetTile(TileInfo tileInfo)
+    {
+        tileInfos[tileInfo.pos] = tileInfo;
+        SetTile(tileInfo.pos, GetDamagedTile(tileInfo));
+        GetTilemap(tileInfo.pos).RefreshTile(tileInfo.pos);
+    }
+
     private void SetTiles(Vector3Int[] positions, TileBase[] tileData)
     {
         for (var i = 0; i < _tilemaps.Length; i++)
@@ -370,6 +389,7 @@ public void RemoveBossFloor()
         {
             AnimateNextLevel(skipIn: false);
         }
+
         var playerTilemapIdx = GetTilemapIdx(grid.WorldToCell(playerPos));
         for (int i = 0; i < _tilemaps.Length; i++)
         {
@@ -421,7 +441,7 @@ public void RemoveBossFloor()
                 Destroy(child.gameObject);
             }
         }
-        
+
         for (int i = pooledObjectsParent.childCount - 1; i >= 0; i--)
         {
             var child = pooledObjectsParent.GetChild(i);

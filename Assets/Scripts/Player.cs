@@ -66,6 +66,8 @@ public class Player : MonoBehaviour
     public GameObject groundPoundEffectPrefab;
     private bool isOnIce;
     private bool isInMud;
+    private float lastBounceTime = -100f;
+    private float lastContactDamageTime = -100f;
     
     private void Awake()
     {
@@ -312,12 +314,13 @@ public class Player : MonoBehaviour
 
     private void HandleContact(Level.TileInfo tile)
     {
-        if (tile.tileData.contactDamage != 0)
+        if (tile.tileData.contactDamage != 0 && Time.time - lastContactDamageTime > 0.5f)
         {
             health.Damage(tile.tileData.contactDamage, DamageDealerType.Environment);
+            lastContactDamageTime = Time.time;
         }
 
-        if (tile.tileData.outForce != 0f)
+        if (tile.tileData.outForce != 0f && Time.time - lastBounceTime > 0.5f)
         {
             var diff = transform.position - Level.I.grid.GetCellCenterWorld(tile.pos);
             diff.z = 0;
@@ -337,6 +340,7 @@ public class Player : MonoBehaviour
             }
             
             rb.linearVelocity = diff.normalized * tile.tileData.outForce;
+            lastBounceTime = Time.time;
         }
     }
 }

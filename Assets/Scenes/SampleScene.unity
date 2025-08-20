@@ -21708,6 +21708,7 @@ MonoBehaviour:
     isSlippery: 0
     isMud: 0
     outForce: 0
+    lootLifetime: 10
   width: 90
   height: 200
   wallsHeight: 200
@@ -21815,7 +21816,7 @@ MonoBehaviour:
   portal: {fileID: 6440795600749684546, guid: a4a2bb26aab6dbc4cb0c98279cb08078, type: 3}
   spawnRadius: 5
   enemyAmount: 1
-  hardometer: 0.0001
+  hardometer: 1e-22
   portalDelay: 1.2
   randomSpawnDelayMax: 3
   cellSize: 0

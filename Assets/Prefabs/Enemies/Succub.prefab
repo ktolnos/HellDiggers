@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hardness: 60
-  speed: 200
+  speed: 100
   damage: 50
   groundDamage: 100
   jumpForce: 13

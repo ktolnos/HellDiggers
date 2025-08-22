@@ -44,16 +44,7 @@ public class Gravel : MonoBehaviour
             var pos = Level.I.WorldToCell(transform.position);
             if (!IsValidPos(pos))
             {
-                pos.y--;
-            }
-
-            if (!IsValidPos(pos))
-            {
-                pos.y += 2;
-            }
-
-            if (!IsValidPos(pos))
-            {
+                Debug.LogWarning("Gravel is trying to set a tile at an invalid position: " + pos);
                 GameObjectPoolManager.I.Release(gameObject);
                 return;
             }

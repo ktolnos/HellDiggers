@@ -344,8 +344,9 @@ public class Level : MonoBehaviour
     public void SetTile(TileInfo tileInfo)
     {
         tileInfos[tileInfo.pos] = tileInfo;
-        SetTile(tileInfo.pos, GetDamagedTile(tileInfo));
+        SetTile(tileInfo.pos, tileInfo.tileData.tile);
         GetTilemap(tileInfo.pos).RefreshTile(tileInfo.pos);
+        GetTilemap(tileInfo.pos).CompressBounds();
     }
 
     private void SetTiles(Vector3Int[] positions, TileBase[] tileData)
@@ -405,7 +406,7 @@ public class Level : MonoBehaviour
         currentCircleIndex = Mathf.Clamp(currentCircleIndex, 0, circles.Length - 1);
         circleText.text = circles[currentCircleIndex].circleName;
         transitionPanel.gameObject.SetActive(true);
-        var animationDuration = 0.3f;
+        var animationDuration = 0.5f;
         circleText.DOFade(1f, animationDuration);
         var inDuration = skipIn ? 0f : animationDuration;
         transitionPanel.DOFade(1f, inDuration).OnComplete(() =>
@@ -415,7 +416,7 @@ public class Level : MonoBehaviour
             GenerateLevel(circles[currentCircleIndex]);
             Player.I.rb.linearVelocityY = -20f;
 
-            transitionPanel.DOFade(0f, animationDuration).SetDelay(0.5f).OnComplete(() =>
+            transitionPanel.DOFade(0f, animationDuration).SetDelay(0.7f).OnComplete(() =>
             {
                 transitionPanel.gameObject.SetActive(false);
                 Player.I.rb.bodyType = RigidbodyType2D.Dynamic;

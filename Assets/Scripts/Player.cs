@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     public InputAction dashAction;
     public InputAction jetPackAction;
     public InputAction groundPoundAction;
+    public bool IsAlive => health.currentHealth > 0f;
     
     public Gun gun;
     public Gun grenadeLauncher;
@@ -112,7 +113,11 @@ public class Player : MonoBehaviour
         Vector2 moveInput = movementAction.ReadValue<Vector2>();
         var movementSpeed = isInMud ? 0.1f * speed : speed;
         Vector2 moveVelocity = moveInput * movementSpeed;
-        dashDirection = Mathf.Abs(moveInput.x) <= 0.01f ? dashDirection : Mathf.Sign(moveInput.x);
+        var isDashing = Time.time - dashStartTime < dashDuration;
+        if (!isDashing)
+        {
+            dashDirection = Mathf.Abs(moveInput.x) <= 0.01f ? dashDirection : Mathf.Sign(moveInput.x);
+        }
         if (isOnIce)
         {
             rb.linearVelocityX = rb.linearVelocityX == 0f
@@ -152,8 +157,8 @@ public class Player : MonoBehaviour
             jumpPressTime = -100f;
             AnimateJump();
         }
-
-        var gunVector = Mouse.current.position.ReadValue() -
+        
+        var gunVector = VirtualMouseController.I.mousePosition -
                         (Vector2)Camera.main.WorldToScreenPoint(gun.transform.position);
 
         gun.transform.localEulerAngles = Vector3.back * (Mathf.Atan2(gunVector.x, gunVector.y) * Mathf.Rad2Deg - 90f);
@@ -197,7 +202,7 @@ public class Player : MonoBehaviour
             dashStartTime = Time.time;
         }
         
-        if (Time.time - dashStartTime < dashDuration)
+        if (isDashing)
         {
             rb.linearVelocityX = dashDirection * dashSpeed;
             rb.linearVelocityY = 0f; // Reset vertical velocity during dash

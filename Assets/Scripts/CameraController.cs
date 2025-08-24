@@ -8,6 +8,8 @@ public class CameraController : MonoBehaviour
 
     private Camera cam;
     public float scopeBias = 0.5f; // Bias for the camera position when scoped
+    private Vector3 offset;
+    public float speed = 1f;
 
     private void Awake()
     {
@@ -17,9 +19,10 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
-        var mousePosOffset = Mouse.current.position.ReadValue() - new Vector2(Screen.width / 2f, Screen.height / 2f);
+        var mousePosOffset =  VirtualMouseController.I.mousePosition - new Vector2(Screen.width / 2f, Screen.height / 2f);
         mousePosOffset /= Screen.height / 2f; // Normalize to viewport coordinates
-        transform.position = Player.I.transform.position + (Vector3)mousePosOffset * scopeBias;
+        offset = Vector3.MoveTowards(offset, (Vector3)mousePosOffset * scopeBias, Time.deltaTime * speed);
+        transform.position = Player.I.transform.position + offset;
         var halfViewport = (cam.orthographicSize * cam.aspect);
         var left = Level.I.grid.GetCellCenterWorld(new Vector3Int(-Level.I.width / 2, 0, 0)).x;
         var right = Level.I.grid.GetCellCenterWorld(new Vector3Int(Level.I.width / 2 - 1, 0, 0)).x;

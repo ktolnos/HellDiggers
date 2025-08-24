@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "InputSystem_Actions",
     "maps": [
         {
@@ -102,7 +103,7 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "JetPack",
@@ -292,7 +293,7 @@
                 {
                     "name": "",
                     "id": "143bb1cd-cc10-4eca-a2f0-a3664166fe91",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
@@ -347,7 +348,7 @@
                 {
                     "name": "",
                     "id": "6eeec052-7da9-4d6a-87b2-c50dabd2bbce",
-                    "path": "<Gamepad>/buttonNorth",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
@@ -402,7 +403,7 @@
                 {
                     "name": "",
                     "id": "8cbb2f4b-a784-49cc-8d5e-c010b8c7f4e6",
-                    "path": "<Gamepad>/leftStickPress",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -555,11 +556,33 @@
                 },
                 {
                     "name": "",
+                    "id": "210f5879-a567-4105-9355-a389f4dcaf54",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "GroundPound",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "92c4cfdc-04ea-4639-8b52-119329d2d005",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Restart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2771d69b-b2c1-4e79-bb6e-bc16b77ff64a",
                     "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "Restart",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -588,11 +611,44 @@
                 },
                 {
                     "name": "",
+                    "id": "95196998-c8f8-47e8-a7ba-28df6575ce2b",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "JetPack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2e113325-4ea1-4372-9374-da087345a8f0",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "JetPack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "070d4ed0-1b35-4bc5-9892-3f66e01fd5ca",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e83dcc3e-f5e1-454f-b87a-3139f984b4c0",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false

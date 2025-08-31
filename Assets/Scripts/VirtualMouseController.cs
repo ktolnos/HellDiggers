@@ -10,11 +10,7 @@ public class VirtualMouseController : MonoBehaviour
 {
     public static VirtualMouseController I;
     
-    public VirtualMouseInput input;
-    public Image virtualMouseImage;
     public Image aimImage;
-    public Canvas canvas;
-    private float offset = 32f;
     public float aimRadius = 5f;
     public float aimImageDistanceMult = 5f;
     private InputAction _lookAction;
@@ -34,55 +30,26 @@ public class VirtualMouseController : MonoBehaviour
         lastLook = Vector2.right;
         InputSystem.onActionChange += OnActionChange;
     }
-
-    private void Update()
-    {
-        input.transform.localScale = Vector3.one * (1f / canvas.scaleFactor);
-    }
-
     private void LateUpdate()
     {
         Cursor.visible = mouse;
         var isDead = !Player.I.IsAlive;
 
-        var useVirtualMouse = !mouse && isDead;
-        virtualMouseImage.enabled = useVirtualMouse;
         aimImage.enabled = !mouse && !isDead;
-        if (useVirtualMouse)
-        {
-            input.leftButtonAction.action.Enable();
-            input.stickAction.action.Enable();
-        }
-        else
-        {
-            input.leftButtonAction.action.Disable();
-            input.stickAction.action.Disable();
-        }
         
-        if (useVirtualMouse)
+        if (!mouse)
         {
-            Vector2 virtualMousePosition = input.virtualMouse.position.ReadValue();
-            virtualMousePosition.x = Mathf.Clamp(virtualMousePosition.x, offset, Screen.width - offset);
-            virtualMousePosition.y = Mathf.Clamp(virtualMousePosition.y, offset, Screen.height - offset);
-            InputState.Change(input.virtualMouse.position, virtualMousePosition);
+            var look = _lookAction.ReadValue<Vector2>();
+            if (look.magnitude > 0.3f)
+            {
+                lastLook = look;
+            }
+            mousePosition = new Vector2(Screen.width / 2f, Screen.height / 2f) + lastLook.normalized * aimRadius;
+            aimImage.rectTransform.anchoredPosition = lastLook.normalized * (aimRadius * aimImageDistanceMult);
         }
         else
         {
-            if (!mouse)
-            {
-                var look = _lookAction.ReadValue<Vector2>();
-                if (look.magnitude > 0.3f)
-                {
-                    lastLook = look;
-                }
-                mousePosition = new Vector2(Screen.width / 2f, Screen.height / 2f) + lastLook.normalized * (aimRadius * canvas.scaleFactor);
-                aimImage.rectTransform.anchoredPosition = lastLook.normalized * (aimRadius * aimImageDistanceMult);
-            }
-            else
-            {
-                mousePosition = Mouse.current.position.ReadValue();
-            }
-            
+            mousePosition = Mouse.current.position.ReadValue();
         }
     }
     

@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Texts Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: Texts
+  m_TableCollectionNameGuidString: a89ad48d34be26240a94076a3e9be7d4
+  m_Entries:
+  - m_Id: 1535881764864
+    m_Key: SampleScene/UpgradeCanvas/PlayAgain/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2120836177920
+    m_Key: SampleScene/UpgradeCanvas/GrenadeExplosionRadius
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11409139163136
+    m_Key: MaxedSkill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11930403069952
+    m_Key: GrenadeExplosionRadius
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21703013949440
+    m_Key: GrenadeFireRate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21798463725568
+    m_Key: NumberOfGrenades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21917498073088
+    m_Key: FireRate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21982639808512
+    m_Key: Ricochet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22050147131392
+    m_Key: NumberOfJumps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22141729759232
+    m_Key: JetPackFuel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22230607060992
+    m_Key: Digging Damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22311062200320
+    m_Key: NumberOfBullets
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22406910435328
+    m_Key: JumpHeight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22464355622912
+    m_Key: GroundPound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22536690589696
+    m_Key: Enemy Damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22593787650048
+    m_Key: Num Dashes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22653145440256
+    m_Key: BulletExplosion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22728068292608
+    m_Key: Health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22776780939264
+    m_Key: LootPickUpR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22850692964352
+    m_Key: healthRegen
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 9203609039798560
+  references:
+    version: 2
+    RefIds:
+    - rid: 9203609039798560
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1756578598324

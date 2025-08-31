@@ -8,7 +8,6 @@ public class PlayerDeath: MonoBehaviour, IDeathHandler
 {
     public Light2D playerLight; 
     public Light2D globalLight; 
-    public GameObject upgradeUI;
     
     private InputAction restartAction;
     
@@ -30,7 +29,7 @@ public class PlayerDeath: MonoBehaviour, IDeathHandler
 
     private void Start()
     {
-        if (upgradeUI.gameObject.activeSelf)
+        if (UpgradesController.I.IsActive)
         {
             SetPlayerDead();
         }
@@ -56,7 +55,7 @@ public class PlayerDeath: MonoBehaviour, IDeathHandler
     public void PlayAgain()
     {
         Player.I.transform.position = new Vector3(0, 0, 0);
-        upgradeUI.gameObject.SetActive(false);
+        UpgradesController.I.HideUpgrades();
         playerLight.intensity = startIntensity;
         playerLight.pointLightOuterRadius = startRadius;
         globalLight.intensity = startGlobalIntensity;
@@ -90,7 +89,7 @@ public class PlayerDeath: MonoBehaviour, IDeathHandler
         playerLight.intensity = 0f;
         globalLight.intensity = 0f;
         Player.I.health.currentHealth = 0;
-        upgradeUI.SetActive(true);
+        UpgradesController.I.ShowUpgrades();
         Level.I.Clear();
         HighScoreManager.I.UpdateHighScore(GM.I.money - startGold);
     }

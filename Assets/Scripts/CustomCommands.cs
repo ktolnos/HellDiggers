@@ -1,6 +1,8 @@
 ﻿using System;
 using UnityEngine;
 using IngameDebugConsole;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 using UnityEngine.Serialization;
 
 public class CustomCommands : MonoBehaviour
@@ -57,6 +59,13 @@ public class CustomCommands : MonoBehaviour
     public static bool DeleteSaveFile()
     {
         return SaveManager.I.DeleteSaveFile();
+    }
+
+    [ConsoleMethod("locale", "sets the locale")]
+    public static string SetLocale(string locale)
+    {
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.GetLocale(new LocaleIdentifier(locale));
+        return "Set locale to " + LocalizationSettings.SelectedLocale.LocaleName;
     }
 
 }

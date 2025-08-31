@@ -3,45 +3,36 @@ using System.Collections.Generic;
 using System.Reflection;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.Localization;
 using UnityEngine.Rendering;
 using UnityEngine.Serialization;
 using UnityEngine.TextCore;
 using UnityEngine.UI;
 
-public class Skill : MonoBehaviour
+public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler 
 {
+    public LocalizedString skillName;
+    public LocalizedString description;
     public Stats stats;
     public Skill skillParent;
-    public RectTransform popup;
     
     public Color lockedColor;
     public Color unlockedColor;
     [FormerlySerializedAs("upgradedColor")] public Color tooExpensiveColor;
     public Color maxOutColor;
-    public TextMeshProUGUI lvlText;
-    public TextMeshProUGUI priceText;
-    public TextMeshProUGUI descriptionText;
-    public bool hasDescription = false;
-    private int CurrentLevel => (int) myStatField.GetValue(Player.I.stats);
+    public int CurrentLevel => (int) myStatField.GetValue(Player.I.stats);
     private Player player;
     private Button button;
-    private Image image;
+    public Image statusIndicator;
     public List<int> prices;
     private FieldInfo myStatField;
+    [HideInInspector] public RectTransform rectTransform;
+    public Image selectedIndicator;
+    private bool interactable;
     
-    void Start()
+    private void Awake()
     {
-        player = Player.I;
-        button = GetComponentInChildren<Button>();
-        button.onClick.AddListener(AddStats);
-        button.interactable = false;
-        popup.gameObject.SetActive(false);
-        image = GetComponent<Image>();
-        if (!hasDescription)
-        {
-            descriptionText.gameObject.SetActive(false);
-        }
-        
         foreach (var fieldInfo in typeof(Stats).GetFields())
         {
             if (fieldInfo.GetValue(stats) is > 0)
@@ -54,10 +45,19 @@ public class Skill : MonoBehaviour
                 myStatField = fieldInfo;
             }
         }
+        rectTransform = GetComponent<RectTransform>();
     }
     
+    void Start()
+    {
+        player = Player.I;
+        button = GetComponentInChildren<Button>();
+        button.onClick.AddListener(AddStats);
+    }
+
     void AddStats()
     {
+        if (!interactable) return;
         if (!GM.I.isFree)
         {
             if (CurrentLevel >= prices.Count) return;
@@ -72,35 +72,50 @@ public class Skill : MonoBehaviour
     {
         if ((skillParent == null || skillParent.CurrentLevel > 0) && CurrentLevel < prices.Count)
         {
-            button.interactable = true;
             var canAfford = prices[CurrentLevel] < GM.I.money;
-            image.color = canAfford ? unlockedColor : tooExpensiveColor;
+            statusIndicator.color = canAfford ? unlockedColor : tooExpensiveColor;
             canAfford |= GM.I.isFree; // Allow free upgrades
-            button.interactable = canAfford;
+            interactable = canAfford;
         }else
         {
-            button.interactable = false;
+            interactable = false;
             if (CurrentLevel == prices.Count)
             {
-                image.color = maxOutColor;
+                statusIndicator.color = maxOutColor;
             }
             else
             {
-                image.color = lockedColor;
+                statusIndicator.color = lockedColor;
             }
         }
-        
-        lvlText.text = CurrentLevel + "/" + prices.Count;
-        priceText.text = CurrentLevel < prices.Count ? prices[CurrentLevel].ToString() : "Maxed";
+
+        if (EventSystem.current.currentSelectedGameObject == button.gameObject)
+        {
+            ShowPopup();
+        }
+    }
+    
+    public void OnSelect(BaseEventData eventData)
+    {
+        ShowPopup();
+    }
+
+    public void OnDeselect(BaseEventData eventData)
+    {
+        HidePopup();
     }
 
     public void ShowPopup()
     {
-        popup.gameObject.SetActive(true);
+        button.Select();
+        SkillPopup.I.Show(this);
+        selectedIndicator.enabled = true;
     }
 
     public void HidePopup()
     {
-        popup.gameObject.SetActive(false);
+        button.OnDeselect(null);
+        SkillPopup.I.Hide(this);
+        selectedIndicator.enabled = false;
     }
 }

@@ -37,10 +37,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Brightness: 2.03
+    - _Brightness: 1.7
     - _NumberOfLines: 200
     - _ScanSpeed: 0.001
-    - _Strength: 0.678
+    - _Strength: 0.4
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1

@@ -26,7 +26,6 @@ public class UpgradesController: MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(EventSystem.current.currentSelectedGameObject, EventSystem.current.currentSelectedGameObject);
         if (!IsActive)
         {
             return;

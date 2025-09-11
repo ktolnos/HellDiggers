@@ -36,6 +36,10 @@ public class Gravel : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (rb.bodyType != RigidbodyType2D.Dynamic || !rb.simulated)
+        {
+            return;
+        }
         var isStanding = IsStanding();
         // rb.bodyType = isStanding ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic;
         if (isStanding)

@@ -39,6 +39,7 @@ Material:
     m_Floats:
     - _Brightness: 1.7
     - _NumberOfLines: 200
+    - _Saturation: 1
     - _ScanSpeed: 0.001
     - _Strength: 0.4
     m_Colors: []

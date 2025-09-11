@@ -34,9 +34,7 @@ public class Level : MonoBehaviour
     private Dictionary<Vector3Int, TileInfo> tileInfos = new();
     public bool isLevelTransition;
     public SpriteRenderer levelBg;
-
-    private List<Vector3Int> tilesToRemove = new();
-
+    
     public int tilemapNumber;
     public int tilemapRenderDistance = 2;
     private Tilemap[] _tilemaps;
@@ -62,7 +60,6 @@ public class Level : MonoBehaviour
     private void Start()
     {
         PlayAgain();
-        StartCoroutine(TileRemover());
     }
 
     public void PlayAgain()
@@ -369,18 +366,8 @@ public class Level : MonoBehaviour
 
     private void RemoveTile(Vector3Int pos)
     {
-        tilesToRemove.Add(pos);
+        SetTile(pos, null);
         tileInfos.Remove(pos);
-    }
-
-    private IEnumerator TileRemover()
-    {
-        while (true)
-        {
-            SetTiles(tilesToRemove.ToArray(), Enumerable.Repeat<TileBase>(null, tilesToRemove.Count).ToArray());
-            tilesToRemove.Clear();
-            yield return new WaitForSeconds(0.1f);
-        }
     }
 
     private void Update()

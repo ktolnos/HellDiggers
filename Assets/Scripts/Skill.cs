@@ -114,7 +114,10 @@ public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     public void HidePopup()
     {
-        button.OnDeselect(null);
+        if (EventSystem.current.currentSelectedGameObject == button.gameObject)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+        }
         SkillPopup.I.Hide(this);
         selectedIndicator.enabled = false;
     }

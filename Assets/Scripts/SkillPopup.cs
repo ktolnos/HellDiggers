@@ -50,9 +50,13 @@ public class SkillPopup : MonoBehaviour
     
     public void Hide(Skill skill)
     {
-        if (currentSkill != skill) return;
+        if (skill != null && currentSkill != skill) return;
         currentSkill = null;
         rectTransform.gameObject.SetActive(false);
+        if (skill == null)
+        {
+            return;
+        }
         skill.skillName.StringChanged -= OnSkillNameChanged;
         skill.description.StringChanged -= OnDescriptionChanged;
     }

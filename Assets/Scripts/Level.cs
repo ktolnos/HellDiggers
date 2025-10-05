@@ -6,6 +6,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -21,10 +22,10 @@ public class Level : MonoBehaviour
     public int width = 100;
     public int height = 100;
     public int wallsHeight = 100;
-    public float damagedProb = 0.1f;
     public Transform spawnedObjectsParent;
     public int currentCircleIndex;
-    public float timeOfLevelStart;
+    [HideInInspector] public float timeOfRunStart;
+    [HideInInspector] public float timeOfFloorStart;
     private float transitionHeight;
     public Image transitionPanel;
     public int bossHeight = 20;
@@ -42,6 +43,9 @@ public class Level : MonoBehaviour
     public Transform tilemapParent;
 
     public Transform pooledObjectsParent;
+    public TileBase[] cracks;
+    public Tilemap cracksTilemap;
+    public Tilemap bgTilemap;
 
     private void Awake()
     {
@@ -64,7 +68,7 @@ public class Level : MonoBehaviour
 
     public void PlayAgain()
     {
-        timeOfLevelStart = Time.time;
+        timeOfRunStart = Time.time;
         currentCircleIndex = 0;
         var playerPos = Player.I.transform.position;
         Player.I.transform.position = new Vector3(playerPos.x, wallsHeight / 2f, playerPos.z);
@@ -76,6 +80,7 @@ public class Level : MonoBehaviour
     private void GenerateLevel(HellCircleSettings circleConfig)
     {
         Clear();
+        timeOfFloorStart = Time.time;
         levelBg.color = circleConfig.color;
 
         var bossTiles = circleConfig.boss == null ? 0 : width;
@@ -91,12 +96,11 @@ public class Level : MonoBehaviour
         {
             for (int y = 0; y < height; y++)
             {
-                var thresholdSub = y < height / 2
-                    ? 1f - Mathf.Clamp01((float)y / height)
-                    : Mathf.Clamp01((float)y / height);
-                thresholdSub -= 0.5f;
+                // 1 at 0, 1 at -height, 0 between -height/6 and -5*height/6 (linear)
+                var thresholdSub = Mathf.Clamp01(Mathf.Abs(y - height / 2f) / height);
+                
                 tilePositions[index] = new Vector3Int(x - width / 2, -y, 0);
-                var tileData = GetTile(tilePositions[index], circleConfig, noiseSeed, thresholdSub,
+                var (tileData, bgTileData) = GetTile(tilePositions[index], circleConfig, noiseSeed, thresholdSub,
                     totalProbability, totalSurfaceProbability);
                 tiles[index] = tileData?.tile;
                 if (tileData != null)
@@ -112,11 +116,10 @@ public class Level : MonoBehaviour
 
                     var pos = tilePositions[index];
                     tileInfos[pos] = new TileInfo(tileData, pos);
-                    if (tileData.maxHp > 1 && Random.value < damagedProb)
-                    {
-                        tileInfos[pos].hp = tileData.maxHp * Random.Range(0.1f, 0.9f);
-                        tiles[index] = GetDamagedTile(tileInfos[pos]);
-                    }
+                }
+                if (bgTileData != null)
+                {
+                    bgTilemap.SetTile(tilePositions[index], bgTileData.tile);
                 }
 
                 index++;
@@ -168,6 +171,7 @@ public class Level : MonoBehaviour
                 var tileInfo = tileInfos.GetValueOrDefault(tilePos, null);
                 if (tileInfo != null)
                 {
+                    
                     if (tileInfo.tileData == wallTile)
                     {
                         continue;
@@ -175,6 +179,10 @@ public class Level : MonoBehaviour
 
                     if (CheckCircleCellIntersection(position, radius, tilePos))
                     {
+                        if (radius > 1f && CheckCircleCellIntersection(position, radius - 1f, tilePos))
+                        {
+                            bgTilemap.SetTile(tilePos, null);
+                        }
                         tileInfo.hp -= groundDamage;
                         if (tileInfo.hp <= 0f)
                         {
@@ -192,8 +200,7 @@ public class Level : MonoBehaviour
                         }
                         else
                         {
-                            var damagedTile = GetDamagedTile(tileInfo);
-                            SetTile(tilePos, damagedTile);
+                            SetTile(tileInfo);
                         }
                     }
                 }
@@ -203,18 +210,7 @@ public class Level : MonoBehaviour
         GM.DamageEntities(position, radius, enemyDamage, type);
     }
 
-    private TileBase GetDamagedTile(TileInfo tileInfo)
-    {
-        return tileInfo.tileData.damagedTiles != null &&
-               tileInfo.tileData.damagedTiles.Length > 0
-            ? tileInfo.tileData.damagedTiles[
-                Mathf.Clamp(Mathf.FloorToInt((1f - tileInfo.hp / tileInfo.tileData.maxHp) *
-                                             tileInfo.tileData.damagedTiles.Length),
-                    0, tileInfo.tileData.damagedTiles.Length - 1)]
-            : tileInfo.tileData.tile;
-    }
-
-    private TileData GetTile(Vector3Int pos,
+    private (TileData, TileData) GetTile(Vector3Int pos,
         HellCircleSettings circleConfig,
         int noiseSeed,
         float thresholdSub,
@@ -226,13 +222,14 @@ public class Level : MonoBehaviour
         var y = pos.y;
         if (x == -width / 2 || x == width / 2 - 1)
         {
-            return wallTile;
+            return (wallTile, null);
         }
 
-        if (Noise.GradientNoise(x * circleConfig.noiseFrequency, y * circleConfig.noiseFrequency, noiseSeed) <
-            circleConfig.noiseThreshold + thresholdSub)
+        var noise = Noise.GradientNoise(x * circleConfig.noiseFrequency, y * circleConfig.noiseFrequency, noiseSeed);
+        var bgTile = noise < circleConfig.noiseThreshold + thresholdSub - 0.1f ? null: circleConfig.tileData[0];
+        if (noise < circleConfig.noiseThreshold + thresholdSub)
         {
-            return null;
+            return (null, bgTile);
         }
 
         var isSurface = !HasTile(pos + Vector3Int.up);
@@ -244,14 +241,14 @@ public class Level : MonoBehaviour
             var chance = !isSurface ? data.spawnChance : data.spawnChance * data.surfaceSpawnChanceMult;
             if (randomValue < chance)
             {
-                return data;
+                return (data, bgTile);
             }
 
             randomValue -= chance;
         }
 
         Debug.LogWarning("No tile found for position: " + pos);
-        return null;
+        return (null, bgTile);
     }
 
     public bool HasTile(Vector3Int pos)
@@ -332,18 +329,23 @@ public class Level : MonoBehaviour
         return _tilemaps[GetTilemapIdx(pos)];
     }
 
-
-    private void SetTile(Vector3Int pos, TileBase tileData)
-    {
-        GetTilemap(pos).SetTile(pos, tileData);
-    }
-
     public void SetTile(TileInfo tileInfo)
     {
+        var pos = tileInfo.pos;
+        var tile = tileInfo.tileData.tile;
+        
         tileInfos[tileInfo.pos] = tileInfo;
-        SetTile(tileInfo.pos, tileInfo.tileData.tile);
-        GetTilemap(tileInfo.pos).RefreshTile(tileInfo.pos);
-        GetTilemap(tileInfo.pos).CompressBounds();
+        GetTilemap(pos).SetTile(pos, tile);
+        if (tileInfo.hp == tileInfo.tileData.maxHp)
+        {
+            cracksTilemap.SetTile(pos, null);
+        }
+        else
+        {
+            var crackTile = cracks[Mathf.Clamp(Mathf.FloorToInt((1f - tileInfo.hp / tileInfo.tileData.maxHp) *
+                                     cracks.Length), 0, cracks.Length - 1)];
+            cracksTilemap.SetTile(pos, crackTile);
+        }
     }
 
     private void SetTiles(Vector3Int[] positions, TileBase[] tileData)
@@ -366,7 +368,8 @@ public class Level : MonoBehaviour
 
     private void RemoveTile(Vector3Int pos)
     {
-        SetTile(pos, null);
+        GetTilemap(pos).SetTile(pos, null);
+        cracksTilemap.SetTile(pos, null);
         tileInfos.Remove(pos);
     }
 
@@ -420,6 +423,8 @@ public class Level : MonoBehaviour
         {
             tilemap.ClearAllTiles();
         }
+        cracksTilemap.ClearAllTiles();
+        bgTilemap.ClearAllTiles();
 
         for (int i = spawnedObjectsParent.childCount - 1; i >= 0; i--)
         {

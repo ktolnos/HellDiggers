@@ -40,6 +40,7 @@ public class UpgradesController: MonoBehaviour
     {
         upgradeUI.SetActive(true);
         playAgainButton.Select();
+        SkillPopup.I.Hide(null);
     }
     
     public void HideUpgrades()

@@ -18,10 +18,12 @@ public class EnemySpawner : MonoBehaviour
     [FormerlySerializedAs("spawnRate")] public float hardometer;
     public float portalDelay;
     public float randomSpawnDelayMax;
-    public int cellSize;
-    private float timeOfLastSpawn;
+    private float _timeOfLastSpawn;
     public List<int> numPrespawnedEnemies = new();
-    public float timeHardnessMult;
+    public List<float> spawnDelays = new();
+    public List<float> hardnessMultipliers = new();
+    public float spawnsPerHardness = 0.01f;
+    private float currentHardness;
 
     private void Awake()
     {
@@ -30,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        timeOfLastSpawn = Time.time;
+        _timeOfLastSpawn = Time.time;
     }
 
     void Update()
@@ -40,16 +42,24 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        var timeSinceStart = Time.time - Level.I.timeOfLevelStart;
         if (Level.I.isLevelTransition)
         {
-            timeOfLastSpawn = Time.time;
+            _timeOfLastSpawn = Time.time;
+            currentHardness = 0;
         }
 
-        if (Time.time - timeOfLastSpawn > (1f / hardometer) / (Mathf.Pow(timeSinceStart, 2f)))
+        var enemyStartTime = Time.time - Level.I.timeOfFloorStart - spawnDelays[Level.I.currentCircleIndex];
+        if (enemyStartTime < 0)
+        {
+            return;
+        }
+        currentHardness = hardometer * enemyStartTime * hardnessMultipliers[Level.I.currentCircleIndex];
+        Debug.Log("Current hardness: " + currentHardness);
+
+        if (Time.time - _timeOfLastSpawn > 1f / spawnsPerHardness / currentHardness)
         {
             Spawner(false);
-            timeOfLastSpawn = Time.time;
+            _timeOfLastSpawn = Time.time;
         }
     }
 
@@ -150,7 +160,7 @@ public class EnemySpawner : MonoBehaviour
 
     private Enemy SelectPortalEnemy()
     {
-        var availableEnemies = enemies.Where(x => x.enemy.hardness < timeHardnessMult * (Time.time - Level.I.timeOfLevelStart)).ToList();
+        var availableEnemies = enemies.Where(x => x.enemy.hardness < currentHardness).ToList();
         if (availableEnemies.Count == 0)
         {
             return null;

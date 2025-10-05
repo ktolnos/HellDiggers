@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BGMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: a38be68bd12449148a8b1ef3cfc5257a, type: 3}
+  m_Name: FogMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: 50325c057af987b4985380b79b10c834, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -23,6 +23,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Distortion:
+        m_Texture: {fileID: 2800000, guid: 99c5d20470258e34590447b694e4b58d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Noise:
+        m_Texture: {fileID: 2800000, guid: fc57b6cd932273840b7d9d9e2f8446c8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -37,13 +45,17 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Add: -0.2
-    - _Scale: 0.3
-    - _Speed: 0.1
-    m_Colors: []
+    - _Scale: 0.1
+    - _Scale2: 0.04
+    - _Speed: 0
+    - _Speed1: 0.04
+    - _Speed2: -0.04
+    - _Threshold: 0.5
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &1236691707718979367
+--- !u!114 &4729545932670488775
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -54,5 +66,5 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Editor::UnityEditor.Rendering.Universal.AssetVersion
   version: 10

@@ -39,9 +39,9 @@ Material:
     m_Floats:
     - _Brightness: 1.7
     - _NumberOfLines: 200
-    - _Saturation: 1
-    - _ScanSpeed: 0.001
-    - _Strength: 0.4
+    - _Saturation: 0.624
+    - _ScanSpeed: 0.003
+    - _Strength: 0.553
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1

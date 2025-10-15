@@ -1,0 +1,580 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e71df7dce79b2c4f9d52b3f72ecb250, type: 3}
+  m_Name: Playstation Mapping
+  m_EditorClassIdentifier: 
+  scheme: Playstation
+  inputPrompts:
+  - Path: <Gamepad>/buttonSouth
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 6be14c96f38e08c4697c7cc4fb4b23b1
+        m_SubObjectName: PS5_Cross
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 89180ce9253eeee4a9d1f53ab73d3afc
+        m_SubObjectName: ps_a
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/buttonEast
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: fff37bd973870cc44a2e85af14485918
+        m_SubObjectName: PS5_Circle
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: a8a9ba36e609e114cb7a4d18aa5bae2d
+        m_SubObjectName: ps_b
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/buttonWest
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 4996a4c8b91a3ed4389416694f3a0035
+        m_SubObjectName: PS5_Square
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: c72177e598b39e241b7872940556f61b
+        m_SubObjectName: ps_x
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/buttonNorth
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 70bdf390e384e204bbdd7e8b692f5d39
+        m_SubObjectName: PS5_Triangle
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 165cca61ca4258242967a7dd04b484aa
+        m_SubObjectName: ps_y
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftShoulder
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 81e69d77229546646bbcfae8a9d76a83
+        m_SubObjectName: PS5_L1
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 1562e8f3878e1e1499dd55d0cab4b84a
+        m_SubObjectName: ps_lb
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightShoulder
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 254f92a278d22fe4a9c39535be6aa08c
+        m_SubObjectName: PS5_R1
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 2fb013d724bb9d646984248a48eb9573
+        m_SubObjectName: ps_rb
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftTrigger
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 50d2c8998d1b3284190b6941b34e8702
+        m_SubObjectName: PS5_L2
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: ba67a474ac1faa9408e417c33a170948
+        m_SubObjectName: ps_lt
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightTrigger
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: aa45300a01979074fadb4cb146f6798e
+        m_SubObjectName: PS5_R2
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: cf8077078134474419654d14a4e6ab95
+        m_SubObjectName: ps_rt
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/dpad
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 89e58570334836b46b8b113cf8ef3483
+        m_SubObjectName: PS5_Dpad
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 2cd9fb6609082aa40bb81e293ae262bf
+        m_SubObjectName: ps_dpad
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/dpad/up
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 1e0970a1cfb0e03409e3b78bc7bd470b
+        m_SubObjectName: PS5_Dpad_Up
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 90313d8d477112442b6792c93d3cd889
+        m_SubObjectName: ps_dpad_up
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/dpad/down
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: aebcf695d01d9c44ebf1915924b0d95a
+        m_SubObjectName: PS5_Dpad_Down
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 1e08049b230d5c8488e9128a95019675
+        m_SubObjectName: ps_dpad_down
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/dpad/left
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 2d2c12ee6d3ef88409e0c62766389bf3
+        m_SubObjectName: PS5_Dpad_Left
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 48a416cf1ce1d0b41815d851d7e7b727
+        m_SubObjectName: ps_dpad_left
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/dpad/right
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 7071a36e6c076bc42b993993c64cdffb
+        m_SubObjectName: PS5_Dpad_Right
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 22977ac427d049341a6673c9c483a128
+        m_SubObjectName: ps_dpad_right
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/dpad/x
+    Prompts:
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: adae4f26ca0a61a43aae8aab3767839c
+        m_SubObjectName: ps_dpad_leftright
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/dpad/y
+    Prompts:
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: a48f616541fb9d1479499fea9184e173
+        m_SubObjectName: ps_dpad_updown
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftStick
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 73507dd25332b6e4e82d26da3f3fd894
+        m_SubObjectName: PS5_Left_Stick
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: d2b7c49a019b95646b234c4b33acffde
+        m_SubObjectName: ps_ls
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftStick/up
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: ee9226e3fd54b534ebcbaed7c1e19258
+        m_SubObjectName: PS5_Left_Stick_Up
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: fb77682ca1458bc47b4e2aac45eab281
+        m_SubObjectName: ps_ls_up
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftStick/down
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: c7019b332cf3e0b4f9f96bd711c3e384
+        m_SubObjectName: PS5_Left_Stick_Down
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 6cdeed6cd7d068244b9f5acee8d21acf
+        m_SubObjectName: ps_ls_down
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftStick/left
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 267a9b70ced5b9b4fa2ef2358766cefa
+        m_SubObjectName: PS5_Left_Stick_Left
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 82ff35718c663174f82bee2ea5328046
+        m_SubObjectName: ps_ls_left
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftSticket/right
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 387fb93b9766df24990b724779f1f154
+        m_SubObjectName: PS5_Left_Stick_Right
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: f5d644ce2f471a84a838d1eb1ed02cc0
+        m_SubObjectName: ps_ls_right
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftStick/x
+    Prompts:
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 36aa929b83d995a4ea1fee9bea818046
+        m_SubObjectName: ps_ls_leftright
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftStick/y
+    Prompts:
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 73a9adc26697297449ae611c8189e520
+        m_SubObjectName: ps_ls_updown
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightStick
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 25ab612a57c6a20498e226a2314da567
+        m_SubObjectName: PS5_Right_Stick
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: ae7cde82c32f4394790bbdf8e0129820
+        m_SubObjectName: ps_rs
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightStick/up
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 55c50cfb5e52b63488d83aa2011f3484
+        m_SubObjectName: PS5_Right_Stick_Up
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 375f1b5e7277588408e3a1dee49891f9
+        m_SubObjectName: ps_rs_up
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightStick/down
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: e4e34a7fcd11edc4cabc84a9328efafc
+        m_SubObjectName: PS5_Right_Stick_Down
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: f50bcc0c1d9f831428fc2537a3246ae3
+        m_SubObjectName: ps_rs_down
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightStick/left
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 837c6bea5666edc4a8097239c5040fcf
+        m_SubObjectName: PS5_Right_Stick_Left
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 1bbdfc086a29412498cf28af5e517670
+        m_SubObjectName: ps_rs_left
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightStick/right
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 2e1442442389da94a9c8dfc09ae5fce9
+        m_SubObjectName: PS5_Right_Stick_Right
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 9e8191edc05498646bbcdc70773c1c50
+        m_SubObjectName: ps_rs_right
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightStick/x
+    Prompts:
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 289477be34f2594429dbe5b0676def27
+        m_SubObjectName: ps_rs_leftright
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightStick/y
+    Prompts:
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 730a174a5ca82d24e89966400cd0b1a1
+        m_SubObjectName: ps_rs_updown
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftStickPress
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: fe09d9cad7c7abc469b36a3d0ce9bd42
+        m_SubObjectName: PS5_Left_Stick_Click
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: deabe45f3a23a3a41b52cdc309fcb572
+        m_SubObjectName: ps_ls_click
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightStickPress
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: a34c30f5e09808a4893b939f9ce7bc08
+        m_SubObjectName: PS5_Right_Stick_Click
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: d42aac34e765c974681cbecc6524bc2f
+        m_SubObjectName: ps_rs_click
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/touchpadButton
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: ef866a514bb0b2c42b92f28cf01e876a
+        m_SubObjectName: PS5_Touch_Pad
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: de171c49f94190a4ba5fc3ebc46d5e57
+        m_SubObjectName: ps_touchpad
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/start
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: eb12323e2c24c094aa77143270e9f315
+        m_SubObjectName: PS5_Options
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 0ad961785e8a59f43ac3d29f2cb4008f
+        m_SubObjectName: ps_ds5_start
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/select
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 3632122c707e0bb4da83d1a483a7857c
+        m_SubObjectName: PS5_Share
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 27192f58c1c44934a97d9bcad75ac595
+        m_SubObjectName: ps_ds5_select
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0

@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f783f6776a86abe409fe7e7b940558ec, type: 3}
+  m_Name: Master Mapping
+  m_EditorClassIdentifier: 
+  unassignedPrompt:
+  - Style: xelu
+    Sprite: {fileID: 0}
+    Addressable:
+      m_AssetGUID: 7a7ace8b3f881f141a0f440a561b6430
+      m_SubObjectName: Blank_Black_Normal
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+  - Style: JStatz
+    Sprite: {fileID: 0}
+    Addressable:
+      m_AssetGUID: 57b7413d326972049bd20be11b10a7af
+      m_SubObjectName: keyboard_blank_square
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+  schemes:
+  - {fileID: 11400000, guid: 06034d8d1f6e62b4e88f1edb9ac25d24, type: 2}
+  - {fileID: 11400000, guid: bc4b48c733f51154d946a3c143ba61d3, type: 2}
+  - {fileID: 11400000, guid: 24c904c748068704c88e400c66259ea3, type: 2}
+  - {fileID: 11400000, guid: 78ad49978b7d58b40820df1087249e2f, type: 2}
+  - {fileID: 11400000, guid: 7bcb5ac9f9ea2664aba728eb06d684b9, type: 2}

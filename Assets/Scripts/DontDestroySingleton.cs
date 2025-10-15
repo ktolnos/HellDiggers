@@ -13,7 +13,7 @@ public class DontDestroySingleton: MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            DestroyImmediate(gameObject);
         }
     }
         

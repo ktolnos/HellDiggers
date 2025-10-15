@@ -31,7 +31,7 @@ public class PlayerDeath: MonoBehaviour, IDeathHandler
     {
         if (UpgradesController.I.IsActive)
         {
-            SetPlayerDead();
+            OnPlayerDead();
         }
     }
 
@@ -78,19 +78,15 @@ public class PlayerDeath: MonoBehaviour, IDeathHandler
             globalLight.intensity = Mathf.Lerp(startGlobalIntensity, 0f, t);
             yield return null;
         }
-        SetPlayerDead();
+        OnPlayerDead();
         isDying = false;
         SaveManager.I.SaveGame();
     }
 
-    private void SetPlayerDead()
+    private void OnPlayerDead()
     {
-        Player.I.rb.bodyType = RigidbodyType2D.Kinematic;
-        playerLight.intensity = 0f;
-        globalLight.intensity = 0f;
-        Player.I.health.currentHealth = 0;
-        UpgradesController.I.ShowUpgrades();
-        Level.I.Clear();
         HighScoreManager.I.UpdateHighScore(GM.I.money - startGold);
+        Level.I.Clear();
+        PlayAgain();
     }
 }

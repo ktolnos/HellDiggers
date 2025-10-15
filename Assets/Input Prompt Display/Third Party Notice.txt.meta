@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: d32d156681c702943a0cb3eff55b65e5
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 267761
+  packageName: Input Prompt Display
+  packageVersion: 1.0.0
+  assetPath: Assets/Input Prompt Display/Third Party Notice.txt
+  uploadId: 619820

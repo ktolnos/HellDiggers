@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 06034d8d1f6e62b4e88f1edb9ac25d24
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 267761
+  packageName: Input Prompt Display
+  packageVersion: 1.0.0
+  assetPath: Assets/Input Prompt Display/Example/Scriptable Objects/Control Schemes/Keyboard
+    and Mouse Mapping.asset
+  uploadId: 619820

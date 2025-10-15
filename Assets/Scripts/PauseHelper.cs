@@ -15,7 +15,7 @@ public class PauseHelper: MonoBehaviour
 
     private void Update()
     {
-        if (pauseAction.WasPressedThisFrame())
+        if (pauseAction.WasPressedThisFrame() && !GM.IsUIOpen)
         {
             Pause(!isPaused);
         }

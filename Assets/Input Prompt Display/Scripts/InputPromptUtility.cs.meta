@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 6676f9ce01dbb5b44a02c9543d3bb3f8
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 267761
+  packageName: Input Prompt Display
+  packageVersion: 1.0.0
+  assetPath: Assets/Input Prompt Display/Scripts/InputPromptUtility.cs
+  uploadId: 619820

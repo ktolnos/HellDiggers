@@ -17,8 +17,6 @@ public class VirtualMouseController : MonoBehaviour
     private Vector2 lastLook;
 
     public Vector2 mousePosition;
-    private bool mouse = true;
-    
     private void Awake()
     {
         I = this;
@@ -28,16 +26,14 @@ public class VirtualMouseController : MonoBehaviour
     {
         _lookAction = InputSystem.actions.FindAction("Look");
         lastLook = Vector2.right;
-        InputSystem.onActionChange += OnActionChange;
     }
     private void LateUpdate()
     {
-        Cursor.visible = mouse;
         var isDead = !Player.I.IsAlive;
 
-        aimImage.enabled = !mouse && !isDead;
+        aimImage.enabled = InputController.I.CurrentInputType == InputController.InputType.Gamepad && !isDead;
         
-        if (!mouse)
+        if (InputController.I.CurrentInputType == InputController.InputType.Gamepad)
         {
             var look = _lookAction.ReadValue<Vector2>();
             if (look.magnitude > 0.3f)
@@ -50,25 +46,6 @@ public class VirtualMouseController : MonoBehaviour
         else
         {
             mousePosition = Mouse.current.position.ReadValue();
-        }
-    }
-    
-    private void OnActionChange(object obj, InputActionChange change)
-    {
-        if (change == InputActionChange.ActionStarted && obj is InputAction action)
-        {
-            if (action.activeControl.device.displayName == "VirtualMouse")
-            {
-                return;
-            }
-
-            var newMouse = action.activeControl.device is not Gamepad;
-            if (mouse != newMouse)
-            {
-                Debug.Log($"VirtualMouseController: Mouse input changed to {newMouse}");
-            }
-            mouse = newMouse;
-            Cursor.visible = mouse;
         }
     }
 }

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: f783f6776a86abe409fe7e7b940558ec
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 267761
+  packageName: Input Prompt Display
+  packageVersion: 1.0.0
+  assetPath: Assets/Input Prompt Display/Scripts/Data/MasterMappingsScriptableObject.cs
+  uploadId: 619820

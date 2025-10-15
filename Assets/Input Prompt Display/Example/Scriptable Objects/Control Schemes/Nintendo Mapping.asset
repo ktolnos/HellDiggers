@@ -1,0 +1,526 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e71df7dce79b2c4f9d52b3f72ecb250, type: 3}
+  m_Name: Nintendo Mapping
+  m_EditorClassIdentifier: 
+  scheme: Nintendo
+  inputPrompts:
+  - Path: <Gamepad>/buttonSouth
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 26816a3e07d7c754eb0e01d41fadd3ca
+        m_SubObjectName: Switch_B
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: c5ed132b5bef95b4b9aaed2d7cd9884e
+        m_SubObjectName: switch_a
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/buttonEast
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: e28600e4bb5f04548b7290b080d353d1
+        m_SubObjectName: Switch_A
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 6342ba116aae28f4ab5757e2e901508a
+        m_SubObjectName: switch_b
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/buttonWest
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: a2f20735aa9dbee48ac02460d24f5479
+        m_SubObjectName: Switch_Y
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 7245b6b2b9efc284ebdbc5ca74635165
+        m_SubObjectName: switch_x
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/buttonNorth
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 75280cab4543f2d4aa5e57452ceddbcf
+        m_SubObjectName: Switch_X
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 92b7d9dc39e20b340b03b8be3db01f01
+        m_SubObjectName: switch_y
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftShoulder
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 2ab82552e6e4ef34aafbb21ba4120716
+        m_SubObjectName: Switch_LB
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 386cffe846928ab4fa15463feea9fa6e
+        m_SubObjectName: switch_lb
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightShoulder
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 2388126aa235d31449aad284f10a69a3
+        m_SubObjectName: Switch_RB
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 6d8a2b51cce908649925c72ce7a3d872
+        m_SubObjectName: switch_rb
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftTrigger
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 2f663c905d5797d499dda3cf4b6aa56e
+        m_SubObjectName: Switch_LT
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: f8c7330530b2bb54db19e8c1a3304e7b
+        m_SubObjectName: switch_lt
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightTrigger
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: e52fea4ad7347d34399811e3a39f4a74
+        m_SubObjectName: Switch_RT
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 29098e079cbdded46823a47ac0092e0a
+        m_SubObjectName: switch_rt
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/dpad
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 706d052b59d33234b8b59a78c52db04a
+        m_SubObjectName: Switch_Dpad
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 3be3d90ec87bd4e4f82c2c76080865c4
+        m_SubObjectName: switch_jc_dpad
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/dpad/up
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 27b9da6265808d946a0fcc1121cf9d2d
+        m_SubObjectName: Switch_Dpad_Up
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 9e80517484524e342ac8cdb5aea1782c
+        m_SubObjectName: switch_jc_dpad_up
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/dpad/down
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: a1a1c9cf292f248438fcb522d45e972f
+        m_SubObjectName: Switch_Dpad_Down
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: f5d77fc7ed532f94e899263b273fa597
+        m_SubObjectName: switch_dpad_down
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/dpad/left
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 8731143919227ed4c9afbbe7ff6c3259
+        m_SubObjectName: Switch_Dpad_Left
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 5e2abfcedf0d9c5468e0cb6ba6fd7af4
+        m_SubObjectName: switch_jc_dpad_left
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/dpad/right
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: a0038e2279e33c34a8e014b92502768b
+        m_SubObjectName: Switch_Dpad_Right
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 78fb822893551df4bbcdc4c2e4f69a5a
+        m_SubObjectName: switch_jc_dpad_right
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftStick
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 944cec5397129ec4692bb0fb2d55a2e6
+        m_SubObjectName: Switch_Left_Stick
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 3869d170de459584ea5f02840783b01e
+        m_SubObjectName: switch_ls
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftStick/up
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: e1efeb34c9fbadb4bb37e558ac53e324
+        m_SubObjectName: Switch_Left_Stick_Up
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: e61dd98e2ec2d4f42880369f8d6435dc
+        m_SubObjectName: switch_ls_up
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftStick/down
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 2aaf7ef761d13f3438361ef122ac3630
+        m_SubObjectName: Switch_Left_Stick_Down
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 2afc04e6f45ff684db466cd48ae74c77
+        m_SubObjectName: switch_ls_down
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftStick/left
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 6c6f4d9f6d5d9ba48a96ed441a84d8f4
+        m_SubObjectName: Switch_Left_Stick_Left
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 10b1c30a40da72c40a57515feffe56f8
+        m_SubObjectName: switch_ls_left
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftStick/right
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 4e6d1d816cd351c4f865b08c03438e60
+        m_SubObjectName: Switch_Left_Stick_Right
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 93c45d24ba73a5642890ab756f071b6a
+        m_SubObjectName: switch_ls_right
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftStick/x
+    Prompts:
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 8eed6220e2d779440b0b2500617bfb2a
+        m_SubObjectName: switch_ls_leftright
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftStick/y
+    Prompts:
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 2d2d494d2b3dcae4d82db6698648e0b7
+        m_SubObjectName: switch_ls_updown
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightStick
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 8fa73712b33936242ad03ff327e4949a
+        m_SubObjectName: Switch_Right_Stick
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: d640de349489c8e42b9350d43b7e48a9
+        m_SubObjectName: switch_rs
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightStick/up
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 1684bb6cae5eb414bbfe860d31ad85ba
+        m_SubObjectName: Switch_Right_Stick_Up
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: b7f4477b02c17f245b6f4664748f7e9a
+        m_SubObjectName: switch_rs_up
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightStick/down
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 24fc22ce4c24dac44a83caa7c0a26c48
+        m_SubObjectName: Switch_Right_Stick_Down
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 9f7706540cb761946b5ae73d0c3371bb
+        m_SubObjectName: switch_rs_down
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightStick/left
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: ff79f457c6bf553408c39133279c9e1f
+        m_SubObjectName: Switch_Right_Stick_Left
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: c70c6cbc0e317a3449418f82ee8020e9
+        m_SubObjectName: switch_rs_left
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightStick/right
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 37235e4be0c5c684ba0e7d82f376d09a
+        m_SubObjectName: Switch_Right_Stick_Right
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: e3286bb181dbba945b6fb3f908ece400
+        m_SubObjectName: 
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightStick/x
+    Prompts:
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 15eec670f443b0a4dadc4ad614862a82
+        m_SubObjectName: switch_rs_leftright
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightStick/y
+    Prompts:
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: dc33561a1a91edf42b71e3738939120f
+        m_SubObjectName: switch_rs_updown
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftStickPress
+    Prompts:
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: ae740829a3d4b244591fa520662dc777
+        m_SubObjectName: switch_ls_click
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightStickPress
+    Prompts:
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: aed6aa2eabcfe084aa5a4db7d4fa7886
+        m_SubObjectName: switch_rs_click
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/start
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 5b1b44a8ada407e4d9716e02d0a44cb8
+        m_SubObjectName: Switch_Plus
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 4f26192a2d868834ca61b6893e9b2e68
+        m_SubObjectName: switch_pro_start
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/select
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 002c5ba26de6f0b439a5421532904acf
+        m_SubObjectName: Switch_Minus
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 32b18cf54021b5e4ab2307016f0e4ed6
+        m_SubObjectName: switch_pro_select
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0

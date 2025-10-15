@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Gun: MonoBehaviour
 {
+    public string id;
     public Bullet bulletPrefab;
     public float fireDelay = 0.5f;
     public int numberOfBullets = 5;
@@ -18,6 +19,8 @@ public class Gun: MonoBehaviour
     
     public Image reloadIndicator;
     public AudioClip shootSound;
+    
+    public GunStation gunStation;
 
     private void Update()
     {

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3c0a9c282163f544c8c6c58b12631f26
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 267761
+  packageName: Input Prompt Display
+  packageVersion: 1.0.0
+  assetPath: Assets/Input Prompt Display/Example/Scriptable Objects/Master Mapping.asset
+  uploadId: 619820

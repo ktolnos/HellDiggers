@@ -37,7 +37,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if (Player.I.health.currentHealth <= 0)
+        if (Player.I.health.currentHealth <= 0 || Level.I.currentCircleIndex < 0)
         {
             return;
         }
@@ -54,7 +54,6 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
         currentHardness = hardometer * enemyStartTime * hardnessMultipliers[Level.I.currentCircleIndex];
-        Debug.Log("Current hardness: " + currentHardness);
 
         if (Time.time - _timeOfLastSpawn > 1f / spawnsPerHardness / currentHardness)
         {

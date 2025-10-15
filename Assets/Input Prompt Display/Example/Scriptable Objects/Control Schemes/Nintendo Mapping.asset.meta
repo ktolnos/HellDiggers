@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 7bcb5ac9f9ea2664aba728eb06d684b9
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 267761
+  packageName: Input Prompt Display
+  packageVersion: 1.0.0
+  assetPath: Assets/Input Prompt Display/Example/Scriptable Objects/Control Schemes/Nintendo
+    Mapping.asset
+  uploadId: 619820

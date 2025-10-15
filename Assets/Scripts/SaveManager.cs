@@ -28,11 +28,6 @@ public class SaveManager : MonoBehaviour
         I = this;
     }
 
-    private void Start()
-    {
-        LoadGame();
-    }
-
     public void SaveGame()
     {
         var saveState = new SaveState
@@ -41,7 +36,9 @@ public class SaveManager : MonoBehaviour
             stats = Player.I.stats,
             prevScore = HighScoreManager.I.previousScore,
             latestScore = HighScoreManager.I.latestScore,
-            highScore = HighScoreManager.I.highScore
+            highScore = HighScoreManager.I.highScore,
+            currentGunId = Player.I.currentGunId,
+            secondaryGunId = Player.I.secondaryGunId
         };
         var json = JsonUtility.ToJson(saveState, true);
         System.IO.FileInfo file = new System.IO.FileInfo(SaveFilePath);
@@ -67,6 +64,12 @@ public class SaveManager : MonoBehaviour
         var saveState = JsonUtility.FromJson<SaveState>(json);
         GM.I.money = saveState.money;
         Player.I.stats = saveState.stats;
+        Player.I.currentGunId = saveState.currentGunId;
+        if (string.IsNullOrEmpty(Player.I.currentGunId))
+        {
+            Player.I.currentGunId = "pistol";
+        }
+        Player.I.secondaryGunId = saveState.secondaryGunId;
         HighScoreManager.I.previousScore = saveState.prevScore;
         HighScoreManager.I.latestScore = saveState.latestScore;
         HighScoreManager.I.highScore = saveState.highScore;
@@ -81,6 +84,8 @@ public class SaveManager : MonoBehaviour
         public int latestScore;
         public int highScore;
         public Stats stats;
+        public string currentGunId;
+        public string secondaryGunId;
     }
     
     

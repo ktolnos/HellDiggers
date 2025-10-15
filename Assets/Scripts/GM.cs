@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using IPD;
 using UnityEngine;
 
 public class GM: MonoBehaviour
@@ -8,10 +9,13 @@ public class GM: MonoBehaviour
     
     public int money = 0;
     public bool isFree = false;
+    private static int uiDepth = 0;
+    public static bool IsUIOpen => uiDepth > 0;
     
-    private void Awake()
+    private async void Awake()
     {
         I = this;
+        bool isLoaded = await InputPromptUtility.Load();
     }
     
     public static void DamageEntities(Vector3 position, float radius, float damage, DamageDealerType type)
@@ -29,5 +33,19 @@ public class GM: MonoBehaviour
                 health.Damage(damage, type);
             }
         }
-    } 
+    }
+
+    public static void OnUIOpen()
+    {
+        uiDepth++;
+    }
+    
+    public static void OnUIClose()
+    {
+        uiDepth--;
+        if (uiDepth < 0)
+        {
+            uiDepth = 0;
+        }
+    }
 }

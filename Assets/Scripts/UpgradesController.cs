@@ -1,19 +1,21 @@
 ﻿using System;
+using IPD;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class UpgradesController: MonoBehaviour
 {
     public static UpgradesController I;
-    [SerializeField] private GameObject upgradeUI;
-    [SerializeField] private Button playAgainButton;
+    public Canvas upgradeUI;
+    private InputAction closeUpgradesAction;
     
-    public bool IsActive => upgradeUI.activeSelf;
+    public bool IsActive => upgradeUI.gameObject.activeSelf;
     
     private void Awake()
     {
         I = this;
+        closeUpgradesAction = InputSystem.actions.FindAction("Cancel");
     }
     
     private void Start()
@@ -30,22 +32,31 @@ public class UpgradesController: MonoBehaviour
         {
             return;
         }
-        if (EventSystem.current.currentSelectedGameObject == null)
+        if (closeUpgradesAction.WasPerformedThisFrame())
         {
-            playAgainButton.Select();
+            HideUpgrades();
         }
     }
 
     public void ShowUpgrades()
     {
-        upgradeUI.SetActive(true);
-        playAgainButton.Select();
+        if (IsActive)
+        {
+            return;
+        }
+        upgradeUI.gameObject.SetActive(true);
         SkillPopup.I.Hide(null);
+        GM.OnUIOpen();
     }
     
     public void HideUpgrades()
     {
-        upgradeUI.SetActive(false);
+        if (!IsActive)
+        {
+            return;
+        }
+        upgradeUI.gameObject.SetActive(false);
+        GM.OnUIClose();
     }
         
 }

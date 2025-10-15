@@ -1,12 +1,9 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Pool;
-using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -35,7 +32,7 @@ public class Level : MonoBehaviour
     private Dictionary<Vector3Int, TileInfo> tileInfos = new();
     public bool isLevelTransition;
     public SpriteRenderer levelBg;
-    
+
     public int tilemapNumber;
     public int tilemapRenderDistance = 2;
     private Tilemap[] _tilemaps;
@@ -46,6 +43,9 @@ public class Level : MonoBehaviour
     public TileBase[] cracks;
     public Tilemap cracksTilemap;
     public Tilemap bgTilemap;
+    public List<RoomInfo> rooms = new();
+    public TileBase roomEmptyTile;
+    public RoomInfo hub;
 
     private void Awake()
     {
@@ -69,12 +69,12 @@ public class Level : MonoBehaviour
     public void PlayAgain()
     {
         timeOfRunStart = Time.time;
-        currentCircleIndex = 0;
+        currentCircleIndex = -1;
         var playerPos = Player.I.transform.position;
-        Player.I.transform.position = new Vector3(playerPos.x, wallsHeight / 2f, playerPos.z);
-        GenerateLevel(circles[currentCircleIndex]);
-        currentCircleIndex--;
-        AnimateNextLevel(skipIn: true);
+        Player.I.transform.position = new Vector3(0, 0, playerPos.z);
+        SpawnRoom(hub, Vector2Int.zero);
+        transitionPanel.gameObject.SetActive(false);
+        transitionHeight = -30f;
     }
 
     private void GenerateLevel(HellCircleSettings circleConfig)
@@ -98,7 +98,7 @@ public class Level : MonoBehaviour
             {
                 // 1 at 0, 1 at -height, 0 between -height/6 and -5*height/6 (linear)
                 var thresholdSub = Mathf.Clamp01(Mathf.Abs(y - height / 2f) / height);
-                
+
                 tilePositions[index] = new Vector3Int(x - width / 2, -y, 0);
                 var (tileData, bgTileData) = GetTile(tilePositions[index], circleConfig, noiseSeed, thresholdSub,
                     totalProbability, totalSurfaceProbability);
@@ -117,6 +117,7 @@ public class Level : MonoBehaviour
                     var pos = tilePositions[index];
                     tileInfos[pos] = new TileInfo(tileData, pos);
                 }
+
                 if (bgTileData != null)
                 {
                     bgTilemap.SetTile(tilePositions[index], bgTileData.tile);
@@ -156,7 +157,74 @@ public class Level : MonoBehaviour
 
         SetTiles(tilePositions, tiles);
         transitionHeight = grid.cellSize.y * (-height - wallsHeight / 2f);
+        SpawnRooms();
+
         EnemySpawner.I.Spawner(true);
+    }
+
+
+    private void SpawnRooms()
+    {
+        var roomPositions = new List<Vector2Int>();
+        for (int x = -width / 2 + 10; x < width / 2 - 1; x+=20)
+        {
+            for (int y = -height + 10; y < -1; y+=40)
+            {
+                roomPositions.Add(new Vector2Int(x, y+Random.Range(-10,10)));
+            }
+        }
+        roomPositions = roomPositions.OrderBy(x => Random.value).ToList();
+        var roomPosIndex = 0;
+        foreach (var roomInfo in rooms.Where(room => room.circleIndex == currentCircleIndex))
+        {
+           
+            for (int roomi = 0; roomi < roomInfo.amount; roomi++)
+            {
+                if (roomPosIndex >= roomPositions.Count)
+                {
+                    Debug.LogWarning("Not enough room positions for rooms");
+                    break;
+                }
+                var startX = roomPositions[roomPosIndex].x;
+                var startY = roomPositions[roomPosIndex].y;
+                roomPosIndex++;
+                SpawnRoom(roomInfo, new Vector2Int(startX, startY));
+            }
+        }
+    }
+
+    private void SpawnRoom(RoomInfo roomInfo, Vector2Int position)
+    {
+        roomInfo.tilemap.CompressBounds();
+        var bounds = roomInfo.tilemap.cellBounds;
+        for (int x = bounds.min.x; x < bounds.max.x; x++)
+        {
+            for (int y = bounds.min.y; y < bounds.max.y; y++)
+            {
+                var pos = new Vector3Int(position.x + x, position.y + y, 0);
+                var tile = roomInfo.tilemap.GetTile(new Vector3Int(x, y, 0));
+                if (tile != null)
+                {
+                    RemoveTile(pos);
+                    if (tile != roomEmptyTile)
+                    {
+                        SetTile(new TileInfo(new TileData
+                        {
+                            tile = tile,
+                            maxHp = 9999f,
+                        }, pos));
+                    }
+                }
+            }
+        }
+
+        for (int childi = 0; childi < roomInfo.tilemap.transform.childCount; childi++)
+        {
+            var child = roomInfo.tilemap.transform.GetChild(childi);
+            Instantiate(child.gameObject, roomInfo.tilemap.LocalToWorld(child.localPosition) + grid.CellToWorld(
+                    (Vector3Int)position),
+                child.rotation, spawnedObjectsParent);
+        }
     }
 
     public void Explode(Vector3 position, float radius, float enemyDamage, float groundDamage, DamageDealerType type)
@@ -171,7 +239,6 @@ public class Level : MonoBehaviour
                 var tileInfo = tileInfos.GetValueOrDefault(tilePos, null);
                 if (tileInfo != null)
                 {
-                    
                     if (tileInfo.tileData == wallTile)
                     {
                         continue;
@@ -183,6 +250,7 @@ public class Level : MonoBehaviour
                         {
                             bgTilemap.SetTile(tilePos, null);
                         }
+
                         tileInfo.hp -= groundDamage;
                         if (tileInfo.hp <= 0f)
                         {
@@ -196,6 +264,7 @@ public class Level : MonoBehaviour
                                 pool.InstantiateTemporarily(grid.GetCellCenterWorld(tilePos), quaternion,
                                     tileInfo.tileData.lootLifetime);
                             }
+
                             RemoveTile(tilePos); // has to be after instantiate so drop can get the tileInfo
                         }
                         else
@@ -226,7 +295,7 @@ public class Level : MonoBehaviour
         }
 
         var noise = Noise.GradientNoise(x * circleConfig.noiseFrequency, y * circleConfig.noiseFrequency, noiseSeed);
-        var bgTile = noise < circleConfig.noiseThreshold + thresholdSub - 0.1f ? null: circleConfig.tileData[0];
+        var bgTile = noise < circleConfig.noiseThreshold + thresholdSub - 0.1f ? null : circleConfig.tileData[0];
         if (noise < circleConfig.noiseThreshold + thresholdSub)
         {
             return (null, bgTile);
@@ -260,7 +329,7 @@ public class Level : MonoBehaviour
     {
         return tileInfos.ContainsKey(WorldToCell(pos));
     }
-    
+
     public Vector3Int WorldToCell(Vector3 worldPos)
     {
         worldPos.z = 0;
@@ -333,7 +402,7 @@ public class Level : MonoBehaviour
     {
         var pos = tileInfo.pos;
         var tile = tileInfo.tileData.tile;
-        
+
         tileInfos[tileInfo.pos] = tileInfo;
         GetTilemap(pos).SetTile(pos, tile);
         if (tileInfo.hp == tileInfo.tileData.maxHp)
@@ -343,7 +412,7 @@ public class Level : MonoBehaviour
         else
         {
             var crackTile = cracks[Mathf.Clamp(Mathf.FloorToInt((1f - tileInfo.hp / tileInfo.tileData.maxHp) *
-                                     cracks.Length), 0, cracks.Length - 1)];
+                                                                cracks.Length), 0, cracks.Length - 1)];
             cracksTilemap.SetTile(pos, crackTile);
         }
     }
@@ -423,6 +492,7 @@ public class Level : MonoBehaviour
         {
             tilemap.ClearAllTiles();
         }
+
         cracksTilemap.ClearAllTiles();
         bgTilemap.ClearAllTiles();
 
@@ -457,6 +527,14 @@ public class Level : MonoBehaviour
             hp = tileData.maxHp;
             pos = position;
         }
+    }
+
+    [Serializable]
+    public class RoomInfo
+    {
+        public Tilemap tilemap;
+        public int circleIndex;
+        public int amount;
     }
 }
 

@@ -1,0 +1,2147 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e71df7dce79b2c4f9d52b3f72ecb250, type: 3}
+  m_Name: Keyboard&Mouse Mapping
+  m_EditorClassIdentifier: 
+  scheme: Keyboard&Mouse
+  inputPrompts:
+  - Path: <Mouse>/leftButton
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: eefdf792036df814a906908845da48be
+        m_SubObjectName: Mouse_Left_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: ec6e17922a6f6bd459dbc694feaabfef
+        m_SubObjectName: mouse_left
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Mouse>/rightButton
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 432b0d4e852e28146871a67e4ede4d37
+        m_SubObjectName: Mouse_Right_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 3fdfbdd51ae44fc47b2db7a8b52fd9d4
+        m_SubObjectName: mouse_right
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Mouse>/middleButton
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 69504d6f86af268409fe2ce0b6f55aee
+        m_SubObjectName: Mouse_Middle_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: adfa29aaf1439cd4f90aec40384fbf7c
+        m_SubObjectName: mouse_middle
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/a
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 756425a5af2898842824c773e77f55a6
+        m_SubObjectName: A_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 88854beb20335964798e17c9a06a349d
+        m_SubObjectName: kb_a
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/b
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: bf961512ee012414b8e1e7b833a16eed
+        m_SubObjectName: B_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: c1f26d69011f8c047be1ecceb4e5a06e
+        m_SubObjectName: kb_b
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/c
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: ebeace0f9f41b3e46999fb8b97b9f927
+        m_SubObjectName: C_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 960973876d7f09a40b1a107d540d3a7d
+        m_SubObjectName: kb_c
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/d
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 719ad2a14fa9633499c08222c96d56c2
+        m_SubObjectName: D_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: e8c194755ec34514e9293b2e8f310f69
+        m_SubObjectName: kb_d
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/e
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: a330c7a02ff5d21488cd7cf4b8258d5b
+        m_SubObjectName: E_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 3b60f18d9a1ea8d45b28277d20794055
+        m_SubObjectName: kb_e
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/f
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 113727a1aef792a4b85e9351a3daa501
+        m_SubObjectName: F_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: e067a5d3d39fec145a76042bce446cac
+        m_SubObjectName: kb_f
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/g
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 5731a9e1ef12c6147af9d18b4aa5adb9
+        m_SubObjectName: G_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 59bee6a854e259f498ddea92a8572082
+        m_SubObjectName: kb_g
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/h
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 25988d943665dc34dad5f27d35111d08
+        m_SubObjectName: H_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: ffcbddde870d24e49b59e739294dcb67
+        m_SubObjectName: kb_h
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/i
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: a434cb92f94aa1441b58423ed005f110
+        m_SubObjectName: I_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 505a5e75b8a737c4799db9530d0b5573
+        m_SubObjectName: kb_i
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/j
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 9c5daa7c15ee5a14b933600338c80c3f
+        m_SubObjectName: J_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 2350601d5d7990440845bf443e2aa54b
+        m_SubObjectName: kb_j
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/k
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 22100ba7e100c86439f20fb8515d1f0d
+        m_SubObjectName: K_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: dca400a85e973004facfda60164b72cc
+        m_SubObjectName: kb_k
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/l
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 8c915b8ea4f922f4790202b0ca1f7e8a
+        m_SubObjectName: L_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 4c2b3d16ce4ac48499f2aac3ea3722f5
+        m_SubObjectName: kb_l
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/m
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: c8b44e7f7a7fe994db7933107bef39f3
+        m_SubObjectName: M_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: d58ccb9328c139549a96c35f44ecbff0
+        m_SubObjectName: kb_m
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/n
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: ce244456e00759d4fa4cd35548527f45
+        m_SubObjectName: N_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 7c43553bb7e84ef45b2cfe8af9aca6f4
+        m_SubObjectName: kb_n
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/o
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 6b7caaf05068cf34ba29c44f2df6e828
+        m_SubObjectName: O_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 75236f9fc60a5f54fa8e5f1eece2c2e4
+        m_SubObjectName: kb_o
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/p
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 750a162190440854bbbbb70d57c73784
+        m_SubObjectName: P_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 63600290729cd164f9a7fa4c9e370db2
+        m_SubObjectName: kb_p
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/q
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: d9917b4ffc2c4f847acdb8f2f8880d9e
+        m_SubObjectName: Q_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 56923661d7589504896c73f352fb3bf5
+        m_SubObjectName: kb_q
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/r
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 5bb0d6cd10bd0ce4db86936fc8542965
+        m_SubObjectName: R_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 6c935a18a93056f4085248deb618b8f6
+        m_SubObjectName: kb_r
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/s
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: a1dcada9157eb6c4fa9c16b791b9a032
+        m_SubObjectName: S_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: f85d3c59f791b624db20f8bf484f0d4a
+        m_SubObjectName: kb_s
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/t
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: ab70ea458531ccb4a9c815c8f1751468
+        m_SubObjectName: T_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: fbe371b2243261347b29d4248c05edb2
+        m_SubObjectName: kb_t
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/u
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 1b6156386c2027d4e9631f916dc1b9c1
+        m_SubObjectName: U_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 747331ccc7eea7740a322a612c5b49ff
+        m_SubObjectName: kb_u
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/v
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: f4b231d324adc374fa57c59963f6f62b
+        m_SubObjectName: V_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 9e68010da3fdcee48bcaffbe79eab23e
+        m_SubObjectName: kb_v
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/w
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: a11631401f8ac5d4694b7393fe081547
+        m_SubObjectName: W_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 4fd9fe2795c6b8f4696d7ad321e1085b
+        m_SubObjectName: kb_w
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/x
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 4647c5b18375549419b75413187e981f
+        m_SubObjectName: X_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: c4191c515b06f8a4d9eb707df329914a
+        m_SubObjectName: kb_x
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/y
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: fa26393e456d44040b0891aa775e4ebf
+        m_SubObjectName: Y_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 5e84bfcfc0a61084daf9d2ffd0b285af
+        m_SubObjectName: kb_y
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/z
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 1ce6bf4d8cd8ea848a4f48f6d305f831
+        m_SubObjectName: Z_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: a0d4840768fec1d4d9055d88c2cff1f4
+        m_SubObjectName: kb_z
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/0
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 26a413fca55020e40ac47683def1657b
+        m_SubObjectName: 0_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 94b14a867a47bed4d8054e38d8a4dab5
+        m_SubObjectName: kb_0
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/1
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: b5d150d06ba37f643bdb5d5f451eb9f8
+        m_SubObjectName: 1_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 8b68162486696ed4e8fcd2a0a900c68a
+        m_SubObjectName: kb_1
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/2
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 5cedf65caaf68a44b8dc6b0890baae04
+        m_SubObjectName: 2_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 744c228d36be14f4082390a3653463ea
+        m_SubObjectName: kb_2
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/3
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 8ba8ad9b0c7f1a5458fda466a06be449
+        m_SubObjectName: 3_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 669c8c26edd404d408cee7dc89c07e26
+        m_SubObjectName: kb_3
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/4
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 5837f86c09752b9479ba8d1c6e9db671
+        m_SubObjectName: 4_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: baccb437db1b5dd4aa86d442afd79729
+        m_SubObjectName: kb_4
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/5
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: ce23f34f2dadbb54c922c97032d2c2dc
+        m_SubObjectName: 5_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 85747817c953da74096554f834c121f6
+        m_SubObjectName: kb_5
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/6
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: c4a19713b9a488b448031219e5a44a8f
+        m_SubObjectName: 6_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 4a4d287d142f61f4fa68933e30b98077
+        m_SubObjectName: kb_6
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/7
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 66b4029db40629046a052a6d8b4a6e07
+        m_SubObjectName: 7_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: e921458568a27cc46b160ffeaee076f0
+        m_SubObjectName: kb_7
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/8
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 5edd3528dcb87e64d91444ab96e8a21d
+        m_SubObjectName: 8_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 0d5ab259b2ab25d4eb8a70b32d6a0fca
+        m_SubObjectName: kb_8
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/9
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 1a6126d82977f4349896a515efca3640
+        m_SubObjectName: 9_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 07e9a6d658ae7144c8761b70bd8afdc6
+        m_SubObjectName: kb_9
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/shift
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: a0749f76ab98c7d4e9270c88b85695e4
+        m_SubObjectName: Shift_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 22e0acd703d936c428297a37812599e5
+        m_SubObjectName: kb_shift
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/leftShift
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: a0749f76ab98c7d4e9270c88b85695e4
+        m_SubObjectName: Shift_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 97facab866c1cad4e8f5886c65b76bde
+        m_SubObjectName: kb_shift_left
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/rightShift
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: ed7ca7d67506abc408cff56d9b843a8f
+        m_SubObjectName: Shift_Alt_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 3c8e8212d7e46f74aa8304dcf73a2c32
+        m_SubObjectName: kb_shift_right
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/alt
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: b545fd047569c744584bffb117757333
+        m_SubObjectName: Alt_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: e2d499c2fa68a984ea1c0a8789bf7eeb
+        m_SubObjectName: kb_alt
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/leftAlt
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: b545fd047569c744584bffb117757333
+        m_SubObjectName: Alt_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 7874463303dddcf4ba15409a0f698dce
+        m_SubObjectName: kb_alt_left
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/rightAlt
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: b545fd047569c744584bffb117757333
+        m_SubObjectName: Alt_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 9564339a3a173b54b89a55d876629b50
+        m_SubObjectName: kb_alt_right
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/ctrl
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 77426461396d4d84c8de9e463aa6a7ea
+        m_SubObjectName: Ctrl_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 4526bce4785aa2245baed4357dc6b7ae
+        m_SubObjectName: kb_ctrl_left
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/leftCtrl
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 77426461396d4d84c8de9e463aa6a7ea
+        m_SubObjectName: Ctrl_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 4526bce4785aa2245baed4357dc6b7ae
+        m_SubObjectName: kb_ctrl_left
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/rightCtrl
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 77426461396d4d84c8de9e463aa6a7ea
+        m_SubObjectName: Ctrl_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: ab0505a08ab8c0a48a085e5e0e201877
+        m_SubObjectName: kb_ctrl_right
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/systemButton
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 20aa8db3b13d2b349ad01912f065217e
+        m_SubObjectName: Win_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: MAC/xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: e8feca2f6a1f29f429110f2a2eaa66ef
+        m_SubObjectName: Command_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/backquote
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: eebbfc4486e6afb4a9e3309fe2f93466
+        m_SubObjectName: Tilda_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: a818ae9e8c663b54984831c8c9de79fc
+        m_SubObjectName: kb_tilde
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/tab
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 93e41ccad18a543469657e4f717b2e4f
+        m_SubObjectName: Tab_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 9c84cbf215c6c16408f0699fe018af20
+        m_SubObjectName: kb_tab
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/capsLock
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: d75cabeb04e82b846b8aa644c872df0a
+        m_SubObjectName: Caps_Lock_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: ee865349c521c0c42a0792f5e41cae23
+        m_SubObjectName: kb_caps
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/space
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: d6fcb7b7453448047b411d52554fc752
+        m_SubObjectName: Space_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 9ba63d0ee19b38c44b1b50433736d85d
+        m_SubObjectName: kb_space
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/comma
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 3777c4414fceaf44794605a4fea63d52
+        m_SubObjectName: Mark_Left_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 1d95cbfb2378c1e40ac2b13b78e9dfc9
+        m_SubObjectName: kb_comma
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/period
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: c18dff58365c4754eb68be63ba3ef33c
+        m_SubObjectName: Mark_Right_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 0bc82130774367f469a7db788d2e993e
+        m_SubObjectName: kb_period
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/slash
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 7589b69ace1c65b4e94484815553a135
+        m_SubObjectName: Question_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 26f6c76c05dd92140b63ac85964bed68
+        m_SubObjectName: kb_slash
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/semicolon
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: f7d2e8f08423e584588d6022c336ca0c
+        m_SubObjectName: Semicolon_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: b04b5f51eb872ae47bdc7033c808ec0b
+        m_SubObjectName: kb_semicolon
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/quote
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 052f864de4e627449a1a06117ce56b57
+        m_SubObjectName: Quote_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: ac4dd14595ec60745a91917cca8ca2e2
+        m_SubObjectName: kb_quote
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/enter
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 5c5c806b177287342a78e639754608c1
+        m_SubObjectName: Enter_Alt_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 0782913008a8a294a861a7385043d3a5
+        m_SubObjectName: kb_enter
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/leftBracket
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: be809108a7da928439e33c83ec78ef0d
+        m_SubObjectName: Bracket_Left_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 9b659b00781abf04993b7974f8a10990
+        m_SubObjectName: kb_bracket_l
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/rightBracket
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 679afcf3477060e43a4001fc575f60e8
+        m_SubObjectName: Bracket_Right_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 796894b29aa9b8144bfdc9806aeeab78
+        m_SubObjectName: kb_bracket_r
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/backslash
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: bc4669a873112d349844906c37a402d1
+        m_SubObjectName: Slash_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: c7cc75e25f1dde04bb19283fb55e5304
+        m_SubObjectName: kb_backslash
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/minus
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: b2addba9f23871d4b87b885713a5ee8a
+        m_SubObjectName: Minus_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 9b4f41a46a62ccd4dbe3c0001ce85eb3
+        m_SubObjectName: kb_minus
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/equals
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 9df55c4897092284aad0c5b749c70e00
+        m_SubObjectName: Plus_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 96c92bf9b6f987a48af7a63ea6ef0137
+        m_SubObjectName: kb_equal
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/backspace
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 201d15d710d7b94449fdbecf69425fe0
+        m_SubObjectName: Backspace_Alt_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 7e47dc64d3765b747bf77d66e5538469
+        m_SubObjectName: kb_backspace
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/escape
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: c45541747093d984ca974df3ed2a1045
+        m_SubObjectName: Esc_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 0ada111335a1fe14f9a5f9ed1ee99331
+        m_SubObjectName: kb_escape
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/f1
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 2a61ed52f6169bc44a04def07a57f205
+        m_SubObjectName: F1_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: d93231e60722a304696a30213e762c49
+        m_SubObjectName: kb_f1
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/f2
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 336f825ee747f8f45a3a87a90c33559a
+        m_SubObjectName: F2_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 4485a43849630ab42869b716982c4cad
+        m_SubObjectName: kb_f2
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/f3
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 9146303c4e436f745aff5765fea28a30
+        m_SubObjectName: F3_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: b559ecc24a982df43b2b607a74dd1415
+        m_SubObjectName: kb_f3
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/f4
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: fb5c78b1aafe7a446abfa83392c80612
+        m_SubObjectName: F4_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 68cdf2e08a801d749919148cd35e3628
+        m_SubObjectName: kb_f4
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/f5
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 23c59dc56d0e1564fb5086f6ce5fdba5
+        m_SubObjectName: F5_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 0bdd7c6800830fb44b42bea94d717527
+        m_SubObjectName: kb_f5
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/f6
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 0d4d8d37ab835e648a35b47418fd6aff
+        m_SubObjectName: F6_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: fd90d0c97751ca743ba350978114389b
+        m_SubObjectName: kb_f6
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/f7
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 7c31888cc9679ec488265ebd8787d014
+        m_SubObjectName: F7_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 44fa6bfed07266c4cbddeda722f1def8
+        m_SubObjectName: kb_f7
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/f8
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 1e1bf0b8fa700cf45a4a005e2ee0145e
+        m_SubObjectName: F8_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 2abc7bb25beb7bd40863f0740536a2b0
+        m_SubObjectName: kb_f8
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/f9
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 558983f33fc50e1408f5e9d74de7eb7d
+        m_SubObjectName: F9_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: fe0157bb5428aed4d95b53a9f1d35d3a
+        m_SubObjectName: kb_f9
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/f10
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 619b18dc7b53d5d4f849fa4a3a679744
+        m_SubObjectName: F10_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 25effb93e23052443bc3729fafcf7857
+        m_SubObjectName: kb_f10
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/f11
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: aeebf8acd78aab54c88ccacd008d56df
+        m_SubObjectName: F11_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 9c93634d91737404ba14c0415cd580d5
+        m_SubObjectName: kb_f11
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/f12
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 6a3a7aafd8954fb4db818fa7467fc7fc
+        m_SubObjectName: F12_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 647a74e8c2f219841a99ee8c0a023249
+        m_SubObjectName: kb_f12
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/printScreen
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: ab9121710c61d254eb5184d8bb47dbfe
+        m_SubObjectName: Print_Screen_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 7f5ef4a6129d1cf4e802507063b69ff5
+        m_SubObjectName: kb_printscreen
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/scrollLock
+    Prompts:
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 535db03c0c12833469563d9086ea8a76
+        m_SubObjectName: kb_scroll
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/pause
+    Prompts:
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 58e6df2b9b2952645ac1b856af14cf34
+        m_SubObjectName: kb_pause
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/insert
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 1a2b783ccce2f654ba4bf2abe4ea8762
+        m_SubObjectName: Insert_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 62fa01e5519e5934b962ad2fc90cb978
+        m_SubObjectName: kb_insert
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/home
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 880345d5f0bd97b49bef7dbd61ff2736
+        m_SubObjectName: Home_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 7f6e438dae3fc5e47b189a43a56a5124
+        m_SubObjectName: kb_home
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/pageUp
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 4fafe4533a0496749827555c8882d846
+        m_SubObjectName: Page_Up_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: addbd224da03a0846b4e2c9d5125f787
+        m_SubObjectName: kb_pageup
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/pageDown
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 7edbf0f1b5b8d9847954b8b8d0a3858d
+        m_SubObjectName: Page_Down_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 44681c23a9a098b4cbb2ce3a893e8115
+        m_SubObjectName: kb_pagedown
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/end
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: c93411d84fcbb9a488a73ad9e7783c9d
+        m_SubObjectName: End_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: f0e901b75f65b77438ed84fc8787c613
+        m_SubObjectName: kb_end
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/delete
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 2e170acfb8a74904dbddb12bfeceb3ae
+        m_SubObjectName: Del_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: f1d0989d870794b44bbcd50a06e745ad
+        m_SubObjectName: kb_del
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/upArrow
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 7066ec1c6594ca445bb249c83c579cda
+        m_SubObjectName: Arrow_Up_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: a4ab8a1e38e455d4188672db1934bc03
+        m_SubObjectName: kb_arrow_up
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/downArrow
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 275933f5317efcd44affa62279efe3bd
+        m_SubObjectName: Arrow_Down_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 3f663eb43873ba54a802f99bbcde8a4b
+        m_SubObjectName: kb_arrow_down
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/leftArrow
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 5b874fd9f052b2146bab56057ecb482e
+        m_SubObjectName: Arrow_Left_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 2fb54e5239669fe4f97796beed0dec6b
+        m_SubObjectName: kb_arrow_left
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/rightArrow
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 0995820d018b3e84585037f29f69b2cd
+        m_SubObjectName: Arrow_Right_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 4d916c3f948310146a5b98d3a56557d3
+        m_SubObjectName: kb_arrow_right
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/numpad0
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 26a413fca55020e40ac47683def1657b
+        m_SubObjectName: 0_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 7f69f75d519dd2942a3b29df2d07278b
+        m_SubObjectName: kb_num_0
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/numpad1
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: b5d150d06ba37f643bdb5d5f451eb9f8
+        m_SubObjectName: 1_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: c1a5b347c36b8fd48803dcfaf8564384
+        m_SubObjectName: kb_num_1
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/numpad2
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 5cedf65caaf68a44b8dc6b0890baae04
+        m_SubObjectName: 2_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 02524c5e418fb894d824324433796897
+        m_SubObjectName: kb_num_2
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/numpad3
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 8ba8ad9b0c7f1a5458fda466a06be449
+        m_SubObjectName: 3_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 1991a9c87494ce546a7a67dd4f942555
+        m_SubObjectName: kb_num_3
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/numpad4
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 5837f86c09752b9479ba8d1c6e9db671
+        m_SubObjectName: 
+        m_SubObjectType: 
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 220e816207c7c8149943a57f492ae608
+        m_SubObjectName: kb_num_4
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/numpad5
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: ce23f34f2dadbb54c922c97032d2c2dc
+        m_SubObjectName: 5_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 006938e0acc072742b3899b7b0fded7e
+        m_SubObjectName: kb_num_5
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/numpad6
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: c4a19713b9a488b448031219e5a44a8f
+        m_SubObjectName: 6_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: a1f3bdadd0f9a3346ba7ccdfe22147e9
+        m_SubObjectName: kb_num_6
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/numpad7
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 66b4029db40629046a052a6d8b4a6e07
+        m_SubObjectName: 7_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 929f1a3e008535545a646f388768a151
+        m_SubObjectName: kb_num_7
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/numpad8
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 5edd3528dcb87e64d91444ab96e8a21d
+        m_SubObjectName: 8_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 9805af847521be142a69e8a984076bf2
+        m_SubObjectName: kb_num_8
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/numpad9
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 1a6126d82977f4349896a515efca3640
+        m_SubObjectName: 9_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: dd2167cbd1af1874b963d2b0e83ab402
+        m_SubObjectName: kb_num_9
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/numpadPeriod
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 2e170acfb8a74904dbddb12bfeceb3ae
+        m_SubObjectName: Del_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 3fd6d0baaa7ac3040a5b9189861cce92
+        m_SubObjectName: kb_num_period
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/numpadEnter
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: ebdf1f99bc296bf47abbe3358812f028
+        m_SubObjectName: Enter_Tall_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: f36eeca25fd66fe418561da28c81c65d
+        m_SubObjectName: kb_num_enter
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/numpadPlus
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: dec2c99d342b14f438a1c608eba81086
+        m_SubObjectName: Plus_Tall_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: c2be08693531d354b8da122d9c497091
+        m_SubObjectName: kb_num_plus
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/numpadMinus
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: b2addba9f23871d4b87b885713a5ee8a
+        m_SubObjectName: Minus_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: be69a51973e82104bbef37e91559a80d
+        m_SubObjectName: kb_num_minus
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/numpadMultiply
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: f4f1656801a70ea45822b4362121f922
+        m_SubObjectName: Asterisk_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: b183391bc2d53d84aae32e5cb6629d93
+        m_SubObjectName: kb_num_asterisk
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/numpadDivide
+    Prompts:
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: b435e23908c62b6419b37655ffa8cddd
+        m_SubObjectName: 
+        m_SubObjectType: 
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  - Path: <Keyboard>/numLock
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 301aea866b3ae734a9428c5a1fbeafaf
+        m_SubObjectName: Num_Lock_Key_Dark
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 2d30f47101a2aba4a949c3001985ccb8
+        m_SubObjectName: kb_num
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0

@@ -1,0 +1,562 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e71df7dce79b2c4f9d52b3f72ecb250, type: 3}
+  m_Name: Xbox Mapping
+  m_EditorClassIdentifier: 
+  scheme: Xbox
+  inputPrompts:
+  - Path: <Gamepad>/buttonSouth
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 8090c0ad013178647982314f65b0db6c
+        m_SubObjectName: XboxSeriesX_A
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 11625238419116549bc7c3706c5dec69
+        m_SubObjectName: xbox_a
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/buttonEast
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 1ab39c58b6407a247a681cbac8a5192c
+        m_SubObjectName: XboxSeriesX_B
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 75bf2a9cfbb9bde4a854e0133f41e2b9
+        m_SubObjectName: xbox_b
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/buttonWest
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: ca70a91993029714190eba2143dbbd37
+        m_SubObjectName: XboxSeriesX_X
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 4ee82a45009705b4d9e5d567010ea69e
+        m_SubObjectName: xbox_x
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/buttonNorth
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: b0af68f09f49254419dfed34c3709565
+        m_SubObjectName: XboxSeriesX_Y
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: c0acecbb06ca39d44bb840f3cbb44ad2
+        m_SubObjectName: xbox_y
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftShoulder
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: f15cd28c3f497e64cb58e039b947bff0
+        m_SubObjectName: XboxSeriesX_LB
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 37f08a5c66046a142bc24e1a8b41be74
+        m_SubObjectName: xbox_lb
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightShoulder
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: dc5e351da65dabf4c84c80ebffa451ef
+        m_SubObjectName: XboxSeriesX_RB
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 5744b30a7145aa146be98adfb2a3ed9d
+        m_SubObjectName: xbox_rb
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftTrigger
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 28d9e0eb0a819f64f846a88c74973072
+        m_SubObjectName: XboxSeriesX_LT
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: bcc235743ede321408d8f08085be507a
+        m_SubObjectName: xbox_lt
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightTrigger
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 02fb57aa49e3cae4f8e6e50327ddb67c
+        m_SubObjectName: XboxSeriesX_RT
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: f497cfad8c4ebb34b8efaa9199257f7c
+        m_SubObjectName: xbox_rt
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/dpad
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 7f3f48f4706253449bb3e6df44082b93
+        m_SubObjectName: XboxSeriesX_Dpad
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 2e8ad581741ab1a4989ac9c002943f11
+        m_SubObjectName: xbox_dpad
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/dpad/up
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 4e7051ec728dae84daebdab689661b51
+        m_SubObjectName: XboxSeriesX_Dpad_Up
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: eeb303d81f2604a4ca877b11ce2b4576
+        m_SubObjectName: xbox_dpad_up
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/dpad/down
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 38e1f54ca9a1b8747a88affcc9db6374
+        m_SubObjectName: XboxSeriesX_Dpad_Down
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: f60144383fbd90b4985ae10c0ed1e9fe
+        m_SubObjectName: xbox_dpad_down
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/dpad/left
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 77b4db83e1498e549b7ee6731b38901a
+        m_SubObjectName: XboxSeriesX_Dpad_Left
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 52f39a497f7cea641ab8847561154c24
+        m_SubObjectName: xbox_dpad_left
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/dpad/right
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: c38a710f60499f5428206d63f06fef86
+        m_SubObjectName: XboxSeriesX_Dpad_Right
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 2818c1c04b3ed484cb27ddc2a7c14b28
+        m_SubObjectName: xbox_dpad_right
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/dpad/x
+    Prompts:
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 28bc20c4b2df3b04184f76048c466c53
+        m_SubObjectName: xbox_dpad_leftright
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/dpad/y
+    Prompts:
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 2f185d5bdb088a546bb3518ae6b570cb
+        m_SubObjectName: xbox_dpad_updown
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftStick
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 1892c73d483309f4f8382cd543c20ea7
+        m_SubObjectName: XboxSeriesX_Left_Stick
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 80d8c3f8f7f3b5049995a2f21bdfcae3
+        m_SubObjectName: xbox_ls
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftStick/up
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: c71628d74358834498be207a4b42c5a7
+        m_SubObjectName: XboxSeriesX_Left_Stick_Up
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 3976b621a3c39c44686711102cd5bc7e
+        m_SubObjectName: xbox_ls_up
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftStick/down
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 4ac5079b10b477e4582f1ff09c8a6a1b
+        m_SubObjectName: XboxSeriesX_Left_Stick_Down
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 278b2360523e2e241a1f39035b3a44c1
+        m_SubObjectName: xbox_ls_down
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftStick/left
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: e8d65caf130582446b05eb45f5d1173b
+        m_SubObjectName: XboxSeriesX_Left_Stick_Left
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 55993dbaf988cc34699fd7f402767f78
+        m_SubObjectName: xbox_ls_left
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftStick/right
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 1df80ae37b9c2284bab3b5abf09d887f
+        m_SubObjectName: XboxSeriesX_Left_Stick_Right
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 5060ca6f26bcb0344ac8c662c978af29
+        m_SubObjectName: xbox_ls_right
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftStick/x
+    Prompts:
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 3d38c2ea8a5b03c408edc193f65fd214
+        m_SubObjectName: xbox_ls_leftright
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftStick/y
+    Prompts:
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: bb8e9b1e2d3edaf428054f90733e0092
+        m_SubObjectName: xbox_ls_updown
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightStick
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 92886d75ba852c1499fe8e16a80347b4
+        m_SubObjectName: XboxSeriesX_Right_Stick
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 35c6769b15ff5a745adccee145d34abb
+        m_SubObjectName: xbox_rs
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightStick/up
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 8a2956534571d0b4cabf1073f592c23b
+        m_SubObjectName: XboxSeriesX_Right_Stick_Up
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: a9a447a74d8214c43b29d7244fa574f5
+        m_SubObjectName: xbox_rs_up
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightStick/down
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: d921dba0279834a4c928ab99de821d4e
+        m_SubObjectName: XboxSeriesX_Right_Stick_Down
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: d60f3585bf8ce194abfa281d5e47d160
+        m_SubObjectName: xbox_rs_down
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightStick/left
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: e67700fe8144aa340abd003a0fdf3ec1
+        m_SubObjectName: XboxSeriesX_Right_Stick_Left
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 464fc04bbd4160d408f41bf5c0f82c31
+        m_SubObjectName: xbox_rs_left
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightStick/right
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 4065416de827b6449b5cc8a43789adf8
+        m_SubObjectName: XboxSeriesX_Right_Stick_Right
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 767063f14b477ae4780c26fe0051ef60
+        m_SubObjectName: xbox_rs_right
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightStick/x
+    Prompts:
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: b00c39b80c334ee49b8ffd6ce4a83bc9
+        m_SubObjectName: xbox_rs_leftright
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightStick/y
+    Prompts:
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: e86c9a5f0a4d1e8468f1f91ad9ad60a7
+        m_SubObjectName: xbox_rs_updown
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/leftStickPress
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: f920004e3738e7c4591a739c4929ec08
+        m_SubObjectName: XboxSeriesX_Left_Stick_Click
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: c6ffe4e14e007c248a26dfc292b2e2c4
+        m_SubObjectName: xbox_ls_click
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/rightStickPress
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: aba1e53dc11c2c94481b433cd2c0b6b2
+        m_SubObjectName: XboxSeriesX_Right_Stick_Click
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 146a66a2f24b80b4e9444daed648329a
+        m_SubObjectName: xbox_rs_click
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/start
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: e84cd4856640e784384d05133bd06f1d
+        m_SubObjectName: XboxSeriesX_Menu
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 2b15d44ca88478d49a2236f7cf879fd7
+        m_SubObjectName: xbox_start
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  - Path: <Gamepad>/select
+    Prompts:
+    - Style: xelu
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: d66117542278c7449a89cf2897bb6703
+        m_SubObjectName: XboxSeriesX_View
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Style: JStatz
+      Sprite: {fileID: 0}
+      Addressable:
+        m_AssetGUID: 2b321f41a387f474ea45735b053e6362
+        m_SubObjectName: xbox_select
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0

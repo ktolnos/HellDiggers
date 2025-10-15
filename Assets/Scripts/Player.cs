@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     public static Player I;
-    
+
     public SpriteAnimator.Animation walkAnimation;
     public SpriteAnimator.Animation idleAnimation;
     public Stats stats;
@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
     public InputAction groundPoundAction;
     public bool IsAlive => health.currentHealth > 0f;
     
+    public string currentGunId;
+    public string secondaryGunId;
     public Gun gun;
     public Gun grenadeLauncher;
     public BoxCollider2D mainCollider;
@@ -89,6 +91,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         groundMask = LayerMask.GetMask("Ground");
         Revive();
+        SaveManager.I.LoadGame();
     }
 
     private void Update()
@@ -104,7 +107,7 @@ public class Player : MonoBehaviour
             dashIndicators[i].fillAmount = Mathf.Clamp01(numDashesLeft - i);
             dashIndicators[i].color = numDashesLeft + Mathf.Epsilon >= i+1 ? Color.cyan : new Color(0f, 1f, 1f, 0.5f);
         }
-        if (health.currentHealth <= 0 || Level.I.isLevelTransition)
+        if (health.currentHealth <= 0 || Level.I.isLevelTransition || GM.IsUIOpen)
         {
             jetAudio.Stop();
             jetPackParticleSystem.Stop();
@@ -347,5 +350,18 @@ public class Player : MonoBehaviour
             rb.linearVelocity = diff.normalized * tile.tileData.outForce;
             lastBounceTime = Time.time;
         }
+    }
+
+    public void SetGun(Gun newGun)
+    {
+        var gunGunStation = gun?.gunStation;
+        if (gunGunStation != null)
+        {
+            gunGunStation.ResetGun();
+        }
+        gun = newGun;
+        gun.transform.parent = transform;
+        gun.transform.localPosition = Vector3.zero;
+        gun.transform.localRotation = Quaternion.identity;
     }
 }

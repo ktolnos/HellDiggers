@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: bc1745b079d89f94ca99151e812a8f29
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 267761
+  packageName: Input Prompt Display
+  packageVersion: 1.0.0
+  assetPath: Assets/AddressableAssetsData/AssetGroups/Schemas/Input Prompts Display
+    Example_BundledAssetGroupSchema.asset
+  uploadId: 619820

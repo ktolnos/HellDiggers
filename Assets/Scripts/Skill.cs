@@ -1,13 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Reflection;
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Localization;
-using UnityEngine.Rendering;
 using UnityEngine.Serialization;
-using UnityEngine.TextCore;
 using UnityEngine.UI;
 
 public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler 
@@ -23,7 +19,7 @@ public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler
     public Color maxOutColor;
     public int CurrentLevel => (int) myStatField.GetValue(Player.I.stats);
     private Player player;
-    private Button button;
+    [HideInInspector] public Button button;
     public Image statusIndicator;
     public List<int> prices;
     private FieldInfo myStatField;
@@ -110,6 +106,10 @@ public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler
         button.Select();
         SkillPopup.I.Show(this);
         selectedIndicator.enabled = true;
+        if (InputController.I.CurrentInputType == InputController.InputType.Gamepad)
+        {
+            UpgradesPanel.I.CenterOnSkill(this);
+        }
     }
 
     public void HidePopup()

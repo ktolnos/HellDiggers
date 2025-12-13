@@ -178,10 +178,14 @@ MonoBehaviour:
   unlockedColor: {r: 0.11053756, g: 0.8679245, b: 0.3673302, a: 1}
   tooExpensiveColor: {r: 0.745283, g: 0.09994376, b: 0, a: 1}
   maxOutColor: {r: 0.9960785, g: 0.7058824, b: 0, a: 1}
+  button: {fileID: 0}
   statusIndicator: {fileID: 6158275906481595850}
   prices: 
   rectTransform: {fileID: 0}
   selectedIndicator: {fileID: 8905036981311218509}
+  connector: {fileID: 2868080784452922219}
+  iconImage: {fileID: 5851292943997058161}
+  lockedIcon: {fileID: 2569886816863780402, guid: e8e0d23d74c561443b02b2663bac42d7, type: 3}
   references:
     version: 2
     RefIds: []

@@ -596,8 +596,8 @@ TextureImporter:
         \u0413\u0415\u0420\u041E\u042F_18"
       rect:
         serializedVersion: 2
-        x: 7
-        y: 24
+        x: 8
+        y: 27
         width: 12
         height: 7
       alignment: 0
@@ -610,6 +610,52 @@ TextureImporter:
       bones: []
       spriteID: d69d2e404a93cad4d89251d4ffda4ce6
       internalID: -1392732149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Sprite-0007\u0410\u041D\u0418\u0418\u041C\u0410\u0426\u0418\u0418 \u0413\u041B\u0410\u0412\u041D\u041E\u0413\u041E
+        \u0413\u0415\u0420\u041E\u042F_19"
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 27
+        width: 25
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f71d2ee2ddf745458cdc9c766ccd8c5
+      internalID: 1811869116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Sprite-0007\u0410\u041D\u0418\u0418\u041C\u0410\u0426\u0418\u0418 \u0413\u041B\u0410\u0412\u041D\u041E\u0413\u041E
+        \u0413\u0415\u0420\u041E\u042F_20"
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 26
+        width: 26
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5d7e042a2a50074789722b30c98116e
+      internalID: -1187439362
       vertices: []
       indices: 
       edges: []
@@ -641,7 +687,9 @@ TextureImporter:
       "Sprite-0007\u0410\u041D\u0418\u0418\u041C\u0410\u0426\u0418\u0418 \u0413\u041B\u0410\u0412\u041D\u041E\u0413\u041E \u0413\u0415\u0420\u041E\u042F_16": 6280128998470349330
       "Sprite-0007\u0410\u041D\u0418\u0418\u041C\u0410\u0426\u0418\u0418 \u0413\u041B\u0410\u0412\u041D\u041E\u0413\u041E \u0413\u0415\u0420\u041E\u042F_17": 1027693686
       "Sprite-0007\u0410\u041D\u0418\u0418\u041C\u0410\u0426\u0418\u0418 \u0413\u041B\u0410\u0412\u041D\u041E\u0413\u041E \u0413\u0415\u0420\u041E\u042F_18": -1392732149
+      "Sprite-0007\u0410\u041D\u0418\u0418\u041C\u0410\u0426\u0418\u0418 \u0413\u041B\u0410\u0412\u041D\u041E\u0413\u041E \u0413\u0415\u0420\u041E\u042F_19": 1811869116
       "Sprite-0007\u0410\u041D\u0418\u0418\u041C\u0410\u0426\u0418\u0418 \u0413\u041B\u0410\u0412\u041D\u041E\u0413\u041E \u0413\u0415\u0420\u041E\u042F_2": -8572915913900680934
+      "Sprite-0007\u0410\u041D\u0418\u0418\u041C\u0410\u0426\u0418\u0418 \u0413\u041B\u0410\u0412\u041D\u041E\u0413\u041E \u0413\u0415\u0420\u041E\u042F_20": -1187439362
       "Sprite-0007\u0410\u041D\u0418\u0418\u041C\u0410\u0426\u0418\u0418 \u0413\u041B\u0410\u0412\u041D\u041E\u0413\u041E \u0413\u0415\u0420\u041E\u042F_3": -6664784136542237365
       "Sprite-0007\u0410\u041D\u0418\u0418\u041C\u0410\u0426\u0418\u0418 \u0413\u041B\u0410\u0412\u041D\u041E\u0413\u041E \u0413\u0415\u0420\u041E\u042F_4": 7444687673821027986
       "Sprite-0007\u0410\u041D\u0418\u0418\u041C\u0410\u0426\u0418\u0418 \u0413\u041B\u0410\u0412\u041D\u041E\u0413\u041E \u0413\u0415\u0420\u041E\u042F_5": 5009485664987184159

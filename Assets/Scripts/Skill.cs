@@ -26,6 +26,11 @@ public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler
     [HideInInspector] public RectTransform rectTransform;
     public Image selectedIndicator;
     private bool interactable;
+    public RectTransform connector;
+    public Image iconImage;
+    private Sprite icon;
+    public Sprite lockedIcon;
+    private State currentState = State.Hidden;
     
     private void Awake()
     {
@@ -49,6 +54,7 @@ public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler
         player = Player.I;
         button = GetComponentInChildren<Button>();
         button.onClick.AddListener(AddStats);
+        icon = iconImage.sprite;
     }
 
     void AddStats()
@@ -69,19 +75,18 @@ public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler
         if ((skillParent == null || skillParent.CurrentLevel > 0) && CurrentLevel < prices.Count)
         {
             var canAfford = prices[CurrentLevel] < GM.I.money;
-            statusIndicator.color = canAfford ? unlockedColor : tooExpensiveColor;
             canAfford |= GM.I.isFree; // Allow free upgrades
-            interactable = canAfford;
-        }else
+            SetState(canAfford ? State.Unlocked : State.TooExpensive);
+        }
+        else
         {
-            interactable = false;
             if (CurrentLevel == prices.Count)
             {
-                statusIndicator.color = maxOutColor;
+                SetState(State.Maxed);
             }
             else
             {
-                statusIndicator.color = lockedColor;
+                SetState(skillParent == null || skillParent.skillParent == null || skillParent.skillParent.CurrentLevel > 0 ? State.Locked : State.Hidden);
             }
         }
 
@@ -103,6 +108,7 @@ public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     public void ShowPopup()
     {
+        if (currentState == State.Hidden || currentState == State.Locked) return;
         button.Select();
         SkillPopup.I.Show(this);
         selectedIndicator.enabled = true;
@@ -120,5 +126,49 @@ public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler
         }
         SkillPopup.I.Hide(this);
         selectedIndicator.enabled = false;
+    }
+    
+    private void SetState(State state)
+    {
+        currentState = state;
+        if (state != State.Hidden)
+        {
+            button.gameObject.SetActive(true);
+            connector.gameObject.SetActive(skillParent != null);
+        }
+        button.interactable = state == State.Unlocked;
+        interactable = state == State.Unlocked;
+        iconImage.sprite = state == State.Locked ? lockedIcon : icon;
+        switch (state)
+        {
+            case State.Hidden:
+                button.gameObject.SetActive(false);
+                if (connector != null)
+                {
+                    connector.gameObject.SetActive(false);
+                }
+                break;
+            case State.Locked:
+                statusIndicator.color = lockedColor;
+                break;
+            case State.Unlocked:
+                statusIndicator.color = unlockedColor;
+                break;
+            case State.TooExpensive:
+                statusIndicator.color = tooExpensiveColor;
+                break;
+            case State.Maxed:
+                statusIndicator.color = maxOutColor;
+                break;
+        }
+    }
+    
+    private enum State
+    {
+        Hidden,
+        Locked,
+        Unlocked,
+        TooExpensive,
+        Maxed,
     }
 }

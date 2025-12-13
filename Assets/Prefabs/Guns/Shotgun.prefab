@@ -158,14 +158,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: shotgun
+  gunName:
+    m_TableReference:
+      m_TableCollectionName: GUID:a89ad48d34be26240a94076a3e9be7d4
+    m_TableEntryReference:
+      m_KeyId: 38052365532459008
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   bulletPrefab: {fileID: -8224019564269720104, guid: 7179b282c16e11749abdba4fe9541082, type: 3}
   fireDelay: 0.7
   numberOfBullets: 5
   bulletLifeTime: 0.2
   spread: 5
+  randomSpread: 0
+  price: 50
   bulletSpeed: 25
-  grenadeMode: 0
+  isSecondary: 0
   animator: {fileID: 8362390806292825961}
   reloadIndicator: {fileID: 0}
   shootSound: {fileID: 8300000, guid: 34f38a0e04c503546b74d2230fd58fb4, type: 3}
   gunStation: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []

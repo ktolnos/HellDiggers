@@ -98,6 +98,26 @@ MonoBehaviour:
     m_Localized: Health Regeneration
     m_Metadata:
       m_Items: []
+  - m_Id: 38052191460454400
+    m_Localized: Uzi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38052365532459008
+    m_Localized: Shotgun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38052475901374464
+    m_Localized: Pistol
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38053081709867008
+    m_Localized: Grenade Launcher
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38053214837075968
+    m_Localized: Bazooka
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

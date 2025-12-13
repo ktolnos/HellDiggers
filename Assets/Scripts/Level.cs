@@ -68,6 +68,7 @@ public class Level : MonoBehaviour
 
     public void PlayAgain()
     {
+        Clear();
         timeOfRunStart = Time.time;
         currentCircleIndex = -1;
         var playerPos = Player.I.transform.position;

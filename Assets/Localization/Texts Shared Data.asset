@@ -95,6 +95,26 @@ MonoBehaviour:
     m_Key: healthRegen
     m_Metadata:
       m_Items: []
+  - m_Id: 38052191460454400
+    m_Key: uzi_gun_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38052365532459008
+    m_Key: shotgun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38052475901374464
+    m_Key: Pistol
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38053081709867008
+    m_Key: granade_launcher
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38053214837075968
+    m_Key: bazooka
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

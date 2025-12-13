@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SaveManager : MonoBehaviour
@@ -38,7 +40,8 @@ public class SaveManager : MonoBehaviour
             latestScore = HighScoreManager.I.latestScore,
             highScore = HighScoreManager.I.highScore,
             currentGunId = Player.I.currentGunId,
-            secondaryGunId = Player.I.secondaryGunId
+            secondaryGunId = Player.I.secondaryGunId,
+            purchasedGuns = GunStation.purchasedGuns.ToList()
         };
         var json = JsonUtility.ToJson(saveState, true);
         System.IO.FileInfo file = new System.IO.FileInfo(SaveFilePath);
@@ -73,6 +76,7 @@ public class SaveManager : MonoBehaviour
         HighScoreManager.I.previousScore = saveState.prevScore;
         HighScoreManager.I.latestScore = saveState.latestScore;
         HighScoreManager.I.highScore = saveState.highScore;
+        GunStation.purchasedGuns = new HashSet<string>(saveState.purchasedGuns);
         onLoad?.Invoke();
     }
 
@@ -86,6 +90,7 @@ public class SaveManager : MonoBehaviour
         public Stats stats;
         public string currentGunId;
         public string secondaryGunId;
+        public List<string> purchasedGuns;
     }
     
     

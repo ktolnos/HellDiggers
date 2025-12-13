@@ -5,6 +5,7 @@ using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -30,11 +31,10 @@ public class Player : MonoBehaviour
     public string currentGunId;
     public string secondaryGunId;
     public Gun gun;
-    public Gun grenadeLauncher;
+    public Gun secondaryGun;
     public BoxCollider2D mainCollider;
 
     private bool isGrounded;
-    private LayerMask groundMask;
 
     private float lastGroundedTime;
     private float jumpPressTime;
@@ -71,6 +71,7 @@ public class Player : MonoBehaviour
     private bool isInMud;
     private float lastBounceTime = -100f;
     private float lastContactDamageTime = -100f;
+    public Image reloadIndicator;
     
     private void Awake()
     {
@@ -89,7 +90,6 @@ public class Player : MonoBehaviour
         groundPoundAction = InputSystem.actions.FindAction("GroundPound");
 
         rb = GetComponent<Rigidbody2D>();
-        groundMask = LayerMask.GetMask("Ground");
         Revive();
         SaveManager.I.LoadGame();
     }
@@ -170,10 +170,17 @@ public class Player : MonoBehaviour
         {
             gun.Shoot();
         }
-        if (grenadeAction.IsPressed())
+
+        if (secondaryGun != null)
         {
-            grenadeLauncher.Shoot();
+            secondaryGun.transform.localEulerAngles = Vector3.back * (Mathf.Atan2(gunVector.x, gunVector.y) * Mathf.Rad2Deg - 90f);
+            secondaryGun.animator.spriteRenderer.flipY = gunVector.x < 0f;
+            if (grenadeAction.IsPressed())
+            {
+                secondaryGun.Shoot();
+            }
         }
+        
 
         if (jetPackAction.IsPressed() && jetPackFuel > 0f)
         {
@@ -354,14 +361,37 @@ public class Player : MonoBehaviour
 
     public void SetGun(Gun newGun)
     {
-        var gunGunStation = gun?.gunStation;
+        if (newGun == null)
+            return;
+        var gunGunStation = newGun.isSecondary ? secondaryGun?.gunStation : gun?.gunStation;
         if (gunGunStation != null)
         {
             gunGunStation.ResetGun();
+        } else
+        {
+            if (newGun.isSecondary && secondaryGun != null) {
+                Destroy(secondaryGun.gameObject);
+            } else if (!newGun.isSecondary && gun != null) {
+                Destroy(gun.gameObject);
+            }
         }
-        gun = newGun;
-        gun.transform.parent = transform;
-        gun.transform.localPosition = Vector3.zero;
-        gun.transform.localRotation = Quaternion.identity;
+
+        if (newGun.isSecondary)
+        {
+            secondaryGun = newGun;
+            secondaryGun.transform.parent = transform;
+            secondaryGun.transform.localPosition = Vector3.zero;
+            secondaryGun.reloadIndicator = reloadIndicator;
+            reloadIndicator.gameObject.SetActive(true);
+            secondaryGunId = newGun.id;
+        }
+        else
+        {
+            gun = newGun;
+            gun.transform.parent = transform;
+            gun.transform.localPosition = Vector3.zero;
+            gun.transform.localRotation = Quaternion.identity;
+            currentGunId = newGun.id;
+        }
     }
 }

@@ -7182,7 +7182,7 @@ Tilemap:
   m_TileColorArray: []
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 0.4056604, g: 0.39226595, b: 0.39226595, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_Origin: {x: 0, y: 0, z: 0}
   m_Size: {x: 0, y: 0, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -7229,7 +7229,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 1eb62dfbc51749e4f873e1debb984975, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -32345,7 +32345,6 @@ MonoBehaviour:
     spawnChance: 1
     surfaceSpawnChanceMult: 1
     randomRotation: 1
-    damagedTiles: []
     drop: {fileID: 0}
     dropChance: 0
     contactDamage: 0
@@ -32353,6 +32352,7 @@ MonoBehaviour:
     isMud: 0
     outForce: 0
     lootLifetime: 10
+    allowLava: 0
   width: 90
   height: 200
   wallsHeight: 200

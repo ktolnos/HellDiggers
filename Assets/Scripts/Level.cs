@@ -116,7 +116,7 @@ public class Level : MonoBehaviour
                     }
 
                     var pos = tilePositions[index];
-                    tileInfos[pos] = new TileInfo(tileData, pos);
+                    SetTile(new TileInfo(tileData, pos));
                 }
 
                 if (bgTileData != null)
@@ -155,8 +155,7 @@ public class Level : MonoBehaviour
                 grid.CellToWorld(new Vector3Int(0, -height - bossHeight + 3, 0)), Quaternion.identity,
                 spawnedObjectsParent);
         }
-
-        SetTiles(tilePositions, tiles);
+        
         transitionHeight = grid.cellSize.y * (-height - wallsHeight / 2f);
         SpawnRooms();
 
@@ -405,7 +404,17 @@ public class Level : MonoBehaviour
         var tile = tileInfo.tileData.tile;
 
         tileInfos[tileInfo.pos] = tileInfo;
-        GetTilemap(pos).SetTile(pos, tile);
+        var tm = GetTilemap(pos);
+        tm.SetTile(pos, tile);
+        tm.SetTileFlags(pos, TileFlags.None);
+        if (tileInfo.tileData.allowLava)
+        {
+            tm.SetColor(pos, Color.black);
+        }
+        else
+        {
+            tm.SetColor(pos, Color.white);
+        }
         if (tileInfo.hp == tileInfo.tileData.maxHp)
         {
             cracksTilemap.SetTile(pos, null);
@@ -415,24 +424,6 @@ public class Level : MonoBehaviour
             var crackTile = cracks[Mathf.Clamp(Mathf.FloorToInt((1f - tileInfo.hp / tileInfo.tileData.maxHp) *
                                                                 cracks.Length), 0, cracks.Length - 1)];
             cracksTilemap.SetTile(pos, crackTile);
-        }
-    }
-
-    private void SetTiles(Vector3Int[] positions, TileBase[] tileData)
-    {
-        for (var i = 0; i < _tilemaps.Length; i++)
-        {
-            var indices = positions
-                .Select((pos, idx) => new { pos, idx })
-                .Where(x => GetTilemapIdx(x.pos) == i)
-                .Select(x => x.idx)
-                .ToArray();
-            var posSubset = indices.Select(x => positions[x]).ToArray();
-            var tileSubset = indices.Select(x => tileData[x]).ToArray();
-            if (posSubset.Length > 0)
-            {
-                _tilemaps[i].SetTiles(posSubset, tileSubset);
-            }
         }
     }
 

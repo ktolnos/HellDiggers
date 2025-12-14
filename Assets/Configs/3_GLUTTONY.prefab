@@ -94,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6545331332269278171, guid: 1e1782e1b2b89f447aa43785f8d779e1, type: 3}
       propertyPath: tileData.Array.data[8].spawnChance
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6545331332269278171, guid: 1e1782e1b2b89f447aa43785f8d779e1, type: 3}
       propertyPath: 'tileData.Array.data[0].variants.Array.data[0]'

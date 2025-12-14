@@ -24,7 +24,6 @@ public class HellCircleSettings: MonoBehaviour
         public float surfaceSpawnChanceMult = 1f;
         public bool randomRotation = true;
         
-        public TileBase[] damagedTiles;
         public GameObject drop;
         public float dropChance = 0f;
         public float contactDamage = 0f;
@@ -32,5 +31,6 @@ public class HellCircleSettings: MonoBehaviour
         public bool isMud = false;
         public float outForce = 0f;
         public float lootLifetime = 10f;
+        public bool allowLava = false;
     }
 }

@@ -208,11 +208,21 @@ public class Level : MonoBehaviour
                     RemoveTile(pos);
                     if (tile != roomEmptyTile)
                     {
-                        SetTile(new TileInfo(new TileData
+                        TileData tileData = null;
+                        if (currentCircleIndex >= 0) {
+                            tileData = circles[currentCircleIndex].tileData
+                                .FirstOrDefault(td => td.tile == tile);
+                        }
+                        if (tileData == null)
                         {
-                            tile = tile,
-                            maxHp = 9999f,
-                        }, pos));
+                            tileData = new TileData
+                            {
+                                tile = tile,
+                                maxHp = 9999f,
+                            };
+                        }
+                        
+                        SetTile(new TileInfo(tileData, pos));
                     }
                 }
             }

@@ -85,8 +85,9 @@ public class PlayerDeath: MonoBehaviour, IDeathHandler
 
     private void OnPlayerDead()
     {
-        HighScoreManager.I.UpdateHighScore(GM.I.money - startGold);
+        HighScoreManager.I.UpdateHighScore(GM.I.GetTotalMoney() - startGold);
         Level.I.Clear();
         PlayAgain();
+        HighScoreManager.I.OpenHighScorePanel();
     }
 }

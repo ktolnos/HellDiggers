@@ -16,11 +16,14 @@ public class SoundManager: MonoBehaviour
 
     public float masterVolume = 1f;
     public float musicVolume = 1f;
+    
+    private AudioSource sfxSource;
 
     private void Awake()
     {
         I = this;
         soundtrackSource = gameObject.GetComponent<AudioSource>();
+        sfxSource = gameObject.AddComponent<AudioSource>();
     }
 
     public void PlaySfx(AudioClip clip, Vector3 position, float relativeValue = 1f, bool randomizePitch = true)
@@ -32,13 +35,17 @@ public class SoundManager: MonoBehaviour
             PlayClipAtPoint(clip, position, relativeValue * sfxVolume, pitch);
         }
     }
+    
+    public void PlaySfx(AudioClip clip, float relativeValue = 1f, bool randomizePitch = true)
+    {
+        sfxSource.pitch = randomizePitch ? UnityEngine.Random.Range(0.8f, 1.2f) : 1f;
+        sfxSource.volume = Mathf.Clamp(relativeValue * sfxVolume * masterVolume, 0, 1);
+        sfxSource.priority = 256;
+        sfxSource.PlayOneShot(clip);
+    }
 
     private void LateUpdate()
     {
-        foreach (var (audioClip, num) in sfxCache)
-        {
-            PlaySfxInternal(audioClip, Player.I.transform.position, sfxCache[audioClip] - limitPerFrame);
-        }
         sfxCache.Clear();
         if (!soundtrackSource.isPlaying)
         {
@@ -49,11 +56,6 @@ public class SoundManager: MonoBehaviour
         soundtrackSource.volume = Mathf.Clamp(musicVolume * masterVolume, 0, 1);
     }
 
-    private void PlaySfxInternal(AudioClip clip, Vector3 position, float relativeValue = 1f)
-    {
-        AudioSource.PlayClipAtPoint(clip, position, Mathf.Clamp(relativeValue * sfxBaseVolume * sfxVolume * masterVolume, 0, sfxVolume * masterVolume));
-    }
-    
     [Serializable]
     public class Soundtrack
     {

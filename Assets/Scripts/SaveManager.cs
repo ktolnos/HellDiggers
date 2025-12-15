@@ -34,7 +34,7 @@ public class SaveManager : MonoBehaviour
     {
         var saveState = new SaveState
         {
-            money = GM.I.money,
+            money = GM.I.GetTotalMoney(),
             stats = Player.I.stats,
             prevScore = HighScoreManager.I.previousScore,
             latestScore = HighScoreManager.I.latestScore,

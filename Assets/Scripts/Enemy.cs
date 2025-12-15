@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        rb.simulated = animator.spriteRenderer.isVisible || player.transform.position.y < transform.position.y;
+        rb.simulated = CameraController.IsObjectVisible(animator.spriteRenderer) || player.transform.position.y < transform.position.y;
         if (!rb.simulated)
         {
             return;

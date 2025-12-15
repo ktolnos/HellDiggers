@@ -8,14 +8,12 @@ public class UpgradesController: MonoBehaviour
 {
     public static UpgradesController I;
     public Canvas upgradeUI;
-    private InputAction closeUpgradesAction;
     
     public bool IsActive => upgradeUI.gameObject.activeSelf;
     
     private void Awake()
     {
         I = this;
-        closeUpgradesAction = InputSystem.actions.FindAction("Cancel");
     }
     
     private void Start()
@@ -23,18 +21,6 @@ public class UpgradesController: MonoBehaviour
         if (IsActive)
         {
             ShowUpgrades();
-        }
-    }
-
-    private void Update()
-    {
-        if (!IsActive)
-        {
-            return;
-        }
-        if (closeUpgradesAction.WasPerformedThisFrame())
-        {
-            HideUpgrades();
         }
     }
 
@@ -46,7 +32,7 @@ public class UpgradesController: MonoBehaviour
         }
         upgradeUI.gameObject.SetActive(true);
         SkillPopup.I.Hide(null);
-        GM.OnUIOpen();
+        GM.OnUIOpen(HideUpgrades);
     }
     
     public void HideUpgrades()
@@ -56,7 +42,6 @@ public class UpgradesController: MonoBehaviour
             return;
         }
         upgradeUI.gameObject.SetActive(false);
-        GM.OnUIClose();
     }
         
 }

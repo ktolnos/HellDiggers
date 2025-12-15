@@ -90,8 +90,8 @@ public class Player : MonoBehaviour
         groundPoundAction = InputSystem.actions.FindAction("GroundPound");
 
         rb = GetComponent<Rigidbody2D>();
-        Revive();
         SaveManager.I.LoadGame();
+        Revive();
     }
 
     private void Update()
@@ -380,7 +380,7 @@ public class Player : MonoBehaviour
         {
             secondaryGun = newGun;
             secondaryGun.transform.parent = transform;
-            secondaryGun.transform.localPosition = Vector3.zero;
+            secondaryGun.transform.localPosition = new Vector3(0f, 0.2f, 0f);
             secondaryGun.reloadIndicator = reloadIndicator;
             reloadIndicator.gameObject.SetActive(true);
             secondaryGunId = newGun.id;

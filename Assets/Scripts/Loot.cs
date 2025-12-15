@@ -7,6 +7,7 @@ using UnityEngine;
 public class Loot : MonoBehaviour
 {
     public int money;
+    public GM.Resources resources;
     public float hp;
     
     private float collectionTime = 0.5f;
@@ -67,8 +68,8 @@ public class Loot : MonoBehaviour
         }
         GameObjectPoolManager.I.Release(gameObject);
         GM.I.money += money;
+        GM.I.resources += resources;
         Player.I.health.Heal(hp);
-        
     }
 
     private float GetCollectionDistance()

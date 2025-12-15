@@ -174,7 +174,7 @@ MonoBehaviour:
     lootLifetime: 10
     allowLava: 1
   - name: Spikes
-    tile: {fileID: 11400000, guid: c58a38f40429d084da5c08bcb96aa14f, type: 2}
+    tile: {fileID: 11400000, guid: 080a5f9c9c342a743be7c915491017e0, type: 2}
     variants: []
     maxHp: 10000
     spawnChance: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
     lootLifetime: 10
     allowLava: 0
   - name: Ice
-    tile: {fileID: 11400000, guid: 3a41c84629c17f64bb0305cae7d1eac1, type: 2}
+    tile: {fileID: 11400000, guid: a2e2e21caf153b44e9b6873954d7c4d7, type: 2}
     variants: []
     maxHp: 100
     spawnChance: 0
@@ -249,7 +249,7 @@ MonoBehaviour:
     lootLifetime: 10
     allowLava: 1
   - name: Gravel
-    tile: {fileID: 11400000, guid: 38889df796c9b424a9567d72ff4e236f, type: 2}
+    tile: {fileID: 11400000, guid: 15b8eefe0a4918748b9853be22fcfc65, type: 2}
     variants: []
     maxHp: 1
     spawnChance: 3

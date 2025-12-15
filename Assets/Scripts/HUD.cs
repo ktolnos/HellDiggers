@@ -8,6 +8,12 @@ public class HUD: MonoBehaviour
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI moneyText;
     
+    public TextMeshProUGUI copperText;
+    public TextMeshProUGUI ironText;
+    public TextMeshProUGUI goldText;
+    public TextMeshProUGUI emeraldText;
+    public TextMeshProUGUI diamondText;
+    
     public Image healthImage;
     public Material healthMaterial;
     
@@ -31,5 +37,17 @@ public class HUD: MonoBehaviour
         var stats = Player.I.stats;
         jetFuelIndicator.fillAmount =  Player.I.jetPackFuel / (Player.I.stats.jetPackFuel * Player.I.jetFuelMult);
         jetFuelIndicator.rectTransform.sizeDelta = new Vector2(jetFuelIndicator.rectTransform.sizeDelta.x,  stats.jetPackFuel * 150f);
+        
+        copperText.text = GM.I.resources.copper.ToString();
+        ironText.text = GM.I.resources.iron.ToString();
+        goldText.text = GM.I.resources.gold.ToString();
+        emeraldText.text = GM.I.resources.emerald.ToString();
+        diamondText.text = GM.I.resources.diamond.ToString();
+        
+        copperText.transform.parent.gameObject.SetActive(GM.I.resources.copper > 0);
+        ironText.transform.parent.gameObject.SetActive(GM.I.resources.iron > 0);
+        goldText.transform.parent.gameObject.SetActive(GM.I.resources.gold > 0);
+        emeraldText.transform.parent.gameObject.SetActive(GM.I.resources.emerald > 0);
+        diamondText.transform.parent.gameObject.SetActive(GM.I.resources.diamond > 0);  
     }
 }

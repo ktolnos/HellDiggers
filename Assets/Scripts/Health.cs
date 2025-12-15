@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class Health: MonoBehaviour
@@ -15,6 +17,9 @@ public class Health: MonoBehaviour
     public Material hurtMaterial;
     private bool hasHurtAnimation;
     private Material defaultMaterial;
+    
+    public Volume vignetteVolume;
+    private bool isRunningHurtFlash = false;
     
     private void Start()
     {
@@ -37,7 +42,19 @@ public class Health: MonoBehaviour
         if (isInvulnerable) return; // can't take damage if invulnerable
         if (hurt != null)
         {
-            SoundManager.I.PlaySfx(hurt, transform.position);
+            if (!isPlayer)
+            {
+                SoundManager.I.PlaySfx(hurt, transform.position, relativeValue:2f);
+            }
+            else
+            {
+                SoundManager.I.PlaySfx(hurt, relativeValue:100f);
+            }
+        }
+
+        if (isPlayer)
+        {
+            HurtFlashVignette();
         }
 
         if (hasHurtAnimation)
@@ -80,5 +97,21 @@ public class Health: MonoBehaviour
         hurtAnimation.material = hurtMaterial;
         yield return new WaitForSeconds(0.2f);
         hurtAnimation.material = defaultMaterial;
+    }
+    
+    private async void HurtFlashVignette()
+    {
+        if (isRunningHurtFlash)
+            return;
+        isRunningHurtFlash = true;
+        vignetteVolume.profile.TryGet(out Vignette vignette);
+        var initialIntensity = vignette.intensity.value;
+        var initialColor = vignette.color.value;
+        vignette.intensity.value = 0.5f;
+        vignette.color.value = Color.red;
+        await Awaitable.WaitForSecondsAsync(0.1f);
+        vignette.intensity.value = initialIntensity;
+        vignette.color.value = initialColor;
+        isRunningHurtFlash = false;
     }
 }

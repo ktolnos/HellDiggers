@@ -38,6 +38,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Add: -0.2
+    - _PixelSize: 512
     - _Scale: 0.3
     - _Speed: 0.1
     m_Colors: []

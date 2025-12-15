@@ -36,4 +36,10 @@ public class CameraController : MonoBehaviour
 
         transform.position = new Vector3(posX, transform.position.y, transform.position.z);
     }
+    
+    public static bool IsObjectVisible(Renderer renderer)
+    {
+        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(I.cam);
+        return GeometryUtility.TestPlanesAABB(planes, renderer.bounds);
+    }
 }

@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8875705948505299785}
   - component: {fileID: 3249780571903213796}
+  - component: {fileID: 5345984672992060488}
+  - component: {fileID: 6069220325336187468}
   - component: {fileID: 6326658846326912912}
   - component: {fileID: 4561176998936719293}
   - component: {fileID: 5388221814552815758}
@@ -52,39 +54,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hardness: 120
-  speed: 200
-  damage: 5
-  groundDamage: 0
-  jumpForce: 13
-  jumpReload: 2
   stoppingDistance: 4
   attackDistance: 9
-  attackRadius: 2
-  attackDelay: 1
-  bevaviorType: 2
-  attackType: 0
-  enemyLookTowardsPlayer: 1
-  attackCoolDown: 0.98
+  animator: {fileID: 6192451480533484078}
+  stopWhenAttacking: 1
+--- !u!114 &5345984672992060488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724802236466292881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab022c3b1306d649b8bbfa41b1cae1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackGun
+  attackCoolDown: 0.5
+  attackDelay: 0.7
+  attackWindUp:
+    frames: []
+    fps: 0
   gun: {fileID: 8523573277249663922}
+  aimGun: 0
+--- !u!114 &6069220325336187468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724802236466292881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acf7255c5c25d5c41893057e93955b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovementFly
   movementAnimation:
     frames:
     - {fileID: -90080318016315431, guid: 4449578eb05bc3e4a8bc5ed2e60b31e5, type: 3}
     - {fileID: -8891662419155428832, guid: 4449578eb05bc3e4a8bc5ed2e60b31e5, type: 3}
+    - {fileID: -2314516004210844636, guid: 4449578eb05bc3e4a8bc5ed2e60b31e5, type: 3}
     - {fileID: -6569836098684583386, guid: 4449578eb05bc3e4a8bc5ed2e60b31e5, type: 3}
     - {fileID: -4207742068059369913, guid: 4449578eb05bc3e4a8bc5ed2e60b31e5, type: 3}
     - {fileID: 8679227259779307289, guid: 4449578eb05bc3e4a8bc5ed2e60b31e5, type: 3}
     - {fileID: -5565294934289555988, guid: 4449578eb05bc3e4a8bc5ed2e60b31e5, type: 3}
+    - {fileID: -8637584831805633673, guid: 4449578eb05bc3e4a8bc5ed2e60b31e5, type: 3}
     - {fileID: -4220709909078599022, guid: 4449578eb05bc3e4a8bc5ed2e60b31e5, type: 3}
     - {fileID: -1822881877771977374, guid: 4449578eb05bc3e4a8bc5ed2e60b31e5, type: 3}
-    fps: 10
-  attackAnimation:
-    frames: []
-    fps: 20
-  animator: {fileID: 6192451480533484078}
+    fps: 0
   invertSprite: 1
-  aimGun: 0
-  isBoss: 0
-  beatSound: {fileID: 0}
+  speed: 10
 --- !u!114 &6326658846326912912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,6 +124,7 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 870a48ed36cf1294aad3525d5796e1fd, type: 3}
   hurtAnimation: {fileID: 221777621848407505}
   hurtMaterial: {fileID: 2100000, guid: bfe122b358b5b644b8c55eadb8c88ebb, type: 2}
+  vignetteVolume: {fileID: 0}
 --- !u!114 &4561176998936719293
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -22,6 +22,7 @@ public class Bomb : MonoBehaviour
         yield return null;
         var pos = transform.position;
         var bombExplosion = Instantiate(explosionPrefab, pos, Quaternion.identity, Level.I.spawnedObjectsParent);
+        bombExplosion.transform.localScale *= explosionRadius;
         bombExplosion.Explode(explosionDelay);
         
         for (var i = 0; i < explosionDelay * bipsPerSecond; i++)

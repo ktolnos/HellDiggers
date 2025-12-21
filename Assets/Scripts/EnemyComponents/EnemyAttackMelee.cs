@@ -1,20 +1,68 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemyAttackMelee : EnemyAttack
+public class EnemyAttackMelee : EnemyAttack, IDeathHandler
 {
     public float damage;
     public float groundDamage;
     public float attackRadius = 2f;
     public AudioClip beatSound;
+    public SpriteAnimator.Animation attackWindUp;
+    public float attackDelay = 0.2f;
+    public SpriteAnimator.Animation attack;
+    private SpriteAnimator animator;
+    public BombAnimator explosionPrefab;
+    public Vector2 offset;
+    
+    private BombAnimator currentExplosion;
+    
+    protected override void Awake()
+    {
+        base.Awake();
+        TryGetComponent(out animator);
+    }
+    
     
     protected override IEnumerator PerformAttack(Vector3 target)
     {
-        Level.I.Explode(transform.position, attackRadius, damage, groundDamage, DamageDealerType.Enemy); 
+        var attackPos = transform.position + (Vector3)offset;
+        if (target.x < transform.position.x)
+        {
+            attackPos.x -= 2 * offset.x;
+        }
+        
+        if (explosionPrefab != null)
+        {
+            currentExplosion = Instantiate(explosionPrefab, attackPos, Quaternion.identity, Level.I.spawnedObjectsParent);
+            currentExplosion.transform.localScale *= attackRadius;
+        }
+        
+        var totalDelay = attackDelay;
+        if (animator != null && attackWindUp != null)
+        {
+            totalDelay += attackWindUp.frames.Length / attackWindUp.fps;
+            currentExplosion?.Explode(totalDelay);
+            yield return animator.PlayOnceCoroutine(attackWindUp);
+        }
+        yield return new WaitForSeconds(attackDelay);
+        
+        Level.I.Explode(attackPos, attackRadius, damage, groundDamage, DamageDealerType.Enemy); 
         if (beatSound != null)
         {
-            SoundManager.I.PlaySfx(beatSound, transform.position, 5f);
+            SoundManager.I.PlaySfx(beatSound, attackPos, 5f);
         }
-        yield break;
+        if (animator != null && attack != null)
+        {
+            yield return animator.PlayOnceCoroutine(attack);
+        }
+    }
+
+    public void Die()
+    {
+        StopAllCoroutines();
+        if (currentExplosion != null)
+        {
+            Destroy(currentExplosion.gameObject);
+        }
     }
 }

@@ -8256,7 +8256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 13f2ba3b259165546a7489db61e0a08e, type: 2}
+  m_Material: {fileID: 2100000, guid: f8d1ac75f0709ff498f03adbfb81fe30, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -21315,13 +21315,13 @@ MonoBehaviour:
     grenadeReloadSpeedUp: 0
     numberOfGrenadesPerLaunch: 0
     grenadeExplosionRadius: 0
-    bulletEnemyDamage: 10
+    bulletEnemyDamage: 0
     grenadeDamage: 0
     lootCollectionDistance: 0
     diggingDamage: 10
     jetPackFuel: 0
-    health: 4
-    healthRegen: 4
+    health: 0
+    healthRegen: 0
     bulletRicochetCount: 0
   speed: 8
   jumpForce: 12
@@ -26893,7 +26893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8160377, g: 0.034643095, b: 0.034643095, a: 1}
+  m_Color: {r: 0, g: 0.6132076, b: 0.04314028, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -34742,16 +34742,19 @@ MonoBehaviour:
   rooms:
   - tilemap: {fileID: 4819965630085256707, guid: 4608a5bd63555e04f9dcd603abf97232, type: 3}
     circleIndex: 0
-    amount: 5
+    amount: 1
   - tilemap: {fileID: 4819965630085256707, guid: 6694bc968e28f56469015100cde73b1f, type: 3}
     circleIndex: 0
-    amount: 5
+    amount: 1
   - tilemap: {fileID: 4819965630085256707, guid: c0ce18e492bdf084185f8f8479deb37f, type: 3}
     circleIndex: 0
-    amount: 5
+    amount: 1
   - tilemap: {fileID: 4819965630085256707, guid: e74ba082a89f2f74394dd705880e243d, type: 3}
     circleIndex: 0
-    amount: 5
+    amount: 1
+  - tilemap: {fileID: 4819965630085256707, guid: dc5623377ca81c64e84535a15aae543b, type: 3}
+    circleIndex: 0
+    amount: 16
   roomEmptyTile: {fileID: 11400000, guid: f396f469ec18b0e47891beb6f11c93fb, type: 2}
   hub:
     tilemap: {fileID: 4396043195234632940, guid: 26cdf429fcd504241bd011229b5b4750, type: 3}
@@ -34847,13 +34850,13 @@ MonoBehaviour:
     - 1
   portal: {fileID: 6440795600749684546, guid: a4a2bb26aab6dbc4cb0c98279cb08078, type: 3}
   spawnRadius: 5
-  enemyAmount: 1
+  enemyAmount: 0
   hardometer: 1
-  portalDelay: 2.4
+  portalDelay: 2
   randomSpawnDelayMax: 3
   numPrespawnedEnemies: 00000000140000001e00000028000000320000003c00000046000000500000005a000000
   spawnDelays:
-  - 20
+  - 0
   - 20
   - 20
   - 20

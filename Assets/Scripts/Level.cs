@@ -339,6 +339,10 @@ public class Level : MonoBehaviour
 
     public bool HasTile(Vector3Int pos)
     {
+        if (pos.x <= -width / 2 || pos.x >= width / 2)
+        {
+            return true;
+        }
         return tileInfos.ContainsKey(pos);
     }
 

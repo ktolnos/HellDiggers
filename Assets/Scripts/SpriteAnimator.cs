@@ -57,7 +57,7 @@ public class SpriteAnimator: MonoBehaviour
         StartCoroutine(PlayOnceCoroutine(anim));
     }
 
-    private IEnumerator PlayOnceCoroutine(Animation anim)
+    public IEnumerator PlayOnceCoroutine(Animation anim)
     {        
         pause = true;
         foreach (var animationFrame in anim.frames)

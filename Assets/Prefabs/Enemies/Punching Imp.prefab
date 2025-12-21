@@ -27,8 +27,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6045489495580094235}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -105,6 +105,10 @@ GameObject:
   - component: {fileID: 5971972172716879629}
   - component: {fileID: 1987329669404106224}
   - component: {fileID: 7893958323361135372}
+  - component: {fileID: 4264243685574415769}
+  - component: {fileID: -6909426825751664385}
+  - component: {fileID: 3767397719255507787}
+  - component: {fileID: 3824380635914943748}
   m_Layer: 9
   m_Name: Punching Imp
   m_TagString: Untagged
@@ -169,43 +173,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hardness: 20
-  speed: 20
-  damage: 20
-  groundDamage: 100
-  jumpForce: 60
-  jumpReload: 1
   stoppingDistance: 1
   attackDistance: 2
-  attackRadius: 1
-  attackDelay: 0.4
-  bevaviorType: 1
-  attackType: 1
-  enemyLookTowardsPlayer: 0
-  attackCoolDown: 1
-  gun: {fileID: 6131520209140907338}
-  movementAnimation:
-    frames:
-    - {fileID: 3737926915008371284, guid: 19d68a4b7c5b0c84b9cb456fa06ef500, type: 3}
-    - {fileID: -4117825314944282393, guid: 19d68a4b7c5b0c84b9cb456fa06ef500, type: 3}
-    - {fileID: -599079895634231290, guid: 19d68a4b7c5b0c84b9cb456fa06ef500, type: 3}
-    - {fileID: -6228943939511016851, guid: 19d68a4b7c5b0c84b9cb456fa06ef500, type: 3}
-    - {fileID: 324386830572817638, guid: 19d68a4b7c5b0c84b9cb456fa06ef500, type: 3}
-    - {fileID: -7268133047450232529, guid: 19d68a4b7c5b0c84b9cb456fa06ef500, type: 3}
-    - {fileID: -1007554123192280341, guid: 19d68a4b7c5b0c84b9cb456fa06ef500, type: 3}
-    - {fileID: 7481986689093484623, guid: 19d68a4b7c5b0c84b9cb456fa06ef500, type: 3}
-    fps: 10
-  attackAnimation:
-    frames:
-    - {fileID: -5781821504250806385, guid: 19d68a4b7c5b0c84b9cb456fa06ef500, type: 3}
-    - {fileID: -7447185376201482558, guid: 19d68a4b7c5b0c84b9cb456fa06ef500, type: 3}
-    - {fileID: -7447185376201482558, guid: 19d68a4b7c5b0c84b9cb456fa06ef500, type: 3}
-    - {fileID: 6456905382509495439, guid: 19d68a4b7c5b0c84b9cb456fa06ef500, type: 3}
-    fps: 8
   animator: {fileID: 7893958323361135372}
-  invertSprite: 0
-  aimGun: 1
-  isBoss: 0
-  beatSound: {fileID: 0}
+  defaultMovement: {fileID: 3824380635914943748}
+  standbyMovement: {fileID: 3767397719255507787}
+  defaultAttack: {fileID: 0}
+  stopWhenAttacking: 1
+  isAgro: 0
+  agroDistance: 5
+  agroOnHurt: 1
 --- !u!114 &5575930699715242445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +203,7 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 870a48ed36cf1294aad3525d5796e1fd, type: 3}
   hurtAnimation: {fileID: 8449801817643511068}
   hurtMaterial: {fileID: 2100000, guid: bfe122b358b5b644b8c55eadb8c88ebb, type: 2}
+  vignetteVolume: {fileID: 0}
 --- !u!114 &5971972172716879629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,7 +253,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: -0.05222106, y: -0.06983507}
-  m_Radius: 0.5354295
+  m_Radius: 0.45
 --- !u!114 &7893958323361135372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,6 +272,103 @@ MonoBehaviour:
   autoplay: 1
   loop: 1
   spriteRenderer: {fileID: 8449801817643511068}
+--- !u!114 &4264243685574415769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4756907778912265882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 296d7121dcba8fe4ba3e9c65c9e46561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackMelee
+  attackCoolDown: 1
+  isAttacking: 0
+  damage: 100
+  groundDamage: 100
+  attackRadius: 2
+  beatSound: {fileID: 8300000, guid: 7f1c4732b98cb0741aff7991e7e6f1f6, type: 3}
+  attackWindUp:
+    frames:
+    - {fileID: 7481986689093484623, guid: 19d68a4b7c5b0c84b9cb456fa06ef500, type: 3}
+    - {fileID: -5781821504250806385, guid: 19d68a4b7c5b0c84b9cb456fa06ef500, type: 3}
+    - {fileID: -7447185376201482558, guid: 19d68a4b7c5b0c84b9cb456fa06ef500, type: 3}
+    - {fileID: 7109616201903021236, guid: 19d68a4b7c5b0c84b9cb456fa06ef500, type: 3}
+    fps: 8
+  attackDelay: 0.2
+  attack:
+    frames:
+    - {fileID: 6119011372724813208, guid: 19d68a4b7c5b0c84b9cb456fa06ef500, type: 3}
+    - {fileID: 6456905382509495439, guid: 19d68a4b7c5b0c84b9cb456fa06ef500, type: 3}
+    fps: 4
+  explosionPrefab: {fileID: 3367513575900605123, guid: b36c3f71cdfaf05469d3fc01eb00ec12, type: 3}
+  offset: {x: 2.2, y: 0}
+--- !u!114 &-6909426825751664385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4756907778912265882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 604d996e26cca9648a6052b0eb47c2be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovementGround
+  movementAnimation:
+    frames:
+    - {fileID: 3737926915008371284, guid: 19d68a4b7c5b0c84b9cb456fa06ef500, type: 3}
+    - {fileID: -4117825314944282393, guid: 19d68a4b7c5b0c84b9cb456fa06ef500, type: 3}
+    - {fileID: -599079895634231290, guid: 19d68a4b7c5b0c84b9cb456fa06ef500, type: 3}
+    - {fileID: -6228943939511016851, guid: 19d68a4b7c5b0c84b9cb456fa06ef500, type: 3}
+    - {fileID: 324386830572817638, guid: 19d68a4b7c5b0c84b9cb456fa06ef500, type: 3}
+    - {fileID: -7268133047450232529, guid: 19d68a4b7c5b0c84b9cb456fa06ef500, type: 3}
+    fps: 10
+  invertSprite: 0
+  speed: 10
+  jumpForce: 40
+  jumpReload: 0.4
+  mainCollider: {fileID: 0}
+  maxJumps: 2
+--- !u!114 &3767397719255507787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4756907778912265882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80331d5b7fe4489f8597de95dcff31ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyPatrolMovement
+  baseMovement: {fileID: -6909426825751664385}
+  patrolPoints:
+  - {x: -5, y: 0, z: 0}
+  - {x: 5, y: 0, z: 0}
+  pointTolerance: 0.5
+  waitTime: 1
+--- !u!114 &3824380635914943748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4756907778912265882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9719390d702a72749afb6e08e2577bde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAStarMovement
+  baseMovement: {fileID: -6909426825751664385}
+  horizontalCost: 1
+  upCost: 2
+  downCost: 0.5
+  maxPathDepth: 100
+  repathRate: 0.5
+  nextWaypointDistance: 0.6
 --- !u!1001 &3287172141928584767
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -364,14 +439,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1348357014643954017, guid: 14ba2285c0d6ef444bfe2e6a1c983e4b, type: 3}
   m_PrefabInstance: {fileID: 3287172141928584767}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6131520209140907338 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8685728998280293237, guid: 14ba2285c0d6ef444bfe2e6a1c983e4b, type: 3}
-  m_PrefabInstance: {fileID: 3287172141928584767}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea7b65bc2894bc28539dd19fb93908d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

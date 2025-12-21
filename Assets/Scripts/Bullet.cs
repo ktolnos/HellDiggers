@@ -34,16 +34,21 @@ public class Bullet: MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D collision2D)
     {
         if (explodeOnCollision)
         {
-            Explode(ricochetCount <= 0);
+            var pos = transform.position;
+            if (collision2D.contactCount > 0)
+            {
+                pos = collision2D.contacts[0].point;
+            }
+            Explode(pos, ricochetCount <= 0);
         }
         ricochetCount--;
     }
     
-    private void Explode(bool destroy)
+    private void Explode(Vector3 pos, bool destroy)
     {
         var playerStatsMult = isPlayerBullet ? 1f : 0f;
         var finalExplosionRadius = explosionRadius + 
@@ -53,16 +58,16 @@ public class Bullet: MonoBehaviour
         var finalEnemyDamage = enemyDamage + Player.I.stats.bulletEnemyDamage * playerStatsMult * 1f;
         var finalGroundDamage = groundDamage + Mathf.Pow(Player.I.stats.diggingDamage, 1.5f) * playerStatsMult * 1f;
         var damageType = isPlayerBullet ? DamageDealerType.Player : DamageDealerType.Enemy;
-        Level.I.Explode(transform.position, finalExplosionRadius, finalEnemyDamage, finalGroundDamage, damageType);
+        Level.I.Explode(pos, finalExplosionRadius, finalEnemyDamage, finalGroundDamage, damageType);
         if (effect != null)
         {
-            Destroy(Instantiate(effect, transform.position, Quaternion.identity, Level.I.spawnedObjectsParent), 2f);
+            Destroy(Instantiate(effect, pos, Quaternion.identity, Level.I.spawnedObjectsParent), 2f);
         }
         if (destroy)
         {
             if (hasSound)
             {
-                SoundManager.I.PlaySfx(sound, transform.position, 10f);
+                SoundManager.I.PlaySfx(sound, pos, 10f);
             }
             Destroy(gameObject);
         }
@@ -71,7 +76,7 @@ public class Bullet: MonoBehaviour
     private IEnumerator DelayedExplode()
     {
         yield return new WaitForSeconds(explosionDelay + UnityEngine.Random.Range(-0.1f, 0.1f));
-        Explode(true);
+        Explode(transform.position, true);
     }
     
     

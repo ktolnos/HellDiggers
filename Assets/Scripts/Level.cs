@@ -249,44 +249,51 @@ public class Level : MonoBehaviour
                 var tileInfo = tileInfos.GetValueOrDefault(tilePos, null);
                 if (tileInfo != null)
                 {
-                    if (tileInfo.tileData == wallTile)
-                    {
-                        continue;
-                    }
-
-                    if (CheckCircleCellIntersection(position, radius, tilePos))
-                    {
-                        if (radius > 1f && CheckCircleCellIntersection(position, radius - 1f, tilePos))
-                        {
-                            bgTilemap.SetTile(tilePos, null);
-                        }
-
-                        tileInfo.hp -= groundDamage;
-                        if (tileInfo.hp <= 0f)
-                        {
-                            SoundManager.I.PlaySfx(blockBreak, grid.GetCellCenterWorld(tilePos));
-                            if (tileInfo.tileData.drop != null && Random.value < tileInfo.tileData.dropChance)
-                            {
-                                var rotation = tileInfo.tileData.randomRotation ? Random.Range(0, 360f) : 0f;
-                                var quaternion = Quaternion.Euler(0f, 0f, rotation);
-                                var pool = GameObjectPoolManager.I.GetOrRegisterPool(tileInfo.tileData.drop,
-                                    pooledObjectsParent);
-                                pool.InstantiateTemporarily(grid.GetCellCenterWorld(tilePos), quaternion,
-                                    tileInfo.tileData.lootLifetime);
-                            }
-
-                            RemoveTile(tilePos); // has to be after instantiate so drop can get the tileInfo
-                        }
-                        else
-                        {
-                            SetTile(tileInfo);
-                        }
-                    }
+                    DamageTile(tileInfo, radius, enemyDamage, groundDamage, position);
                 }
             }
         }
-
         GM.DamageEntities(position, radius, enemyDamage, type);
+    }
+
+
+    private void DamageTile(TileInfo tileInfo, float radius, float enemyDamage, float groundDamage, Vector3 position)
+    {
+        var tilePos = tileInfo.pos;
+        if (tileInfo.tileData.tile == wallTile.tile || tileInfo.tileData.maxHp < 0f)
+        {
+            return;
+        }
+
+        if (CheckCircleCellIntersection(position, radius, tilePos))
+        {
+            if (radius > 1f && CheckCircleCellIntersection(position, radius - 1f, tilePos))
+            {
+                bgTilemap.SetTile(tilePos, null);
+            }
+
+            tileInfo.hp -= groundDamage;
+            if (tileInfo.hp <= 0f)
+            {
+                SoundManager.I.PlaySfx(blockBreak, grid.GetCellCenterWorld(tilePos));
+                if (tileInfo.tileData.drop != null && Random.value < tileInfo.tileData.dropChance)
+                {
+                    var rotation = tileInfo.tileData.randomRotation ? Random.Range(0, 360f) : 0f;
+                    var quaternion = Quaternion.Euler(0f, 0f, rotation);
+                    var pool = GameObjectPoolManager.I.GetOrRegisterPool(tileInfo.tileData.drop,
+                        pooledObjectsParent);
+                    pool.InstantiateTemporarily(grid.GetCellCenterWorld(tilePos), quaternion,
+                        tileInfo.tileData.lootLifetime);
+                }
+
+                RemoveTile(tilePos); // has to be after instantiate so drop can get the tileInfo
+            }
+            else
+            {
+                SetTile(tileInfo);
+            }
+        }
+    
     }
 
     private (TileData, TileData) GetTile(Vector3Int pos,

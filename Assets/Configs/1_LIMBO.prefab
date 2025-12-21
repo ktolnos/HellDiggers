@@ -176,7 +176,7 @@ MonoBehaviour:
   - name: Spikes
     tile: {fileID: 11400000, guid: 080a5f9c9c342a743be7c915491017e0, type: 2}
     variants: []
-    maxHp: 10000
+    maxHp: -1
     spawnChance: 0
     surfaceSpawnChanceMult: 0
     randomRotation: 0

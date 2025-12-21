@@ -30,7 +30,7 @@ public class HUD: MonoBehaviour
         }
         var healthPercent = Player.I.health.currentHealth / Player.I.health.maxHealth;
         healthMaterial.SetFloat(Progress, healthPercent);
-        healthImage.rectTransform.sizeDelta = new Vector2(Player.I.health.maxHealth * 1f, healthImage.rectTransform.sizeDelta.y);
+        healthImage.rectTransform.sizeDelta = new Vector2(Player.I.health.maxHealth * 0.3f, healthImage.rectTransform.sizeDelta.y);
         healthImage.SetMaterialDirty();
         
         jetFuelIndicator.gameObject.SetActive(Player.I.health.currentHealth > 0f);
@@ -48,6 +48,10 @@ public class HUD: MonoBehaviour
         ironText.transform.parent.gameObject.SetActive(GM.I.resources.iron > 0);
         goldText.transform.parent.gameObject.SetActive(GM.I.resources.gold > 0);
         emeraldText.transform.parent.gameObject.SetActive(GM.I.resources.emerald > 0);
-        diamondText.transform.parent.gameObject.SetActive(GM.I.resources.diamond > 0);  
+        diamondText.transform.parent.gameObject.SetActive(GM.I.resources.diamond > 0);
+
+        healthImage.gameObject.SetActive(Level.I.currentCircleIndex >= 0);
+        jetFuelIndicator.gameObject.SetActive(Level.I.currentCircleIndex >= 0);
+        Player.I.dashIndicators[0].transform.parent.gameObject.SetActive(Level.I.currentCircleIndex >= 0);
     }
 }

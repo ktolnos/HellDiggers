@@ -209,6 +209,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: custom_tiles_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 793ee3035af9ebd4e90fd4cc7eded68a
+      internalID: -1423084689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -229,6 +251,7 @@ TextureImporter:
       custom_tiles_1: 5859404433517688576
       custom_tiles_2: 5907060516784052424
       custom_tiles_3: 7017039621664385734
+      custom_tiles_4: -1423084689
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

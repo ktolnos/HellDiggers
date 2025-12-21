@@ -64,7 +64,15 @@ public class HighScoreManager : MonoBehaviour
         GM.I.resources = new GM.Resources();
         StopCoroutine("HighScoreAnimation");
     }
-    
+
+    private void Update()
+    {
+        if (highScorePanel.activeSelf && (Keyboard.current.spaceKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame))
+        {
+            GM.I.PopTopUI();
+        }
+    }
+
     private IEnumerator HighScoreAnimation()
     {
         var appearanceDelay = new WaitForSeconds(0.5f);

@@ -42,9 +42,9 @@ Material:
     m_Ints: []
     m_Floats:
     - _ColorMask: 15
-    - _OutlineThickness: 0.4
-    - _PixelSize: 256
-    - _Progress: 0.84627444
+    - _OutlineThickness: 0.2
+    - _PixelSize: 16
+    - _Progress: 1
     - _Speed: 1
     - _Stencil: 0
     - _StencilComp: 8
@@ -59,7 +59,7 @@ Material:
     - _BgTint: {r: 0, g: 0, b: 0, a: 0}
     - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
     - _Corners: {r: 0, g: 0, b: 0, a: 0}
-    - _Outline: {r: 0, g: 0.6509804, b: 0.083357945, a: 1}
+    - _Outline: {r: 0, g: 0.3490566, b: 0.044157784, a: 1}
     - _RectTransformInfo: {r: 100, g: 100, b: 1, a: 100}
     - _Tint: {r: 0.2735849, g: 1, b: 0.49112475, a: 1}
     - _Tint2: {r: 0.05236586, g: 0.3018868, b: 0, a: 1}

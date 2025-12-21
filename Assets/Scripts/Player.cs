@@ -72,11 +72,14 @@ public class Player : MonoBehaviour
     private float lastBounceTime = -100f;
     private float lastContactDamageTime = -100f;
     public Image reloadIndicator;
+    public GameObject gunParent;
+    public GameObject secondaryGunParent;
     
     private void Awake()
     {
         I = this;
         health = GetComponent<Health>();
+        reloadIndicator.gameObject.SetActive(false);
     }
 
     private void Start()
@@ -162,9 +165,9 @@ public class Player : MonoBehaviour
         }
         
         var gunVector = VirtualMouseController.I.mousePosition -
-                        (Vector2)Camera.main.WorldToScreenPoint(gun.transform.position);
+                        (Vector2)Camera.main.WorldToScreenPoint(gunParent.transform.position);
 
-        gun.transform.localEulerAngles = Vector3.back * (Mathf.Atan2(gunVector.x, gunVector.y) * Mathf.Rad2Deg - 90f);
+        gunParent.transform.localEulerAngles = Vector3.back * (Mathf.Atan2(gunVector.x, gunVector.y) * Mathf.Rad2Deg - 90f);
         gun.animator.spriteRenderer.flipY = gunVector.x < 0f;
         if (shootAction.IsPressed())
         {
@@ -173,7 +176,9 @@ public class Player : MonoBehaviour
 
         if (secondaryGun != null)
         {
-            secondaryGun.transform.localEulerAngles = Vector3.back * (Mathf.Atan2(gunVector.x, gunVector.y) * Mathf.Rad2Deg - 90f);
+            var secondaryGunVector = VirtualMouseController.I.mousePosition -
+                            (Vector2)Camera.main.WorldToScreenPoint(secondaryGunParent.transform.position);
+            secondaryGunParent.transform.localEulerAngles = Vector3.back * (Mathf.Atan2(secondaryGunVector.x, secondaryGunVector.y) * Mathf.Rad2Deg - 90f);
             secondaryGun.animator.spriteRenderer.flipY = gunVector.x < 0f;
             if (grenadeAction.IsPressed())
             {
@@ -206,7 +211,7 @@ public class Player : MonoBehaviour
 
         numDashesLeft += Time.deltaTime * dashRechargeRate;
         numDashesLeft = Mathf.Min(numDashesLeft, stats.numDashes);
-        if (dashAction.WasPerformedThisFrame() && numDashesLeft > 0)
+        if (dashAction.WasPerformedThisFrame() && numDashesLeft >= 1)
         {
             numDashesLeft--;
             dashStartTime = Time.time;
@@ -286,7 +291,6 @@ public class Player : MonoBehaviour
         {
             lastGroundedTime = Time.time;
             airJumpsLeft = stats.numJumps;
-            numDashesLeft = stats.numDashes;
             if (isPounding)
             {
                 Level.I.Explode(transform.position, 
@@ -329,6 +333,12 @@ public class Player : MonoBehaviour
 
     private void HandleContact(Level.TileInfo tile)
     {
+        var isWithinInteractionRange = 
+            Vector2.Distance(Level.I.grid.GetCellCenterWorld(tile.pos) , transform.position + (Vector3)mainCollider.offset) < 0.9f;
+        if (!isWithinInteractionRange)
+        {
+            return;
+        }
         if (tile.tileData.contactDamage != 0 && Time.time - lastContactDamageTime > 0.5f)
         {
             health.Damage(tile.tileData.contactDamage, DamageDealerType.Environment);
@@ -379,8 +389,9 @@ public class Player : MonoBehaviour
         if (newGun.isSecondary)
         {
             secondaryGun = newGun;
-            secondaryGun.transform.parent = transform;
-            secondaryGun.transform.localPosition = new Vector3(0f, 0.2f, 0f);
+            secondaryGun.transform.parent = secondaryGunParent.transform;
+            secondaryGun.transform.localPosition = Vector3.zero;
+            secondaryGun.transform.localRotation = Quaternion.identity;
             secondaryGun.reloadIndicator = reloadIndicator;
             reloadIndicator.gameObject.SetActive(true);
             secondaryGunId = newGun.id;
@@ -388,7 +399,7 @@ public class Player : MonoBehaviour
         else
         {
             gun = newGun;
-            gun.transform.parent = transform;
+            gun.transform.parent = gunParent.transform;
             gun.transform.localPosition = Vector3.zero;
             gun.transform.localRotation = Quaternion.identity;
             currentGunId = newGun.id;

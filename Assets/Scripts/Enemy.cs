@@ -20,8 +20,9 @@ public class Enemy : MonoBehaviour
     public float agroDistance = 5f;
     public bool agroOnHurt = true;
     
-    private EnemyMovement enemyMovement;
+    public EnemyMovement enemyMovement;
     private EnemyAttack enemyAttack;
+    public bool disableOffScreen = true;
 
     void Start()
     {
@@ -47,7 +48,7 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.simulated = CameraController.IsObjectVisible(animator.spriteRenderer) ||
+        rb.simulated = !disableOffScreen || CameraController.IsObjectVisible(animator.spriteRenderer) ||
                        player.transform.position.y < transform.position.y;
         if (!rb.simulated)
         {

@@ -68,7 +68,7 @@ MonoBehaviour:
   - name: Bomb
     tile: {fileID: 11400000, guid: 1a2c3922f78c2f24abd8bd1728d32cfc, type: 2}
     variants: []
-    maxHp: 1
+    maxHp: 0.1
     spawnChance: 0.7
     surfaceSpawnChanceMult: 1
     randomRotation: 0

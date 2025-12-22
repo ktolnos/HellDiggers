@@ -166,12 +166,12 @@ MonoBehaviour:
     m_WaitForCompletion: 0
     m_LocalVariables: []
   bulletPrefab: {fileID: -8224019564269720104, guid: dc1b90e16b3b3784193027e08640b886, type: 3}
-  fireDelay: 0.1
+  fireDelay: 0.2
   numberOfBullets: 1
   bulletLifeTime: 0.5
   spread: 4
   randomSpread: 10
-  price: 200
+  price: 500
   bulletSpeed: 30
   isSecondary: 0
   animator: {fileID: 8362390806292825961}

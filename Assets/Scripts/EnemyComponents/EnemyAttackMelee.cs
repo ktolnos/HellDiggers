@@ -15,18 +15,25 @@ public class EnemyAttackMelee : EnemyAttack, IDeathHandler
     public Vector2 offset;
     
     private BombAnimator currentExplosion;
+    private Enemy _enemy;
     
     protected override void Awake()
     {
         base.Awake();
         TryGetComponent(out animator);
+        TryGetComponent(out _enemy);
     }
     
     
     protected override IEnumerator PerformAttack(Vector3 target)
     {
         var attackPos = transform.position + (Vector3)offset;
-        if (target.x < transform.position.x)
+        var toTheLeft = target.x < transform.position.x;
+        if (_enemy?.enemyMovement?.currentFacingDirectionRight != null)
+        {
+            toTheLeft = !_enemy.enemyMovement.currentFacingDirectionRight;
+        }
+        if (toTheLeft)
         {
             attackPos.x -= 2 * offset.x;
         }

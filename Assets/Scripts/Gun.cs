@@ -44,7 +44,7 @@ public class Gun: MonoBehaviour
         var statMult = bulletPrefab.isPlayerBullet ? 1f : 0f;
         float fireRateStat = isSecondary ? Player.I.stats.grenadeReloadSpeedUp : Player.I.stats.reloadSpeedUp;
         fireRateStat *= statMult;
-        var fireDelayUpgraded = fireDelay / (fireRateStat + 1f);
+        var fireDelayUpgraded = fireDelay * Mathf.Pow(0.8f, fireRateStat);
         return fireDelayUpgraded;
     }
 

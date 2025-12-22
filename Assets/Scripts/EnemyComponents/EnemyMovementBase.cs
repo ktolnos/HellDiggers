@@ -6,6 +6,7 @@ public class EnemyMovementBase : EnemyMovement
     protected SpriteAnimator animator;
     public SpriteAnimator.Animation movementAnimation;
     public bool invertSprite;
+    private float lastDirectionFlipTime = -100f;
     
     protected virtual void Awake()
     {
@@ -17,9 +18,11 @@ public class EnemyMovementBase : EnemyMovement
     {
         animator.animation = movementAnimation;
         animator.autoplay = true;
-        if (Mathf.Abs(target.x - transform.position.x) > 0.1f && Mathf.Abs(rb.linearVelocityX) > 0.01f)
+        if (Mathf.Abs(target.x - transform.position.x) > 0.1f && Mathf.Abs(rb.linearVelocityX) > 0.1f && Time.time - lastDirectionFlipTime > 0.5f)
         {
-            animator.spriteRenderer.flipX = invertSprite ^ target.x < transform.position.x;
+            currentFacingDirectionRight = target.x > transform.position.x;
+            animator.spriteRenderer.flipX = invertSprite ^ !currentFacingDirectionRight;
+            lastDirectionFlipTime = Time.time;
         }
     }
 

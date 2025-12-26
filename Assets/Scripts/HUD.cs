@@ -7,6 +7,7 @@ public class HUD: MonoBehaviour
 {
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI moneyText;
+    public TextMeshProUGUI ammoText;
     
     public TextMeshProUGUI copperText;
     public TextMeshProUGUI ironText;
@@ -18,6 +19,8 @@ public class HUD: MonoBehaviour
     public Material healthMaterial;
     
     public Image jetFuelIndicator;
+    public RectTransform ammoPrefab;
+    public RectTransform ammoContainer;
     
     private static readonly int Progress = Shader.PropertyToID("_Progress");
 
@@ -53,5 +56,18 @@ public class HUD: MonoBehaviour
         healthImage.gameObject.SetActive(Level.I.currentCircleIndex >= 0);
         jetFuelIndicator.gameObject.SetActive(Level.I.currentCircleIndex >= 0);
         Player.I.dashIndicators[0].transform.parent.gameObject.SetActive(Level.I.currentCircleIndex >= 0);
+
+        var ammoCount = Player.I.gun.AmmoInMagLeft;
+        ammoText.text = ammoCount + "/" + Player.I.gun.AmmoOutOfMagLeft;
+        for(int i = ammoContainer.childCount; i < Player.I.gun.AmmoInMagLeft+1; i++)
+        {
+            var ammo = Instantiate(ammoPrefab, ammoContainer);
+        }
+
+        for(int i = ammoContainer.childCount-1; i > Player.I.gun.AmmoInMagLeft && i > 0; i--)
+        {
+            Destroy(ammoContainer.GetChild(i).gameObject);
+        }
+        ammoContainer.gameObject.SetActive(Level.I.currentCircleIndex >= 0);
     }
 }

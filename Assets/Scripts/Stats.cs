@@ -23,6 +23,9 @@ public class Stats
     public int health;
     public int healthRegen;
     public int bulletRicochetCount;
+    public int magSize;
+    public int mags;
+    public int reloadTime;
     
 
     public static Stats operator +(Stats a, Stats b)
@@ -48,6 +51,9 @@ public class Stats
             health = a.health + b.health,
             healthRegen = a.healthRegen + b.healthRegen,
             bulletRicochetCount = a.bulletRicochetCount + b.bulletRicochetCount,
+            magSize = a.magSize + b.magSize,
+            mags = a.mags + b.mags,
+            reloadTime = a.reloadTime + b.reloadTime,
         };
     }
 }

@@ -475,6 +475,10 @@ public class Level : MonoBehaviour
         var playerPos = Player.I.transform.position;
         isLevelTransition = true;
         currentCircleIndex++;
+        if (currentCircleIndex == 0)
+        {
+            Player.I.Revive();
+        }
         currentCircleIndex = Mathf.Clamp(currentCircleIndex, 0, circles.Length - 1);
         circleText.text = circles[currentCircleIndex].circleName;
         transitionPanel.gameObject.SetActive(true);

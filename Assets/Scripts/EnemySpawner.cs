@@ -49,11 +49,20 @@ public class EnemySpawner : MonoBehaviour
         }
 
         var enemyStartTime = Time.time - Level.I.timeOfFloorStart - spawnDelays[Level.I.currentCircleIndex];
+       
+        currentHardness = hardometer * enemyStartTime * hardnessMultipliers[Level.I.currentCircleIndex];
+
+        if (Player.I.gun.AmmoInMagLeft <= 0 && Player.I.gun.AmmoOutOfMagLeft <= 0)
+        {
+            currentHardness = Mathf.Max(currentHardness, 100f);
+            enemyStartTime = Mathf.Max(1f, enemyStartTime);
+        }
+        
         if (enemyStartTime < 0)
         {
             return;
         }
-        currentHardness = hardometer * enemyStartTime * hardnessMultipliers[Level.I.currentCircleIndex];
+        
 
         if (Time.time - _timeOfLastSpawn > 1f / spawnsPerHardness / currentHardness)
         {

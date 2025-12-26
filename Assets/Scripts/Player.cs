@@ -71,7 +71,8 @@ public class Player : MonoBehaviour
     private bool isInMud;
     private float lastBounceTime = -100f;
     private float lastContactDamageTime = -100f;
-    public Image reloadIndicator;
+    [FormerlySerializedAs("reloadIndicator")] public Image secondaryReloadIndicator;
+    public Image primaryReloadIndicator;
     public GameObject gunParent;
     public GameObject secondaryGunParent;
     
@@ -79,7 +80,7 @@ public class Player : MonoBehaviour
     {
         I = this;
         health = GetComponent<Health>();
-        reloadIndicator.gameObject.SetActive(false);
+        secondaryReloadIndicator.gameObject.SetActive(false);
     }
 
     private void Start()
@@ -311,6 +312,8 @@ public class Player : MonoBehaviour
         numDashesLeft = stats.numDashes;
         health.maxHealth = 300f + stats.health * 100f;
         health.Revive();
+        gun?.Reset();
+        secondaryGun?.Reset();
     }
 
     private void AnimateJump()
@@ -392,8 +395,8 @@ public class Player : MonoBehaviour
             secondaryGun.transform.parent = secondaryGunParent.transform;
             secondaryGun.transform.localPosition = Vector3.zero;
             secondaryGun.transform.localRotation = Quaternion.identity;
-            secondaryGun.reloadIndicator = reloadIndicator;
-            reloadIndicator.gameObject.SetActive(true);
+            secondaryGun.reloadIndicator = secondaryReloadIndicator;
+            secondaryReloadIndicator.gameObject.SetActive(true);
             secondaryGunId = newGun.id;
         }
         else
@@ -402,7 +405,9 @@ public class Player : MonoBehaviour
             gun.transform.parent = gunParent.transform;
             gun.transform.localPosition = Vector3.zero;
             gun.transform.localRotation = Quaternion.identity;
+            gun.reloadIndicator = primaryReloadIndicator;
             currentGunId = newGun.id;
         }
+        newGun.Reset();
     }
 }

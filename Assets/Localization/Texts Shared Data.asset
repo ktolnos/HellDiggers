@@ -115,6 +115,18 @@ MonoBehaviour:
     m_Key: bazooka
     m_Metadata:
       m_Items: []
+  - m_Id: 42551925527785472
+    m_Key: MagSize
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42552110941188096
+    m_Key: Mags
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42552492522188800
+    m_Key: Reload Speed
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -172,12 +172,15 @@ MonoBehaviour:
   spread: 4
   randomSpread: 10
   price: 500
+  magSize: 30
+  mags: 2
   bulletSpeed: 30
   isSecondary: 0
   animator: {fileID: 8362390806292825961}
   reloadIndicator: {fileID: 0}
   shootSound: {fileID: 8300000, guid: 34f38a0e04c503546b74d2230fd58fb4, type: 3}
   gunStation: {fileID: 0}
+  reloadTime: 5
   references:
     version: 2
     RefIds: []

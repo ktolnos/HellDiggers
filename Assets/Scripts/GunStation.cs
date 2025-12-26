@@ -37,9 +37,9 @@ public class GunStation : MonoBehaviour, IInteractionHandler
     
     public void Interact()
     {
-        if (GM.I.money >= gun.price)
+        if (GM.I.money >= gun.price && !purchasedGuns.Contains(gun.id))
         {
-            GM.I.money -= -gun.price;
+            GM.I.money -= gun.price;
             purchasedGuns.Add(gun.id);
         }
         if (purchasedGuns.Contains(gun.id))
@@ -79,5 +79,6 @@ public class GunStation : MonoBehaviour, IInteractionHandler
         interactable.IsInteractable = true;
         gun.animator.spriteRenderer.flipY = false;
         gun.reloadIndicator = null;
+        gun.Reset();
     }
 }

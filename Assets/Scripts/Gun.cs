@@ -5,6 +5,7 @@ using UnityEngine.Localization;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
+using System.Collections;
 
 public class Gun: MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class Gun: MonoBehaviour
     public float spread = 0.1f;
     public float randomSpread;
     public int price;
+    public int magSize;
+    public int mags;
  
     public float bulletSpeed = 5f;
 
@@ -28,14 +31,27 @@ public class Gun: MonoBehaviour
     public AudioClip shootSound;
     
     public GunStation gunStation;
+    [NonSerialized] public int AmmoInMagLeft;
+    [NonSerialized] public int AmmoOutOfMagLeft;
+    [NonSerialized] public bool isReloading;
+    public float reloadTime;
+    private float reloadStartTime = -1000f;
 
     private void Update()
     {
         if (bulletPrefab.isPlayerBullet && reloadIndicator != null)
         {
             // reloadIndicator.gameObject.SetActive(Player.I.stats.numberOfGrenadesPerLaunch  > 0);
-            reloadIndicator.fillAmount = Mathf.Clamp01((Time.time - lastFireTime) / GetFireRate());
+            if (isSecondary)
+            {
+                reloadIndicator.fillAmount = Mathf.Clamp01((Time.time - lastFireTime) / GetFireRate());
+            }
+            else
+            {
+                reloadIndicator.fillAmount = Mathf.Clamp01((Time.time - reloadStartTime) / GetReloadTime());
+            }
             reloadIndicator.color = reloadIndicator.fillAmount > 0.999f ? new Color(0.8f, 0.8f, 0.8f) : Color.gray;
+            reloadIndicator.enabled = reloadIndicator.fillAmount < 0.999f || isSecondary;
         }
     }
 
@@ -48,11 +64,31 @@ public class Gun: MonoBehaviour
         return fireDelayUpgraded;
     }
 
+    private int GetMagSize()
+    {
+        return magSize + (isSecondary ? 0 : Player.I.stats.magSize);
+    }
+
+    private int GetMags()
+    {
+        return mags + (isSecondary ? 0 : Player.I.stats.mags);
+    }
+
+    private int GetTotalAmmo()
+    {
+        return GetMagSize() * GetMags();
+    }
+
+    private float GetReloadTime()
+    {
+        return reloadTime * Mathf.Pow(0.8f, Player.I.stats.reloadTime);
+    }
+
     public void Shoot()
     {
         var statMult = bulletPrefab.isPlayerBullet ? 1f : 0f;
         var fireDelayUpgraded = GetFireRate();
-        if (Time.time - lastFireTime < fireDelayUpgraded)
+        if (Time.time - lastFireTime < fireDelayUpgraded || AmmoInMagLeft <= 0)
             return;
         lastFireTime = Time.time;
         if (shootSound != null)
@@ -74,5 +110,30 @@ public class Gun: MonoBehaviour
             bullet.rb.linearVelocity = bullet.transform.right * bulletSpeed;
             Destroy(bullet.gameObject, bulletLifeTime);
         }
+        AmmoInMagLeft--;
+        if (AmmoInMagLeft <= 0)
+        {
+            StartCoroutine(Reload());
+        }
+    }
+
+    public IEnumerator Reload()
+    {
+        if (isReloading)
+            yield break;
+        isReloading = true;
+        reloadStartTime = Time.time;
+        yield return new WaitForSeconds(GetReloadTime());
+        isReloading = false;
+        var reloadedAmmo = Mathf.Min(GetMagSize() - AmmoInMagLeft, AmmoOutOfMagLeft);
+        AmmoInMagLeft += reloadedAmmo;
+        AmmoOutOfMagLeft -= reloadedAmmo;
+    }
+
+    public void Reset()
+    {
+        isReloading = false;
+        AmmoInMagLeft = GetMagSize();
+        AmmoOutOfMagLeft = GetTotalAmmo() - GetMagSize();
     }
 }

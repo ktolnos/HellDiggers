@@ -8781,7 +8781,7 @@ PrefabInstance:
     - target: {fileID: 5851292943997058161, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -6158487943299377493, guid: e8e0d23d74c561443b02b2663bac42d7, type: 3}
+      objectReference: {fileID: -1309964660483591080, guid: e8e0d23d74c561443b02b2663bac42d7, type: 3}
     - target: {fileID: 6922875213538356855, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -30043,7 +30043,7 @@ PrefabInstance:
     - target: {fileID: 5851292943997058161, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -6158487943299377493, guid: e8e0d23d74c561443b02b2663bac42d7, type: 3}
+      objectReference: {fileID: 437248307, guid: e8e0d23d74c561443b02b2663bac42d7, type: 3}
     - target: {fileID: 6922875213538356855, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -36971,7 +36971,7 @@ PrefabInstance:
     - target: {fileID: 5851292943997058161, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -6158487943299377493, guid: e8e0d23d74c561443b02b2663bac42d7, type: 3}
+      objectReference: {fileID: -3147194848298552540, guid: e8e0d23d74c561443b02b2663bac42d7, type: 3}
     - target: {fileID: 6922875213538356855, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -43673,30 +43673,6 @@ PrefabInstance:
       propertyPath: hud
       value: 
       objectReference: {fileID: 1359423406}
-    - target: {fileID: 6929521213808249231, guid: 50f709c66c5533e469b6ceb2ae45f93b, type: 3}
-      propertyPath: goldPrice
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 6929521213808249231, guid: 50f709c66c5533e469b6ceb2ae45f93b, type: 3}
-      propertyPath: ironPrice
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6929521213808249231, guid: 50f709c66c5533e469b6ceb2ae45f93b, type: 3}
-      propertyPath: diamondPrice
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 6929521213808249231, guid: 50f709c66c5533e469b6ceb2ae45f93b, type: 3}
-      propertyPath: emeraldPrice
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 7315767942028141727, guid: 50f709c66c5533e469b6ceb2ae45f93b, type: 3}
-      propertyPath: DopplerLevel
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7315767942028141727, guid: 50f709c66c5533e469b6ceb2ae45f93b, type: 3}
-      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
-      value: 0.036111113
-      objectReference: {fileID: 0}
     - target: {fileID: 8008005630057885355, guid: 50f709c66c5533e469b6ceb2ae45f93b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

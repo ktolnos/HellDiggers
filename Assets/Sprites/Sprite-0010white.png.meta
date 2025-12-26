@@ -328,7 +328,7 @@ TextureImporter:
       name: Sprite-0010white_5
       rect:
         serializedVersion: 2
-        x: 64
+        x: 16
         y: 160
         width: 32
         height: 32
@@ -350,7 +350,7 @@ TextureImporter:
       name: Sprite-0010white_6
       rect:
         serializedVersion: 2
-        x: 112
+        x: 64
         y: 160
         width: 32
         height: 32
@@ -372,8 +372,8 @@ TextureImporter:
       name: Sprite-0010white_8
       rect:
         serializedVersion: 2
-        x: 16
-        y: 112
+        x: 160
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -394,8 +394,8 @@ TextureImporter:
       name: Sprite-0010white_12
       rect:
         serializedVersion: 2
-        x: 16
-        y: 64
+        x: 112
+        y: 112
         width: 32
         height: 32
       alignment: 0
@@ -416,7 +416,7 @@ TextureImporter:
       name: Sprite-0010white_18
       rect:
         serializedVersion: 2
-        x: 112
+        x: 16
         y: 16
         width: 32
         height: 32
@@ -482,8 +482,8 @@ TextureImporter:
       name: Sprite-0010white_4
       rect:
         serializedVersion: 2
-        x: 16
-        y: 160
+        x: 208
+        y: 208
         width: 32
         height: 32
       alignment: 0
@@ -504,7 +504,7 @@ TextureImporter:
       name: Sprite-0010white_7
       rect:
         serializedVersion: 2
-        x: 160
+        x: 112
         y: 160
         width: 32
         height: 32
@@ -526,8 +526,8 @@ TextureImporter:
       name: Sprite-0010white_9
       rect:
         serializedVersion: 2
-        x: 64
-        y: 112
+        x: 208
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -548,7 +548,7 @@ TextureImporter:
       name: Sprite-0010white_10
       rect:
         serializedVersion: 2
-        x: 112
+        x: 16
         y: 112
         width: 32
         height: 32
@@ -570,7 +570,7 @@ TextureImporter:
       name: Sprite-0010white_11
       rect:
         serializedVersion: 2
-        x: 160
+        x: 64
         y: 112
         width: 32
         height: 32
@@ -592,8 +592,8 @@ TextureImporter:
       name: Sprite-0010white_13
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
+        x: 160
+        y: 112
         width: 32
         height: 32
       alignment: 0
@@ -614,7 +614,7 @@ TextureImporter:
       name: Sprite-0010white_14
       rect:
         serializedVersion: 2
-        x: 112
+        x: 16
         y: 64
         width: 32
         height: 32
@@ -636,7 +636,7 @@ TextureImporter:
       name: Sprite-0010white_15
       rect:
         serializedVersion: 2
-        x: 160
+        x: 64
         y: 64
         width: 32
         height: 32
@@ -658,8 +658,8 @@ TextureImporter:
       name: Sprite-0010white_16
       rect:
         serializedVersion: 2
-        x: 16
-        y: 16
+        x: 112
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -680,8 +680,8 @@ TextureImporter:
       name: Sprite-0010white_17
       rect:
         serializedVersion: 2
-        x: 64
-        y: 16
+        x: 160
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -694,6 +694,72 @@ TextureImporter:
       bones: []
       spriteID: 4c197ffc04e1c01499fc9bf4d5e38da9
       internalID: 4148812577536422716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-0010white_19
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e8397e17c5fd3d4cb638251b202699e
+      internalID: -1894552275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-0010white_20
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 16
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae4bda8d4d898a747b453d6d16aee1d4
+      internalID: 1819509908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-0010white_21
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 16
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36f2b8386e9b56e4baad8511d3df9b3e
+      internalID: 437248307
       vertices: []
       indices: 
       edges: []
@@ -725,7 +791,10 @@ TextureImporter:
       Sprite-0010white_16: -5003352372969965871
       Sprite-0010white_17: 4148812577536422716
       Sprite-0010white_18: 2569886816863780402
+      Sprite-0010white_19: -1894552275
       Sprite-0010white_2: -3697999798976386652
+      Sprite-0010white_20: 1819509908
+      Sprite-0010white_21: 437248307
       Sprite-0010white_3: 3168520944390316744
       Sprite-0010white_4: -3147194848298552540
       Sprite-0010white_5: 5693339347500476715

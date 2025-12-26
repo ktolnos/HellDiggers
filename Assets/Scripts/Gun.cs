@@ -130,6 +130,11 @@ public class Gun: MonoBehaviour
         AmmoOutOfMagLeft -= reloadedAmmo;
     }
 
+    public void AddAmmo(int ammo)
+    {
+        AmmoOutOfMagLeft += ammo * GetMagSize();
+    }
+
     public void Reset()
     {
         isReloading = false;

@@ -49,8 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  enemyDamage: 0.5
-  groundDamage: 0.5
+  enemyDamage: 0.3
+  groundDamage: 0.3
   explosionRadius: 0.1
   explodeOnCollision: 1
   explosionDelay: 0

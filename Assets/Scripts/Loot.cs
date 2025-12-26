@@ -9,6 +9,7 @@ public class Loot : MonoBehaviour
     public int money;
     public GM.Resources resources;
     public float hp;
+    public int ammo;
     
     private float collectionTime = 0.5f;
     public Rigidbody2D rb;
@@ -70,6 +71,7 @@ public class Loot : MonoBehaviour
         GM.I.money += money;
         GM.I.resources += resources;
         Player.I.health.Heal(hp);
+        Player.I.gun.AddAmmo(ammo);
     }
 
     private float GetCollectionDistance()

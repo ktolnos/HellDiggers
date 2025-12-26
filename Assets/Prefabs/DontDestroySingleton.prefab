@@ -186,8 +186,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b48f4095e64840ab56f082f893bd60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resources:
+    copper: 0
+    iron: 0
+    gold: 0
+    emerald: 0
+    diamond: 0
   money: 0
   isFree: 0
+  copperPrice: 1
+  ironPrice: 10
+  goldPrice: 50
+  emeraldPrice: 200
+  diamondPrice: 1000
 --- !u!1 &6230652382095134151
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,6 +449,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8008005630057885355}
     m_Modifications:
+    - target: {fileID: 4556520889528887991, guid: 0f0bad4ea3932514cabc2d1f007fd72d, type: 3}
+      propertyPath: DopplerLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4556520889528887991, guid: 0f0bad4ea3932514cabc2d1f007fd72d, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 0.036111113
+      objectReference: {fileID: 0}
     - target: {fileID: 7107944103044133122, guid: 0f0bad4ea3932514cabc2d1f007fd72d, type: 3}
       propertyPath: m_Name
       value: SoundManager

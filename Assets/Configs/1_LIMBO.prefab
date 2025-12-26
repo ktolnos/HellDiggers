@@ -263,6 +263,36 @@ MonoBehaviour:
     outForce: 0
     lootLifetime: 10
     allowLava: 0
+  - name: HealBlock
+    tile: {fileID: 11400000, guid: 9e092c3aa76e323479f5c49ab53c4020, type: 2}
+    variants: []
+    maxHp: 1
+    spawnChance: 0.1
+    surfaceSpawnChanceMult: 0
+    randomRotation: 0
+    drop: {fileID: 3094065808536684211, guid: 9b752d8258343b34d9b70d5ec617a97c, type: 3}
+    dropChance: 1
+    contactDamage: 0
+    isSlippery: 0
+    isMud: 0
+    outForce: 0
+    lootLifetime: 10
+    allowLava: 0
+  - name: AmmoBlock
+    tile: {fileID: 11400000, guid: b712e5e0d2b421d4ab20796dd240f2c1, type: 2}
+    variants: []
+    maxHp: 1
+    spawnChance: 1
+    surfaceSpawnChanceMult: 0
+    randomRotation: 0
+    drop: {fileID: 3094065808536684211, guid: 3fab56b727c56b14199a148548b7e04e, type: 3}
+    dropChance: 1
+    contactDamage: 0
+    isSlippery: 0
+    isMud: 0
+    outForce: 0
+    lootLifetime: 10
+    allowLava: 0
   noiseThreshold: -0.5
   noiseFrequency: 0.15
   boss: {fileID: 0}

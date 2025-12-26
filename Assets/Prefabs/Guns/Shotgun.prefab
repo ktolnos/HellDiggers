@@ -175,7 +175,7 @@ MonoBehaviour:
   randomSpread: 0
   price: 50
   magSize: 2
-  mags: 20
+  mags: 6
   bulletSpeed: 25
   isSecondary: 0
   animator: {fileID: 8362390806292825961}

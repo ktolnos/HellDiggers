@@ -172,7 +172,7 @@ MonoBehaviour:
   spread: 4
   randomSpread: 0
   price: 0
-  magSize: 20
+  magSize: 15
   mags: 1
   bulletSpeed: 35
   isSecondary: 0

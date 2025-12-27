@@ -11,13 +11,16 @@ public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler
     public LocalizedString skillName;
     public LocalizedString description;
     public Stats stats;
-    public Skill skillParent;
+    [HideInInspector] public Skill skillParent;
     
     public Color lockedColor;
     public Color unlockedColor;
     [FormerlySerializedAs("upgradedColor")] public Color tooExpensiveColor;
     public Color maxOutColor;
-    public int CurrentLevel => (int) myStatField.GetValue(Player.I.stats);
+    public int GlobalLevel => (int) myStatField.GetValue(Player.I.stats);
+    public int LocalLevel => Mathf.Clamp(GlobalLevel - levelOffset, 0, levelsInThisNode);
+    public int levelOffset = 0;
+    public int levelsInThisNode = 1;
     private Player player;
     [HideInInspector] public Button button;
     public Image statusIndicator;
@@ -62,32 +65,51 @@ public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler
         if (!interactable) return;
         if (!GM.I.isFree)
         {
-            if (CurrentLevel >= prices.Count) return;
-            GM.I.money -= prices[CurrentLevel];
+        if (LocalLevel >= levelsInThisNode) return;
+        if (!GM.I.isFree)
+        {
+            if (GlobalLevel >= prices.Count) return;
+            GM.I.money -= prices[GlobalLevel];
+        }
         }
         
         player.stats += stats;
         SaveManager.I.SaveGame();
     }
 
+    private bool UnlockRequirementsMet()
+    {
+        // Check dependencies:
+        // 1. Must satisfy linear progression (GlobalLevel >= levelOffset)
+        // 2. Physical parent interaction
+        bool sequenceMet = GlobalLevel >= levelOffset;
+        bool parentMet = skillParent == null || skillParent.LocalLevel > 0;
+        return parentMet && sequenceMet;
+    }
+
     private void Update()
     {
-        if ((skillParent == null || skillParent.CurrentLevel > 0) && CurrentLevel < prices.Count)
+        if (LocalLevel >= levelsInThisNode)
         {
-            var canAfford = prices[CurrentLevel] < GM.I.money;
-            canAfford |= GM.I.isFree; // Allow free upgrades
+            SetState(State.Maxed);
+        }
+        else if (UnlockRequirementsMet())
+        {
+            var canAfford = false;
+            if (GlobalLevel < prices.Count)
+            {
+                canAfford = prices[GlobalLevel] < GM.I.money;
+            }
+            canAfford |= GM.I.isFree; 
             SetState(canAfford ? State.Unlocked : State.TooExpensive);
+        }
+        else if (skillParent.UnlockRequirementsMet())
+        {
+            SetState(State.Locked);
         }
         else
         {
-            if (CurrentLevel == prices.Count)
-            {
-                SetState(State.Maxed);
-            }
-            else
-            {
-                SetState(skillParent == null || skillParent.skillParent == null || skillParent.skillParent.CurrentLevel > 0 ? State.Locked : State.Hidden);
-            }
+            SetState(State.Hidden);
         }
 
         if (EventSystem.current.currentSelectedGameObject == button.gameObject)

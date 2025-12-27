@@ -65,10 +65,10 @@ public class SkillPopup : MonoBehaviour
     {
         if (currentSkill == null) return;
         
-        lvlText.text = currentSkill.CurrentLevel + "/" + currentSkill.prices.Count;
-        priceText.text = currentSkill.CurrentLevel < currentSkill.prices.Count ?
-            currentSkill.prices[currentSkill.CurrentLevel].ToString() : maxedString.GetLocalizedString();
-        priceIcon.SetActive(currentSkill.CurrentLevel < currentSkill.prices.Count);
+        lvlText.text = currentSkill.LocalLevel + "/" + currentSkill.levelsInThisNode;
+        priceText.text = currentSkill.LocalLevel < currentSkill.levelsInThisNode ?
+            currentSkill.prices[currentSkill.GlobalLevel].ToString() : maxedString.GetLocalizedString();
+        priceIcon.SetActive(currentSkill.GlobalLevel < currentSkill.prices.Count);
         priceText.rectTransform.sizeDelta = priceText.GetPreferredValues(priceText.text);
     }
     

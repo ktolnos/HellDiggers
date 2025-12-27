@@ -173,11 +173,16 @@ MonoBehaviour:
     health: 0
     healthRegen: 0
     bulletRicochetCount: 0
+    magSize: 0
+    mags: 0
+    reloadTime: 0
   skillParent: {fileID: 0}
   lockedColor: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
   unlockedColor: {r: 0.11053756, g: 0.8679245, b: 0.3673302, a: 1}
   tooExpensiveColor: {r: 0.745283, g: 0.09994376, b: 0, a: 1}
   maxOutColor: {r: 0.9960785, g: 0.7058824, b: 0, a: 1}
+  levelOffset: 0
+  levelsInThisNode: 1
   button: {fileID: 0}
   statusIndicator: {fileID: 6158275906481595850}
   prices: 
@@ -185,7 +190,7 @@ MonoBehaviour:
   selectedIndicator: {fileID: 8905036981311218509}
   connector: {fileID: 2868080784452922219}
   iconImage: {fileID: 5851292943997058161}
-  lockedIcon: {fileID: 2569886816863780402, guid: e8e0d23d74c561443b02b2663bac42d7, type: 3}
+  lockedIcon: {fileID: 1819509908, guid: e8e0d23d74c561443b02b2663bac42d7, type: 3}
   references:
     version: 2
     RefIds: []
@@ -406,7 +411,7 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 80, y: 3}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &4093999494853572777
 CanvasRenderer:
   m_ObjectHideFlags: 0

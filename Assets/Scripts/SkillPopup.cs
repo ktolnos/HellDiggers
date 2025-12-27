@@ -13,6 +13,7 @@ public class SkillPopup : MonoBehaviour
     [SerializeField] private TextMeshProUGUI priceText;
     [SerializeField] private TextMeshProUGUI lvlText;
     public LocalizedString maxedString;
+    public LocalizedString cheaperAvailableString;
     public GameObject priceIcon;
     
     private void Awake()
@@ -66,9 +67,14 @@ public class SkillPopup : MonoBehaviour
         if (currentSkill == null) return;
         
         lvlText.text = currentSkill.LocalLevel + "/" + currentSkill.levelsInThisNode;
+        var cheaperAvailable = currentSkill.GlobalLevel < currentSkill.levelOffset;
         priceText.text = currentSkill.LocalLevel < currentSkill.levelsInThisNode ?
             currentSkill.prices[currentSkill.GlobalLevel].ToString() : maxedString.GetLocalizedString();
-        priceIcon.SetActive(currentSkill.GlobalLevel < currentSkill.prices.Count);
+        if (cheaperAvailable)
+        {
+            priceText.text = cheaperAvailableString.GetLocalizedString();
+        }
+        priceIcon.SetActive(currentSkill.GlobalLevel < currentSkill.prices.Count && !cheaperAvailable);
         priceText.rectTransform.sizeDelta = priceText.GetPreferredValues(priceText.text);
     }
     

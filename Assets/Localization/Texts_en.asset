@@ -130,6 +130,10 @@ MonoBehaviour:
     m_Localized: Reload Speed
     m_Metadata:
       m_Items: []
+  - m_Id: 42870732750303232
+    m_Localized: Cheaper available
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

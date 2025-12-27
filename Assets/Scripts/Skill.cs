@@ -79,12 +79,8 @@ public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     private bool UnlockRequirementsMet()
     {
-        // Check dependencies:
-        // 1. Must satisfy linear progression (GlobalLevel >= levelOffset)
-        // 2. Physical parent interaction
-        bool sequenceMet = GlobalLevel >= levelOffset;
         bool parentMet = skillParent == null || skillParent.LocalLevel > 0;
-        return parentMet && sequenceMet;
+        return parentMet;
     }
 
     private void Update()
@@ -101,7 +97,8 @@ public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler
                 canAfford = prices[GlobalLevel] < GM.I.money;
             }
             canAfford |= GM.I.isFree; 
-            SetState(canAfford ? State.Unlocked : State.TooExpensive);
+            bool sequenceMet = GlobalLevel >= levelOffset;
+            SetState(canAfford && sequenceMet ? State.Unlocked : State.TooExpensive);
         }
         else if (skillParent.UnlockRequirementsMet())
         {

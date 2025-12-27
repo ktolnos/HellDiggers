@@ -37986,6 +37986,15 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  cheaperAvailableString:
+    m_TableReference:
+      m_TableCollectionName: GUID:a89ad48d34be26240a94076a3e9be7d4
+    m_TableEntryReference:
+      m_KeyId: 42870732750303232
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   priceIcon: {fileID: 7760207875337493733}
   references:
     version: 2

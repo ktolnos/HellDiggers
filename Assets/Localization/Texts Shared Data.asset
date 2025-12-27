@@ -127,6 +127,10 @@ MonoBehaviour:
     m_Key: Reload Speed
     m_Metadata:
       m_Items: []
+  - m_Id: 42870732750303232
+    m_Key: cheaper_available
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

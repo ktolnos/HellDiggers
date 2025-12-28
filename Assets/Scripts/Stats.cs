@@ -26,6 +26,12 @@ public class Stats
     public int magSize;
     public int mags;
     public int reloadTime;
+    public int dashDamage;
+    public int dashRadius;
+    public int dashReloadSpeed;
+    public int spikeProtection;
+    public int headProtection;
+    public int bulletProtection;
     
 
     public static Stats operator +(Stats a, Stats b)
@@ -54,6 +60,12 @@ public class Stats
             magSize = a.magSize + b.magSize,
             mags = a.mags + b.mags,
             reloadTime = a.reloadTime + b.reloadTime,
+            dashDamage = a.dashDamage + b.dashDamage,
+            dashRadius = a.dashRadius + b.dashRadius,
+            dashReloadSpeed = a.dashReloadSpeed + b.dashReloadSpeed,
+            spikeProtection = a.spikeProtection + b.spikeProtection,
+            headProtection = a.headProtection + b.headProtection,
+            bulletProtection = a.bulletProtection + b.bulletProtection,
         };
     }
 }

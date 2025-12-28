@@ -183,6 +183,7 @@ MonoBehaviour:
   shootSound: {fileID: 8300000, guid: 34f38a0e04c503546b74d2230fd58fb4, type: 3}
   gunStation: {fileID: 0}
   reloadTime: 2
+  infiniteAmmo: 0
   references:
     version: 2
     RefIds: []

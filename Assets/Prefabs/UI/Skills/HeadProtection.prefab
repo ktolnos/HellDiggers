@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6464115992390354955
+--- !u!1001 &2900478759813692867
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -41,6 +41,18 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 851592773613188119, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.166464
+      objectReference: {fileID: 0}
+    - target: {fileID: 851592773613188119, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.166464
+      objectReference: {fileID: 0}
+    - target: {fileID: 851592773613188119, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.166464
+      objectReference: {fileID: 0}
+    - target: {fileID: 851592773613188119, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -70,11 +82,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 851592773613188119, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 110
+      value: -220
       objectReference: {fileID: 0}
     - target: {fileID: 851592773613188119, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 330
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 851592773613188119, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -87,6 +99,10 @@ PrefabInstance:
     - target: {fileID: 851592773613188119, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 851592773613188119, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1459993866338859312, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_AnchorMax.y
@@ -110,11 +126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1688686757672347455, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_Name
-      value: GrenadeFireRate Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 1688686757672347455, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      value: HeadProtection
       objectReference: {fileID: 0}
     - target: {fileID: 2326894046791078491, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_AnchorMax.y
@@ -138,11 +150,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2868080784452922219, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2868080784452922219, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2868080784452922219, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -154,7 +166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2868080784452922219, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 45
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 2868945782380656448, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_AnchorMax.y
@@ -218,7 +230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691895722208697622, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_text
-      value: Grenade Fire Rate
+      value: Health Regeneration
       objectReference: {fileID: 0}
     - target: {fileID: 5170306482288354826, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_AnchorMax.y
@@ -247,7 +259,7 @@ PrefabInstance:
     - target: {fileID: 5851292943997058161, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1894552275, guid: e8e0d23d74c561443b02b2663bac42d7, type: 3}
+      objectReference: {fileID: 4148812577536422716, guid: e8e0d23d74c561443b02b2663bac42d7, type: 3}
     - target: {fileID: 6922875213538356855, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -271,7 +283,7 @@ PrefabInstance:
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: icon
       value: 
-      objectReference: {fileID: 437248307, guid: e8e0d23d74c561443b02b2663bac42d7, type: 3}
+      objectReference: {fileID: 1143022502, guid: e8e0d23d74c561443b02b2663bac42d7, type: 3}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: popup
       value: 
@@ -286,31 +298,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[0]'
-      value: 100
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[1]'
-      value: 2000
+      value: 1400
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[2]'
-      value: 70000
+      value: 7000
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[3]'
-      value: 700000
+      value: 70000
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[4]'
-      value: 7000000
+      value: 700000
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
-      propertyPath: stats.grenadeReloadSpeedUp
+      propertyPath: stats.headProtection
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: prerequisites.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: 'prerequisites.Array.data[0]'
+      value: 
+      objectReference: {fileID: 7298222834731602376, guid: f9b750c7c51fde34aadcd117e0782c7c, type: 3}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: skillName.m_TableEntryReference.m_KeyId
-      value: 21703013949440
+      value: 43130114931142656
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: skillName.m_TableReference.m_TableCollectionName

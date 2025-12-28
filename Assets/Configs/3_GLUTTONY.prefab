@@ -29,6 +29,10 @@ PrefabInstance:
       value: GLUTTONY
       objectReference: {fileID: 0}
     - target: {fileID: 6545331332269278171, guid: 1e1782e1b2b89f447aa43785f8d779e1, type: 3}
+      propertyPath: noiseFrequency
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6545331332269278171, guid: 1e1782e1b2b89f447aa43785f8d779e1, type: 3}
       propertyPath: noiseThreshold
       value: -0.3
       objectReference: {fileID: 0}

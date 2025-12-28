@@ -11,6 +11,7 @@ public class EnemyAttackGun : EnemyAttack
     void Start()
     {
         gunSpriteRenderer = gun.gameObject.GetComponentInChildren<SpriteRenderer>();
+        gun.Reset();
     }
     
     protected override IEnumerator PerformAttack(Vector3 target)

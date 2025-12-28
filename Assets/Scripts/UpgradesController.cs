@@ -100,8 +100,7 @@ public class UpgradesController: MonoBehaviour
         var occupied = new HashSet<Vector2Int>();
         var lastNodeForPrefab = new Dictionary<Skill, Skill>(); // Prefab -> Last Instance
         var levelsProcessedForPrefab = new Dictionary<Skill, int>(); // Prefab -> Count
-        var skillToPrefab = new Dictionary<Skill, Skill>(); // Instance -> Prefab
-        var skillChildren = new Dictionary<Skill, List<Skill>>(); // Instance -> Children (Adjacency)
+        var ancestorInstances = new Dictionary<Skill, HashSet<Skill>>(); // Instance -> Set of ancestor instances (inclusive of self)
 
         var rng = new System.Random();
 
@@ -122,41 +121,77 @@ public class UpgradesController: MonoBehaviour
                  
                  lastNodeForPrefab[prefab] = instance;
                  levelsProcessedForPrefab[prefab] = 1;
-                 skillToPrefab[instance] = prefab;
-                 skillChildren[instance] = new List<Skill>();
+                 ancestorInstances[instance] = new HashSet<Skill> { instance };
                  continue;
              }
 
-             // Identify candidates
-             List<Skill> validParents = new List<Skill>();
+             // Determine Requirement Restrictions
+             var requiredAncestors = new List<Skill>();
+
              if (lastNodeForPrefab.TryGetValue(prefab, out Skill lastNode))
              {
-                 // Must be descendant of lastNode (or lastNode itself)
-                 // BFS to find all descendants
-                 var q = new Queue<Skill>();
-                 q.Enqueue(lastNode);
-                 while(q.Count > 0)
+                 // If we have a previous node, THAT is our sole strict requirement for linear progression.
+                 // (Because that node already satisfied the prefab's prerequisites).
+                 requiredAncestors.Add(lastNode);
+             }
+             else if (prefab.prerequisites != null)
+             {
+                 // First node of this prefab? adhere to prerequisites
+                 foreach (var prereq in prefab.prerequisites)
                  {
-                     var curr = q.Dequeue();
-                     validParents.Add(curr);
-                     if (skillChildren.TryGetValue(curr, out var children))
+                     if (lastNodeForPrefab.TryGetValue(prereq, out Skill pNode))
                      {
-                         foreach(var child in children) q.Enqueue(child);
+                         requiredAncestors.Add(pNode);
                      }
                  }
              }
+
+             // Find candidates that satisfy ALL requirements
+             // Candidate must be a descendant-or-self of every node in requiredAncestors
+             var validParents = new List<Skill>();
+             
+             if (requiredAncestors.Count == 0)
+             {
+                 validParents.AddRange(placedNodes);
+             }
              else
              {
-                 // Any node can be parent
-                 validParents.AddRange(placedNodes);
+                 foreach (var p in placedNodes)
+                 {
+                     if (!ancestorInstances.ContainsKey(p)) continue;
+                     var pAncestors = ancestorInstances[p];
+                     
+                     bool allMet = true;
+                     foreach (var req in requiredAncestors)
+                     {
+                         if (!pAncestors.Contains(req))
+                         {
+                             allMet = false;
+                             break;
+                         }
+                     }
+                     if (allMet) validParents.Add(p);
+                 }
+                 
+                 // Fallback warning
+                 if (validParents.Count == 0)
+                 {
+                      Debug.LogWarning($"Could not satisfy lineage for {prefab.name}. Needs descendants of {string.Join(", ", requiredAncestors.Select(r => r.name))}");
+                      // Fallback: if we needed lastNode, we MUST attach to lastNode (it satisfies itself).
+                      // But if lastNode wasn't found in placedNodes? (It should be there).
+                      // If prereqs strictly disjoint, we might fail.
+                 }
              }
 
              // Filter candidates for spatial availability
              var candidates = new List<(Skill parent, Vector2Int pos)>();
+             Skill samePrefabLastNode = null;
+             if (lastNodeForPrefab.TryGetValue(prefab, out var node)) samePrefabLastNode = node;
+
              foreach (var p in validParents)
              {
                  // Optimistic check: if p is same prefab, we can merge, so availability doesn't matter yet
-                 if (skillToPrefab.TryGetValue(p, out var pPrefab) && pPrefab == prefab)
+                 if (p == samePrefabLastNode)
                  {
                      // Can always merge if it's the correct lastNode? 
                      // Logic: If p is validParent, and p is same prefab, it MUST be lastNode (because we descend).
@@ -199,7 +234,7 @@ public class UpgradesController: MonoBehaviour
              var chosenParent = choice.parent;
              
              // Merge Check
-             if (skillToPrefab[chosenParent] == prefab)
+             if (chosenParent == samePrefabLastNode)
              {
                  chosenParent.levelsInThisNode++;
                  levelsProcessedForPrefab[prefab]++;
@@ -222,12 +257,13 @@ public class UpgradesController: MonoBehaviour
                  placedNodes.Add(newInstance);
                  lastNodeForPrefab[prefab] = newInstance;
                  levelsProcessedForPrefab[prefab]++;
-                 skillToPrefab[newInstance] = prefab;
-                 skillChildren[newInstance] = new List<Skill>();
                  
-                 // Add to parent's children list
-                 if (!skillChildren.ContainsKey(chosenParent)) skillChildren[chosenParent] = new List<Skill>();
-                 skillChildren[chosenParent].Add(newInstance);
+                 // Update ancestors: Parent's ancestors + Parent + Self (Self is implied in set for next gens)
+                 // Actually my set definition was "inclusive of self".
+                 // So new set = ancestors[parent] U {newInstance}
+                 var newAncestors = new HashSet<Skill>(ancestorInstances[chosenParent]);
+                 newAncestors.Add(newInstance);
+                 ancestorInstances[newInstance] = newAncestors;
              }
         }
         

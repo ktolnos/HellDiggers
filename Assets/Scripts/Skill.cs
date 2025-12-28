@@ -11,6 +11,7 @@ public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler
     public LocalizedString skillName;
     public LocalizedString description;
     public Stats stats;
+    public List<Skill> prerequisites;
     [HideInInspector] public Skill skillParent;
     
     public Color lockedColor;
@@ -31,7 +32,7 @@ public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler
     private bool interactable;
     public RectTransform connector;
     public Image iconImage;
-    private Sprite icon;
+    public Sprite icon;
     public Sprite lockedIcon;
     private State currentState = State.Hidden;
     
@@ -50,6 +51,7 @@ public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler
             }
         }
         rectTransform = GetComponent<RectTransform>();
+        iconImage.sprite = icon;
     }
     
     void Start()
@@ -57,7 +59,6 @@ public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler
         player = Player.I;
         button = GetComponentInChildren<Button>();
         button.onClick.AddListener(AddStats);
-        icon = iconImage.sprite;
     }
 
     void AddStats()

@@ -36,6 +36,7 @@ public class Gun: MonoBehaviour
     [NonSerialized] public bool isReloading;
     public float reloadTime;
     private float reloadStartTime = -1000f;
+    public bool infiniteAmmo = true;
 
     private void Update()
     {
@@ -66,12 +67,12 @@ public class Gun: MonoBehaviour
 
     private int GetMagSize()
     {
-        return magSize + (isSecondary ? 0 : Player.I.stats.magSize);
+        return magSize + (isSecondary ? 0 : Player.I.stats.magSize) *  (bulletPrefab.isPlayerBullet ? 1 : 0);
     }
 
     private int GetMags()
     {
-        return mags + (isSecondary ? 0 : Player.I.stats.mags);
+        return mags + (isSecondary ? 0 : Player.I.stats.mags) *  (bulletPrefab.isPlayerBullet ? 1 : 0);
     }
 
     private int GetTotalAmmo()
@@ -86,7 +87,7 @@ public class Gun: MonoBehaviour
 
     public void Shoot()
     {
-        var statMult = bulletPrefab.isPlayerBullet ? 1f : 0f;
+        var playerOnlyMult = bulletPrefab.isPlayerBullet ? 1f : 0f;
         var fireDelayUpgraded = GetFireRate();
         if (Time.time - lastFireTime < fireDelayUpgraded || AmmoInMagLeft <= 0)
             return;
@@ -100,7 +101,7 @@ public class Gun: MonoBehaviour
             animator.PlayOnce();
         }
         var numberOfBulletsStat = isSecondary ? Player.I.stats.numberOfGrenadesPerLaunch : Player.I.stats.numberOfBullets * 2f;
-        var bulletsCount = numberOfBullets + numberOfBulletsStat * statMult;
+        var bulletsCount = numberOfBullets + numberOfBulletsStat * playerOnlyMult;
         for (var i = 0; i < bulletsCount; i++)
         {
             var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity, Level.I.spawnedObjectsParent);
@@ -110,7 +111,10 @@ public class Gun: MonoBehaviour
             bullet.rb.linearVelocity = bullet.transform.right * bulletSpeed;
             Destroy(bullet.gameObject, bulletLifeTime);
         }
-        AmmoInMagLeft--;
+        if (!infiniteAmmo)
+        {
+            AmmoInMagLeft--;
+        }
         if (AmmoInMagLeft <= 0)
         {
             StartCoroutine(Reload());

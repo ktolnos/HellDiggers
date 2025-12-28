@@ -281,6 +281,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 2569886816863780402, guid: e8e0d23d74c561443b02b2663bac42d7, type: 3}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: popup
       value: 
       objectReference: {fileID: 0}
@@ -316,6 +320,14 @@ PrefabInstance:
       propertyPath: 'prices.Array.data[4]'
       value: 2000000
       objectReference: {fileID: 0}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: prerequisites.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: 'prerequisites.Array.data[0]'
+      value: 
+      objectReference: {fileID: 7298222834731602376, guid: f9b750c7c51fde34aadcd117e0782c7c, type: 3}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: skillName.m_TableEntryReference.m_KeyId
       value: 22850692964352

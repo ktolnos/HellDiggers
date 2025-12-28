@@ -63,7 +63,7 @@ MonoBehaviour:
     isSlippery: 0
     isMud: 0
     outForce: 0
-    lootLifetime: 10
+    lootLifetime: 100
     allowLava: 1
   - name: Bomb
     tile: {fileID: 11400000, guid: 1a2c3922f78c2f24abd8bd1728d32cfc, type: 2}
@@ -293,6 +293,6 @@ MonoBehaviour:
     outForce: 0
     lootLifetime: 10
     allowLava: 0
-  noiseThreshold: -0.5
+  noiseThreshold: -0.4
   noiseFrequency: 0.15
   boss: {fileID: 0}

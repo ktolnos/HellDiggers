@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6464115992390354955
+--- !u!1001 &3975099238525522659
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 851592773613188119, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 330
+      value: -110
       objectReference: {fileID: 0}
     - target: {fileID: 851592773613188119, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -110,11 +110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1688686757672347455, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_Name
-      value: GrenadeFireRate Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 1688686757672347455, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      value: DashDamage
       objectReference: {fileID: 0}
     - target: {fileID: 2326894046791078491, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_AnchorMax.y
@@ -142,7 +138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2868080784452922219, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.7071068
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 2868080784452922219, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -154,7 +150,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2868080784452922219, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 45
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2868945782380656448, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_AnchorMax.y
@@ -218,7 +214,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691895722208697622, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_text
-      value: Grenade Fire Rate
+      value: Bullet Ricochet Count
       objectReference: {fileID: 0}
     - target: {fileID: 5170306482288354826, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_AnchorMax.y
@@ -247,7 +243,7 @@ PrefabInstance:
     - target: {fileID: 5851292943997058161, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1894552275, guid: e8e0d23d74c561443b02b2663bac42d7, type: 3}
+      objectReference: {fileID: 1664255409, guid: e8e0d23d74c561443b02b2663bac42d7, type: 3}
     - target: {fileID: 6922875213538356855, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -271,18 +267,14 @@ PrefabInstance:
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: icon
       value: 
-      objectReference: {fileID: 437248307, guid: e8e0d23d74c561443b02b2663bac42d7, type: 3}
+      objectReference: {fileID: 953354015665216, guid: e8e0d23d74c561443b02b2663bac42d7, type: 3}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
-      propertyPath: popup
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
-      propertyPath: levelAmount
-      value: 3
+      propertyPath: stats.dashDamage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: prices.Array.size
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[0]'
@@ -290,27 +282,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[1]'
-      value: 2000
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[2]'
-      value: 70000
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
-      propertyPath: 'prices.Array.data[3]'
-      value: 700000
-      objectReference: {fileID: 0}
-    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
-      propertyPath: 'prices.Array.data[4]'
-      value: 7000000
-      objectReference: {fileID: 0}
-    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
-      propertyPath: stats.grenadeReloadSpeedUp
+      propertyPath: prerequisites.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: 'prerequisites.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1592281545386512631, guid: b82095f90a52d914495bc45f26e42f8f, type: 3}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: 'prerequisites.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1592281545386512631, guid: b82095f90a52d914495bc45f26e42f8f, type: 3}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: skillName.m_TableEntryReference.m_KeyId
-      value: 21703013949440
+      value: 42902531064967168
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: skillName.m_TableReference.m_TableCollectionName

@@ -269,6 +269,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 3168520944390316744, guid: e8e0d23d74c561443b02b2663bac42d7, type: 3}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: popup
       value: 
       objectReference: {fileID: 0}
@@ -290,22 +294,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[0]'
-      value: 100
+      value: 20000
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[1]'
-      value: 500
+      value: 40000
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[2]'
-      value: 5000
+      value: 120000
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: skillName.m_TableEntryReference.m_KeyId
       value: 22464355622912
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: description.m_TableEntryReference.m_KeyId
+      value: 43135366023589888
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: skillName.m_TableReference.m_TableCollectionName
+      value: GUID:a89ad48d34be26240a94076a3e9be7d4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: description.m_TableReference.m_TableCollectionName
       value: GUID:a89ad48d34be26240a94076a3e9be7d4
       objectReference: {fileID: 0}
     - target: {fileID: 7424529843976034270, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}

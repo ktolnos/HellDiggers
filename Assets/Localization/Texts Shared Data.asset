@@ -131,6 +131,26 @@ MonoBehaviour:
     m_Key: cheaper_available
     m_Metadata:
       m_Items: []
+  - m_Id: 42902531064967168
+    m_Key: Dash Damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43129468085579776
+    m_Key: Dash Reload
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43130114931142656
+    m_Key: spikeProtection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43131142632091648
+    m_Key: bulletVest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43135366023589888
+    m_Key: GroundPoundDesc
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

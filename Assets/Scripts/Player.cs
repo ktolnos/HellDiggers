@@ -210,7 +210,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        numDashesLeft += Time.deltaTime * dashRechargeRate;
+        numDashesLeft += Time.deltaTime * dashRechargeRate * (1f + stats.dashReloadSpeed);
         numDashesLeft = Mathf.Min(numDashesLeft, stats.numDashes);
         if (dashAction.WasPerformedThisFrame() && numDashesLeft >= 1)
         {
@@ -223,6 +223,12 @@ public class Player : MonoBehaviour
             rb.linearVelocityX = dashDirection * dashSpeed;
             rb.linearVelocityY = 0f; // Reset vertical velocity during dash
             health.isInvulnerable = true; // Make player invulnerable during dash
+            if (stats.dashDamage > 0)
+            {
+                Level.I.Explode(transform.position, 0.75f + stats.dashRadius * 0.5f, 
+                    stats.dashDamage * 10f * Time.deltaTime,
+                    stats.dashDamage * 100f * Time.deltaTime, DamageDealerType.Player);
+            }
             AnimateDash();
         }
         else
@@ -344,7 +350,7 @@ public class Player : MonoBehaviour
         }
         if (tile.tileData.contactDamage != 0 && Time.time - lastContactDamageTime > 0.5f)
         {
-            health.Damage(tile.tileData.contactDamage, DamageDealerType.Environment);
+            health.Damage(tile.tileData.contactDamage * (2f / (2f + stats.spikeProtection)), DamageDealerType.Environment);
             lastContactDamageTime = Time.time;
         }
 

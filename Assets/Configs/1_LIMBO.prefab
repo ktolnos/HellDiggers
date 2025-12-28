@@ -293,6 +293,6 @@ MonoBehaviour:
     outForce: 0
     lootLifetime: 10
     allowLava: 0
-  noiseThreshold: -0.4
+  noiseThreshold: -0.3
   noiseFrequency: 0.15
   boss: {fileID: 0}

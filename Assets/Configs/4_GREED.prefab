@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1155373073488495022, guid: 608356ba9e8cc8d45bc0e1d61ac99c5f, type: 3}
       propertyPath: noiseThreshold
-      value: -0.5
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1155373073488495022, guid: 608356ba9e8cc8d45bc0e1d61ac99c5f, type: 3}
       propertyPath: tileData.Array.data[0].tile

@@ -136,7 +136,11 @@ public class Gun: MonoBehaviour
 
     public void AddAmmo(int ammo)
     {
-        AmmoOutOfMagLeft += ammo * GetMagSize();
+        var totalToAdd = ammo * GetMagSize();
+        var addedAmmo = Mathf.Min(GetMagSize() - AmmoInMagLeft, totalToAdd);
+        totalToAdd -= addedAmmo;
+        AmmoOutOfMagLeft += totalToAdd;
+        AmmoOutOfMagLeft = Mathf.Min(AmmoOutOfMagLeft, GetTotalAmmo() - GetMagSize());
     }
 
     public void Reset()

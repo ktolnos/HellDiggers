@@ -154,6 +154,14 @@ MonoBehaviour:
     m_Localized: Press down while in the air to perform a powerlanding
     m_Metadata:
       m_Items: []
+  - m_Id: 43577136003764224
+    m_Localized: Enemy Uzi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43577248822153216
+    m_Localized: ground uzi
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -39,8 +39,8 @@ public class EnemyMovementGround : EnemyMovementBase
                 return;
             }
         }
-       
-        rb.linearVelocityX = speed * Mathf.Sign(targetPos.x - transform.position.x);
+        var targetVelocityX = speed * Mathf.Sign(targetPos.x - transform.position.x);
+        rb.linearVelocityX = Mathf.Lerp(rb.linearVelocityX, targetVelocityX, speed * Time.deltaTime);
         
         var bounds = mainCollider.bounds;
         var bottomLeft = new Vector2(bounds.min.x, bounds.min.y + 0.1f);
@@ -68,10 +68,8 @@ public class EnemyMovementGround : EnemyMovementBase
             leftHit && rb.linearVelocityX < 0)
         {
             if (Time.time - lastHorizontalMovementTime > 0.5f)
-            {           
-                var dir = rb.linearVelocityX < 0 ? Vector3Int.left : Vector3Int.right;
-                var tilePos = Level.I.grid.WorldToCell(transform.position);
-                digCallback?.Invoke(Level.I.grid.GetCellCenterWorld(tilePos + dir));
+            {
+                digCallback?.Invoke(targetPos);
             }
             rb.linearVelocityX = 0;
         }

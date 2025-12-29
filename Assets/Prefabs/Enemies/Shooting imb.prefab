@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 7893958323361135372}
   - component: {fileID: 8739288407542609748}
   - component: {fileID: 3099857150403403669}
+  - component: {fileID: -203218179404073585}
+  - component: {fileID: -6312888912457241639}
   m_Layer: 9
   m_Name: Shooting imb
   m_TagString: Untagged
@@ -80,11 +82,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f121e5e62a2946948a33511c460cc6da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hardness: 40
+  hardness: 30
   stoppingDistance: 3
   attackDistance: 10
   animator: {fileID: 7893958323361135372}
+  defaultMovement: {fileID: -203218179404073585}
+  standbyMovement: {fileID: -6312888912457241639}
+  defaultAttack: {fileID: 0}
   stopWhenAttacking: 1
+  isAgro: 1
+  agroDistance: 3
+  agroOnHurt: 1
+  enemyMovement: {fileID: 0}
+  disableOffScreen: 1
 --- !u!114 &5575930699715242445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53980114da74a3c93d4e48995964951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 30
+  maxHealth: 5
   currentHealth: 0
   isPlayer: 0
   isInvulnerable: 0
@@ -118,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c26e1fcc3a28084da5814bb4a36b689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loot: {fileID: 3094065808536684211, guid: ac05320947c1b194e82e3a703fe395eb, type: 3}
+  loot: {fileID: 3094065808536684211, guid: 127f2309e80b55149b12f0629e9789cd, type: 3}
   effect: {fileID: 8550663166000491436, guid: f7590b10fe1023d4781edc2d207cb3f4, type: 3}
 --- !u!58 &1987329669404106224
 CircleCollider2D:
@@ -154,8 +164,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.08367401, y: 0}
-  m_Radius: 0.7826826
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.49
 --- !u!114 &7893958323361135372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,10 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackGun
   attackCoolDown: 1
-  attackDelay: 0.7
-  attackWindUp:
-    frames: []
-    fps: 0
+  isAttacking: 0
   gun: {fileID: 6131520209140907338}
   aimGun: 1
 --- !u!114 &3099857150403403669
@@ -205,6 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 604d996e26cca9648a6052b0eb47c2be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovementGround
+  currentFacingDirectionRight: 0
   movementAnimation:
     frames:
     - {fileID: 5538113809314666109, guid: 86afe61ab00863f4084a21e4bad8c0fa, type: 3}
@@ -214,10 +222,53 @@ MonoBehaviour:
     - {fileID: -369508622892418374, guid: 86afe61ab00863f4084a21e4bad8c0fa, type: 3}
     fps: 10
   invertSprite: 0
-  speed: 20
-  jumpForce: 60
-  jumpReload: 1
-  stoppingDistance: 5
+  speed: 10
+  jumpForce: 40
+  jumpReload: 2
+  mainCollider: {fileID: 0}
+  maxJumps: 2
+--- !u!114 &-203218179404073585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4756907778912265882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9719390d702a72749afb6e08e2577bde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAStarMovement
+  currentFacingDirectionRight: 0
+  baseMovement: {fileID: 3099857150403403669}
+  horizontalCost: 1
+  upCost: 2
+  downCost: 0.5
+  digCost: 10
+  maxPathDepth: 100
+  collisionRadius: 0
+  repathRate: 0.5
+  nextWaypointDistance: 0.5
+--- !u!114 &-6312888912457241639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4756907778912265882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80331d5b7fe4489f8597de95dcff31ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyPatrolMovement
+  currentFacingDirectionRight: 0
+  baseMovement: {fileID: 3099857150403403669}
+  patrolPoints:
+  - {x: -1, y: 0, z: 0}
+  - {x: 1, y: 0, z: 0}
+  pointTolerance: 0.9
+  waitTime: 3
+  disableDigging: 1
 --- !u!1 &7970015068776001165
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,10 +411,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gun
       objectReference: {fileID: 0}
-    - target: {fileID: 8685728998280293237, guid: 14ba2285c0d6ef444bfe2e6a1c983e4b, type: 3}
-      propertyPath: shootSound
-      value: 
-      objectReference: {fileID: 8300000, guid: ff24952f23dd0bb44bb218c9c01bcdee, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

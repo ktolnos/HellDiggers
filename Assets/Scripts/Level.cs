@@ -76,6 +76,7 @@ public class Level : MonoBehaviour
         SpawnRoom(hub, Vector2Int.zero);
         transitionPanel.gameObject.SetActive(false);
         transitionHeight = -30f;
+        EnemySpawner.I.Reset();
     }
 
     private void GenerateLevel(HellCircleSettings circleConfig)

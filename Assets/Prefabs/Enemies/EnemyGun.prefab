@@ -45,16 +45,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bea7b65bc2894bc28539dd19fb93908d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 
+  gunName:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   bulletPrefab: {fileID: -8224019564269720104, guid: eda9b5123b6825b45825b35b785fbe25, type: 3}
   fireDelay: 0.5
   numberOfBullets: 3
   bulletLifeTime: 5
   spread: 5
+  randomSpread: 0
+  price: 0
+  magSize: 1
+  mags: 1
   bulletSpeed: 10
-  grenadeMode: 0
+  isSecondary: 0
   animator: {fileID: 8352804376838889072}
   reloadIndicator: {fileID: 0}
-  shootSound: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: ff24952f23dd0bb44bb218c9c01bcdee, type: 3}
+  gunStation: {fileID: 0}
+  reloadTime: 0
+  infiniteAmmo: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &6315783879453899190
 GameObject:
   m_ObjectHideFlags: 0

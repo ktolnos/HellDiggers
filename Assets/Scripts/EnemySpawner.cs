@@ -17,13 +17,13 @@ public class EnemySpawner : MonoBehaviour
     public int enemyAmount;
     [FormerlySerializedAs("spawnRate")] public float hardometer;
     public float portalDelay;
-    public float randomSpawnDelayMax;
     private float _timeOfLastSpawn;
     public List<int> numPrespawnedEnemies = new();
     public List<float> spawnDelays = new();
     public List<float> hardnessMultipliers = new();
     public float spawnsPerHardness = 0.01f;
     private float currentHardness;
+    private bool spawnedNoAmmoDeathEnemy = false;
 
     private void Awake()
     {
@@ -52,10 +52,10 @@ public class EnemySpawner : MonoBehaviour
        
         currentHardness = hardometer * enemyStartTime * hardnessMultipliers[Level.I.currentCircleIndex];
 
-        if (Player.I.gun.AmmoInMagLeft <= 0 && Player.I.gun.AmmoOutOfMagLeft <= 0)
+        if (Player.I.gun.AmmoInMagLeft <= 0 && Player.I.gun.AmmoOutOfMagLeft <= 0 && !spawnedNoAmmoDeathEnemy)
         {
-            currentHardness = Mathf.Max(currentHardness, 100f);
-            enemyStartTime = Mathf.Max(1f, enemyStartTime);
+            spawnedNoAmmoDeathEnemy = true;
+            SpawnEnemy(true, enemies[0].enemy);
         }
         
         if (enemyStartTime < 0)
@@ -77,15 +77,22 @@ public class EnemySpawner : MonoBehaviour
         if (startSpawn)
         {
             amount = numPrespawnedEnemies[Level.I.currentCircleIndex];
+            Reset();
         }
 
         for (int i = 0; i < amount; i++)
         {
-            StartCoroutine(Spawn(startSpawn));
+            StartCoroutine(SpawnEnemy(fromPortal:!startSpawn,
+                enemy:startSpawn? SelectStartSpawnEnemy(): SelectPortalEnemy()));
+        }
+
+        if (startSpawn)
+        {
+            StartCoroutine(SpawnDelayedEnemies());
         }
     }
 
-    public IEnumerator Spawn(bool startSpawn)
+    public IEnumerator SpawnEnemy(bool fromPortal, Enemy enemy)
     {
         var foundLocation = false;
         var location = Vector3Int.zero;
@@ -93,7 +100,7 @@ public class EnemySpawner : MonoBehaviour
 
         while (count < 100)
         {
-            if (startSpawn)
+            if (!fromPortal)
             {
                 var left = -Level.I.width / 2f + 5f;
                 var right = Level.I.width / 2f - 5f;
@@ -128,12 +135,10 @@ public class EnemySpawner : MonoBehaviour
 
         if (foundLocation)
         {
-            var enemy = startSpawn ? SelectStartSpawnEnemy() : SelectPortalEnemy();
             if (enemy != null)
             {
-                if (!startSpawn)
+                if (fromPortal)
                 {
-                    yield return new WaitForSeconds(UnityEngine.Random.Range(0f, randomSpawnDelayMax));
                     Destroy(
                         Instantiate(portal, Level.I.grid.GetCellCenterWorld(location), Quaternion.identity,
                             Level.I.spawnedObjectsParent), portalDelay);
@@ -150,11 +155,13 @@ public class EnemySpawner : MonoBehaviour
 
     private Enemy SelectStartSpawnEnemy()
     {
-        var totalProbability = enemies.Sum(x => x.chanceToSpawnOnCircle[Level.I.currentCircleIndex]);
+        var startSpawnEnemies = enemies.Where(x => x.prespawn && 
+                                                   x.chanceToSpawnOnCircle[Level.I.currentCircleIndex] > 0).ToList();
+        var totalProbability = startSpawnEnemies.Sum(x => x.chanceToSpawnOnCircle[Level.I.currentCircleIndex]);
         var randomValue = UnityEngine.Random.value * totalProbability;
-        for (int i = 0; i < enemies.Count; i++)
+        for (int i = 0; i < startSpawnEnemies.Count; i++)
         {
-            var data = enemies[i];
+            var data = startSpawnEnemies[i];
             if (randomValue < data.chanceToSpawnOnCircle[Level.I.currentCircleIndex])
             {
                 return data.enemy;
@@ -168,13 +175,34 @@ public class EnemySpawner : MonoBehaviour
 
     private Enemy SelectPortalEnemy()
     {
-        var availableEnemies = enemies.Where(x => x.enemy.hardness < currentHardness).ToList();
+        var availableEnemies = enemies.Where(x => x.enemy.hardness < 
+            currentHardness && x.spawnFromPortals).ToList();
         if (availableEnemies.Count == 0)
         {
             return null;
         }
 
-        return availableEnemies[UnityEngine.Random.Range(0, availableEnemies.Count)].enemy;
+        var enemy = availableEnemies[UnityEngine.Random.Range(0, availableEnemies.Count)].enemy;
+        enemy.isAgro = true;
+        return enemy;
+    }
+
+    private IEnumerator SpawnDelayedEnemies()
+    {
+        foreach (var enemyData in enemies)
+        {
+            if (enemyData.spawnFixedDelayed)
+            {
+                yield return new WaitForSeconds(enemyData.spawnFixedDelay);
+                yield return StartCoroutine(SpawnEnemy(fromPortal:true, enemyData.enemy));
+            }
+        }
+    }
+
+    public void Reset()
+    {
+        StopAllCoroutines();
+        spawnedNoAmmoDeathEnemy = false;
     }
 
     [Serializable]
@@ -182,5 +210,9 @@ public class EnemySpawner : MonoBehaviour
     {
         public Enemy enemy;
         public List<float> chanceToSpawnOnCircle = new(9);
+        public bool prespawn;
+        public bool spawnFromPortals;
+        public float spawnFixedDelay;
+        public bool spawnFixedDelayed;
     }
 }

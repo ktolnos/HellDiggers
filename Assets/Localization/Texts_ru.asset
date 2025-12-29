@@ -164,6 +164,14 @@ MonoBehaviour:
       \u0437\u0435\u043C\u043B\u044E"
     m_Metadata:
       m_Items: []
+  - m_Id: 43577136003764224
+    m_Localized: Enemy Uzi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43577248822153216
+    m_Localized: ground uzi
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

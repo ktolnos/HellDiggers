@@ -40722,23 +40722,56 @@ MonoBehaviour:
     - 1
     - 1
     - 1
+    prespawn: 0
+    spawnFromPortals: 0
+    spawnFixedDelay: 60
+    spawnFixedDelayed: 1
+  - enemy: {fileID: 3249780571903213796, guid: e533eb19a26e8de48a02360fe931db3b, type: 3}
+    chanceToSpawnOnCircle:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    prespawn: 0
+    spawnFromPortals: 0
+    spawnFixedDelay: 60
+    spawnFixedDelayed: 1
+  - enemy: {fileID: 9096303478583097338, guid: f0d37b1358d5c7840bd6ef919f44a97f, type: 3}
+    chanceToSpawnOnCircle:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    prespawn: 1
+    spawnFromPortals: 1
+    spawnFixedDelay: 0
+    spawnFixedDelayed: 0
   portal: {fileID: 6440795600749684546, guid: a4a2bb26aab6dbc4cb0c98279cb08078, type: 3}
   spawnRadius: 5
   enemyAmount: 1
   hardometer: 1
   portalDelay: 1
-  randomSpawnDelayMax: 3
-  numPrespawnedEnemies: 000000000000000000000000000000000000000000000000000000000000000000000000
+  numPrespawnedEnemies: 0a00000032000000640000000a0000000000000000000000000000000000000000000000
   spawnDelays:
   - 0
-  - 20
-  - 20
-  - 20
-  - 20
-  - 20
-  - 20
-  - 20
-  - 20
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   hardnessMultipliers:
   - 1
   - 2

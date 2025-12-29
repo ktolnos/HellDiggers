@@ -42,8 +42,17 @@ public class Enemy : MonoBehaviour
         enemyAttack = defaultAttack;
         if (agroOnHurt && TryGetComponent(out Health enemyHealth))
         {
-            enemyHealth.onDamageTaken += (damage, type) => isAgro = true;
+            enemyHealth.onDamageTaken += (damage, type) =>
+            {
+                if (type == DamageDealerType.Player) StartCoroutine(Agro());
+            };
         }
+    }
+
+    private IEnumerator Agro()
+    {
+        yield return new WaitForSeconds(0.3f);
+        isAgro = true;
     }
 
     void FixedUpdate()

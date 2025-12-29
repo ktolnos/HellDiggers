@@ -18,8 +18,8 @@ public class Gun: MonoBehaviour
     public float spread = 0.1f;
     public float randomSpread;
     public int price;
-    public int magSize;
-    public int mags;
+    public int magSize = 1;
+    public int mags = 1;
  
     public float bulletSpeed = 5f;
 
@@ -138,6 +138,7 @@ public class Gun: MonoBehaviour
     {
         var totalToAdd = ammo * GetMagSize();
         var addedAmmo = Mathf.Min(GetMagSize() - AmmoInMagLeft, totalToAdd);
+        AmmoInMagLeft += addedAmmo;
         totalToAdd -= addedAmmo;
         AmmoOutOfMagLeft += totalToAdd;
         AmmoOutOfMagLeft = Mathf.Min(AmmoOutOfMagLeft, GetTotalAmmo() - GetMagSize());

@@ -12,6 +12,7 @@ public class EnemyPatrolMovement : EnemyMovement
     private Vector3 startPoint;
     public float waitTime = 0f;
     private float pointReachedTime = 0f;
+    public bool disableDigging = true;
 
     private void Start()
     {
@@ -41,7 +42,7 @@ public class EnemyPatrolMovement : EnemyMovement
         }
         else
         {
-            baseMovement.Move(patrolTarget, digCallback);
+            baseMovement.Move(patrolTarget, disableDigging ? _ => { } : digCallback);
         }
     }
     

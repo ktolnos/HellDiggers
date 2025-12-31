@@ -66,21 +66,16 @@ public class SkillPopup : MonoBehaviour
     {
         if (currentSkill == null) return;
         
-        lvlText.text = currentSkill.LocalLevel + "/" + currentSkill.levelsInThisNode;
-        var cheaperAvailable = currentSkill.GlobalLevel < currentSkill.levelOffset;
-        priceText.text = currentSkill.LocalLevel < currentSkill.levelsInThisNode ?
-            currentSkill.prices[currentSkill.GlobalLevel].ToString() : maxedString.GetLocalizedString();
-        if (cheaperAvailable)
-        {
-            priceText.text = cheaperAvailableString.GetLocalizedString();
-        }
-        priceIcon.SetActive(currentSkill.GlobalLevel < currentSkill.prices.Count && !cheaperAvailable);
+        lvlText.text = currentSkill.currentLevel + "/" + currentSkill.MaxLevel;
+        priceText.text = currentSkill.currentLevel < currentSkill.MaxLevel ?
+            currentSkill.prices[currentSkill.currentLevel].ToString() : maxedString.GetLocalizedString();
+        priceIcon.SetActive(currentSkill.currentLevel < currentSkill.prices.Count);
         priceText.rectTransform.sizeDelta = priceText.GetPreferredValues(priceText.text);
     }
     
     private void OnSkillNameChanged(string str)
     {
-        skillNameText.text = str;
+        skillNameText.text = ProcessString(str);
     }
     
     private void OnDescriptionChanged(string str)
@@ -91,6 +86,15 @@ public class SkillPopup : MonoBehaviour
             return;
         }
         descriptionText.gameObject.SetActive(true);
-        descriptionText.text = str;
+        descriptionText.text = ProcessString(str);
+    }
+    
+    private string ProcessString(string str)
+    {
+        if (str.Contains("%d"))
+        {
+            str = str.Replace("%d", currentSkill.GetByText());
+        }
+        return str;
     }
 }

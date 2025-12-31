@@ -8,20 +8,25 @@ using UnityEngine.UI;
 
 public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler 
 {
+    public string upgradeId;
     public LocalizedString skillName;
     public LocalizedString description;
-    public Stats stats;
+    
+    [Header("Stats Configuration")]
+    public Stats stats;        // Flat additions per level
+    public UpgradeType upgradeType;
+    
     public List<Skill> prerequisites;
-    [HideInInspector] public Skill skillParent;
+    public Skill skillParent;
     
     public Color lockedColor;
     public Color unlockedColor;
     [FormerlySerializedAs("upgradedColor")] public Color tooExpensiveColor;
     public Color maxOutColor;
-    public int GlobalLevel => (int) myStatField.GetValue(Player.I.stats);
-    public int LocalLevel => Mathf.Clamp(GlobalLevel - levelOffset, 0, levelsInThisNode);
-    public int levelOffset = 0;
-    public int levelsInThisNode = 1;
+
+    public int currentLevel;
+    public int MaxLevel => prices.Count;
+    
     private Player player;
     [HideInInspector] public Button button;
     public Image statusIndicator;
@@ -40,7 +45,7 @@ public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         foreach (var fieldInfo in typeof(Stats).GetFields())
         {
-            if (fieldInfo.GetValue(stats) is > 0)
+            if (fieldInfo.GetValue(stats) is not 0)
             {
                 if (myStatField != null)
                 {
@@ -51,57 +56,56 @@ public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler
             }
         }
         rectTransform = GetComponent<RectTransform>();
-        iconImage.sprite = icon;
+        if (iconImage != null) iconImage.sprite = icon;
     }
     
     void Start()
     {
         player = Player.I;
         button = GetComponentInChildren<Button>();
-        button.onClick.AddListener(AddStats);
+        button.onClick.AddListener(BuySkill);
     }
 
-    void AddStats()
+    void BuySkill()
     {
         if (!interactable) return;
+        if (currentLevel >= MaxLevel) return;
+        
         if (!GM.I.isFree)
         {
-        if (LocalLevel >= levelsInThisNode) return;
-        if (!GM.I.isFree)
-        {
-            if (GlobalLevel >= prices.Count) return;
-            GM.I.money -= prices[GlobalLevel];
-        }
+            int price = prices[currentLevel];
+            if (GM.I.money < price) return;
+            GM.I.money -= price;
         }
         
-        player.stats += stats;
+        currentLevel++;
+        UpgradesController.I.OnSkillPurchased(); // Trigger global stats update
         SaveManager.I.SaveGame();
     }
 
-    private bool UnlockRequirementsMet()
+    public bool UnlockRequirementsMet()
     {
-        bool parentMet = skillParent == null || skillParent.LocalLevel > 0;
+        bool parentMet = skillParent == null || skillParent.currentLevel > 0;
         return parentMet;
     }
 
     private void Update()
     {
-        if (LocalLevel >= levelsInThisNode)
+        if (currentLevel >= MaxLevel)
         {
             SetState(State.Maxed);
         }
         else if (UnlockRequirementsMet())
         {
             var canAfford = false;
-            if (GlobalLevel < prices.Count)
+            if (currentLevel < prices.Count)
             {
-                canAfford = prices[GlobalLevel] < GM.I.money;
+                canAfford = prices[currentLevel] < GM.I.money;
             }
             canAfford |= GM.I.isFree; 
-            bool sequenceMet = GlobalLevel >= levelOffset;
-            SetState(canAfford && sequenceMet ? State.Unlocked : State.TooExpensive);
+            SetState(canAfford ? State.Unlocked : State.TooExpensive);
         }
-        else if (skillParent.UnlockRequirementsMet())
+        else if (skillParent != null && skillParent.UnlockRequirementsMet())
         {
             SetState(State.Locked);
         }
@@ -182,6 +186,19 @@ public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler
                 break;
         }
     }
+
+    public string GetByText()
+    {
+        var amount = myStatField.GetValue(stats);
+        var sign = amount is > 0 ? "+" : "-";
+        var text = $"{sign}{amount}";
+        if (upgradeType == UpgradeType.Percentage)
+        {
+            return text + "%";
+        }
+
+        return text;
+    }
     
     private enum State
     {
@@ -190,5 +207,11 @@ public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler
         Unlocked,
         TooExpensive,
         Maxed,
+    }
+    
+    public enum UpgradeType
+    {
+        Flat,
+        Percentage
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 using System.Text;
@@ -57,72 +58,30 @@ public class UpgradesControllerEditor : Editor
         sb.AppendLine("--- Progression Simulation Start ---");
         sb.AppendLine($"{"Step",-5} | {"Name",-40} | {"Lvl",-3} | {"Cost",-10} | {"Total",-15}");
         sb.AppendLine(new string('-', 70));
-
-        while(true)
+        var skillsWithCost = new List<Tuple<int, Skill>>();
+        foreach (var skill in skills)
         {
-            Skill bestCandidate = null;
-            int minPrice = int.MaxValue;
-
-            foreach(var s in skills)
+            foreach (var skillPrice in skill.prices)
             {
-                string key = GetStatKey(s);
-                if(key == null) continue;
-                int gl = currentLevels[key];
-                
-                // LocalLevel calculation
-                int localLevel = Mathf.Clamp(gl - s.levelOffset, 0, s.levelsInThisNode);
-                if (localLevel >= s.levelsInThisNode) continue; // Node full
-
-                // Check dependencies
-                // 1. Parent requirements
-                bool parentMet = true;
-                if (s.skillParent != null)
-                {
-                    string pKey = GetStatKey(s.skillParent);
-                    if (pKey != null)
-                    {
-                        int pGl = currentLevels[pKey];
-                        int pLocal = Mathf.Clamp(pGl - s.skillParent.levelOffset, 0, s.skillParent.levelsInThisNode);
-                        if (pLocal <= 0) parentMet = false;
-                    }
-                }
-
-                // 2. Sequence met
-                bool sequenceMet = gl >= s.levelOffset;
-
-                if (parentMet && sequenceMet)
-                {
-                    // Check price
-                    if (gl < s.prices.Count)
-                    {
-                        int price = s.prices[gl];
-                        if (price < minPrice)
-                        {
-                            minPrice = price;
-                            bestCandidate = s;
-                        }
-                    }
-                }
+                skillsWithCost.Add(new Tuple<int, Skill>(skillPrice, skill));
             }
+        }
+        skillsWithCost.Sort((a, b) => a.Item1.CompareTo(b.Item1));
+        foreach (var skillTuple in skillsWithCost)
+        {
+            var skill = skillTuple.Item2;
+            string statKey = GetStatKey(skill);
+            if (statKey == null) continue;
 
-            if (bestCandidate != null)
-            {
-                string key = GetStatKey(bestCandidate);
-                int gl = currentLevels[key];
-                
-                // Get name. Try localized string (maybe missing ref in Editor), fallback to object name
-                string displayName = bestCandidate.name;
-                if (displayName.Length > 28) displayName = displayName.Substring(0, 25) + "...";
-                
-                totalCost += minPrice;
-                sb.AppendLine($"{step,-5} | {displayName,-40} | {gl + 1,-3} | {minPrice,-10} | {totalCost,-15}");
-                currentLevels[key]++;
-                step++;
-            }
-            else
-            {
-                break;
-            }
+            int currLevel = currentLevels[statKey];
+            if (skill.currentLevel <= currLevel) continue; // Already purchased
+
+            int price = skill.prices[currLevel];
+            totalCost += price;
+            currentLevels[statKey] = currLevel + 1;
+
+            sb.AppendLine($"{step,-5} | {skill.name,-40} | {currLevel + 1,-3} | {price,-10} | {totalCost,-15}");
+            step++;
         }
         sb.AppendLine("--- Progression Simulation Complete ---");
         Debug.Log(sb.ToString());

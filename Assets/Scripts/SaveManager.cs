@@ -32,10 +32,20 @@ public class SaveManager : MonoBehaviour
 
     public void SaveGame()
     {
+        var upgradeData = UpgradesController.I.GetUpgradeSaveData();
+        var upgradeIds = new List<string>();
+        var upgradeLevels = new List<int>();
+        foreach (var kvp in upgradeData)
+        {
+            upgradeIds.Add(kvp.Key);
+            upgradeLevels.Add(kvp.Value);
+        }
+
         var saveState = new SaveState
         {
             money = GM.I.GetTotalMoney(),
-            stats = Player.I.stats,
+            upgradeIds = upgradeIds,
+            upgradeLevels = upgradeLevels,
             prevScore = HighScoreManager.I.previousScore,
             latestScore = HighScoreManager.I.latestScore,
             highScore = HighScoreManager.I.highScore,
@@ -60,13 +70,27 @@ public class SaveManager : MonoBehaviour
         if (!System.IO.File.Exists(loadPath))
         {
             Debug.LogWarning("Save file not found at " + loadPath);
+             // Even if no save, ensure we calculate stats (defaults)
+            Player.I.UpdateStats();
             return;
         }
 
         var json = System.IO.File.ReadAllText(loadPath);
         var saveState = JsonUtility.FromJson<SaveState>(json);
         GM.I.money = saveState.money;
-        Player.I.stats = saveState.stats;
+        
+        // Reconstruct dictionary
+        var upgradeData = new Dictionary<string, int>();
+        if (saveState.upgradeIds != null && saveState.upgradeLevels != null)
+        {
+            for(int i=0; i<Mathf.Min(saveState.upgradeIds.Count, saveState.upgradeLevels.Count); i++)
+            {
+                upgradeData[saveState.upgradeIds[i]] = saveState.upgradeLevels[i];
+            }
+        }
+        UpgradesController.I.LoadUpgradeSaveData(upgradeData);
+        // LoadUpgradeSaveData triggers Player.UpdateStats, so we don't need to call it again.
+
         Player.I.currentGunId = saveState.currentGunId;
         if (string.IsNullOrEmpty(Player.I.currentGunId))
         {
@@ -87,7 +111,8 @@ public class SaveManager : MonoBehaviour
         public int prevScore;
         public int latestScore;
         public int highScore;
-        public Stats stats;
+        public List<string> upgradeIds;
+        public List<int> upgradeLevels;
         public string currentGunId;
         public string secondaryGunId;
         public List<string> purchasedGuns;

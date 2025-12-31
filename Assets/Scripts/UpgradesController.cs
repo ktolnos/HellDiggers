@@ -46,11 +46,80 @@ public class UpgradesController: MonoBehaviour
         }
         upgradeUI.gameObject.SetActive(false);
     }
+
+    public Dictionary<string, int> GetUpgradeSaveData()
+    {
+        var data = new Dictionary<string, int>();
+        if (skillParent == null) return data;
+        
+        foreach (var skill in skillParent.GetComponentsInChildren<Skill>(true))
+        {
+            if (skill.currentLevel > 0 && !string.IsNullOrEmpty(skill.upgradeId))
+            {
+                data[skill.upgradeId] = skill.currentLevel;
+            }
+        }
+        return data;
+    }
+
+    public void LoadUpgradeSaveData(Dictionary<string, int> data)
+    {
+        if (skillParent == null || data == null) return;
+        
+        foreach (var skill in skillParent.GetComponentsInChildren<Skill>(true))
+        {
+            if (!string.IsNullOrEmpty(skill.upgradeId) && data.TryGetValue(skill.upgradeId, out int level))
+            {
+                skill.currentLevel = Mathf.Min(level, skill.MaxLevel);
+            }
+            else
+            {
+                skill.currentLevel = 0;
+            }
+        }
+        Player.I.UpdateStats();
+    }
         
 
     [Header("Skill Tree Settings")]
     public List<Skill> skillPrefabs;
     public Vector2 gridSpacing = new Vector2(250, 150);
+
+    public void OnSkillPurchased()
+    {
+        Player.I.UpdateStats();
+    }
+
+    public Stats CalculateStats()
+    {
+        // Clone initial stats
+        Stats finalStats = Player.I.initialStats * 1f;
+        
+        if (skillParent == null) return finalStats;
+
+        var skills = skillParent.GetComponentsInChildren<Skill>(true);
+
+        foreach (var skill in skills)
+        {
+            if (skill.currentLevel > 0)
+            {
+                if (skill.upgradeType == Skill.UpgradeType.Flat)
+                {
+                    finalStats += skill.stats * skill.currentLevel;
+                }
+                else if (skill.upgradeType == Skill.UpgradeType.Percentage)
+                {
+                    for (int level = 0; level < skill.currentLevel; level++)
+                    {
+                        finalStats *= (skill.stats * 0.01f + 1f);
+                    }
+                     
+                }
+            }
+        }
+
+        return finalStats;
+    }
 
     public void RebuildSkillTree()
     {
@@ -101,20 +170,26 @@ public class UpgradesController: MonoBehaviour
         var lastNodeForPrefab = new Dictionary<Skill, Skill>(); // Prefab -> Last Instance
         var levelsProcessedForPrefab = new Dictionary<Skill, int>(); // Prefab -> Count
         var ancestorInstances = new Dictionary<Skill, HashSet<Skill>>(); // Instance -> Set of ancestor instances (inclusive of self)
+        var prefabInstanceCounts = new Dictionary<string, int>(); // For ID generation
 
         var rng = new System.Random();
 
         foreach (var step in upgradeSteps)
-        {
+        {4
              Skill prefab = step.prefab;
              
+             // ID Generation
+             string prefabName = prefab.name;
+             if (!prefabInstanceCounts.ContainsKey(prefabName)) prefabInstanceCounts[prefabName] = 0;
+             int index = prefabInstanceCounts[prefabName]++;
+             string deterministicId = $"{prefabName}_{index}";
+
              // First node handling
              if (placedNodes.Count == 0)
              {
                  var instance = InstantiateSkill(prefab, Vector2Int.zero);
                  instance.skillParent = null; 
-                 instance.levelOffset = 0;
-                 instance.levelsInThisNode = 1;
+                 instance.upgradeId = deterministicId;
 
                  occupied.Add(Vector2Int.zero);
                  placedNodes.Add(instance);
@@ -177,9 +252,6 @@ public class UpgradesController: MonoBehaviour
                  if (validParents.Count == 0)
                  {
                       Debug.LogWarning($"Could not satisfy lineage for {prefab.name}. Needs descendants of {string.Join(", ", requiredAncestors.Select(r => r.name))}");
-                      // Fallback: if we needed lastNode, we MUST attach to lastNode (it satisfies itself).
-                      // But if lastNode wasn't found in placedNodes? (It should be there).
-                      // If prereqs strictly disjoint, we might fail.
                  }
              }
 
@@ -190,13 +262,8 @@ public class UpgradesController: MonoBehaviour
 
              foreach (var p in validParents)
              {
-                 // Optimistic check: if p is same prefab, we can merge, so availability doesn't matter yet
                  if (p == samePrefabLastNode)
                  {
-                     // Can always merge if it's the correct lastNode? 
-                     // Logic: If p is validParent, and p is same prefab, it MUST be lastNode (because we descend).
-                     // So we add it as candidate for MERGE.
-                     // Position doesn't matter for merge.
                      candidates.Add((p, Vector2Int.zero)); 
                  }
                  else
@@ -236,9 +303,8 @@ public class UpgradesController: MonoBehaviour
              // Merge Check
              if (chosenParent == samePrefabLastNode)
              {
-                 chosenParent.levelsInThisNode++;
+                 chosenParent.prices.Add(step.price);
                  levelsProcessedForPrefab[prefab]++;
-                 // lastNode stays same
              }
              else
              {
@@ -247,10 +313,9 @@ public class UpgradesController: MonoBehaviour
                  var newInstance = InstantiateSkill(prefab, placePos);
                  
                  newInstance.skillParent = chosenParent;
-                 if (!levelsProcessedForPrefab.ContainsKey(prefab)) levelsProcessedForPrefab[prefab] = 0;
-                 newInstance.levelOffset = levelsProcessedForPrefab[prefab];
-                 newInstance.levelsInThisNode = 1;
-                 
+                 newInstance.upgradeId = deterministicId;
+                 newInstance.prices = new List<int> { step.price }; // Start with this price
+
                  UpdateConnector(newInstance, chosenParent);
                  
                  occupied.Add(placePos);
@@ -258,9 +323,6 @@ public class UpgradesController: MonoBehaviour
                  lastNodeForPrefab[prefab] = newInstance;
                  levelsProcessedForPrefab[prefab]++;
                  
-                 // Update ancestors: Parent's ancestors + Parent + Self (Self is implied in set for next gens)
-                 // Actually my set definition was "inclusive of self".
-                 // So new set = ancestors[parent] U {newInstance}
                  var newAncestors = new HashSet<Skill>(ancestorInstances[chosenParent]);
                  newAncestors.Add(newInstance);
                  ancestorInstances[newInstance] = newAncestors;
@@ -275,7 +337,15 @@ public class UpgradesController: MonoBehaviour
     private Skill InstantiateSkill(Skill prefab, Vector2Int gridPos)
     {
 #if UNITY_EDITOR
+         // We can't use PrefabUtility because we want to modify the list of prices on the instance,
+         // and if it remains a prefab connection, it might revert or be weird?
+         // Actually, if we unpack it, it's safer.
+         // Or we just instantiated it as a prefab and modify the serialized list property.
+         // Let's unpack to avoid "modification of value makes it dirty" issues on prefab.
          var instance = (Skill)UnityEditor.PrefabUtility.InstantiatePrefab(prefab, skillParent);
+         // UnityEditor.PrefabUtility.UnpackPrefabInstance(instance.gameObject, UnityEditor.PrefabUnpackMode.Completely, UnityEditor.InteractionMode.AutomatedAction);
+         // Keeping it as prefab is nice for visuals. 
+         // But `prices` is a List. If I modify it on instance, it becomes an override. That's fine.
 #else
          var instance = Instantiate(prefab, skillParent);
 #endif
@@ -289,7 +359,6 @@ public class UpgradesController: MonoBehaviour
         if (rect != null)
         {
             rect.anchoredPosition = new Vector2(gridPos.x * gridSpacing.x, gridPos.y * gridSpacing.y);
-            // Ensure z is 0? 2D UI usually is.
         }
     }
     
@@ -311,8 +380,6 @@ public class UpgradesController: MonoBehaviour
 
          var direction = (parentRect.anchoredPosition - childRect.anchoredPosition);
          // 0 rotation connects to the right
-         // Atan2(y, x) returns angle in radians. 
-         // If dir is (1,0) [Right], angle is 0.
          float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
          child.connector.localRotation = Quaternion.Euler(0, 0, angle);
          child.connector.localPosition = Vector3.zero;

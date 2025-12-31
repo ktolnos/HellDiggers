@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
 
     public SpriteAnimator.Animation walkAnimation;
     public SpriteAnimator.Animation idleAnimation;
+    [FormerlySerializedAs("stats")] public Stats initialStats;
     public Stats stats;
     public float speed = 5f;
     public float jumpForce = 300f;
@@ -95,7 +96,13 @@ public class Player : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         SaveManager.I.LoadGame();
+        UpdateStats(); 
         Revive();
+    }
+    
+    public void UpdateStats()
+    {
+        stats = UpgradesController.I.CalculateStats();
     }
 
     private void Update()
@@ -117,39 +124,17 @@ public class Player : MonoBehaviour
             jetPackParticleSystem.Stop();
             return;
         }
-        Vector2 moveInput = movementAction.ReadValue<Vector2>();
-        var movementSpeed = isInMud ? 0.1f * speed : speed;
-        Vector2 moveVelocity = moveInput * movementSpeed;
-        var isDashing = Time.time - dashStartTime < dashDuration;
-        if (!isDashing)
-        {
-            dashDirection = Mathf.Abs(moveInput.x) <= 0.01f ? dashDirection : Mathf.Sign(moveInput.x);
-        }
-        if (isOnIce)
-        {
-            rb.linearVelocityX = rb.linearVelocityX == 0f
-                ? dashDirection * movementSpeed
-                : movementSpeed * Mathf.Sign(rb.linearVelocityX);
-        }
-        else
-        {
-            rb.linearVelocityX = moveVelocity.x;
-        }
+       
 
         if (jumpAction.WasPerformedThisFrame())
         {
             jumpPressTime = Time.time;
         }
-
-        if (!isGrounded && rb.linearVelocityY < 0)
-        {
-            rb.linearVelocityY -= additionalGravity * Time.deltaTime;
-        }
-
+        
         var isGroundedJump = Time.time - lastGroundedTime < 0.2f;
         if (Time.time <= jumpPressTime + 0.2f && (isGroundedJump || airJumpsLeft > 0))
         {
-            var jumpHeight = jumpForce + stats.jumpHeight * 3f;
+            var jumpHeight = jumpForce + stats.jumpHeight;
             if (isInMud)
             {
                 jumpHeight *= 0.5f;
@@ -186,29 +171,6 @@ public class Player : MonoBehaviour
                 secondaryGun.Shoot();
             }
         }
-        
-
-        if (jetPackAction.IsPressed() && jetPackFuel > 0f)
-        {
-            if (!jetPackParticleSystem.isPlaying)
-            {
-                jetPackParticleSystem.Play();
-            }
-            jetPackFuel -= Time.deltaTime * jetPackFuelConsumptionRate;
-            rb.linearVelocityY = jetPackSpeed;
-            if (!jetAudio.isPlaying)
-            {
-                jetAudio.Play();
-            }
-        }
-        else
-        {
-            jetPackParticleSystem.Stop();
-            if (jetAudio.isPlaying)
-            {
-                jetAudio.Stop();
-            }
-        }
 
         numDashesLeft += Time.deltaTime * dashRechargeRate * (1f + stats.dashReloadSpeed);
         numDashesLeft = Mathf.Min(numDashesLeft, stats.numDashes);
@@ -216,24 +178,6 @@ public class Player : MonoBehaviour
         {
             numDashesLeft--;
             dashStartTime = Time.time;
-        }
-        
-        if (isDashing)
-        {
-            rb.linearVelocityX = dashDirection * dashSpeed;
-            rb.linearVelocityY = 0f; // Reset vertical velocity during dash
-            health.isInvulnerable = true; // Make player invulnerable during dash
-            if (stats.dashDamage > 0)
-            {
-                Level.I.Explode(transform.position, 0.75f + stats.dashRadius * 0.5f, 
-                    stats.dashDamage * 10f * Time.deltaTime,
-                    stats.dashDamage * 100f * Time.deltaTime, DamageDealerType.Player);
-            }
-            AnimateDash();
-        }
-        else
-        {
-            health.isInvulnerable = false; // Reset invulnerability after dash
         }
         
         if (groundPoundAction.WasPerformedThisFrame() && !isGrounded && stats.groundPound > 0 && !isPounding)
@@ -245,7 +189,7 @@ public class Player : MonoBehaviour
 
         if (stats.healthRegen > 0)
         {
-            health.Heal(stats.healthRegen * Time.deltaTime * 2f);
+            health.Heal(stats.healthRegen * Time.deltaTime); // Removed * 2f
         }
 
         if (rb.linearVelocityX != 0f)
@@ -261,6 +205,43 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+         Vector2 moveInput = movementAction.ReadValue<Vector2>();
+        var movementSpeed = isInMud ? 0.1f * speed : speed;
+        Vector2 moveVelocity = moveInput * movementSpeed;
+        var isDashing = Time.time - dashStartTime < dashDuration;
+        if (!isDashing)
+        {
+            dashDirection = Mathf.Abs(moveInput.x) <= 0.01f ? dashDirection : Mathf.Sign(moveInput.x);
+        }
+        if (isOnIce)
+        {
+            rb.linearVelocityX = rb.linearVelocityX == 0f
+                ? dashDirection * movementSpeed
+                : movementSpeed * Mathf.Sign(rb.linearVelocityX);
+        }
+        else
+        {
+            rb.linearVelocityX = moveVelocity.x;
+        }
+        if (isDashing)
+        {
+            rb.linearVelocityX = dashDirection * dashSpeed;
+            rb.linearVelocityY = 0f; // Reset vertical velocity during dash
+            health.isInvulnerable = true; // Make player invulnerable during dash
+            if (stats.dashDamage > 0)
+            {
+                Level.I.Explode(transform.position, 0.75f + stats.dashRadius, // Radius direct
+                    stats.dashDamage * Time.deltaTime, // Damage direct (removed * 10f)
+                    stats.dashDamage * 10f * Time.deltaTime, // Ground damage? Assuming relation.
+                    DamageDealerType.Player);
+            }
+            AnimateDash();
+        }
+        else
+        {
+            health.isInvulnerable = false; // Reset invulnerability after dash
+        }
+        
         var bounds = mainCollider.bounds;
         var bottomLeft = new Vector2(bounds.min.x, bounds.min.y);
         var bottomRight = new Vector2(bounds.max.x, bounds.min.y);
@@ -297,26 +278,61 @@ public class Player : MonoBehaviour
         if (isGrounded)
         {
             lastGroundedTime = Time.time;
-            airJumpsLeft = stats.numJumps;
+            airJumpsLeft = (int)stats.numJumps;
             if (isPounding)
             {
                 Level.I.Explode(transform.position, 
-                    radius:stats.groundPound * 3f, 
-                    enemyDamage:stats.groundPound * 20f,
-                    groundDamage:stats.groundPound * 20f,
+                    radius:stats.groundPound, // Direct
+                    enemyDamage:stats.groundPound, // Direct
+                    groundDamage:stats.groundPound, // Direct
                     DamageDealerType.Player);
                 Destroy(Instantiate(groundPoundEffectPrefab, transform.position, Quaternion.identity, Level.I.spawnedObjectsParent), 2f);
                 isPounding = false;
                 SoundManager.I.PlaySfx(groundPoundSound, transform.position, 10f);
             }
         }
+        
+        if (!isGrounded && rb.linearVelocityY < 0)
+        {
+            rb.linearVelocityY -= additionalGravity * Time.deltaTime;
+        }
+        
+        if (jetPackAction.IsPressed() && jetPackFuel > 0f)
+        {
+            if (!jetPackParticleSystem.isPlaying)
+            {
+                jetPackParticleSystem.Play();
+            }
+            jetPackFuel -= Time.deltaTime * jetPackFuelConsumptionRate;
+            rb.linearVelocityY = jetPackSpeed;
+            if (!jetAudio.isPlaying)
+            {
+                jetAudio.Play();
+            }
+        }
+        else
+        {
+            jetPackParticleSystem.Stop();
+            if (jetAudio.isPlaying)
+            {
+                jetAudio.Stop();
+            }
+        }
     }
 
     public void Revive()
     {
-        jetPackFuel = stats.jetPackFuel * jetFuelMult;
+        jetPackFuel = stats.jetPackFuel * jetFuelMult; // Is jetFuelMult usage site math? Yes. But it's a member variable, maybe configurable.
+        // Assuming jetPackFuel is direct value now?
+        // Old: stats.jetPackFuel (int) * jetFuelMult (10f).
+        // New: stats.jetPackFuel (float).
+        // Since jetFuelMult is hidden in inspector (line 62), it's likely a constant scaler.
+        // I will trust the "jetFuelMult" existing in the class, but if User said "modifiers included in upgrade", maybe I should remove it.
+        // But jetFuelMult is on PLAYER, not Skill.
+        // I'll leave it for now unless I remove the usage of jetFuelMult entirely.
+        
         numDashesLeft = stats.numDashes;
-        health.maxHealth = 300f + stats.health * 100f;
+        health.maxHealth = 300f + stats.health; // Removed * 100f
         health.Revive();
         gun?.Reset();
         secondaryGun?.Reset();

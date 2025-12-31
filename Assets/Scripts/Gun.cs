@@ -59,20 +59,23 @@ public class Gun: MonoBehaviour
     private float GetFireRate()
     {
         var statMult = bulletPrefab.isPlayerBullet ? 1f : 0f;
-        float fireRateStat = isSecondary ? Player.I.stats.grenadeReloadSpeedUp : Player.I.stats.reloadSpeedUp;
-        fireRateStat *= statMult;
-        var fireDelayUpgraded = fireDelay * Mathf.Pow(0.8f, fireRateStat);
-        return fireDelayUpgraded;
+        float fireRateBonus = isSecondary ? Player.I.stats.grenadeReloadSpeedUp : Player.I.stats.reloadSpeedUp;
+        fireRateBonus *= statMult;
+        // Assume stats started at 0 and represent speed increase factor.
+        // Old: fireDelay * Pow(0.8, level) ~= fireDelay * (1 / 1.25^level) ? 
+        // 0.8 is 4/5. So speed x 1.25 per level.
+        // New: fireDelay / (1 + bonus)
+        return fireDelay / (1f + fireRateBonus);
     }
 
     private int GetMagSize()
     {
-        return magSize + (isSecondary ? 0 : Player.I.stats.magSize) *  (bulletPrefab.isPlayerBullet ? 1 : 0);
+        return magSize + (int)((isSecondary ? 0 : Player.I.stats.magSize) *  (bulletPrefab.isPlayerBullet ? 1 : 0));
     }
 
     private int GetMags()
     {
-        return mags + (isSecondary ? 0 : Player.I.stats.mags) *  (bulletPrefab.isPlayerBullet ? 1 : 0);
+        return mags + (int)((isSecondary ? 0 : Player.I.stats.mags) *  (bulletPrefab.isPlayerBullet ? 1 : 0));
     }
 
     private int GetTotalAmmo()
@@ -82,7 +85,8 @@ public class Gun: MonoBehaviour
 
     private float GetReloadTime()
     {
-        return reloadTime * Mathf.Pow(0.8f, Player.I.stats.reloadTime);
+        // Stats.reloadTime here implies Reload Speed Bonus
+        return reloadTime / (1f + Player.I.stats.reloadTime);
     }
 
     public void Shoot()
@@ -100,8 +104,8 @@ public class Gun: MonoBehaviour
         {
             animator.PlayOnce();
         }
-        var numberOfBulletsStat = isSecondary ? Player.I.stats.numberOfGrenadesPerLaunch : Player.I.stats.numberOfBullets * 2f;
-        var bulletsCount = numberOfBullets + numberOfBulletsStat * playerOnlyMult;
+        var numberOfBulletsStat = isSecondary ? Player.I.stats.numberOfGrenadesPerLaunch : Player.I.stats.numberOfBullets;
+        var bulletsCount = numberOfBullets + (int)(numberOfBulletsStat * playerOnlyMult);
         for (var i = 0; i < bulletsCount; i++)
         {
             var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity, Level.I.spawnedObjectsParent);

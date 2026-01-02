@@ -59,12 +59,8 @@ public class Gun: MonoBehaviour
     private float GetFireRate()
     {
         var statMult = bulletPrefab.isPlayerBullet ? 1f : 0f;
-        float fireRateBonus = isSecondary ? Player.I.stats.grenadeReloadSpeedUp : Player.I.stats.reloadSpeedUp;
+        float fireRateBonus = isSecondary ? Player.I.stats.grenadeReloadSpeedUp : Player.I.stats.fireRateBoost;
         fireRateBonus *= statMult;
-        // Assume stats started at 0 and represent speed increase factor.
-        // Old: fireDelay * Pow(0.8, level) ~= fireDelay * (1 / 1.25^level) ? 
-        // 0.8 is 4/5. So speed x 1.25 per level.
-        // New: fireDelay / (1 + bonus)
         return fireDelay / (1f + fireRateBonus);
     }
 
@@ -85,8 +81,7 @@ public class Gun: MonoBehaviour
 
     private float GetReloadTime()
     {
-        // Stats.reloadTime here implies Reload Speed Bonus
-        return reloadTime / (1f + Player.I.stats.reloadTime);
+        return reloadTime * (bulletPrefab.isPlayerBullet ? Player.I.stats.reloadTime : 1f);
     }
 
     public void Shoot()

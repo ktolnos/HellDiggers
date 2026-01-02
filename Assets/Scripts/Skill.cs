@@ -15,6 +15,7 @@ public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler
     [Header("Stats Configuration")]
     public Stats stats;        // Flat additions per level
     public UpgradeType upgradeType;
+    public float statsPerLevel = 1f;
     
     public List<Skill> prerequisites;
     public Skill skillParent;
@@ -27,11 +28,9 @@ public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler
     public int currentLevel;
     public int MaxLevel => prices.Count;
     
-    private Player player;
     [HideInInspector] public Button button;
     public Image statusIndicator;
     public List<int> prices;
-    private FieldInfo myStatField;
     [HideInInspector] public RectTransform rectTransform;
     public Image selectedIndicator;
     private bool interactable;
@@ -43,25 +42,12 @@ public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler
     
     private void Awake()
     {
-        foreach (var fieldInfo in typeof(Stats).GetFields())
-        {
-            if (fieldInfo.GetValue(stats) is not 0)
-            {
-                if (myStatField != null)
-                {
-                    Debug.LogWarning("Multiple stat fields found in Stats class: " + myStatField.Name + " and " + fieldInfo.Name);
-                    break;
-                }
-                myStatField = fieldInfo;
-            }
-        }
         rectTransform = GetComponent<RectTransform>();
         if (iconImage != null) iconImage.sprite = icon;
     }
     
     void Start()
     {
-        player = Player.I;
         button = GetComponentInChildren<Button>();
         button.onClick.AddListener(BuySkill);
     }
@@ -189,8 +175,8 @@ public class Skill : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     public string GetByText()
     {
-        var amount = myStatField.GetValue(stats);
-        var sign = amount is > 0 ? "+" : "-";
+        var amount = statsPerLevel;
+        var sign = amount >= 0 ? "+" : "";
         var text = $"{sign}{amount}";
         if (upgradeType == UpgradeType.Percentage)
         {

@@ -293,6 +293,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: statsPerLevel
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: prices.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -330,7 +334,7 @@ PrefabInstance:
       objectReference: {fileID: 7298222834731602376, guid: f9b750c7c51fde34aadcd117e0782c7c, type: 3}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: skillName.m_TableEntryReference.m_KeyId
-      value: 43130114931142656
+      value: 45063441475067904
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: skillName.m_TableReference.m_TableCollectionName

@@ -53,14 +53,19 @@ public class Bullet: MonoBehaviour
         var playerStatsMult = isPlayerBullet ? 1f : 0f;
         var finalExplosionRadius = explosionRadius + 
                                     (isGrenade 
-                                        ? Player.I.stats.grenadeExplosionRadius * playerStatsMult * 2f
-                                        : Player.I.stats.bulletExplosionRadius * playerStatsMult * 1f);
-        var finalEnemyDamage = enemyDamage * (1f + Player.I.stats.bulletEnemyDamage * playerStatsMult * 1f);
+                                        ? Player.I.stats.grenadeExplosionRadius * playerStatsMult
+                                        : Player.I.stats.bulletExplosionRadius * playerStatsMult);
+        var finalEnemyDamage = enemyDamage * (1f * (1-playerStatsMult) + (isGrenade
+                ? Player.I.stats.grenadeDamage
+                : Player.I.stats.bulletEnemyDamage) * playerStatsMult);
         if (!isPlayerBullet)
         {
-            finalEnemyDamage *= 2f / (2f + Player.I.stats.bulletProtection);
+            finalEnemyDamage *= 1f - Player.I.stats.bulletProtection;
         }
-        var finalGroundDamage = groundDamage * (1f + Mathf.Pow(Player.I.stats.diggingDamage, 1.2f) * playerStatsMult * 1f);
+        var finalGroundDamage = groundDamage * (1f * (1 - playerStatsMult) + (isGrenade
+                ? Player.I.stats.grenadeDamage
+                : Player.I.stats.diggingDamage
+        ) * playerStatsMult);
         var damageType = isPlayerBullet ? DamageDealerType.Player : DamageDealerType.Enemy;
         Level.I.Explode(pos, finalExplosionRadius, finalEnemyDamage, finalGroundDamage, damageType);
         if (effect != null)

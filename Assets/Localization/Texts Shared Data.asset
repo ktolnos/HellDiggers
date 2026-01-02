@@ -28,7 +28,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11930403069952
-    m_Key: GrenadeExplosionRadius
+    m_Key: GrenadePotency
     m_Metadata:
       m_Items: []
   - m_Id: 21703013949440
@@ -44,7 +44,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 21982639808512
-    m_Key: Ricochet
+    m_Key: DashDamageRadius
     m_Metadata:
       m_Items: []
   - m_Id: 22050147131392
@@ -157,6 +157,30 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 43577248822153216
     m_Key: gr uzi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45047045449998336
+    m_Key: GroundPoundDigging
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45047348446519296
+    m_Key: GroundPoundEnemy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45047538083586048
+    m_Key: GroundPoundRadius
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45058199643643904
+    m_Key: GrenadeRadius
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45063441475067904
+    m_Key: headProtection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45065653387419648
+    m_Key: ricochets
     m_Metadata:
       m_Items: []
   m_Metadata:

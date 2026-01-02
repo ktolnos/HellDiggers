@@ -8,11 +8,12 @@ public class Stats
     public int numJumps;
     public int numDashes;
     public float jumpHeight;
-    public float groundPound;
+    public float groundPoundRadius;
+    public float groundPoundEnemyDamage;
+    public float groundPoundDiggingDamage;
     public int numberOfBullets;
-    public float reloadSpeedUp;
+    [FormerlySerializedAs("reloadSpeedUp")] public float fireRateBoost;
     [FormerlySerializedAs("explosionRadius")] public float bulletExplosionRadius;
-    public int numberOfGrenades;
     public float grenadeReloadSpeedUp;
     public float numberOfGrenadesPerLaunch;
     public float grenadeExplosionRadius;
@@ -42,11 +43,10 @@ public class Stats
             numJumps = a.numJumps + Mathf.RoundToInt(b),
             numDashes = a.numDashes + Mathf.RoundToInt(b),
             jumpHeight = a.jumpHeight + b,
-            groundPound = a.groundPound + b,
+            groundPoundRadius = a.groundPoundRadius + b,
             numberOfBullets = a.numberOfBullets + Mathf.RoundToInt(b),
-            reloadSpeedUp = a.reloadSpeedUp + b,
+            fireRateBoost = a.fireRateBoost + b,
             bulletExplosionRadius = a.bulletExplosionRadius + b,
-            numberOfGrenades = a.numberOfGrenades + Mathf.RoundToInt(b),
             grenadeExplosionRadius = a.grenadeExplosionRadius + b,
             grenadeReloadSpeedUp = a.grenadeReloadSpeedUp + b,
             numberOfGrenadesPerLaunch = a.numberOfGrenadesPerLaunch + b,
@@ -77,11 +77,12 @@ public class Stats
             numJumps = a.numJumps + b.numJumps,
             numDashes = a.numDashes + b.numDashes,
             jumpHeight = a.jumpHeight + b.jumpHeight,
-            groundPound = a.groundPound + b.groundPound,
+            groundPoundRadius = a.groundPoundRadius + b.groundPoundRadius,
+            groundPoundDiggingDamage = a.groundPoundDiggingDamage + b.groundPoundDiggingDamage,
+            groundPoundEnemyDamage = a.groundPoundEnemyDamage + b.groundPoundEnemyDamage,
             numberOfBullets = a.numberOfBullets + b.numberOfBullets,
-            reloadSpeedUp = a.reloadSpeedUp + b.reloadSpeedUp,
+            fireRateBoost = a.fireRateBoost + b.fireRateBoost,
             bulletExplosionRadius = a.bulletExplosionRadius + b.bulletExplosionRadius,
-            numberOfGrenades = a.numberOfGrenades + b.numberOfGrenades,
             grenadeExplosionRadius = a.grenadeExplosionRadius + b.grenadeExplosionRadius,
             grenadeReloadSpeedUp = a.grenadeReloadSpeedUp + b.grenadeReloadSpeedUp,
             numberOfGrenadesPerLaunch = a.numberOfGrenadesPerLaunch + b.numberOfGrenadesPerLaunch,
@@ -112,14 +113,15 @@ public class Stats
             numJumps = Mathf.RoundToInt(a.numJumps * multiplier),
             numDashes = Mathf.RoundToInt(a.numDashes * multiplier),
             jumpHeight = a.jumpHeight * multiplier,
-            groundPound = a.groundPound * multiplier,
+            groundPoundRadius = a.groundPoundRadius * multiplier,
+            groundPoundDiggingDamage = a.groundPoundDiggingDamage * multiplier,
+            groundPoundEnemyDamage = a.groundPoundEnemyDamage * multiplier,
             numberOfBullets = Mathf.RoundToInt(a.numberOfBullets * multiplier),
-            reloadSpeedUp = a.reloadSpeedUp * multiplier,
+            fireRateBoost = a.fireRateBoost * multiplier,
             bulletExplosionRadius = a.bulletExplosionRadius * multiplier,
-            numberOfGrenades = Mathf.RoundToInt(a.numberOfGrenades * multiplier),
+            numberOfGrenadesPerLaunch = Mathf.RoundToInt(a.numberOfGrenadesPerLaunch * multiplier),
             grenadeExplosionRadius = a.grenadeExplosionRadius * multiplier,
             grenadeReloadSpeedUp = a.grenadeReloadSpeedUp * multiplier,
-            numberOfGrenadesPerLaunch = a.numberOfGrenadesPerLaunch * multiplier,
             bulletEnemyDamage = a.bulletEnemyDamage * multiplier,
             grenadeDamage = a.grenadeDamage * multiplier,
             lootCollectionDistance = a.lootCollectionDistance * multiplier,
@@ -147,14 +149,15 @@ public class Stats
                 numJumps = Mathf.RoundToInt(a.numJumps * b.numJumps),
                 numDashes = Mathf.RoundToInt(a.numDashes * b.numDashes),
                 jumpHeight = a.jumpHeight * b.jumpHeight,
-                groundPound = a.groundPound * b.groundPound,
+                groundPoundRadius = a.groundPoundRadius * b.groundPoundRadius,
+                groundPoundDiggingDamage = a.groundPoundDiggingDamage * b.groundPoundDiggingDamage,
+                groundPoundEnemyDamage = a.groundPoundEnemyDamage * b.groundPoundEnemyDamage,
                 numberOfBullets = Mathf.RoundToInt(a.numberOfBullets * b.numberOfBullets),
-                reloadSpeedUp = a.reloadSpeedUp * b.reloadSpeedUp,
+                fireRateBoost = a.fireRateBoost * b.fireRateBoost,
                 bulletExplosionRadius = a.bulletExplosionRadius * b.bulletExplosionRadius,
-                numberOfGrenades = Mathf.RoundToInt(a.numberOfGrenades * b.numberOfGrenades),
+                numberOfGrenadesPerLaunch = Mathf.RoundToInt(a.numberOfGrenadesPerLaunch * b.numberOfGrenadesPerLaunch),
                 grenadeExplosionRadius = a.grenadeExplosionRadius * b.grenadeExplosionRadius,
                 grenadeReloadSpeedUp = a.grenadeReloadSpeedUp * b.grenadeReloadSpeedUp,
-                numberOfGrenadesPerLaunch = a.numberOfGrenadesPerLaunch * b.numberOfGrenadesPerLaunch,
                 bulletEnemyDamage = a.bulletEnemyDamage * b.bulletEnemyDamage,
                 grenadeDamage = a.grenadeDamage * b.grenadeDamage,
                 lootCollectionDistance = a.lootCollectionDistance * b.lootCollectionDistance,

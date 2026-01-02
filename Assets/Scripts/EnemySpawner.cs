@@ -106,7 +106,7 @@ public class EnemySpawner : MonoBehaviour
                 var right = Level.I.width / 2f - 5f;
                 var height = -Level.I.height;
                 location = new Vector3Int(Mathf.RoundToInt(UnityEngine.Random.Range(left, right)),
-                    Mathf.RoundToInt(UnityEngine.Random.Range(0, height)), 0);
+                    Mathf.RoundToInt(UnityEngine.Random.Range(40, height)), 0);
             }
             else
             {
@@ -147,8 +147,9 @@ public class EnemySpawner : MonoBehaviour
 
                 var enemyPos = Level.I.grid.GetCellCenterWorld(location);
                 enemyPos.z = enemy.transform.position.z;
-                Instantiate(enemy, enemyPos, Quaternion.identity,
+                var enemyInstance = Instantiate(enemy, enemyPos, Quaternion.identity,
                     Level.I.spawnedObjectsParent);
+                enemyInstance.isAgro |= fromPortal;
             }
         }
     }
@@ -183,7 +184,6 @@ public class EnemySpawner : MonoBehaviour
         }
 
         var enemy = availableEnemies[UnityEngine.Random.Range(0, availableEnemies.Count)].enemy;
-        enemy.isAgro = true;
         return enemy;
     }
 

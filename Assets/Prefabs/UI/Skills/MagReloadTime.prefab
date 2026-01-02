@@ -110,7 +110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1688686757672347455, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_Name
-      value: ReloadSpeed Variant
+      value: MagReloadTime
       objectReference: {fileID: 0}
     - target: {fileID: 2326894046791078491, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: m_AnchorMax.y
@@ -264,6 +264,14 @@ PrefabInstance:
       propertyPath: icon
       value: 
       objectReference: {fileID: 1834938732, guid: e8e0d23d74c561443b02b2663bac42d7, type: 3}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: upgradeType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: statsPerLevel
+      value: -20
+      objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: hasDescription
       value: 1

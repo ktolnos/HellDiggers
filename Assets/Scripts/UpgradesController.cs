@@ -105,13 +105,13 @@ public class UpgradesController: MonoBehaviour
             {
                 if (skill.upgradeType == Skill.UpgradeType.Flat)
                 {
-                    finalStats += skill.stats * skill.currentLevel;
+                    finalStats += skill.stats * skill.currentLevel * skill.statsPerLevel;
                 }
                 else if (skill.upgradeType == Skill.UpgradeType.Percentage)
                 {
                     for (int level = 0; level < skill.currentLevel; level++)
                     {
-                        finalStats *= (skill.stats * 0.01f + 1f);
+                        finalStats *= (skill.stats * (0.01f * skill.statsPerLevel) + 1f);
                     }
                      
                 }
@@ -175,7 +175,7 @@ public class UpgradesController: MonoBehaviour
         var rng = new System.Random();
 
         foreach (var step in upgradeSteps)
-        {4
+        {
              Skill prefab = step.prefab;
              
              // ID Generation
@@ -321,7 +321,7 @@ public class UpgradesController: MonoBehaviour
                  occupied.Add(placePos);
                  placedNodes.Add(newInstance);
                  lastNodeForPrefab[prefab] = newInstance;
-                 levelsProcessedForPrefab[prefab]++;
+                 levelsProcessedForPrefab[prefab] = levelsProcessedForPrefab.GetValueOrDefault(prefab, 0) + 1;
                  
                  var newAncestors = new HashSet<Skill>(ancestorInstances[chosenParent]);
                  newAncestors.Add(newInstance);

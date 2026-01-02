@@ -76,6 +76,6 @@ public class Loot : MonoBehaviour
 
     private float GetCollectionDistance()
     {
-        return (Player.I.stats.lootCollectionDistance + 0.5f) * 5f;
+        return Player.I.stats.lootCollectionDistance;
     }
 }

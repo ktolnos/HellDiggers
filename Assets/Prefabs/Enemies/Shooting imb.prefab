@@ -90,7 +90,7 @@ MonoBehaviour:
   standbyMovement: {fileID: -6312888912457241639}
   defaultAttack: {fileID: 0}
   stopWhenAttacking: 1
-  isAgro: 1
+  isAgro: 0
   agroDistance: 3
   agroOnHurt: 1
   enemyMovement: {fileID: 0}

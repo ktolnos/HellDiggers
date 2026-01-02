@@ -15,9 +15,8 @@ public class Player : MonoBehaviour
     public SpriteAnimator.Animation walkAnimation;
     public SpriteAnimator.Animation idleAnimation;
     [FormerlySerializedAs("stats")] public Stats initialStats;
-    public Stats stats;
+    [HideInInspector] public Stats stats;
     public float speed = 5f;
-    public float jumpForce = 300f;
     public float additionalGravity = 2f;
     public Rigidbody2D rb;
     private InputAction movementAction;
@@ -44,7 +43,6 @@ public class Player : MonoBehaviour
     
     [HideInInspector] public float jetPackFuel;
     
-    public float jetPackFuelConsumptionRate = 1f; // Fuel consumed per second while using jetpack
     public float jetPackSpeed = 2f; // Force applied by the jetpack
     private float numDashesLeft = 1;
     public float dashRechargeRate = 1f; // Dashes per second
@@ -60,7 +58,6 @@ public class Player : MonoBehaviour
     public ParticleSystem dashParticleSystem;
     public ParticleSystem jetPackParticleSystem;
     public Image[] dashIndicators;
-    [HideInInspector] public float jetFuelMult = 10f;
     
     public AudioClip jumpSound;
     public AudioClip dashSound;
@@ -134,7 +131,7 @@ public class Player : MonoBehaviour
         var isGroundedJump = Time.time - lastGroundedTime < 0.2f;
         if (Time.time <= jumpPressTime + 0.2f && (isGroundedJump || airJumpsLeft > 0))
         {
-            var jumpHeight = jumpForce + stats.jumpHeight;
+            var jumpHeight = stats.jumpHeight;
             if (isInMud)
             {
                 jumpHeight *= 0.5f;
@@ -172,7 +169,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        numDashesLeft += Time.deltaTime * dashRechargeRate * (1f + stats.dashReloadSpeed);
+        numDashesLeft += Time.deltaTime * dashRechargeRate * stats.dashReloadSpeed;
         numDashesLeft = Mathf.Min(numDashesLeft, stats.numDashes);
         if (dashAction.WasPerformedThisFrame() && numDashesLeft >= 1)
         {
@@ -180,16 +177,16 @@ public class Player : MonoBehaviour
             dashStartTime = Time.time;
         }
         
-        if (groundPoundAction.WasPerformedThisFrame() && !isGrounded && stats.groundPound > 0 && !isPounding)
+        if (groundPoundAction.WasPerformedThisFrame() && !isGrounded && stats.groundPoundRadius > 0 && !isPounding)
         {
-            rb.linearVelocityY = -jumpForce * 5f; // Increase downward force for ground pound
+            rb.linearVelocityY = -30f; // Increase downward force for ground pound
             isPounding = true;
             SoundManager.I.PlaySfx(groundPoundStartSound, transform.position);
         }
 
         if (stats.healthRegen > 0)
         {
-            health.Heal(stats.healthRegen * Time.deltaTime); // Removed * 2f
+            health.Heal(stats.healthRegen * Time.deltaTime);
         }
 
         if (rb.linearVelocityX != 0f)
@@ -230,9 +227,9 @@ public class Player : MonoBehaviour
             health.isInvulnerable = true; // Make player invulnerable during dash
             if (stats.dashDamage > 0)
             {
-                Level.I.Explode(transform.position, 0.75f + stats.dashRadius, // Radius direct
-                    stats.dashDamage * Time.deltaTime, // Damage direct (removed * 10f)
-                    stats.dashDamage * 10f * Time.deltaTime, // Ground damage? Assuming relation.
+                Level.I.Explode(transform.position, stats.dashRadius, 
+                    0,
+                    stats.dashDamage * Time.deltaTime,
                     DamageDealerType.Player);
             }
             AnimateDash();
@@ -282,9 +279,9 @@ public class Player : MonoBehaviour
             if (isPounding)
             {
                 Level.I.Explode(transform.position, 
-                    radius:stats.groundPound, // Direct
-                    enemyDamage:stats.groundPound, // Direct
-                    groundDamage:stats.groundPound, // Direct
+                    radius:stats.groundPoundRadius,
+                    enemyDamage:stats.groundPoundEnemyDamage,
+                    groundDamage:stats.groundPoundDiggingDamage,
                     DamageDealerType.Player);
                 Destroy(Instantiate(groundPoundEffectPrefab, transform.position, Quaternion.identity, Level.I.spawnedObjectsParent), 2f);
                 isPounding = false;
@@ -303,7 +300,7 @@ public class Player : MonoBehaviour
             {
                 jetPackParticleSystem.Play();
             }
-            jetPackFuel -= Time.deltaTime * jetPackFuelConsumptionRate;
+            jetPackFuel -= Time.deltaTime;
             rb.linearVelocityY = jetPackSpeed;
             if (!jetAudio.isPlaying)
             {
@@ -322,17 +319,10 @@ public class Player : MonoBehaviour
 
     public void Revive()
     {
-        jetPackFuel = stats.jetPackFuel * jetFuelMult; // Is jetFuelMult usage site math? Yes. But it's a member variable, maybe configurable.
-        // Assuming jetPackFuel is direct value now?
-        // Old: stats.jetPackFuel (int) * jetFuelMult (10f).
-        // New: stats.jetPackFuel (float).
-        // Since jetFuelMult is hidden in inspector (line 62), it's likely a constant scaler.
-        // I will trust the "jetFuelMult" existing in the class, but if User said "modifiers included in upgrade", maybe I should remove it.
-        // But jetFuelMult is on PLAYER, not Skill.
-        // I'll leave it for now unless I remove the usage of jetFuelMult entirely.
+        jetPackFuel = stats.jetPackFuel;
         
         numDashesLeft = stats.numDashes;
-        health.maxHealth = 300f + stats.health; // Removed * 100f
+        health.maxHealth = stats.health;
         health.Revive();
         gun?.Reset();
         secondaryGun?.Reset();
@@ -342,7 +332,7 @@ public class Player : MonoBehaviour
     {
         SoundManager.I.PlaySfx(jumpSound, transform.position);
         var main = jumpParticleSystem.main;
-        main.startSpeedMultiplier = -5f * (stats.jumpHeight + 1.1f);
+        main.startSpeedMultiplier = -0.2f * stats.jumpHeight;
         jumpParticleSystem.Play();
         transform.DOScaleY(transform.localScale.z * 0.8f, 0.1f)
             .OnComplete(() => transform.DOScaleY(transform.localScale.z * 1.2f, 0.3f))
@@ -366,7 +356,7 @@ public class Player : MonoBehaviour
         }
         if (tile.tileData.contactDamage != 0 && Time.time - lastContactDamageTime > 0.5f)
         {
-            health.Damage(tile.tileData.contactDamage * (2f / (2f + stats.spikeProtection)), DamageDealerType.Environment);
+            health.Damage(tile.tileData.contactDamage * (1f - stats.spikeProtection), DamageDealerType.Environment);
             lastContactDamageTime = Time.time;
         }
 

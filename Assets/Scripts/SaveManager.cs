@@ -70,8 +70,6 @@ public class SaveManager : MonoBehaviour
         if (!System.IO.File.Exists(loadPath))
         {
             Debug.LogWarning("Save file not found at " + loadPath);
-             // Even if no save, ensure we calculate stats (defaults)
-            Player.I.UpdateStats();
             return;
         }
 

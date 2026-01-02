@@ -31,23 +31,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11930403069952
-    m_Localized: Grenade Explosion Radius
+    m_Localized: Grenade Potency  %d
     m_Metadata:
       m_Items: []
   - m_Id: 21703013949440
-    m_Localized: Grenade Fire Rate
+    m_Localized: Grenade Fire Rate %d
     m_Metadata:
       m_Items: []
   - m_Id: 21798463725568
-    m_Localized: Number Of Grenades
+    m_Localized: Number Of Grenades Per Shot %d
     m_Metadata:
       m_Items: []
   - m_Id: 21917498073088
-    m_Localized: Fire Rate
+    m_Localized: Fire Rate %d
     m_Metadata:
       m_Items: []
   - m_Id: 21982639808512
-    m_Localized: Dash Damage Radius
+    m_Localized: Dash Damage Radius %d
     m_Metadata:
       m_Items: []
   - m_Id: 22050147131392
@@ -55,15 +55,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 22141729759232
-    m_Localized: Jet Pack Fuel
+    m_Localized: Jet Pack Fuel %d
     m_Metadata:
       m_Items: []
   - m_Id: 22230607060992
-    m_Localized: Digging Damage
+    m_Localized: Digging Damage %d
     m_Metadata:
       m_Items: []
   - m_Id: 22311062200320
-    m_Localized: Number Of Bullets
+    m_Localized: Number Of Bullets per Shot %d
     m_Metadata:
       m_Items: []
   - m_Id: 22406910435328
@@ -75,7 +75,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 22536690589696
-    m_Localized: Enemy Damage
+    m_Localized: Enemy Damage %d
     m_Metadata:
       m_Items: []
   - m_Id: 22593787650048
@@ -87,15 +87,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 22728068292608
-    m_Localized: Health
+    m_Localized: Health %d
     m_Metadata:
       m_Items: []
   - m_Id: 22776780939264
-    m_Localized: Loot Pick up Radius
+    m_Localized: Loot Pick up Radius %d
     m_Metadata:
       m_Items: []
   - m_Id: 22850692964352
-    m_Localized: Health Regeneration
+    m_Localized: Health Regeneration %d/sec
     m_Metadata:
       m_Items: []
   - m_Id: 38052191460454400
@@ -119,15 +119,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 42551925527785472
-    m_Localized: Mag Size
+    m_Localized: Mag Size %d
     m_Metadata:
       m_Items: []
   - m_Id: 42552110941188096
-    m_Localized: Number of Magazines
+    m_Localized: Number of Magazines %d
     m_Metadata:
       m_Items: []
   - m_Id: 42552492522188800
-    m_Localized: Reload Speed
+    m_Localized: Reload time %d
     m_Metadata:
       m_Items: []
   - m_Id: 42870732750303232
@@ -135,15 +135,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 42902531064967168
-    m_Localized: Dash Damage
+    m_Localized: Dash Damage %d
     m_Metadata:
       m_Items: []
   - m_Id: 43129468085579776
-    m_Localized: Dash Reload Speed
+    m_Localized: Dash Reload Speed %d
     m_Metadata:
       m_Items: []
   - m_Id: 43130114931142656
-    m_Localized: Spike Protection
+    m_Localized: Spike Protection %d%
     m_Metadata:
       m_Items: []
   - m_Id: 43131142632091648
@@ -160,6 +160,30 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 43577248822153216
     m_Localized: ground uzi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45047045449998336
+    m_Localized: Ground Pound digging damage %d
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45047348446519296
+    m_Localized: Ground Pound Enemy Damage %d
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45047538083586048
+    m_Localized: Ground Pound radius %d
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45058199643643904
+    m_Localized: Grenade Explosion Radius %d
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45063441475067904
+    m_Localized: Head Protection %d%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45065653387419648
+    m_Localized: Ricochets
     m_Metadata:
       m_Items: []
   references:

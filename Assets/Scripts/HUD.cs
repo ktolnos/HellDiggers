@@ -38,7 +38,7 @@ public class HUD: MonoBehaviour
         
         jetFuelIndicator.gameObject.SetActive(Player.I.health.currentHealth > 0f);
         var stats = Player.I.stats;
-        jetFuelIndicator.fillAmount =  Player.I.jetPackFuel / (Player.I.stats.jetPackFuel * Player.I.jetFuelMult);
+        jetFuelIndicator.fillAmount =  Player.I.jetPackFuel / Player.I.stats.jetPackFuel;
         jetFuelIndicator.rectTransform.sizeDelta = new Vector2(jetFuelIndicator.rectTransform.sizeDelta.x,  stats.jetPackFuel * 150f);
         
         copperText.text = GM.I.resources.copper.ToString();

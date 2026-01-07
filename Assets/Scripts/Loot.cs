@@ -17,6 +17,8 @@ public class Loot : MonoBehaviour
 
     private Transform t;
     private Transform playerTransform;
+    public string keyId = "";
+    public bool alwaysCollect = false;
     
     private void OnEnable()
     {
@@ -36,7 +38,7 @@ public class Loot : MonoBehaviour
         {
             var collectionDistance = GetCollectionDistance();
             var distanceToPlayer = Vector2.Distance(t.position, playerTransform.position);
-            if (distanceToPlayer < collectionDistance)
+            if (distanceToPlayer < collectionDistance || alwaysCollect)
             {
                 StartCoroutine(Collect());
                 yield break;
@@ -72,6 +74,7 @@ public class Loot : MonoBehaviour
         GM.I.resources += resources;
         Player.I.health.Heal(hp);
         Player.I.gun.AddAmmo(ammo);
+        Player.I.collectedKeys.Add(keyId);
     }
 
     private float GetCollectionDistance()

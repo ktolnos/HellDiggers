@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class EnemyMovement : MonoBehaviour
 {
-    public bool currentFacingDirectionRight;
+    public abstract bool IsCurrentFacingDirectionRight();
     
     public delegate void DigCallback(Vector3 target);
     

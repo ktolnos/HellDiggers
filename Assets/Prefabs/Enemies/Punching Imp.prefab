@@ -148,7 +148,7 @@ Rigidbody2D:
   m_Mass: 10
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 4
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -319,7 +319,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 604d996e26cca9648a6052b0eb47c2be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovementGround
-  currentFacingDirectionRight: 0
   movementAnimation:
     frames:
     - {fileID: 3737926915008371284, guid: 19d68a4b7c5b0c84b9cb456fa06ef500, type: 3}
@@ -331,7 +330,7 @@ MonoBehaviour:
     fps: 10
   invertSprite: 0
   speed: 10
-  jumpForce: 40
+  jumpForce: 35
   jumpReload: 0.4
   mainCollider: {fileID: 0}
   maxJumps: 2
@@ -347,7 +346,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80331d5b7fe4489f8597de95dcff31ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPatrolMovement
-  currentFacingDirectionRight: 0
   baseMovement: {fileID: -6909426825751664385}
   patrolPoints:
   - {x: -5, y: 0, z: 0}
@@ -367,7 +365,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9719390d702a72749afb6e08e2577bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAStarMovement
-  currentFacingDirectionRight: 0
   baseMovement: {fileID: -6909426825751664385}
   horizontalCost: 1
   upCost: 2

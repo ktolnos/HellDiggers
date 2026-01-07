@@ -85,7 +85,7 @@ public class Gravel : MonoBehaviour
         var dmgMult = 1f;
         if (health.isPlayer)
         {
-            dmgMult *= 1f - Player.I.stats.headProtection;
+            dmgMult *= 1f - Player.I.stats.headProtection * 0.01f;
         }
         health.Damage(fallDamage * dmgMult, DamageDealerType.Environment);
         if (destroyOnContact)

@@ -73,6 +73,7 @@ public class Player : MonoBehaviour
     public Image primaryReloadIndicator;
     public GameObject gunParent;
     public GameObject secondaryGunParent;
+    public HashSet<string> collectedKeys = new();
     
     private void Awake()
     {
@@ -356,7 +357,7 @@ public class Player : MonoBehaviour
         }
         if (tile.tileData.contactDamage != 0 && Time.time - lastContactDamageTime > 0.5f)
         {
-            health.Damage(tile.tileData.contactDamage * (1f - stats.spikeProtection), DamageDealerType.Environment);
+            health.Damage(tile.tileData.contactDamage * (1f - stats.spikeProtection * 0.01f), DamageDealerType.Environment);
             lastContactDamageTime = Time.time;
         }
 

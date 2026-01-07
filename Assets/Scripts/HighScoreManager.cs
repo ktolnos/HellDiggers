@@ -69,7 +69,7 @@ public class HighScoreManager : MonoBehaviour
     {
         if (highScorePanel.activeSelf && (Keyboard.current.spaceKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame))
         {
-            GM.I.PopTopUI();
+            GM.PopTopUI();
         }
     }
 

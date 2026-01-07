@@ -10,7 +10,7 @@ public class HellCircleSettings: MonoBehaviour
     public TileData[] tileData;
     public float noiseThreshold = -0.2f;
     public float noiseFrequency = 0.15f;
-    public GameObject boss;
+    public Level.RoomInfo bossRoom;
 
     
     [Serializable]

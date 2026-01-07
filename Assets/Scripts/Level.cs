@@ -85,8 +85,7 @@ public class Level : MonoBehaviour
         timeOfFloorStart = Time.time;
         levelBg.color = circleConfig.color;
 
-        var bossTiles = circleConfig.boss == null ? 0 : width;
-        var totalTiles = width * height + wallsHeight * 4 + bossTiles;
+        var totalTiles = width * height + wallsHeight * 4;
         var tilePositions = new Vector3Int[totalTiles];
         var tiles = new TileBase[totalTiles];
         var index = 0;
@@ -144,21 +143,13 @@ public class Level : MonoBehaviour
             SetWall(new Vector3Int(-width / 2, -height - i, 0));
             SetWall(new Vector3Int(width / 2 - 1, -height - i, 0));
         }
-
-        if (bossTiles != 0)
-        {
-            for (int x = 0; x < bossTiles; x++)
-            {
-                SetWall(new Vector3Int(x - width / 2, -height - bossHeight, 0));
-            }
-
-            Instantiate(circleConfig.boss,
-                grid.CellToWorld(new Vector3Int(0, -height - bossHeight + 3, 0)), Quaternion.identity,
-                spawnedObjectsParent);
-        }
         
         transitionHeight = grid.cellSize.y * (-height - wallsHeight / 2f);
         SpawnRooms();
+        if (circleConfig.bossRoom != null)
+        {
+            SpawnRoom(circleConfig.bossRoom, new Vector2Int(0, -height - bossHeight));
+        }
 
         EnemySpawner.I.Spawner(true);
     }
@@ -366,18 +357,6 @@ public class Level : MonoBehaviour
     public TileInfo GetTileInfo(Vector3 pos)
     {
         return GetTileInfo(grid.WorldToCell(pos));
-    }
-
-    public void RemoveBossFloor()
-    {
-        for (var x = -width / 2 + 1; x < width / 2 - 1; x++)
-        {
-            var pos = new Vector3Int(x, -height - bossHeight, 0);
-            if (tileInfos.ContainsKey(pos))
-            {
-                RemoveTile(pos);
-            }
-        }
     }
 
     private bool CheckCircleCellIntersection(Vector3 position, float radius, Vector3Int cellPos)

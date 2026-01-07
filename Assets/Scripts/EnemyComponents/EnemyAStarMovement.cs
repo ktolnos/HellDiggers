@@ -293,4 +293,9 @@ public class EnemyAStarMovement : EnemyMovement
         }
         Gizmos.DrawSphere(currentPath[currentPath.Count - 1], 0.1f);
     }
+
+    public override bool IsCurrentFacingDirectionRight()
+    {
+        return baseMovement.IsCurrentFacingDirectionRight();
+    }
 }

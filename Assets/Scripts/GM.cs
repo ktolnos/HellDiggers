@@ -89,13 +89,8 @@ public class GM: MonoBehaviour
         return total;
     }
     
-    public void PopTopUI()
+    public static void PopTopUI()
     {
-        if (I != this)
-        {
-            I.PopTopUI();
-            return;
-        }
         if (closeUIDelegates.Count > 0)
         {
             closeUIDelegates.Pop().Invoke();

@@ -295,4 +295,7 @@ MonoBehaviour:
     allowLava: 0
   noiseThreshold: -0.3
   noiseFrequency: 0.15
-  boss: {fileID: 0}
+  bossRoom:
+    tilemap: {fileID: 2657460299896702248, guid: 82700c778a5d66d49a83850e23d603b4, type: 3}
+    circleIndex: 0
+    amount: 0

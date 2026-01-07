@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class EnemyPatrolMovement : EnemyMovement
@@ -13,23 +14,40 @@ public class EnemyPatrolMovement : EnemyMovement
     public float waitTime = 0f;
     private float pointReachedTime = 0f;
     public bool disableDigging = true;
+    public float startPointDelay = 0f;
+    private bool initalized = false;
+    private bool isInitializing = false;
 
-    private void Start()
+    private IEnumerator Initialize()
     {
+        isInitializing = true;
+        if (startPointDelay > 0f)
+        {
+            yield return new WaitForSeconds(startPointDelay);
+        }
         startPoint = transform.position;
         for (int i = 0; i < patrolPoints.Length; i++)
         {
             patrolPoints[i] += startPoint;
         }
+        initalized = true;
+        isInitializing = false;
     }
 
     public override void Move(Vector3 targetPos, DigCallback digCallback)
     {
+        if (!initalized && !isInitializing)
+        {
+            StartCoroutine(Initialize());
+        }
+        if (!initalized)
+        {
+            return;
+        }
         Vector3 patrolTarget = patrolPoints[currentPointIndex];
 
         if (Vector2.Distance(transform.position, patrolTarget) < pointTolerance)
         {
-            baseMovement.Stop();
             if (pointReachedTime < 0f)
             {
                 pointReachedTime = Time.time;
@@ -50,5 +68,9 @@ public class EnemyPatrolMovement : EnemyMovement
     {
         baseMovement.Stop();
     }
-        
+
+    public override bool IsCurrentFacingDirectionRight()
+    {
+        return baseMovement.IsCurrentFacingDirectionRight();
+    }
 }

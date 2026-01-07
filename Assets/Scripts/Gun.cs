@@ -86,7 +86,7 @@ public class Gun: MonoBehaviour
 
     public void Shoot()
     {
-        var playerOnlyMult = bulletPrefab.isPlayerBullet ? 1f : 0f;
+        var playerOnlyMult = bulletPrefab.isPlayerBullet ? 1 : 0;
         var fireDelayUpgraded = GetFireRate();
         if (Time.time - lastFireTime < fireDelayUpgraded || AmmoInMagLeft <= 0)
             return;
@@ -112,7 +112,7 @@ public class Gun: MonoBehaviour
         }
         if (!infiniteAmmo)
         {
-            AmmoInMagLeft--;
+            AmmoInMagLeft-= (1-playerOnlyMult) * 1 + playerOnlyMult * (isSecondary ? 1 : Player.I.stats.numberOfBullets);
         }
         if (AmmoInMagLeft <= 0)
         {

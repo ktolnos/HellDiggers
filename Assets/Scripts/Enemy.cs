@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour
         enemyMovement = isAgro ? defaultMovement : standbyMovement ?? defaultMovement;
         float distToPlayer = Vector2.Distance(transform.position, player.transform.position);
         isAgro = isAgro || distToPlayer < agroDistance;
-        if (distToPlayer > stoppingDistance && (!stopWhenAttacking || !enemyAttack.isAttacking))
+        if (distToPlayer > stoppingDistance && !(stopWhenAttacking && enemyAttack.isAttacking))
         {
             enemyMovement.Move(player.transform.position, target => StartCoroutine(enemyAttack.Attack(target)));
         }

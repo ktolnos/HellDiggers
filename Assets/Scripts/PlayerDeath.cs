@@ -27,14 +27,6 @@ public class PlayerDeath: MonoBehaviour, IDeathHandler
         startGlobalIntensity = globalLight.intensity;
     }
 
-    private void Start()
-    {
-        if (UpgradesController.I.IsActive)
-        {
-            OnPlayerDead();
-        }
-    }
-
     private void Update()
     {
         if (restartAction.WasPerformedThisFrame())

@@ -5,13 +5,6 @@ public class BossDeath: MonoBehaviour, IDeathHandler
 {
     public void Die()
     {
-        DeathAnimation();
+        // nothing special for boss death yet
     }
-    
-    private async void DeathAnimation()
-    {
-        await Awaitable.WaitForSecondsAsync(1f);
-        Level.I.RemoveBossFloor();
-    }
-        
 }

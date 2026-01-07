@@ -106,7 +106,7 @@ public class EnemySpawner : MonoBehaviour
                 var right = Level.I.width / 2f - 5f;
                 var height = -Level.I.height;
                 location = new Vector3Int(Mathf.RoundToInt(UnityEngine.Random.Range(left, right)),
-                    Mathf.RoundToInt(UnityEngine.Random.Range(40, height)), 0);
+                    Mathf.RoundToInt(UnityEngine.Random.Range(-40, height + 20)), 0);
             }
             else
             {

@@ -44,6 +44,8 @@ public class Stats
             numDashes = a.numDashes + Mathf.RoundToInt(b),
             jumpHeight = a.jumpHeight + b,
             groundPoundRadius = a.groundPoundRadius + b,
+            groundPoundDiggingDamage = a.groundPoundDiggingDamage + b,
+            groundPoundEnemyDamage = a.groundPoundEnemyDamage + b,
             numberOfBullets = a.numberOfBullets + Mathf.RoundToInt(b),
             fireRateBoost = a.fireRateBoost + b,
             bulletExplosionRadius = a.bulletExplosionRadius + b,

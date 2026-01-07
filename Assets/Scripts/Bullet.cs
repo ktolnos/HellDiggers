@@ -60,7 +60,7 @@ public class Bullet: MonoBehaviour
                 : Player.I.stats.bulletEnemyDamage) * playerStatsMult);
         if (!isPlayerBullet)
         {
-            finalEnemyDamage *= 1f - Player.I.stats.bulletProtection;
+            finalEnemyDamage *= 1f - Player.I.stats.bulletProtection * 0.01f;
         }
         var finalGroundDamage = groundDamage * (1f * (1 - playerStatsMult) + (isGrenade
                 ? Player.I.stats.grenadeDamage

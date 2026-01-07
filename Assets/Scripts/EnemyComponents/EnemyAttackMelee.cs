@@ -29,9 +29,9 @@ public class EnemyAttackMelee : EnemyAttack, IDeathHandler
     {
         var attackPos = transform.position + (Vector3)offset;
         var toTheLeft = target.x < transform.position.x;
-        if (_enemy?.enemyMovement?.currentFacingDirectionRight != null)
+        if (_enemy?.enemyMovement?.IsCurrentFacingDirectionRight() != null)
         {
-            toTheLeft = !_enemy.enemyMovement.currentFacingDirectionRight;
+            toTheLeft = !_enemy.enemyMovement.IsCurrentFacingDirectionRight();
         }
         if (toTheLeft)
         {

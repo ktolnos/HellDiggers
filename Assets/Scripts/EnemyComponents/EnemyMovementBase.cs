@@ -7,6 +7,7 @@ public class EnemyMovementBase : EnemyMovement
     public SpriteAnimator.Animation movementAnimation;
     public bool invertSprite;
     private float lastDirectionFlipTime = -100f;
+    protected bool currentFacingDirectionRight;
     
     protected virtual void Awake()
     {
@@ -29,5 +30,10 @@ public class EnemyMovementBase : EnemyMovement
     public override void Stop()
     {
         animator.autoplay = false;
+    }
+
+    public override bool IsCurrentFacingDirectionRight()
+    {
+        return currentFacingDirectionRight;
     }
 }

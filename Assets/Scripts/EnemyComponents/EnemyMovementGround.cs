@@ -11,6 +11,7 @@ public class EnemyMovementGround : EnemyMovementBase
 
     private float lastJumpTime;
     private float lastHorizontalMovementTime;
+    private float gravityScale;
 
     protected override void Awake()
     {
@@ -20,10 +21,12 @@ public class EnemyMovementGround : EnemyMovementBase
         {
             mainCollider = GetComponent<Collider2D>();
         }
+        gravityScale = rb.gravityScale;
     }
 
     public override void Move(Vector3 targetPos, DigCallback digCallback)
     {
+        rb.gravityScale = gravityScale;
         if (Vector2.Distance(targetPos, transform.position) <= 0.1f)
         {
             rb.linearVelocityX = 0;
@@ -83,7 +86,8 @@ public class EnemyMovementGround : EnemyMovementBase
     public override void Stop()
     {
         base.Stop();
-        rb.linearVelocity = Vector2.zero;
+        rb.linearVelocityX = 0; // Vector2.zero;
+        // rb.gravityScale = 0;
         jumpCount = 0;
     }
 }

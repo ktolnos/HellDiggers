@@ -46,6 +46,7 @@ public class Level : MonoBehaviour
     public List<RoomInfo> rooms = new();
     public TileBase roomEmptyTile;
     public RoomInfo hub;
+    public bool isInBossRoom;
 
     private void Awake()
     {
@@ -439,6 +440,8 @@ public class Level : MonoBehaviour
     private void Update()
     {
         var playerPos = Player.I.transform.position;
+        isInBossRoom = currentCircleIndex >= 0 && circles[currentCircleIndex].bossRoom != null &&
+                       playerPos.y < -height;
         if (playerPos.y < transitionHeight && !isLevelTransition && Player.I.health.currentHealth > 0)
         {
             AnimateNextLevel(skipIn: false);
@@ -493,7 +496,11 @@ public class Level : MonoBehaviour
 
         cracksTilemap.ClearAllTiles();
         bgTilemap.ClearAllTiles();
-
+        DeleteSpawnedObjects();
+    }
+    
+    private void DeleteSpawnedObjects()
+    {
         for (int i = spawnedObjectsParent.childCount - 1; i >= 0; i--)
         {
             var child = spawnedObjectsParent.GetChild(i);

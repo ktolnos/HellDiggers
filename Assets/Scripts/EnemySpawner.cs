@@ -25,6 +25,8 @@ public class EnemySpawner : MonoBehaviour
     private float currentHardness;
     private bool spawnedNoAmmoDeathEnemy = false;
 
+    private HashSet<Enemy> spawnedEnemies = new();
+
     private void Awake()
     {
         I = this;
@@ -69,6 +71,18 @@ public class EnemySpawner : MonoBehaviour
             Spawner(false);
             _timeOfLastSpawn = Time.time;
         }
+
+        if (Level.I.isInBossRoom)
+        {
+            foreach (var spawnedEnemy in spawnedEnemies)
+            {
+                if (spawnedEnemy != null)
+                {
+                    Destroy(spawnedEnemy);
+                }
+            }
+            spawnedEnemies.Clear();
+        }
     }
 
     public void Spawner(bool startSpawn)
@@ -94,6 +108,10 @@ public class EnemySpawner : MonoBehaviour
 
     public IEnumerator SpawnEnemy(bool fromPortal, Enemy enemy)
     {
+        if (Level.I.isInBossRoom)
+        {
+            yield break;
+        }
         var foundLocation = false;
         var location = Vector3Int.zero;
         var count = 0;
@@ -145,11 +163,16 @@ public class EnemySpawner : MonoBehaviour
                     yield return new WaitForSeconds(portalDelay);
                 }
 
+                if (Level.I.isInBossRoom)
+                {
+                    yield break;
+                }
                 var enemyPos = Level.I.grid.GetCellCenterWorld(location);
                 enemyPos.z = enemy.transform.position.z;
                 var enemyInstance = Instantiate(enemy, enemyPos, Quaternion.identity,
                     Level.I.spawnedObjectsParent);
                 enemyInstance.isAgro |= fromPortal;
+                spawnedEnemies.Add(enemyInstance);
             }
         }
     }

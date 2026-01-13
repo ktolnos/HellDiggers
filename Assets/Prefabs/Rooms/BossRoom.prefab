@@ -19749,11 +19749,71 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9096303478583097338, guid: ba61cc7658381834bb1b4fe484dae7ce, type: 3}
+      propertyPath: defaultAttack
+      value: 
+      objectReference: {fileID: 6504517949629239511}
+    - target: {fileID: 9096303478583097338, guid: ba61cc7658381834bb1b4fe484dae7ce, type: 3}
+      propertyPath: attackDistance
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4756907778912265882, guid: ba61cc7658381834bb1b4fe484dae7ce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6504517949629239511}
   m_SourcePrefab: {fileID: 100100000, guid: ba61cc7658381834bb1b4fe484dae7ce, type: 3}
+--- !u!114 &1392244093144919048 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4264243685574415769, guid: ba61cc7658381834bb1b4fe484dae7ce, type: 3}
+  m_PrefabInstance: {fileID: 2918224438486137233}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7673135140608925451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 296d7121dcba8fe4ba3e9c65c9e46561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackMelee
+--- !u!114 &7093376618099360553 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5336521303594351288, guid: ba61cc7658381834bb1b4fe484dae7ce, type: 3}
+  m_PrefabInstance: {fileID: 2918224438486137233}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7673135140608925451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9bdcaaab369441896cfd4c9df508595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackMeleeWave
+--- !u!1 &7673135140608925451 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4756907778912265882, guid: ba61cc7658381834bb1b4fe484dae7ce, type: 3}
+  m_PrefabInstance: {fileID: 2918224438486137233}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6504517949629239511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7673135140608925451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebec9304bbb446f2a012c59aa641a762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAttacChooser
+  attackCoolDown: 3
+  isAttacking: 0
+  attackOptions:
+  - attack: {fileID: 7093376618099360553}
+    minDistance: 0
+    maxDistance: 1000
+  - attack: {fileID: 1392244093144919048}
+    minDistance: 0
+    maxDistance: 1000
+  avoidRepeatingLastAttack: 1
 --- !u!4 &8906564254585083530 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6045489495580094235, guid: ba61cc7658381834bb1b4fe484dae7ce, type: 3}

@@ -217,6 +217,7 @@ MonoBehaviour:
     fps: 16
   explosionPrefab: {fileID: 3367513575900605123, guid: b36c3f71cdfaf05469d3fc01eb00ec12, type: 3}
   offset: {x: 1, y: 0}
+  attackDirectlyAtTarget: 0
 --- !u!114 &4561802190079141591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,7 +230,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf7255c5c25d5c41893057e93955b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovementFly
-  currentFacingDirectionRight: 0
   movementAnimation:
     frames:
     - {fileID: -5444882288661411856, guid: 276d6ac0e2146ac428621ed659a65c64, type: 3}

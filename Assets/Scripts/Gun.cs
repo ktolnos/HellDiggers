@@ -112,7 +112,7 @@ public class Gun: MonoBehaviour
         }
         if (!infiniteAmmo)
         {
-            AmmoInMagLeft-= (1-playerOnlyMult) * 1 + playerOnlyMult * (isSecondary ? 1 : Player.I.stats.numberOfBullets);
+            AmmoInMagLeft-= 1 + playerOnlyMult * (isSecondary ? 1 : Player.I.stats.numberOfBullets);
         }
         if (AmmoInMagLeft <= 0)
         {

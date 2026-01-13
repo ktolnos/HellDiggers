@@ -27,6 +27,7 @@ public class EnemyMovementGround : EnemyMovementBase
     public override void Move(Vector3 targetPos, DigCallback digCallback)
     {
         rb.gravityScale = gravityScale;
+        rb.bodyType = RigidbodyType2D.Dynamic;
         if (Vector2.Distance(targetPos, transform.position) <= 0.1f)
         {
             rb.linearVelocityX = 0;
@@ -86,8 +87,8 @@ public class EnemyMovementGround : EnemyMovementBase
     public override void Stop()
     {
         base.Stop();
-        rb.linearVelocityX = 0; // Vector2.zero;
-        // rb.gravityScale = 0;
+        rb.linearVelocity = Vector2.zero;
+        rb.bodyType = RigidbodyType2D.Kinematic;
         jumpCount = 0;
     }
 }

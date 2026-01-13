@@ -63,7 +63,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &175619066887638307
 MonoBehaviour:
@@ -78,48 +78,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hardness: 80
-  speed: 40
-  damage: 50
-  groundDamage: 1000
-  jumpForce: 80
-  jumpReload: 1
   stoppingDistance: 2
   attackDistance: 3
-  attackRadius: 3
-  attackDelay: 0.5
-  bevaviorType: 1
-  attackType: 1
-  enemyLookTowardsPlayer: 0
-  attackCoolDown: 1
-  gun: {fileID: 0}
-  movementAnimation:
-    frames:
-    - {fileID: 5176231119721806761, guid: d6d230feba4a7e54c8239a1f6e0d39ca, type: 3}
-    - {fileID: -1531116992647937071, guid: d6d230feba4a7e54c8239a1f6e0d39ca, type: 3}
-    - {fileID: -4755572168035034156, guid: d6d230feba4a7e54c8239a1f6e0d39ca, type: 3}
-    - {fileID: -4192647041277194460, guid: d6d230feba4a7e54c8239a1f6e0d39ca, type: 3}
-    - {fileID: 3874133234513081, guid: d6d230feba4a7e54c8239a1f6e0d39ca, type: 3}
-    - {fileID: -7149178660379187069, guid: d6d230feba4a7e54c8239a1f6e0d39ca, type: 3}
-    - {fileID: 2797574664095567419, guid: d6d230feba4a7e54c8239a1f6e0d39ca, type: 3}
-    - {fileID: -4489918756491857870, guid: d6d230feba4a7e54c8239a1f6e0d39ca, type: 3}
-    - {fileID: 6124120736119915099, guid: d6d230feba4a7e54c8239a1f6e0d39ca, type: 3}
-    fps: 10
-  attackAnimation:
-    frames:
-    - {fileID: -2397232033337879940, guid: d6d230feba4a7e54c8239a1f6e0d39ca, type: 3}
-    - {fileID: 1926790021295222532, guid: d6d230feba4a7e54c8239a1f6e0d39ca, type: 3}
-    - {fileID: -649550437845555793, guid: d6d230feba4a7e54c8239a1f6e0d39ca, type: 3}
-    - {fileID: 7871069827453258791, guid: d6d230feba4a7e54c8239a1f6e0d39ca, type: 3}
-    - {fileID: -7753930662979335162, guid: d6d230feba4a7e54c8239a1f6e0d39ca, type: 3}
-    - {fileID: -4143636733352006187, guid: d6d230feba4a7e54c8239a1f6e0d39ca, type: 3}
-    - {fileID: -3755824647840775400, guid: d6d230feba4a7e54c8239a1f6e0d39ca, type: 3}
-    - {fileID: -6233034527351694616, guid: d6d230feba4a7e54c8239a1f6e0d39ca, type: 3}
-    fps: 10
   animator: {fileID: 8002352368254877654}
-  invertSprite: 0
-  aimGun: 1
-  isBoss: 0
-  beatSound: {fileID: 8300000, guid: 7f1c4732b98cb0741aff7991e7e6f1f6, type: 3}
+  defaultMovement: {fileID: 0}
+  standbyMovement: {fileID: 0}
+  defaultAttack: {fileID: 0}
+  stopWhenAttacking: 1
+  isAgro: 0
+  agroDistance: 5
+  agroOnHurt: 1
+  enemyMovement: {fileID: 0}
+  disableOffScreen: 1
 --- !u!114 &2356477887498331919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,6 +110,7 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 870a48ed36cf1294aad3525d5796e1fd, type: 3}
   hurtAnimation: {fileID: 2916147809689092128}
   hurtMaterial: {fileID: 2100000, guid: bfe122b358b5b644b8c55eadb8c88ebb, type: 2}
+  vignetteVolume: {fileID: 0}
 --- !u!114 &3463454152866909319
 MonoBehaviour:
   m_ObjectHideFlags: 0

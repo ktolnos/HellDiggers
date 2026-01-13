@@ -22,5 +22,5 @@ public abstract class EnemyAttack : MonoBehaviour
         timeOfLastAttack = Time.time;
     }
     
-    protected abstract IEnumerator PerformAttack(Vector3 target);
+    public abstract IEnumerator PerformAttack(Vector3 target);
 }

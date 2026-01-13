@@ -13,8 +13,8 @@ public class EnemyAttackGun : EnemyAttack
         gunSpriteRenderer = gun.gameObject.GetComponentInChildren<SpriteRenderer>();
         gun.Reset();
     }
-    
-    protected override IEnumerator PerformAttack(Vector3 target)
+
+    public override IEnumerator PerformAttack(Vector3 target)
     {
         if (aimGun)
         {

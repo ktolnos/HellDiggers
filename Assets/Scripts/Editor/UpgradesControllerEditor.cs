@@ -39,8 +39,7 @@ public class UpgradesControllerEditor : Editor
         string GetStatKey(Skill s) {
              if (s.stats == null) return null;
              foreach (var field in typeof(Stats).GetFields()) {
-                 int val = (int)field.GetValue(s.stats);
-                 if (val > 0) return field.Name;
+                 if (field.GetValue(s.stats) is > 0) return field.Name;
              }
              return null;
         }

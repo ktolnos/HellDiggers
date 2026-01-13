@@ -158,7 +158,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &9096303478583097338
 MonoBehaviour:
@@ -307,6 +307,7 @@ MonoBehaviour:
     fps: 4
   explosionPrefab: {fileID: 3367513575900605123, guid: b36c3f71cdfaf05469d3fc01eb00ec12, type: 3}
   offset: {x: 2.2, y: 0}
+  attackDirectlyAtTarget: 0
 --- !u!114 &-6909426825751664385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,6 +354,7 @@ MonoBehaviour:
   pointTolerance: 0.5
   waitTime: 1
   disableDigging: 1
+  startPointDelay: 0
 --- !u!114 &3824380635914943748
 MonoBehaviour:
   m_ObjectHideFlags: 0

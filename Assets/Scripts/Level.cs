@@ -188,6 +188,7 @@ public class Level : MonoBehaviour
     private void SpawnRoom(RoomInfo roomInfo, Vector2Int position)
     {
         roomInfo.tilemap.CompressBounds();
+        roomInfo.tilemap.ResizeBounds();
         var bounds = roomInfo.tilemap.cellBounds;
         for (int x = bounds.min.x; x < bounds.max.x; x++)
         {

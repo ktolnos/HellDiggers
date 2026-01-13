@@ -63,22 +63,29 @@ public class Enemy : MonoBehaviour
         {
             return;
         }
-        
-        enemyMovement = isAgro ? defaultMovement : standbyMovement ?? defaultMovement;
+        Move();
         float distToPlayer = Vector2.Distance(transform.position, player.transform.position);
-        isAgro = isAgro || distToPlayer < agroDistance;
-        if (distToPlayer > stoppingDistance && !(stopWhenAttacking && enemyAttack.isAttacking))
-        {
-            enemyMovement.Move(player.transform.position, target => StartCoroutine(enemyAttack.Attack(target)));
-        }
-        else
-        {
-            enemyMovement.Stop();
-        }
 
         if (distToPlayer < attackDistance && isAgro)
         {
             StartCoroutine(enemyAttack.Attack(player.transform.position));
         }
+    }
+
+    private void Move()
+    {
+        float distToPlayer = Vector2.Distance(transform.position, player.transform.position);
+        enemyMovement = isAgro ? defaultMovement : standbyMovement ?? defaultMovement;
+        isAgro = isAgro || distToPlayer < agroDistance;
+        if (distToPlayer < stoppingDistance)
+        {
+            return;
+        }
+        if (stopWhenAttacking && enemyAttack.isAttacking)
+        {
+            enemyMovement.Stop();
+            return;
+        }
+        enemyMovement.Move(player.transform.position, target => StartCoroutine(enemyAttack.Attack(target)));
     }
 }

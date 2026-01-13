@@ -26171,8 +26171,8 @@ MonoBehaviour:
   jetPackFuel: 0
   jetPackSpeed: 8
   dashRechargeRate: 0.2
-  dashSpeed: 20
-  dashDuration: 0.5
+  dashSpeed: 40
+  dashDuration: 0.1
   animator: {fileID: 124192830}
   jumpParticleSystem: {fileID: 1871829904}
   dashParticleSystem: {fileID: 1600806507}
@@ -41065,7 +41065,7 @@ MonoBehaviour:
     - 1
     prespawn: 0
     spawnFromPortals: 0
-    spawnFixedDelay: 60
+    spawnFixedDelay: 60000
     spawnFixedDelayed: 1
   - enemy: {fileID: 3249780571903213796, guid: e533eb19a26e8de48a02360fe931db3b, type: 3}
     chanceToSpawnOnCircle:

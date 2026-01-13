@@ -13,6 +13,7 @@ public class EnemyAttackMelee : EnemyAttack, IDeathHandler
     private SpriteAnimator animator;
     public BombAnimator explosionPrefab;
     public Vector2 offset;
+    public bool attackDirectlyAtTarget = false;
     
     private BombAnimator currentExplosion;
     private Enemy _enemy;
@@ -25,9 +26,9 @@ public class EnemyAttackMelee : EnemyAttack, IDeathHandler
     }
     
     
-    protected override IEnumerator PerformAttack(Vector3 target)
+    public override IEnumerator PerformAttack(Vector3 target)
     {
-        var attackPos = transform.position + (Vector3)offset;
+        var attackPos = attackDirectlyAtTarget ? target : transform.position + (Vector3)offset;
         var toTheLeft = target.x < transform.position.x;
         if (_enemy?.enemyMovement?.IsCurrentFacingDirectionRight() != null)
         {

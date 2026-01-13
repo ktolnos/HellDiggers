@@ -19,8 +19,8 @@ public class EnemyMovementFly : EnemyMovementBase
 
     public override void Move(Vector3 target, DigCallback digCallback)
     {
+        rb.bodyType = RigidbodyType2D.Dynamic;
         base.Move(target, digCallback);
-        
         float dist = Vector3.Distance(transform.position, lastPosition);
         movementAccumulator += dist;
         lastPosition = transform.position;
@@ -44,6 +44,7 @@ public class EnemyMovementFly : EnemyMovementBase
     public override void Stop()
     {
         rb.linearVelocity = Vector2.zero;
+        rb.bodyType = RigidbodyType2D.Kinematic;
         movementAccumulator = 0f;
         timeSinceLastCheck = 0f;
         lastPosition = transform.position;

@@ -197,8 +197,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackMelee
   attackCoolDown: 1
   isAttacking: 0
-  damage: 10
-  groundDamage: 10
+  damage: 100
+  groundDamage: 100
   attackRadius: 2
   beatSound: {fileID: 8300000, guid: 7f1c4732b98cb0741aff7991e7e6f1f6, type: 3}
   attackWindUp:
@@ -220,6 +220,7 @@ MonoBehaviour:
     fps: 16
   explosionPrefab: {fileID: 3367513575900605123, guid: b36c3f71cdfaf05469d3fc01eb00ec12, type: 3}
   offset: {x: 1, y: 0}
+  attackDirectlyAtTarget: 0
 --- !u!114 &4561802190079141591
 MonoBehaviour:
   m_ObjectHideFlags: 0

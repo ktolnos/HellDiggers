@@ -17,6 +17,8 @@ public class VirtualMouseController : MonoBehaviour
     private Vector2 lastLook;
 
     public Vector2 mousePosition;
+    public Image cursorImage;
+
     private void Awake()
     {
         I = this;
@@ -32,6 +34,7 @@ public class VirtualMouseController : MonoBehaviour
         var isDead = !Player.I.IsAlive;
 
         aimImage.enabled = InputController.I.CurrentInputType == InputController.InputType.Gamepad && !isDead;
+        cursorImage.enabled = InputController.I.CurrentInputType == InputController.InputType.Mouse;
         
         if (InputController.I.CurrentInputType == InputController.InputType.Gamepad)
         {
@@ -46,6 +49,7 @@ public class VirtualMouseController : MonoBehaviour
         else
         {
             mousePosition = Mouse.current.position.ReadValue();
+            cursorImage.rectTransform.anchoredPosition = mousePosition / HUD.I.canvas.scaleFactor;
         }
     }
 }

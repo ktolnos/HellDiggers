@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circleName: LIMBO
   color: {r: 0.08627451, g: 0.043137256, b: 0.027450982, a: 1}
+  lightIntensity: 0.3
   tileData:
   - name: Normal
     tile: {fileID: 11400000, guid: afa8252c764dbfe45af6a1608da2b011, type: 2}
@@ -58,6 +59,9 @@ MonoBehaviour:
     surfaceSpawnChanceMult: 1
     randomRotation: 1
     drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+    mandatoryDrops:
+    - {fileID: 7004707376679243946, guid: 9c5d8b914c8275c4895081629847974e, type: 3}
+    coSpawns: []
     dropChance: 0.1
     contactDamage: 0
     isSlippery: 0
@@ -73,6 +77,8 @@ MonoBehaviour:
     surfaceSpawnChanceMult: 1
     randomRotation: 0
     drop: {fileID: 8642613160540180333, guid: 5fdd2eef803fcc6479ed051ae90d3d33, type: 3}
+    mandatoryDrops: []
+    coSpawns: []
     dropChance: 1
     contactDamage: 0
     isSlippery: 0
@@ -88,6 +94,9 @@ MonoBehaviour:
     surfaceSpawnChanceMult: 1
     randomRotation: 1
     drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+    mandatoryDrops:
+    - {fileID: 7004707376679243946, guid: 9c5d8b914c8275c4895081629847974e, type: 3}
+    coSpawns: []
     dropChance: 1
     contactDamage: 0
     isSlippery: 0
@@ -103,6 +112,9 @@ MonoBehaviour:
     surfaceSpawnChanceMult: 1
     randomRotation: 1
     drop: {fileID: 3094065808536684211, guid: ac05320947c1b194e82e3a703fe395eb, type: 3}
+    mandatoryDrops:
+    - {fileID: 7004707376679243946, guid: 9c5d8b914c8275c4895081629847974e, type: 3}
+    coSpawns: []
     dropChance: 1
     contactDamage: 0
     isSlippery: 0
@@ -118,6 +130,8 @@ MonoBehaviour:
     surfaceSpawnChanceMult: 1
     randomRotation: 1
     drop: {fileID: 3094065808536684211, guid: 127f2309e80b55149b12f0629e9789cd, type: 3}
+    mandatoryDrops: []
+    coSpawns: []
     dropChance: 1
     contactDamage: 0
     isSlippery: 0
@@ -133,6 +147,9 @@ MonoBehaviour:
     surfaceSpawnChanceMult: 1
     randomRotation: 1
     drop: {fileID: 3094065808536684211, guid: a642dc414c6b77348832dbfe7272e020, type: 3}
+    mandatoryDrops:
+    - {fileID: 7004707376679243946, guid: 9c5d8b914c8275c4895081629847974e, type: 3}
+    coSpawns: []
     dropChance: 1
     contactDamage: 0
     isSlippery: 0
@@ -148,6 +165,9 @@ MonoBehaviour:
     surfaceSpawnChanceMult: 1
     randomRotation: 1
     drop: {fileID: 3094065808536684211, guid: 5745f650d54b8564f879d13540c33256, type: 3}
+    mandatoryDrops:
+    - {fileID: 7004707376679243946, guid: 9c5d8b914c8275c4895081629847974e, type: 3}
+    coSpawns: []
     dropChance: 1
     contactDamage: 0
     isSlippery: 0
@@ -166,6 +186,9 @@ MonoBehaviour:
     surfaceSpawnChanceMult: 1
     randomRotation: 1
     drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+    mandatoryDrops:
+    - {fileID: 7004707376679243946, guid: 9c5d8b914c8275c4895081629847974e, type: 3}
+    coSpawns: []
     dropChance: 0.05
     contactDamage: 0
     isSlippery: 0
@@ -181,6 +204,8 @@ MonoBehaviour:
     surfaceSpawnChanceMult: 0
     randomRotation: 0
     drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+    mandatoryDrops: []
+    coSpawns: []
     dropChance: 0
     contactDamage: 100
     isSlippery: 0
@@ -196,6 +221,8 @@ MonoBehaviour:
     surfaceSpawnChanceMult: 0
     randomRotation: 0
     drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+    mandatoryDrops: []
+    coSpawns: []
     dropChance: 0
     contactDamage: 0
     isSlippery: 1
@@ -211,6 +238,8 @@ MonoBehaviour:
     surfaceSpawnChanceMult: 0
     randomRotation: 0
     drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+    mandatoryDrops: []
+    coSpawns: []
     dropChance: 0
     contactDamage: 0
     isSlippery: 0
@@ -226,6 +255,8 @@ MonoBehaviour:
     surfaceSpawnChanceMult: 0
     randomRotation: 0
     drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+    mandatoryDrops: []
+    coSpawns: []
     dropChance: 0
     contactDamage: 20
     isSlippery: 0
@@ -241,6 +272,8 @@ MonoBehaviour:
     surfaceSpawnChanceMult: 0
     randomRotation: 0
     drop: {fileID: 3094065808536684211, guid: 08f27a5859e1c3d45989d9d44ac7cfe2, type: 3}
+    mandatoryDrops: []
+    coSpawns: []
     dropChance: 0
     contactDamage: 0
     isSlippery: 0
@@ -256,6 +289,8 @@ MonoBehaviour:
     surfaceSpawnChanceMult: 0
     randomRotation: 0
     drop: {fileID: 6693581337699708166, guid: 4268a60b24ec1694f814e16c129c821a, type: 3}
+    mandatoryDrops: []
+    coSpawns: []
     dropChance: 1
     contactDamage: 0
     isSlippery: 0
@@ -271,6 +306,9 @@ MonoBehaviour:
     surfaceSpawnChanceMult: 0
     randomRotation: 0
     drop: {fileID: 3094065808536684211, guid: 9b752d8258343b34d9b70d5ec617a97c, type: 3}
+    mandatoryDrops: []
+    coSpawns:
+    - {fileID: 9033442676018336320, guid: 1d7e417c16711e44db111de0d9f075c2, type: 3}
     dropChance: 1
     contactDamage: 0
     isSlippery: 0
@@ -286,6 +324,9 @@ MonoBehaviour:
     surfaceSpawnChanceMult: 0
     randomRotation: 0
     drop: {fileID: 3094065808536684211, guid: 3fab56b727c56b14199a148548b7e04e, type: 3}
+    mandatoryDrops: []
+    coSpawns:
+    - {fileID: 9033442676018336320, guid: fff2ae8693f3e3d449e0480bdca7bae0, type: 3}
     dropChance: 1
     contactDamage: 0
     isSlippery: 0

@@ -270,7 +270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: statsPerLevel
-      value: 1.2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: stats.jumpHeight

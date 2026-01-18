@@ -40,7 +40,7 @@ public class Health: MonoBehaviour
         if (!isPlayer && type == DamageDealerType.Enemy)
             return;
         if (isDead) return; // can't take damage if dead
-        if (damage < 0f) return; // no negative damage
+        if (damage <= 0f) return; // no negative damage
         if (isInvulnerable) return; // can't take damage if invulnerable
         onDamageTaken?.Invoke(damage, type);
         if (hurt != null)

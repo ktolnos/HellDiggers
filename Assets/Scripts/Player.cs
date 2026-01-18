@@ -52,6 +52,7 @@ public class Player : MonoBehaviour
     private float dashDirection = 1f; // Direction of the dash, 1 for right, -1 for left
     
     private bool isPounding; // Time since the last ground pound action
+    private Vector2 poundStartPosition;
     public SpriteAnimator animator;
     
     public ParticleSystem jumpParticleSystem;
@@ -74,6 +75,7 @@ public class Player : MonoBehaviour
     public GameObject gunParent;
     public GameObject secondaryGunParent;
     public HashSet<string> collectedKeys = new();
+    public Gun dashGun;
     
     private void Awake()
     {
@@ -96,6 +98,7 @@ public class Player : MonoBehaviour
         SaveManager.I.LoadGame();
         UpdateStats(); 
         Revive();
+        dashGun.Reset();
     }
     
     public void UpdateStats()
@@ -176,12 +179,22 @@ public class Player : MonoBehaviour
         {
             numDashesLeft--;
             dashStartTime = Time.time;
+            if (stats.dashDamage > 0)
+            {
+                dashGun.transform.rotation = Quaternion.Euler(0f, 0f, dashDirection <= 0f ? 180f : 0f);
+                dashGun.bulletPrefab.groundDamage = stats.dashDamage;
+                dashGun.bulletPrefab.enemyDamage = 0; // stats.dashDamage;
+                dashGun.bulletPrefab.maxPenetrationDepth = stats.dashRadius;
+                dashGun.bulletLifeTime = stats.dashRadius / dashGun.bulletSpeed;
+                dashGun.Shoot();
+            }
         }
         
         if (groundPoundAction.WasPerformedThisFrame() && !isGrounded && stats.groundPoundRadius > 0 && !isPounding)
         {
             rb.linearVelocityY = -30f; // Increase downward force for ground pound
             isPounding = true;
+            poundStartPosition = rb.position;
             SoundManager.I.PlaySfx(groundPoundStartSound, transform.position);
         }
 
@@ -226,13 +239,7 @@ public class Player : MonoBehaviour
             rb.linearVelocityX = dashDirection * dashSpeed;
             rb.linearVelocityY = 0f; // Reset vertical velocity during dash
             health.isInvulnerable = true; // Make player invulnerable during dash
-            if (stats.dashDamage > 0)
-            {
-                Level.I.Explode(transform.position, stats.dashRadius, 
-                    0,
-                    stats.dashDamage * Time.deltaTime,
-                    DamageDealerType.Player);
-            }
+           
             AnimateDash();
         }
         else
@@ -271,6 +278,8 @@ public class Player : MonoBehaviour
         }
 
         isGrounded = leftBottomTile != null || rightBottomTile != null;
+        isGrounded = isGrounded || Physics2D.Raycast(bottomLeft, Vector2.down, 0.1f, LayerMask.GetMask("Ground"));
+        isGrounded = isGrounded || Physics2D.Raycast(bottomRight, Vector2.down, 0.1f, LayerMask.GetMask("Ground"));
         isOnIce = leftBottomTile?.tileData.isSlippery == true || rightBottomTile?.tileData.isSlippery == true;
         isInMud = leftBottomTile?.tileData.isMud == true || rightBottomTile?.tileData.isMud == true;
         if (isGrounded)
@@ -279,12 +288,17 @@ public class Player : MonoBehaviour
             airJumpsLeft = (int)stats.numJumps;
             if (isPounding)
             {
+                var scale = Mathf.Clamp01(Vector2.Distance(poundStartPosition, rb.position) / 20f);
+                scale *= stats.groundPoundRadius;
                 Level.I.Explode(transform.position, 
-                    radius:stats.groundPoundRadius,
+                    radius:scale,
                     enemyDamage:stats.groundPoundEnemyDamage,
                     groundDamage:stats.groundPoundDiggingDamage,
                     DamageDealerType.Player);
-                Destroy(Instantiate(groundPoundEffectPrefab, transform.position, Quaternion.identity, Level.I.spawnedObjectsParent), 2f);
+                var effect = Instantiate(groundPoundEffectPrefab, transform.position, Quaternion.identity,
+                    Level.I.spawnedObjectsParent);
+                effect.transform.localScale *= scale;
+                Destroy(effect, 2f);
                 isPounding = false;
                 SoundManager.I.PlaySfx(groundPoundSound, transform.position, 10f);
             }

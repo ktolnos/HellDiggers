@@ -26,12 +26,12 @@ public class SoundManager: MonoBehaviour
         sfxSource = gameObject.AddComponent<AudioSource>();
     }
 
-    public void PlaySfx(AudioClip clip, Vector3 position, float relativeValue = 1f, bool randomizePitch = true)
+    public void PlaySfx(AudioClip clip, Vector3 position, float relativeValue = 1f, bool randomizePitch = true, float pitch = 1f)
     {
         sfxCache[clip] = sfxCache.GetValueOrDefault(clip, 0) + 1;
         if (sfxCache[clip] < limitPerFrame)
         {
-            var pitch = randomizePitch ? UnityEngine.Random.Range(0.8f, 1.2f) : 1f;
+            pitch = randomizePitch ? UnityEngine.Random.Range(0.8f, 1.2f) * pitch : pitch;
             PlayClipAtPoint(clip, position, relativeValue * sfxVolume, pitch);
         }
     }

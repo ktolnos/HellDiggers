@@ -4851,7 +4851,7 @@ GameObject:
   - component: {fileID: 7218488626131856965}
   - component: {fileID: 2704850239041599030}
   m_Layer: 0
-  m_Name: BombExplosion
+  m_Name: BossStrike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4886,8 +4886,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circleColors:
-  - {r: 1, g: 1, b: 1, a: 0}
-  - {r: 1, g: 0.5, b: 0.5, a: 0}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 0.5, b: 0.5, a: 1}
   fullSprite: {fileID: -5102818267465754976, guid: 54bb121c90aac7e4689bf3a7053402eb, type: 3}
   explosionLight: {fileID: 2704850239041599030}
   windupParticles: {fileID: 2232126407770666883}
@@ -9825,7 +9825,7 @@ MonoBehaviour:
   m_ComponentVersion: 2
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.316
+  m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 0.9223381, b: 0.023584902, a: 1}
   m_Intensity: 10
   m_LightVolumeIntensity: 1

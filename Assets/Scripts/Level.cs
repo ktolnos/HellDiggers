@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
+using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -47,6 +49,7 @@ public class Level : MonoBehaviour
     public TileBase roomEmptyTile;
     public RoomInfo hub;
     public bool isInBossRoom;
+    public Light2D globalLight;
 
     private void Awake()
     {
@@ -144,7 +147,7 @@ public class Level : MonoBehaviour
             SetWall(new Vector3Int(-width / 2, -height - i, 0));
             SetWall(new Vector3Int(width / 2 - 1, -height - i, 0));
         }
-        
+
         transitionHeight = grid.cellSize.y * (-height - wallsHeight / 2f);
         SpawnRooms();
         if (circleConfig.bossRoom != null)
@@ -159,18 +162,18 @@ public class Level : MonoBehaviour
     private void SpawnRooms()
     {
         var roomPositions = new List<Vector2Int>();
-        for (int x = -width / 2 + 10; x < width / 2 - 1; x+=20)
+        for (int x = -width / 2 + 10; x < width / 2 - 1; x += 20)
         {
-            for (int y = -height + 10; y < -1; y+=40)
+            for (int y = -height + 10; y < -1; y += 40)
             {
-                roomPositions.Add(new Vector2Int(x, y+Random.Range(-10,10)));
+                roomPositions.Add(new Vector2Int(x, y + Random.Range(-10, 10)));
             }
         }
+
         roomPositions = roomPositions.OrderBy(x => Random.value).ToList();
         var roomPosIndex = 0;
         foreach (var roomInfo in rooms.Where(room => room.circleIndex == currentCircleIndex))
         {
-           
             for (int roomi = 0; roomi < roomInfo.amount; roomi++)
             {
                 if (roomPosIndex >= roomPositions.Count)
@@ -178,6 +181,7 @@ public class Level : MonoBehaviour
                     Debug.LogWarning("Not enough room positions for rooms");
                     break;
                 }
+
                 var startX = roomPositions[roomPosIndex].x;
                 var startY = roomPositions[roomPosIndex].y;
                 roomPosIndex++;
@@ -203,19 +207,29 @@ public class Level : MonoBehaviour
                     if (tile != roomEmptyTile)
                     {
                         TileData tileData = null;
-                        if (currentCircleIndex >= 0) {
-                            tileData = circles[currentCircleIndex].tileData
-                                .FirstOrDefault(td => td.tile == tile);
+
+                        if (tile == wallTile.tile)
+                        {
+                            tileData = wallTile;
                         }
+                        else
+                        {
+                            if (currentCircleIndex >= 0)
+                            {
+                                tileData = circles[currentCircleIndex].tileData
+                                    .FirstOrDefault(td => td.tile == tile);
+                            }
+                        }
+
                         if (tileData == null)
                         {
                             tileData = new TileData
                             {
                                 tile = tile,
-                                maxHp = 9999f,
+                                maxHp = 1f,
                             };
                         }
-                        
+
                         SetTile(new TileInfo(tileData, pos));
                     }
                 }
@@ -233,6 +247,49 @@ public class Level : MonoBehaviour
 
     public void Explode(Vector3 position, float radius, float enemyDamage, float groundDamage, DamageDealerType type)
     {
+        DamageTiles(position, radius, groundDamage);
+        GM.DamageEntities(position, radius, enemyDamage, type);
+    }
+
+    public void DamageTilesCapsule(Vector3 start, Vector3 end, float radius, float groundDamage,
+        HashSet<Vector3Int> damagedTiles = null,
+        HashSet<Vector3Int> ignoreTiles = null)
+    {
+        Vector3 segment = end - start;
+        float sqrLen = segment.sqrMagnitude;
+
+        Vector3 padding = new Vector3(radius, radius, 0);
+        Vector3Int min = grid.WorldToCell(Vector3.Min(start, end) - padding);
+        Vector3Int max = grid.WorldToCell(Vector3.Max(start, end) + padding);
+
+        for (int x = min.x; x <= max.x; x++)
+        {
+            for (int y = min.y; y <= max.y; y++)
+            {
+                var tilePos = new Vector3Int(x, y, 0);
+                if (ignoreTiles != null && ignoreTiles.Contains(tilePos)) continue;
+                if (!tileInfos.TryGetValue(tilePos, out var tileInfo)) continue;
+                Vector3 tileCenter = grid.GetCellCenterWorld(tilePos);
+            
+                float t = 0f;
+                if (sqrLen > 1e-05f) // Avoid division by zero if start ~= end
+                {
+                    t = Mathf.Clamp01(Vector3.Dot(tileCenter - start, segment) / sqrLen);
+                }
+
+                Vector3 closestPoint = start + (segment * t);
+                if (DamageTile(tileInfo, radius, groundDamage, closestPoint))
+                {
+                    damagedTiles?.Add(tilePos);
+                }
+            }
+        }
+    }
+
+    public void DamageTiles(Vector3 position, float radius, float groundDamage,
+        HashSet<Vector3Int> damagedTiles = null,
+        HashSet<Vector3Int> ignoreTiles = null)
+    {
         var radiusCeil = Mathf.CeilToInt(radius);
         var cellPos = grid.WorldToCell(position);
         for (var x = -radiusCeil; x <= radiusCeil; x++)
@@ -241,53 +298,65 @@ public class Level : MonoBehaviour
             {
                 var tilePos = new Vector3Int(cellPos.x + x, cellPos.y + y, 0);
                 var tileInfo = tileInfos.GetValueOrDefault(tilePos, null);
-                if (tileInfo != null)
+                if (tileInfo != null && (ignoreTiles == null || !ignoreTiles.Contains(tilePos)))
                 {
-                    DamageTile(tileInfo, radius, enemyDamage, groundDamage, position);
+                    if (DamageTile(tileInfo, radius, groundDamage, position) && damagedTiles != null)
+                    {
+                        damagedTiles.Add(tilePos);
+                    }
                 }
             }
         }
-        GM.DamageEntities(position, radius, enemyDamage, type);
     }
 
 
-    private void DamageTile(TileInfo tileInfo, float radius, float enemyDamage, float groundDamage, Vector3 position)
+    private bool DamageTile(TileInfo tileInfo, float radius, float groundDamage, Vector3 position)
     {
         var tilePos = tileInfo.pos;
         if (tileInfo.tileData.tile == wallTile.tile || tileInfo.tileData.maxHp < 0f)
         {
-            return;
+            return false;
         }
 
-        if (CheckCircleCellIntersection(position, radius, tilePos))
+        if (!CheckCircleCellIntersection(position, radius, tilePos))
         {
-            if (radius > 1f && CheckCircleCellIntersection(position, radius - 1f, tilePos))
-            {
-                bgTilemap.SetTile(tilePos, null);
-            }
-
-            tileInfo.hp -= groundDamage;
-            if (tileInfo.hp <= 0f)
-            {
-                SoundManager.I.PlaySfx(blockBreak, grid.GetCellCenterWorld(tilePos));
-                if (tileInfo.tileData.drop != null && Random.value < tileInfo.tileData.dropChance)
-                {
-                    var rotation = tileInfo.tileData.randomRotation ? Random.Range(0, 360f) : 0f;
-                    var quaternion = Quaternion.Euler(0f, 0f, rotation);
-                    var pool = GameObjectPoolManager.I.GetOrRegisterPool(tileInfo.tileData.drop,
-                        pooledObjectsParent);
-                    pool.InstantiateTemporarily(grid.GetCellCenterWorld(tilePos), quaternion,
-                        tileInfo.tileData.lootLifetime);
-                }
-
-                RemoveTile(tilePos); // has to be after instantiate so drop can get the tileInfo
-            }
-            else
-            {
-                SetTile(tileInfo);
-            }
+            return false;
         }
-    
+
+        if (radius > 1f && CheckCircleCellIntersection(position, radius - 1f, tilePos))
+        {
+            bgTilemap.SetTile(tilePos, null);
+        }
+
+        tileInfo.hp -= groundDamage;
+        if (tileInfo.hp <= 0f)
+        {
+            SoundManager.I.PlaySfx(blockBreak, grid.GetCellCenterWorld(tilePos));
+            if (tileInfo.tileData.drop != null && Random.value < tileInfo.tileData.dropChance)
+            {
+                var rotation = tileInfo.tileData.randomRotation ? Random.Range(0, 360f) : 0f;
+                var quaternion = Quaternion.Euler(0f, 0f, rotation);
+                var pool = GameObjectPoolManager.I.GetOrRegisterPool(tileInfo.tileData.drop,
+                    pooledObjectsParent);
+                pool.InstantiateTemporarily(grid.GetCellCenterWorld(tilePos), quaternion,
+                    tileInfo.tileData.lootLifetime);
+            }
+
+            foreach (var drop in tileInfo.tileData.mandatoryDrops)
+            {
+                var pool = GameObjectPoolManager.I.GetOrRegisterPool(drop, pooledObjectsParent);
+                pool.InstantiateTemporarily(grid.GetCellCenterWorld(tilePos), Quaternion.identity,
+                    1f);
+            }
+
+            RemoveTile(tilePos); // has to be after instantiate so drop can get the tileInfo
+        }
+        else
+        {
+            SetTile(tileInfo);
+        }
+
+        return true;
     }
 
     private (TileData, TileData) GetTile(Vector3Int pos,
@@ -337,6 +406,7 @@ public class Level : MonoBehaviour
         {
             return true;
         }
+
         return tileInfos.ContainsKey(pos);
     }
 
@@ -418,6 +488,7 @@ public class Level : MonoBehaviour
         {
             tm.SetColor(pos, Color.white);
         }
+
         if (tileInfo.hp == tileInfo.tileData.maxHp)
         {
             cracksTilemap.SetTile(pos, null);
@@ -428,13 +499,31 @@ public class Level : MonoBehaviour
                                                                 cracks.Length), 0, cracks.Length - 1)];
             cracksTilemap.SetTile(pos, crackTile);
         }
+
+        foreach (var tileDataCoSpawn in tileInfo.tileData.coSpawns)
+        {
+            var coSpawn = Instantiate(tileDataCoSpawn, grid.GetCellCenterWorld(pos), Quaternion.identity,
+                spawnedObjectsParent);
+            if (tileInfo.spawnedObjects == null)
+            {
+                tileInfo.spawnedObjects = new List<GameObject>();
+            }
+
+            tileInfo.spawnedObjects.Add(coSpawn);
+        }
     }
 
     private void RemoveTile(Vector3Int pos)
     {
         GetTilemap(pos).SetTile(pos, null);
         cracksTilemap.SetTile(pos, null);
-        tileInfos.Remove(pos);
+        if (tileInfos.Remove(pos, out var ti) && ti.spawnedObjects != null)
+        {
+            foreach (var spawnedObject in ti.spawnedObjects)
+            {
+                Destroy(spawnedObject.gameObject);
+            }
+        }
     }
 
     private void Update()
@@ -463,6 +552,7 @@ public class Level : MonoBehaviour
         {
             Player.I.Revive();
         }
+
         currentCircleIndex = Mathf.Clamp(currentCircleIndex, 0, circles.Length - 1);
         circleText.text = circles[currentCircleIndex].circleName;
         transitionPanel.gameObject.SetActive(true);
@@ -474,7 +564,8 @@ public class Level : MonoBehaviour
             Player.I.rb.bodyType = RigidbodyType2D.Kinematic;
             Player.I.transform.position = new Vector3(playerPos.x, 40f, playerPos.z);
             GenerateLevel(circles[currentCircleIndex]);
-            Player.I.rb.linearVelocityY = -20f;
+            Player.I.rb.linearVelocityY = -10f;
+            globalLight.intensity = circles[currentCircleIndex].lightIntensity;
 
             transitionPanel.DOFade(0f, animationDuration).SetDelay(0.7f).OnComplete(() =>
             {
@@ -498,7 +589,7 @@ public class Level : MonoBehaviour
         bgTilemap.ClearAllTiles();
         DeleteSpawnedObjects();
     }
-    
+
     private void DeleteSpawnedObjects()
     {
         for (int i = spawnedObjectsParent.childCount - 1; i >= 0; i--)
@@ -525,6 +616,7 @@ public class Level : MonoBehaviour
         public TileData tileData;
         public float hp;
         public Vector3Int pos;
+        public List<GameObject> spawnedObjects;
 
         public TileInfo(TileData tileData, Vector3Int position)
         {

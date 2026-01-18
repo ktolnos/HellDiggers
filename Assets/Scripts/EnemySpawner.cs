@@ -78,7 +78,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 if (spawnedEnemy != null)
                 {
-                    Destroy(spawnedEnemy);
+                    Destroy(spawnedEnemy.gameObject);
                 }
             }
             spawnedEnemies.Clear();

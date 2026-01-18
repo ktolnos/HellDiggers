@@ -28,13 +28,32 @@ public class GM: MonoBehaviour
         closeAction.performed += ctx => PopTopUI();
     }
     
-    public static void DamageEntities(Vector3 position, float radius, float damage, DamageDealerType type)
+    public static HashSet<Health> DamageEntities(Vector3 position, float radius, float damage, DamageDealerType type, HashSet<Health> excluded = null)
     {
         var colliders = Physics2D.OverlapCircleAll(position, radius);
+        return DamageEntities(colliders, damage, type, excluded);
+    }
+    
+    public static HashSet<Health> DamageEntitiesCapsule(Vector3 start, Vector3 end, float radius, float damage, DamageDealerType type, HashSet<Health> excluded)
+    {
+        var colliders = Physics2D.OverlapCapsuleAll((start + end) / 2, new Vector2(radius * 2, Vector3.Distance(start, end)), CapsuleDirection2D.Vertical, 
+            Mathf.Atan2(end.y - start.y, end.x - start.x) * Mathf.Rad2Deg);
+        return DamageEntities(colliders, damage, type, excluded);
+    }
+
+
+
+    private static HashSet<Health> DamageEntities(Collider2D[] colliders, float damage, DamageDealerType type,
+        HashSet<Health> excluded)
+    {
         var healths = new HashSet<Health>();
         foreach (var col in colliders)
         {
             healths.Add(col.GetComponentInParent<Health>());
+        }
+        if (excluded != null)
+        {
+            healths.ExceptWith(excluded);
         }
         foreach (var health in healths)
         {
@@ -43,6 +62,8 @@ public class GM: MonoBehaviour
                 health.Damage(damage, type);
             }
         }
+
+        return healths;
     }
 
     public static void OnUIOpen(CloseUIDelegate closeDelegate)

@@ -60,6 +60,9 @@ MonoBehaviour:
   effect: {fileID: 320268223314983013, guid: 9ad82804a7a53f7489b5f1e21d110130, type: 3}
   hasSound: 1
   sound: {fileID: 8300000, guid: 0a203c76c1711d745aae3657eae57157, type: 3}
+  maxPenetrationDepth: 0
+  spriteRenderer: {fileID: 6848816288371987850}
+  ignoreStatsScaling: 0
 --- !u!96 &1312267110476939897
 TrailRenderer:
   serializedVersion: 3

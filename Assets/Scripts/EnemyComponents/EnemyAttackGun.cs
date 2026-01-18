@@ -5,9 +5,9 @@ public class EnemyAttackGun : EnemyAttack
 {
     public Gun gun;
     public bool aimGun = true;
-    
+
     private SpriteRenderer gunSpriteRenderer;
-    
+
     void Start()
     {
         gunSpriteRenderer = gun.gameObject.GetComponentInChildren<SpriteRenderer>();
@@ -21,9 +21,20 @@ public class EnemyAttackGun : EnemyAttack
             Vector3 gunVector = target - gun.transform.position;
             if (gunSpriteRenderer != null)
                 gunSpriteRenderer.flipY = gunVector.x < 0f;
-            gun.transform.localEulerAngles = Vector3.back * (Mathf.Atan2(gunVector.x, gunVector.y) * Mathf.Rad2Deg - 90f);
+
+            // rotate towards target smoothly for up to 1 second
+            float elapsed = 0f;
+            Quaternion targetRotation =
+                Quaternion.LookRotation(Vector3.forward, gunVector) * Quaternion.Euler(0, 0, 90f);
+            while (elapsed < 1f && Quaternion.Angle(gun.transform.rotation, targetRotation) > 1f)
+            {
+                gun.transform.rotation =
+                    Quaternion.RotateTowards(gun.transform.rotation, targetRotation, 360f * Time.deltaTime);
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
         }
+
         gun.Shoot();
-        yield break;
     }
 }

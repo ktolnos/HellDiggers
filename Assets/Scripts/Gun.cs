@@ -22,6 +22,7 @@ public class Gun: MonoBehaviour
     public int mags = 1;
  
     public float bulletSpeed = 5f;
+    public bool ignoreStatsScaling = false;
 
     private float lastFireTime = -100f;
     [FormerlySerializedAs("secondary")] public bool isSecondary = false;
@@ -37,6 +38,7 @@ public class Gun: MonoBehaviour
     public float reloadTime;
     private float reloadStartTime = -1000f;
     public bool infiniteAmmo = true;
+    public Transform bulletSpawn;
 
     private void Update()
     {
@@ -58,7 +60,8 @@ public class Gun: MonoBehaviour
 
     private float GetFireRate()
     {
-        var statMult = bulletPrefab.isPlayerBullet ? 1f : 0f;
+        var applyStats = bulletPrefab.isPlayerBullet && !ignoreStatsScaling;
+        var statMult = applyStats ? 1f : 0f;
         float fireRateBonus = isSecondary ? Player.I.stats.grenadeReloadSpeedUp : Player.I.stats.fireRateBoost;
         fireRateBonus *= statMult;
         return fireDelay / (1f + fireRateBonus);
@@ -66,12 +69,14 @@ public class Gun: MonoBehaviour
 
     private int GetMagSize()
     {
-        return magSize + (int)((isSecondary ? 0 : Player.I.stats.magSize) *  (bulletPrefab.isPlayerBullet ? 1 : 0));
+        var applyStats = bulletPrefab.isPlayerBullet && !ignoreStatsScaling;
+        return magSize + (int)((isSecondary ? 0 : Player.I.stats.magSize) *  (applyStats ? 1 : 0));
     }
 
     private int GetMags()
     {
-        return mags + (int)((isSecondary ? 0 : Player.I.stats.mags) *  (bulletPrefab.isPlayerBullet ? 1 : 0));
+        var applyStats = bulletPrefab.isPlayerBullet && !ignoreStatsScaling;
+        return mags + (int)((isSecondary ? 0 : Player.I.stats.mags) *  (applyStats ? 1 : 0));
     }
 
     private int GetTotalAmmo()
@@ -81,19 +86,20 @@ public class Gun: MonoBehaviour
 
     private float GetReloadTime()
     {
-        return reloadTime * (bulletPrefab.isPlayerBullet ? Player.I.stats.reloadTime : 1f);
+        var applyStats = bulletPrefab != null && bulletPrefab.isPlayerBullet && !ignoreStatsScaling && !bulletPrefab.ignoreStatsScaling;
+        return reloadTime * (applyStats ? Player.I.stats.reloadTime : 1f);
     }
 
     public void Shoot()
     {
-        var playerOnlyMult = bulletPrefab.isPlayerBullet ? 1 : 0;
+        var playerOnlyMult = (bulletPrefab != null && bulletPrefab.isPlayerBullet && !ignoreStatsScaling && !bulletPrefab.ignoreStatsScaling) ? 1 : 0;
         var fireDelayUpgraded = GetFireRate();
         if (Time.time - lastFireTime < fireDelayUpgraded || AmmoInMagLeft <= 0)
             return;
         lastFireTime = Time.time;
         if (shootSound != null)
         {
-            SoundManager.I.PlaySfx(shootSound, transform.position);
+            SoundManager.I.PlaySfx(shootSound, bulletSpawn.position);
         }
         if (animator != null)
         {
@@ -103,8 +109,9 @@ public class Gun: MonoBehaviour
         var bulletsCount = numberOfBullets + (int)(numberOfBulletsStat * playerOnlyMult);
         for (var i = 0; i < bulletsCount; i++)
         {
-            var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity, Level.I.spawnedObjectsParent);
-            bullet.transform.localEulerAngles = transform.eulerAngles + Vector3.forward *
+            var bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity, Level.I.spawnedObjectsParent);
+            bullet.ignoreStatsScaling = ignoreStatsScaling || bulletPrefab.ignoreStatsScaling;
+            bullet.transform.localEulerAngles = bulletSpawn.eulerAngles + Vector3.forward *
                 ((i + 1) / 2 * spread * (i % 2 == 0 ? 1f : -1f) + Random.Range(-randomSpread, randomSpread));
             bullet.gameObject.SetActive(true);
             bullet.rb.linearVelocity = bullet.transform.right * bulletSpeed;

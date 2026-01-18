@@ -79,7 +79,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: -1
   m_Sprite: {fileID: 1027693686, guid: dc0591d220070da4c81ed15d7ccadf86, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -140,6 +140,7 @@ Transform:
   m_LocalScale: {x: 0.59999996, y: 0.59999996, z: 0.59999996}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6451553725065689209}
   - {fileID: 4809212831759161717}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -175,6 +176,7 @@ MonoBehaviour:
   magSize: 30
   mags: 1
   bulletSpeed: 30
+  ignoreStatsScaling: 0
   isSecondary: 1
   animator: {fileID: 8362390806292825961}
   reloadIndicator: {fileID: 0}
@@ -182,6 +184,38 @@ MonoBehaviour:
   gunStation: {fileID: 0}
   reloadTime: 5
   infiniteAmmo: 1
+  bulletSpawn: {fileID: 6451553725065689209}
   references:
     version: 2
     RefIds: []
+--- !u!1 &7436446735799991773
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6451553725065689209}
+  m_Layer: 0
+  m_Name: BulletSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6451553725065689209
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7436446735799991773}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.219, y: 0.19099991, z: 0}
+  m_LocalScale: {x: 1.6666667, y: 1.6666667, z: 1.6666667}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5939171616417792406}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

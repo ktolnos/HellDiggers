@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.Tilemaps;
@@ -7,6 +8,7 @@ public class HellCircleSettings: MonoBehaviour
 {
     public string circleName;
     public Color color;
+    public float lightIntensity = 1f;
     public TileData[] tileData;
     public float noiseThreshold = -0.2f;
     public float noiseFrequency = 0.15f;
@@ -25,6 +27,8 @@ public class HellCircleSettings: MonoBehaviour
         public bool randomRotation = true;
         
         public GameObject drop;
+        public List<GameObject> mandatoryDrops;
+        public List<GameObject> coSpawns;
         public float dropChance = 0f;
         public float contactDamage = 0f;
         public bool isSlippery = false;

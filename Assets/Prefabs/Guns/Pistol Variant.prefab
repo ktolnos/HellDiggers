@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &500185909349413304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3296354630054841379}
+  m_Layer: 0
+  m_Name: BulletSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3296354630054841379
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500185909349413304}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.729, y: 0.116, z: 0}
+  m_LocalScale: {x: 1.6666667, y: 1.6666667, z: 1.6666667}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8857914205756564887}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2359812922631343202
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,6 +171,7 @@ Transform:
   m_LocalScale: {x: 0.59999996, y: 0.59999996, z: 0.59999996}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3296354630054841379}
   - {fileID: 7655079781975375220}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -175,6 +207,7 @@ MonoBehaviour:
   magSize: 15
   mags: 1
   bulletSpeed: 35
+  ignoreStatsScaling: 0
   isSecondary: 0
   animator: {fileID: 6668882402195563368}
   reloadIndicator: {fileID: 0}
@@ -182,6 +215,7 @@ MonoBehaviour:
   gunStation: {fileID: 0}
   reloadTime: 5
   infiniteAmmo: 0
+  bulletSpawn: {fileID: 3296354630054841379}
   references:
     version: 2
     RefIds: []

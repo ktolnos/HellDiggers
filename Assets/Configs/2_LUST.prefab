@@ -29,6 +29,10 @@ PrefabInstance:
       value: LUST
       objectReference: {fileID: 0}
     - target: {fileID: 245593588932310992, guid: 0a8c85cb78b37c94cb1ba571d892345d, type: 3}
+      propertyPath: lightIntensity
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 245593588932310992, guid: 0a8c85cb78b37c94cb1ba571d892345d, type: 3}
       propertyPath: noiseThreshold
       value: -0.4
       objectReference: {fileID: 0}

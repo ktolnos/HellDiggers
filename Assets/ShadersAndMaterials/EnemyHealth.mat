@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Health
+  m_Name: EnemyHealth
   m_Shader: {fileID: -6465566751694194690, guid: 77ea2f383580322478d2b6078683e4fb, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -44,7 +44,7 @@ Material:
     - _ColorMask: 15
     - _OutlineThickness: 0.2
     - _PixelSize: 64
-    - _Progress: 0.9246605
+    - _Progress: 1
     - _Speed: 0.1
     - _Stencil: 0
     - _StencilComp: 8
@@ -59,9 +59,9 @@ Material:
     - _BgTint: {r: 0, g: 0, b: 0, a: 0}
     - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
     - _Corners: {r: 0, g: 0, b: 0, a: 0}
-    - _Outline: {r: 0, g: 0.3490566, b: 0.044157784, a: 1}
+    - _Outline: {r: 0.34901962, g: 0, b: 0.07615532, a: 1}
     - _RectTransformInfo: {r: 100, g: 100, b: 1, a: 100}
-    - _Tint: {r: 0.2735849, g: 1, b: 0.49112475, a: 1}
-    - _Tint2: {r: 0.008414077, g: 0.051886797, b: 0, a: 1}
+    - _Tint: {r: 1, g: 0.2745098, b: 0.27757308, a: 1}
+    - _Tint2: {r: 0.050980393, g: 0, b: 0.0063563106, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

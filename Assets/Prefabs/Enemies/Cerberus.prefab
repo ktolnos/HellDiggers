@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 4264243685574415769}
   - component: {fileID: -6909426825751664385}
   - component: {fileID: 5336521303594351288}
+  - component: {fileID: 2166266892108267985}
   m_Layer: 9
   m_Name: Cerberus
   m_TagString: Untagged
@@ -196,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53980114da74a3c93d4e48995964951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1000
+  maxHealth: 150
   currentHealth: 0
   isPlayer: 0
   isInvulnerable: 0
@@ -217,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c26e1fcc3a28084da5814bb4a36b689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loot: {fileID: 3094065808536684211, guid: ac05320947c1b194e82e3a703fe395eb, type: 3}
+  loot: {fileID: 1078107336986205061, guid: c741d7413158adb488e03d6b3b1d7b82, type: 3}
   effect: {fileID: 8550663166000491436, guid: f7590b10fe1023d4781edc2d207cb3f4, type: 3}
 --- !u!58 &1987329669404106224
 CircleCollider2D:
@@ -302,7 +303,7 @@ MonoBehaviour:
     - {fileID: -1318490378861924839, guid: 4534091136a335f4ab13027fbb973531, type: 3}
     - {fileID: 2114007438896755743, guid: 4534091136a335f4ab13027fbb973531, type: 3}
     fps: 4
-  explosionPrefab: {fileID: 3367513575900605123, guid: b36c3f71cdfaf05469d3fc01eb00ec12, type: 3}
+  explosionPrefab: {fileID: 3367513575900605123, guid: 81d5103f816fb0140ab24d0a2ed9171f, type: 3}
   offset: {x: 0, y: 0}
   attackDirectlyAtTarget: 1
 --- !u!114 &-6909426825751664385
@@ -327,7 +328,7 @@ MonoBehaviour:
     - {fileID: -6343372208914517778, guid: 4534091136a335f4ab13027fbb973531, type: 3}
     fps: 10
   invertSprite: 1
-  speed: 15
+  speed: 8
   jumpForce: 30
   jumpReload: 2
   mainCollider: {fileID: 0}
@@ -352,6 +353,18 @@ MonoBehaviour:
   waveDuration: 1
   numAttacksInWave: 10
   twoSides: 0
+--- !u!114 &2166266892108267985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4756907778912265882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09d38f270ac0a15469a746bb8ce2eb63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1001 &3287172141928584767
 PrefabInstance:
   m_ObjectHideFlags: 0

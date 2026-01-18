@@ -142,6 +142,7 @@ Transform:
   m_LocalScale: {x: 0.59999996, y: 0.59999996, z: 0.59999996}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5150213215936946540}
   - {fileID: 4809212831759161717}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -177,6 +178,7 @@ MonoBehaviour:
   magSize: 2
   mags: 6
   bulletSpeed: 25
+  ignoreStatsScaling: 0
   isSecondary: 0
   animator: {fileID: 8362390806292825961}
   reloadIndicator: {fileID: 0}
@@ -184,6 +186,38 @@ MonoBehaviour:
   gunStation: {fileID: 0}
   reloadTime: 2
   infiniteAmmo: 0
+  bulletSpawn: {fileID: 5150213215936946540}
   references:
     version: 2
     RefIds: []
+--- !u!1 &8299991670352518913
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5150213215936946540}
+  m_Layer: 0
+  m_Name: BulletSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5150213215936946540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8299991670352518913}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.97, y: 0.153, z: 0}
+  m_LocalScale: {x: 1.6666667, y: 1.6666667, z: 1.6666667}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5939171616417792406}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

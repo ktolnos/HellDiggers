@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class HUD: MonoBehaviour
 {
+    public static HUD I;
+    
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI moneyText;
     public TextMeshProUGUI ammoText;
@@ -21,8 +23,16 @@ public class HUD: MonoBehaviour
     public Image jetFuelIndicator;
     public RectTransform ammoPrefab;
     public RectTransform ammoContainer;
+    public RectTransform leftPanel;
+    public Image bossHealthBar;
+    public Canvas canvas;
     
     private static readonly int Progress = Shader.PropertyToID("_Progress");
+    
+    private void Awake()
+    {
+        I = this;
+    }
 
     private void Update()
     {
@@ -36,10 +46,9 @@ public class HUD: MonoBehaviour
         healthImage.rectTransform.sizeDelta = new Vector2(Player.I.health.maxHealth * 0.3f, healthImage.rectTransform.sizeDelta.y);
         healthImage.SetMaterialDirty();
         
-        jetFuelIndicator.gameObject.SetActive(Player.I.health.currentHealth > 0f);
         var stats = Player.I.stats;
         jetFuelIndicator.fillAmount =  Player.I.jetPackFuel / Player.I.stats.jetPackFuel;
-        jetFuelIndicator.rectTransform.sizeDelta = new Vector2(jetFuelIndicator.rectTransform.sizeDelta.x,  stats.jetPackFuel * 150f);
+        jetFuelIndicator.rectTransform.sizeDelta = new Vector2(jetFuelIndicator.rectTransform.sizeDelta.x,  stats.jetPackFuel * 30f);
         
         copperText.text = GM.I.resources.copper.ToString();
         ironText.text = GM.I.resources.iron.ToString();
@@ -52,11 +61,7 @@ public class HUD: MonoBehaviour
         goldText.transform.parent.gameObject.SetActive(GM.I.resources.gold > 0);
         emeraldText.transform.parent.gameObject.SetActive(GM.I.resources.emerald > 0);
         diamondText.transform.parent.gameObject.SetActive(GM.I.resources.diamond > 0);
-
-        healthImage.gameObject.SetActive(Level.I.currentCircleIndex >= 0);
-        jetFuelIndicator.gameObject.SetActive(Level.I.currentCircleIndex >= 0);
-        Player.I.dashIndicators[0].transform.parent.gameObject.SetActive(Level.I.currentCircleIndex >= 0);
-
+        
         var ammoCount = Player.I.gun.AmmoInMagLeft;
         ammoText.text = ammoCount + "/" + Player.I.gun.AmmoOutOfMagLeft;
         for(int i = ammoContainer.childCount; i < Player.I.gun.AmmoInMagLeft+1; i++)
@@ -68,6 +73,6 @@ public class HUD: MonoBehaviour
         {
             Destroy(ammoContainer.GetChild(i).gameObject);
         }
-        ammoContainer.gameObject.SetActive(Level.I.currentCircleIndex >= 0);
+        leftPanel.gameObject.SetActive(Level.I.currentCircleIndex >= 0);
     }
 }

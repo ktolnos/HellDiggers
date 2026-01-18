@@ -8,6 +8,7 @@ public class BombAnimator: MonoBehaviour
     public Color[] circleColors;
     public Sprite fullSprite;
     [FormerlySerializedAs("light")] public Light2D explosionLight;
+    public ParticleSystem windupParticles;
 
     public void Explode(float time)
     {
@@ -18,6 +19,7 @@ public class BombAnimator: MonoBehaviour
     {
         var particleSys = GetComponent<ParticleSystem>();
         var spriteRenderer = GetComponent<SpriteRenderer>();
+        windupParticles.Play();
 
         var startTime = Time.time;
 
@@ -27,6 +29,9 @@ public class BombAnimator: MonoBehaviour
             spriteRenderer.color = circleColors[(i++)  % circleColors.Length];
             yield return new WaitForSeconds(0.1f);
         }
+        windupParticles.Stop();
+        windupParticles.Clear();
+        windupParticles.gameObject.SetActive(false);
         particleSys.Play();
         spriteRenderer.sprite = fullSprite;
         spriteRenderer.color = Color.white;

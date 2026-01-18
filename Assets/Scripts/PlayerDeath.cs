@@ -46,7 +46,7 @@ public class PlayerDeath: MonoBehaviour, IDeathHandler
 
     public void PlayAgain()
     {
-        Player.I.transform.position = new Vector3(0, 0, 0);
+        Player.I.transform.position = new Vector3(0, 1, 0);
         UpgradesController.I.HideUpgrades();
         playerLight.intensity = startIntensity;
         playerLight.pointLightOuterRadius = startRadius;
@@ -56,6 +56,7 @@ public class PlayerDeath: MonoBehaviour, IDeathHandler
         Player.I.rb.bodyType = RigidbodyType2D.Dynamic;
         Player.I.rb.linearVelocity = Vector2.zero;
         startGold = GM.I.money;
+        Player.I.collectedKeys.Clear();
     }
 
     private IEnumerator DeathAnimation()

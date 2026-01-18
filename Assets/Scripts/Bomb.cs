@@ -27,7 +27,7 @@ public class Bomb : MonoBehaviour
         
         for (var i = 0; i < explosionDelay * bipsPerSecond; i++)
         {
-            SoundManager.I.PlaySfx(explosionBip, pos, randomizePitch: false);
+            SoundManager.I.PlaySfx(explosionBip, pos, randomizePitch: false, pitch: 0.9f + 0.3f * (i / (explosionDelay * bipsPerSecond)));
             yield return new WaitForSeconds(1f / bipsPerSecond);
         }
         SoundManager.I.PlaySfx(explosionSound, pos, 20f);

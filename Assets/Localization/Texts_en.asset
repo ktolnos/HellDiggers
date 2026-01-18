@@ -186,6 +186,14 @@ MonoBehaviour:
     m_Localized: Ricochets
     m_Metadata:
       m_Items: []
+  - m_Id: 51169720392519680
+    m_Localized: Ricoshot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51171103938220032
+    m_Localized: Sniper rifle
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

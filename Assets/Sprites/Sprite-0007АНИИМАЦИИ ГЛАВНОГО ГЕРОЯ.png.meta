@@ -660,6 +660,52 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: "Sprite-0007\u0410\u041D\u0418\u0418\u041C\u0410\u0426\u0418\u0418 \u0413\u041B\u0410\u0412\u041D\u041E\u0413\u041E
+        \u0413\u0415\u0420\u041E\u042F_21"
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 12
+        width: 31
+        height: 9
+      alignment: 9
+      pivot: {x: 0.37582758, y: 0.32280868}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81d5680102f449e418527b27fdb23cb1
+      internalID: 498086458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Sprite-0007\u0410\u041D\u0418\u0418\u041C\u0410\u0426\u0418\u0418 \u0413\u041B\u0410\u0412\u041D\u041E\u0413\u041E
+        \u0413\u0415\u0420\u041E\u042F_22"
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 12
+        width: 26
+        height: 10
+      alignment: 9
+      pivot: {x: 0.18697636, y: 0.37352267}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc5b8dc734c523b478ee1b9f794f5db9
+      internalID: -20429112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -674,7 +720,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":2,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       "Sprite-0007\u0410\u041D\u0418\u0418\u041C\u0410\u0426\u0418\u0418 \u0413\u041B\u0410\u0412\u041D\u041E\u0413\u041E \u0413\u0415\u0420\u041E\u042F_0": 1733125883310400045
       "Sprite-0007\u0410\u041D\u0418\u0418\u041C\u0410\u0426\u0418\u0418 \u0413\u041B\u0410\u0412\u041D\u041E\u0413\u041E \u0413\u0415\u0420\u041E\u042F_1": 5636491660164283611
@@ -690,6 +736,8 @@ TextureImporter:
       "Sprite-0007\u0410\u041D\u0418\u0418\u041C\u0410\u0426\u0418\u0418 \u0413\u041B\u0410\u0412\u041D\u041E\u0413\u041E \u0413\u0415\u0420\u041E\u042F_19": 1811869116
       "Sprite-0007\u0410\u041D\u0418\u0418\u041C\u0410\u0426\u0418\u0418 \u0413\u041B\u0410\u0412\u041D\u041E\u0413\u041E \u0413\u0415\u0420\u041E\u042F_2": -8572915913900680934
       "Sprite-0007\u0410\u041D\u0418\u0418\u041C\u0410\u0426\u0418\u0418 \u0413\u041B\u0410\u0412\u041D\u041E\u0413\u041E \u0413\u0415\u0420\u041E\u042F_20": -1187439362
+      "Sprite-0007\u0410\u041D\u0418\u0418\u041C\u0410\u0426\u0418\u0418 \u0413\u041B\u0410\u0412\u041D\u041E\u0413\u041E \u0413\u0415\u0420\u041E\u042F_21": 498086458
+      "Sprite-0007\u0410\u041D\u0418\u0418\u041C\u0410\u0426\u0418\u0418 \u0413\u041B\u0410\u0412\u041D\u041E\u0413\u041E \u0413\u0415\u0420\u041E\u042F_22": -20429112
       "Sprite-0007\u0410\u041D\u0418\u0418\u041C\u0410\u0426\u0418\u0418 \u0413\u041B\u0410\u0412\u041D\u041E\u0413\u041E \u0413\u0415\u0420\u041E\u042F_3": -6664784136542237365
       "Sprite-0007\u0410\u041D\u0418\u0418\u041C\u0410\u0426\u0418\u0418 \u0413\u041B\u0410\u0412\u041D\u041E\u0413\u041E \u0413\u0415\u0420\u041E\u042F_4": 7444687673821027986
       "Sprite-0007\u0410\u041D\u0418\u0418\u041C\u0410\u0426\u0418\u0418 \u0413\u041B\u0410\u0412\u041D\u041E\u0413\u041E \u0413\u0415\u0420\u041E\u042F_5": 5009485664987184159

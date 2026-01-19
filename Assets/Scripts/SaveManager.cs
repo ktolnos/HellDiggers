@@ -51,7 +51,13 @@ public class SaveManager : MonoBehaviour
             highScore = HighScoreManager.I.highScore,
             currentGunId = Player.I.currentGunId,
             secondaryGunId = Player.I.secondaryGunId,
-            purchasedGuns = GunStation.purchasedGuns.ToList()
+            purchasedGuns = GunStation.purchasedGuns.ToList(),
+            settingsState = new SettingsState
+            {
+                musicVolume = SoundManager.I.musicVolume,
+                sfxVolume = SoundManager.I.sfxVolume,
+                masterVolume = SoundManager.I.masterVolume
+            }
         };
         var json = JsonUtility.ToJson(saveState, true);
         System.IO.FileInfo file = new System.IO.FileInfo(SaveFilePath);
@@ -99,6 +105,11 @@ public class SaveManager : MonoBehaviour
         HighScoreManager.I.latestScore = saveState.latestScore;
         HighScoreManager.I.highScore = saveState.highScore;
         GunStation.purchasedGuns = new HashSet<string>(saveState.purchasedGuns);
+        
+        SoundManager.I.musicVolume = saveState.settingsState.musicVolume;
+        SoundManager.I.sfxVolume = saveState.settingsState.sfxVolume;
+        SoundManager.I.masterVolume = saveState.settingsState.masterVolume;
+        
         onLoad?.Invoke();
     }
 
@@ -114,6 +125,15 @@ public class SaveManager : MonoBehaviour
         public string currentGunId;
         public string secondaryGunId;
         public List<string> purchasedGuns;
+        public SettingsState settingsState = new SettingsState();
+    }
+    
+    [Serializable]
+    private class SettingsState
+    {
+        public float musicVolume = 0.1f;
+        public float sfxVolume = 0.1f;
+        public float masterVolume = 0.1f;
     }
     
     

@@ -2453,6 +2453,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GunStation (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3790581297914079931, guid: f4dc45cf2a5fc514d8687a1ff5158b44, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4466470213789613043, guid: f4dc45cf2a5fc514d8687a1ff5158b44, type: 3}
       propertyPath: animation.frames.Array.size
       value: 1
@@ -2538,6 +2542,10 @@ PrefabInstance:
     - target: {fileID: 3790581297914079931, guid: f4dc45cf2a5fc514d8687a1ff5158b44, type: 3}
       propertyPath: m_Name
       value: GunStation (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790581297914079931, guid: f4dc45cf2a5fc514d8687a1ff5158b44, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4466470213789613043, guid: f4dc45cf2a5fc514d8687a1ff5158b44, type: 3}
       propertyPath: animation.frames.Array.size
@@ -2625,6 +2633,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GunStation (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3790581297914079931, guid: f4dc45cf2a5fc514d8687a1ff5158b44, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4466470213789613043, guid: f4dc45cf2a5fc514d8687a1ff5158b44, type: 3}
       propertyPath: animation.frames.Array.size
       value: 1
@@ -2710,6 +2722,10 @@ PrefabInstance:
     - target: {fileID: 3790581297914079931, guid: f4dc45cf2a5fc514d8687a1ff5158b44, type: 3}
       propertyPath: m_Name
       value: SecondaryGunStation (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790581297914079931, guid: f4dc45cf2a5fc514d8687a1ff5158b44, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4466470213789613043, guid: f4dc45cf2a5fc514d8687a1ff5158b44, type: 3}
       propertyPath: animation.frames.Array.size
@@ -2805,6 +2821,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GunStation (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 3790581297914079931, guid: f4dc45cf2a5fc514d8687a1ff5158b44, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4466470213789613043, guid: f4dc45cf2a5fc514d8687a1ff5158b44, type: 3}
       propertyPath: animation.frames.Array.size
       value: 1
@@ -2890,6 +2910,10 @@ PrefabInstance:
     - target: {fileID: 3790581297914079931, guid: f4dc45cf2a5fc514d8687a1ff5158b44, type: 3}
       propertyPath: m_Name
       value: SecondaryGunStation (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790581297914079931, guid: f4dc45cf2a5fc514d8687a1ff5158b44, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4466470213789613043, guid: f4dc45cf2a5fc514d8687a1ff5158b44, type: 3}
       propertyPath: animation.frames.Array.size
@@ -2985,6 +3009,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GunStation (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3790581297914079931, guid: f4dc45cf2a5fc514d8687a1ff5158b44, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4466470213789613043, guid: f4dc45cf2a5fc514d8687a1ff5158b44, type: 3}
       propertyPath: animation.frames.Array.size
       value: 1
@@ -3071,6 +3099,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GunStation (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3790581297914079931, guid: f4dc45cf2a5fc514d8687a1ff5158b44, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4466470213789613043, guid: f4dc45cf2a5fc514d8687a1ff5158b44, type: 3}
       propertyPath: animation.frames.Array.size
       value: 1
@@ -3152,6 +3184,10 @@ PrefabInstance:
     - target: {fileID: 3790581297914079931, guid: f4dc45cf2a5fc514d8687a1ff5158b44, type: 3}
       propertyPath: m_Name
       value: GunStation
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790581297914079931, guid: f4dc45cf2a5fc514d8687a1ff5158b44, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8688455262880744394, guid: f4dc45cf2a5fc514d8687a1ff5158b44, type: 3}
       propertyPath: m_LocalPosition.x

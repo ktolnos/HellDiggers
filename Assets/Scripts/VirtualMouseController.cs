@@ -28,6 +28,7 @@ public class VirtualMouseController : MonoBehaviour
     {
         _lookAction = InputSystem.actions.FindAction("Look");
         lastLook = Vector2.right;
+        Cursor.visible = false;
     }
     private void LateUpdate()
     {
@@ -51,5 +52,10 @@ public class VirtualMouseController : MonoBehaviour
             mousePosition = Mouse.current.position.ReadValue();
             cursorImage.rectTransform.anchoredPosition = mousePosition / HUD.I.canvas.scaleFactor;
         }
+    }
+
+    private void OnDestroy()
+    {
+        Cursor.visible = true;
     }
 }

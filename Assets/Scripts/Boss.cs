@@ -26,6 +26,9 @@ public class Boss : MonoBehaviour
 
     private void OnDestroy()
     {
-        healthBar.gameObject.SetActive(false);
+        if (healthBar != null)
+        {
+            healthBar.gameObject.SetActive(false);
+        }
     }
 }

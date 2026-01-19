@@ -9,7 +9,6 @@ public class InputController: MonoBehaviour
     {
         I = this;
         CurrentInputType = InputType.Mouse;
-        Cursor.visible = false;
     }
     
     private void Start()
@@ -34,7 +33,6 @@ public class InputController: MonoBehaviour
                 Debug.Log($"Input changed to {newType}");
             }
             CurrentInputType = newType;
-            Cursor.visible = false; //CurrentInputType == InputType.Mouse;
         }
     }
     

@@ -2,6 +2,7 @@
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class UpgradesPanel: MonoBehaviour, IDragHandler
 {
@@ -24,11 +25,20 @@ public class UpgradesPanel: MonoBehaviour, IDragHandler
     public void OnDrag(PointerEventData data)
     {
         rectTransform.anchoredPosition += data.delta / UpgradesController.I.upgradeUI.scaleFactor;
+        rectTransform.anchoredPosition = Vector2.ClampMagnitude(rectTransform.anchoredPosition, 1000);
         isCentering = false;
     }
 
     private void Update()
     {
+        var targetScale = rectTransform.localScale.x;
+        targetScale += Mouse.current.scroll.ReadValue().y * Time.deltaTime;
+        targetScale = Mathf.Clamp(targetScale, 0.4f, 1f);
+        if (targetScale != rectTransform.localScale.x)
+        {
+            rectTransform.localScale = new Vector3(targetScale, targetScale, 1f);
+        }
+        
         if (!isCentering) return;
         centerAnimTime += Time.unscaledDeltaTime;
         float t = Mathf.Clamp01(centerAnimTime / centerAnimDuration);

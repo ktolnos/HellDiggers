@@ -245,15 +245,16 @@ public class Level : MonoBehaviour
         }
     }
 
-    public void Explode(Vector3 position, float radius, float enemyDamage, float groundDamage, DamageDealerType type, float recoil = 0f)
+    public void Explode(Vector3 position, float radius, float enemyDamage, float groundDamage, DamageDealerType type, float recoil = 0f, bool showDamageNumbers=false)
     {
-        DamageTiles(position, radius, groundDamage);
-        GM.DamageEntities(position, radius, enemyDamage, type, recoil:recoil);
+        DamageTiles(position, radius, groundDamage, showDamageNumbers:showDamageNumbers);
+        GM.DamageEntities(position, radius, enemyDamage, type, recoil:recoil, showDamageNumbers:showDamageNumbers);
     }
 
     public void DamageTilesCapsule(Vector3 start, Vector3 end, float radius, float groundDamage,
         HashSet<Vector3Int> damagedTiles = null,
-        HashSet<Vector3Int> ignoreTiles = null)
+        HashSet<Vector3Int> ignoreTiles = null,
+        bool showDamageNumbers = false)
     {
         Vector3 segment = end - start;
         float sqrLen = segment.sqrMagnitude;
@@ -280,6 +281,10 @@ public class Level : MonoBehaviour
                 Vector3 closestPoint = start + (segment * t);
                 if (DamageTile(tileInfo, radius, groundDamage, closestPoint))
                 {
+                    if (showDamageNumbers)
+                    {
+                        WorldCanvas.I.ShowDamageNumber(grid.GetCellCenterWorld(tilePos), groundDamage);
+                    }
                     damagedTiles?.Add(tilePos);
                 }
             }
@@ -288,7 +293,8 @@ public class Level : MonoBehaviour
 
     public void DamageTiles(Vector3 position, float radius, float groundDamage,
         HashSet<Vector3Int> damagedTiles = null,
-        HashSet<Vector3Int> ignoreTiles = null)
+        HashSet<Vector3Int> ignoreTiles = null,
+        bool showDamageNumbers = false)
     {
         var radiusCeil = Mathf.CeilToInt(radius);
         var cellPos = grid.WorldToCell(position);
@@ -300,9 +306,16 @@ public class Level : MonoBehaviour
                 var tileInfo = tileInfos.GetValueOrDefault(tilePos, null);
                 if (tileInfo != null && (ignoreTiles == null || !ignoreTiles.Contains(tilePos)))
                 {
-                    if (DamageTile(tileInfo, radius, groundDamage, position) && damagedTiles != null)
+                    if (DamageTile(tileInfo, radius, groundDamage, position))
                     {
-                        damagedTiles.Add(tilePos);
+                        if (damagedTiles != null)
+                        {
+                            damagedTiles.Add(tilePos);
+                        }
+                        if (showDamageNumbers)
+                        {
+                            WorldCanvas.I.ShowDamageNumber(grid.GetCellCenterWorld(tilePos), groundDamage);
+                        }
                     }
                 }
             }
@@ -609,6 +622,16 @@ public class Level : MonoBehaviour
                 GameObjectPoolManager.I.Release(child.gameObject);
             }
         }
+        
+        for (int i = WorldCanvas.I.transform.childCount - 1; i >= 0; i--)
+        {
+            var child = WorldCanvas.I.transform.GetChild(i);
+            if (child != null && child.gameObject.activeInHierarchy)
+            {
+                GameObjectPoolManager.I.Release(child.gameObject);
+            }
+        }
+        
     }
 
     public class TileInfo

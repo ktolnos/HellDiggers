@@ -28,23 +28,23 @@ public class GM: MonoBehaviour
         closeAction.performed += ctx => PopTopUI();
     }
     
-    public static HashSet<Health> DamageEntities(Vector3 position, float radius, float damage, DamageDealerType type, HashSet<Health> excluded = null, float recoil = 0)
+    public static HashSet<Health> DamageEntities(Vector3 position, float radius, float damage, DamageDealerType type, HashSet<Health> excluded = null, float recoil = 0, bool showDamageNumbers = false)
     {
         var colliders = Physics2D.OverlapCircleAll(position, radius);
-        return DamageEntities(colliders, damage, type, excluded, position, recoil);
+        return DamageEntities(colliders, damage, type, excluded, position, recoil, showDamageNumbers);
     }
     
-    public static HashSet<Health> DamageEntitiesCapsule(Vector3 start, Vector3 end, float radius, float damage, DamageDealerType type, HashSet<Health> excluded)
+    public static HashSet<Health> DamageEntitiesCapsule(Vector3 start, Vector3 end, float radius, float damage, DamageDealerType type, HashSet<Health> excluded, bool showDamageNumbers = false)
     {
         var colliders = Physics2D.OverlapCapsuleAll((start + end) / 2, new Vector2(radius * 2, Vector3.Distance(start, end)), CapsuleDirection2D.Vertical, 
             Mathf.Atan2(end.y - start.y, end.x - start.x) * Mathf.Rad2Deg);
-        return DamageEntities(colliders, damage, type, excluded, start, 0f);
+        return DamageEntities(colliders, damage, type, excluded, start, 0f, showDamageNumbers);
     }
 
 
 
     private static HashSet<Health> DamageEntities(Collider2D[] colliders, float damage, DamageDealerType type,
-        HashSet<Health> excluded, Vector3 sourcePosition, float recoil)
+        HashSet<Health> excluded, Vector3 sourcePosition, float recoil, bool showDamageNumbers)
     {
         var healths = new HashSet<Health>();
         foreach (var col in colliders)
@@ -63,6 +63,10 @@ public class GM: MonoBehaviour
                 if (health.hasRb)
                 {
                     health.rb.AddForce((health.rb.position - (Vector2)sourcePosition).normalized * recoil, ForceMode2D.Impulse);
+                }
+                if (showDamageNumbers)
+                {
+                    WorldCanvas.I.ShowDamageNumber(sourcePosition, damage);
                 }
             }
         }

@@ -102,7 +102,7 @@ public class Bullet: MonoBehaviour
         var finalEnemyDamage = GetEnemyDamage();
         var finalGroundDamage = GetGroundDamage();
         var damageType = isPlayerBullet ? DamageDealerType.Player : DamageDealerType.Enemy;
-        Level.I.Explode(pos, finalExplosionRadius, finalEnemyDamage, finalGroundDamage, damageType);
+        Level.I.Explode(pos, finalExplosionRadius, finalEnemyDamage, finalGroundDamage, damageType, showDamageNumbers:isPlayerBullet);
         if (effect != null)
         {
             Destroy(Instantiate(effect, pos, Quaternion.identity, Level.I.spawnedObjectsParent), 2f);
@@ -136,7 +136,7 @@ public class Bullet: MonoBehaviour
             
             var damageType = isPlayerBullet ? DamageDealerType.Player : DamageDealerType.Enemy;
             var newDamagedEntities = GM.DamageEntitiesCapsule(prevPos, rb.position, GetExplosionRadius(), 
-                GetEnemyDamage(), damageType, damagedEntities);
+                GetEnemyDamage(), damageType, damagedEntities, showDamageNumbers:isPlayerBullet);
             if (damagedEntities == null)
             {
                 damagedEntities = newDamagedEntities;
@@ -151,7 +151,7 @@ public class Bullet: MonoBehaviour
                 damagedTiles = new HashSet<Vector3Int>();
             }
             Level.I.DamageTilesCapsule(prevPos, rb.position, GetExplosionRadius(), 
-                GetGroundDamage(), damagedTiles, ignoreTiles:damagedTiles);
+                GetGroundDamage(), damagedTiles, ignoreTiles:damagedTiles, showDamageNumbers:isPlayerBullet);
             yield return null;
             prevPos = rb.position;
         }

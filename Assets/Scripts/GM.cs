@@ -28,23 +28,23 @@ public class GM: MonoBehaviour
         closeAction.performed += ctx => PopTopUI();
     }
     
-    public static HashSet<Health> DamageEntities(Vector3 position, float radius, float damage, DamageDealerType type, HashSet<Health> excluded = null)
+    public static HashSet<Health> DamageEntities(Vector3 position, float radius, float damage, DamageDealerType type, HashSet<Health> excluded = null, float recoil = 0)
     {
         var colliders = Physics2D.OverlapCircleAll(position, radius);
-        return DamageEntities(colliders, damage, type, excluded);
+        return DamageEntities(colliders, damage, type, excluded, position, recoil);
     }
     
     public static HashSet<Health> DamageEntitiesCapsule(Vector3 start, Vector3 end, float radius, float damage, DamageDealerType type, HashSet<Health> excluded)
     {
         var colliders = Physics2D.OverlapCapsuleAll((start + end) / 2, new Vector2(radius * 2, Vector3.Distance(start, end)), CapsuleDirection2D.Vertical, 
             Mathf.Atan2(end.y - start.y, end.x - start.x) * Mathf.Rad2Deg);
-        return DamageEntities(colliders, damage, type, excluded);
+        return DamageEntities(colliders, damage, type, excluded, start, 0f);
     }
 
 
 
     private static HashSet<Health> DamageEntities(Collider2D[] colliders, float damage, DamageDealerType type,
-        HashSet<Health> excluded)
+        HashSet<Health> excluded, Vector3 sourcePosition, float recoil)
     {
         var healths = new HashSet<Health>();
         foreach (var col in colliders)
@@ -60,6 +60,10 @@ public class GM: MonoBehaviour
             if (health != null)
             {
                 health.Damage(damage, type);
+                if (health.hasRb)
+                {
+                    health.rb.AddForce((health.rb.position - (Vector2)sourcePosition).normalized * recoil, ForceMode2D.Impulse);
+                }
             }
         }
 

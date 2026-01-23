@@ -22,6 +22,8 @@ public class Health: MonoBehaviour
     private bool isRunningHurtFlash = false;
     public delegate void OnDamageTaken(float damage, DamageDealerType type);
     public OnDamageTaken onDamageTaken;
+    public Rigidbody2D rb;
+    public bool hasRb;
     
     private void Start()
     {
@@ -31,6 +33,7 @@ public class Health: MonoBehaviour
         {
             defaultMaterial = hurtAnimation.material;
         }
+        hasRb = TryGetComponent(out rb);
     }
     
     public void Damage(float damage, DamageDealerType type)

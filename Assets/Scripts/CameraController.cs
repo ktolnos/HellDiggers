@@ -10,6 +10,10 @@ public class CameraController : MonoBehaviour
     public float scopeBias = 0.5f; // Bias for the camera position when scoped
     private Vector3 offset;
     public float speed = 1f;
+    private float shakeStartTime = -100f;
+    private Vector3 shakePosition;
+    private Vector3 shakeRotation;
+    
 
     private void Awake()
     {
@@ -35,11 +39,36 @@ public class CameraController : MonoBehaviour
         }
 
         transform.position = new Vector3(posX, transform.position.y, transform.position.z);
+        float shakeDuration = 0.2f;
+        if (Time.time - shakeStartTime < shakeDuration)
+        {
+            float shakeAmount = 0.5f * (1f - (Time.time - shakeStartTime) / shakeDuration);
+            shakePosition = new Vector3(
+                UnityEngine.Random.Range(-shakeAmount, shakeAmount),
+                UnityEngine.Random.Range(-shakeAmount, shakeAmount),
+                0f);
+            shakeRotation = new Vector3(
+                0f,
+                0f,
+                UnityEngine.Random.Range(-shakeAmount * 2f, shakeAmount * 2f));
+        }
+        else
+        {
+            shakePosition = Vector3.zero;
+            shakeRotation = Vector3.zero;
+        }
+        transform.position += shakePosition;
+        transform.rotation = Quaternion.Euler(shakeRotation);
     }
     
     public static bool IsObjectVisible(Renderer renderer)
     {
         Plane[] planes = GeometryUtility.CalculateFrustumPlanes(I.cam);
         return GeometryUtility.TestPlanesAABB(planes, renderer.bounds);
+    }
+    
+    public void Shake()
+    {
+        shakeStartTime = Time.time;
     }
 }

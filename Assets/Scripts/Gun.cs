@@ -39,6 +39,9 @@ public class Gun: MonoBehaviour
     private float reloadStartTime = -1000f;
     public bool infiniteAmmo = true;
     public Transform bulletSpawn;
+    public float recoilForce = 1f;
+    private Rigidbody2D rb;
+    private bool hasRB = false;
 
     private void Update()
     {
@@ -106,7 +109,11 @@ public class Gun: MonoBehaviour
             animator.PlayOnce();
         }
         var numberOfBulletsStat = isSecondary ? Player.I.stats.numberOfGrenadesPerLaunch : Player.I.stats.numberOfBullets;
-        var bulletsCount = numberOfBullets + (int)(numberOfBulletsStat * playerOnlyMult);
+        var bulletsCount = numberOfBullets * (1+(int)(numberOfBulletsStat * playerOnlyMult));
+        if (hasRB)
+        {
+            rb.AddForce(-bulletSpawn.right * recoilForce * bulletsCount, ForceMode2D.Impulse);
+        }
         for (var i = 0; i < bulletsCount; i++)
         {
             var bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity, Level.I.spawnedObjectsParent);
@@ -155,5 +162,7 @@ public class Gun: MonoBehaviour
         isReloading = false;
         AmmoInMagLeft = GetMagSize();
         AmmoOutOfMagLeft = GetTotalAmmo() - GetMagSize();
+        rb = GetComponentInParent<Rigidbody2D>();
+        hasRB = rb != null;
     }
 }

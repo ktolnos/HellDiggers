@@ -232,8 +232,22 @@ public class Player : MonoBehaviour
         }
         else
         {
-            rb.linearVelocityX = moveVelocity.x;
+            if (Mathf.Abs(moveInput.x) > 0.01f)
+            {
+                rb.linearVelocityX = moveVelocity.x;
+            }
+            else // apply friction
+            {
+                
+                rb.linearVelocityX *= 1.0f / (1.0f + Time.fixedDeltaTime * 10f);
+                if (Mathf.Abs(rb.linearVelocityX) < 0.2f)
+                {
+                    rb.linearVelocityX = 0f;
+                }
+            }
         }
+        
+        rb.linearVelocityY = Mathf.Min(rb.linearVelocityY, 20f); // Cap upward velocity
         if (isDashing)
         {
             rb.linearVelocityX = dashDirection * dashSpeed;
@@ -295,6 +309,10 @@ public class Player : MonoBehaviour
                     enemyDamage:stats.groundPoundEnemyDamage,
                     groundDamage:stats.groundPoundDiggingDamage,
                     DamageDealerType.Player);
+                if (scale > 5f)
+                {
+                    CameraController.I.Shake();
+                }
                 var effect = Instantiate(groundPoundEffectPrefab, transform.position, Quaternion.identity,
                     Level.I.spawnedObjectsParent);
                 effect.transform.localScale *= scale;

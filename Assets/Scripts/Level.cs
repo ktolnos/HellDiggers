@@ -245,10 +245,10 @@ public class Level : MonoBehaviour
         }
     }
 
-    public void Explode(Vector3 position, float radius, float enemyDamage, float groundDamage, DamageDealerType type)
+    public void Explode(Vector3 position, float radius, float enemyDamage, float groundDamage, DamageDealerType type, float recoil = 0f)
     {
         DamageTiles(position, radius, groundDamage);
-        GM.DamageEntities(position, radius, enemyDamage, type);
+        GM.DamageEntities(position, radius, enemyDamage, type, recoil:recoil);
     }
 
     public void DamageTilesCapsule(Vector3 start, Vector3 end, float radius, float groundDamage,

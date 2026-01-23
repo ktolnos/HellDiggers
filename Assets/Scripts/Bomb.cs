@@ -32,7 +32,8 @@ public class Bomb : MonoBehaviour
         }
         SoundManager.I.PlaySfx(explosionSound, pos, 20f);
         Level.I.Explode(pos, explosionRadius, explosionEnemyDamage, explosionGroundDamage,
-            DamageDealerType.Environment);
+            DamageDealerType.Environment, recoil:20f);
         GameObjectPoolManager.I.Release(gameObject);
+        CameraController.I.Shake();
     }
 }

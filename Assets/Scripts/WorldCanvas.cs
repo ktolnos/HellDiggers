@@ -12,11 +12,11 @@ public class WorldCanvas : MonoBehaviour
         I = this;
     }
     
-    public void ShowDamageNumber(Vector3 worldPosition, float damageAmount, bool isCritical=false)
+    public void ShowDamageNumber(Vector3 worldPosition, float damageAmount)
     {
         var pool = GameObjectPoolManager.I.GetOrRegisterPool(damageNumberPrefab.gameObject,
             transform, maxSize:15);
-        var damageNumberObj = pool.InstantiateTemporarily(worldPosition, time: 0.5f);
+        var damageNumberObj = pool.InstantiateTemporarily(worldPosition, time: damageNumberPrefab.duration);
         var damageNumber = damageNumberObj.GetComponent<DamageNumber>();
         var damageText = Mathf.RoundToInt(damageAmount).ToString();
         if (damageAmount < 10f)
@@ -25,6 +25,5 @@ public class WorldCanvas : MonoBehaviour
         }
 
         damageNumber.text.text = damageText;
-        damageNumber.text.color = isCritical ? Color.red : Color.white;
     }
 }

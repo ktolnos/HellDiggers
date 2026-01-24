@@ -9,6 +9,7 @@ public class BombAnimator: MonoBehaviour
     public Sprite fullSprite;
     [FormerlySerializedAs("light")] public Light2D explosionLight;
     public ParticleSystem windupParticles;
+    public bool skipWindup = false;
 
     public void Explode(float time)
     {
@@ -27,6 +28,10 @@ public class BombAnimator: MonoBehaviour
         while (Time.time < startTime + time)
         {
             spriteRenderer.color = circleColors[(i++)  % circleColors.Length];
+            if (skipWindup)
+            {
+                break;
+            }
             yield return new WaitForSeconds(0.1f);
         }
         windupParticles.Stop();

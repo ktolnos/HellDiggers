@@ -206,12 +206,12 @@ public class Player : MonoBehaviour
         if (rb.linearVelocityX != 0f)
         {
             animator.animation = walkAnimation;
-            animator.spriteRenderer.flipX = rb.linearVelocityX < 0f;
         }
         else
         {
             animator.animation = idleAnimation;
         }
+        animator.spriteRenderer.flipX = dashDirection < 0f;
     }
 
     private void FixedUpdate()

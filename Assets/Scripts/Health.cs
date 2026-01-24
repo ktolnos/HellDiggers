@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -96,6 +97,11 @@ public class Health: MonoBehaviour
     {
         currentHealth = maxHealth;
         isDead = false;
+    }
+
+    private void OnDisable()
+    {
+        Revive();
     }
 
     private IEnumerator AnimateHurt()

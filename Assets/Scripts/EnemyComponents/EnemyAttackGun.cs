@@ -35,6 +35,6 @@ public class EnemyAttackGun : EnemyAttack
             }
         }
 
-        gun.Shoot();
+        yield return gun.Shoot();
     }
 }

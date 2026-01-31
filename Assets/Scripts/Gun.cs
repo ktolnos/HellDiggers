@@ -93,12 +93,12 @@ public class Gun: MonoBehaviour
         return reloadTime * (applyStats ? Player.I.stats.reloadTime : 1f);
     }
 
-    public void Shoot()
+    public IEnumerator Shoot()
     {
         var playerOnlyMult = (bulletPrefab != null && bulletPrefab.isPlayerBullet && !ignoreStatsScaling && !bulletPrefab.ignoreStatsScaling) ? 1 : 0;
         var fireDelayUpgraded = GetFireRate();
         if (Time.time - lastFireTime < fireDelayUpgraded || AmmoInMagLeft <= 0)
-            return;
+            yield break;
         lastFireTime = Time.time;
         if (shootSound != null)
         {
@@ -123,6 +123,7 @@ public class Gun: MonoBehaviour
             bullet.gameObject.SetActive(true);
             bullet.rb.linearVelocity = bullet.transform.right * bulletSpeed;
             Destroy(bullet.gameObject, bulletLifeTime);
+            yield return new WaitForFixedUpdate();
         }
         if (!infiniteAmmo)
         {
@@ -130,7 +131,7 @@ public class Gun: MonoBehaviour
         }
         if (AmmoInMagLeft <= 0)
         {
-            StartCoroutine(Reload());
+            yield return Reload();
         }
     }
 

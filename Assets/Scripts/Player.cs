@@ -158,7 +158,7 @@ public class Player : MonoBehaviour
         gun.animator.spriteRenderer.flipY = gunVector.x < 0f;
         if (shootAction.IsPressed())
         {
-            gun.Shoot();
+            StartCoroutine(gun.Shoot());
         }
 
         if (secondaryGun != null)
@@ -169,7 +169,7 @@ public class Player : MonoBehaviour
             secondaryGun.animator.spriteRenderer.flipY = gunVector.x < 0f;
             if (grenadeAction.IsPressed())
             {
-                secondaryGun.Shoot();
+                StartCoroutine(secondaryGun.Shoot());
             }
         }
 

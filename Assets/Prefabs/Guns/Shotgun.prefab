@@ -178,7 +178,7 @@ MonoBehaviour:
   price: 50
   magSize: 2
   mags: 6
-  bulletSpeed: 25
+  bulletSpeed: 35
   ignoreStatsScaling: 0
   isSecondary: 0
   animator: {fileID: 8362390806292825961}

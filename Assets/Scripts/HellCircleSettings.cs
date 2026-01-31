@@ -23,6 +23,8 @@ public class HellCircleSettings: MonoBehaviour
         public TileBase[] variants;
         public float maxHp = 1f;
         public float spawnChance = 1f;
+        public AnimationCurve spawnChanceCurve = AnimationCurve.Constant(0, 1, 1);
+        public bool ridged = false;
         public float surfaceSpawnChanceMult = 1f;
         public bool randomRotation = true;
         

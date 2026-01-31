@@ -89,12 +89,6 @@ public class Level : MonoBehaviour
         timeOfFloorStart = Time.time;
         levelBg.color = circleConfig.color;
 
-        var totalTiles = width * height + wallsHeight * 4;
-        var tilePositions = new Vector3Int[totalTiles];
-        var tiles = new TileBase[totalTiles];
-        var index = 0;
-        var totalProbability = circleConfig.tileData.Sum(x => x.spawnChance);
-        var totalSurfaceProbability = circleConfig.tileData.Sum(x => x.spawnChance * x.surfaceSpawnChanceMult);
         var noiseSeed = Random.Range(0, 10000);
 
         for (int x = 0; x < width; x++)
@@ -104,40 +98,23 @@ public class Level : MonoBehaviour
                 // 1 at 0, 1 at -height, 0 between -height/6 and -5*height/6 (linear)
                 var thresholdSub = Mathf.Clamp01(Mathf.Abs(y - height / 2f) / height);
 
-                tilePositions[index] = new Vector3Int(x - width / 2, -y, 0);
-                var (tileData, bgTileData) = GetTile(tilePositions[index], circleConfig, noiseSeed, thresholdSub,
-                    totalProbability, totalSurfaceProbability);
-                tiles[index] = tileData?.tile;
+                var pos = new Vector3Int(x - width / 2, -y, 0);
+                var (tileData, bgTileData) = GetTile(pos, circleConfig, noiseSeed, thresholdSub);
                 if (tileData != null)
                 {
-                    if (tileData.variants.Length > 0)
-                    {
-                        var randomIndex = Mathf.FloorToInt(Random.value * (tileData.variants.Length + 1));
-                        if (randomIndex < tileData.variants.Length)
-                        {
-                            tiles[index] = tileData.variants[randomIndex];
-                        }
-                    }
-
-                    var pos = tilePositions[index];
                     SetTile(new TileInfo(tileData, pos));
                 }
 
                 if (bgTileData != null)
                 {
-                    bgTilemap.SetTile(tilePositions[index], bgTileData.tile);
+                    bgTilemap.SetTile(pos, bgTileData.tile);
                 }
-
-                index++;
             }
         }
 
         void SetWall(Vector3Int pos)
         {
-            tilePositions[index] = pos;
-            tiles[index] = wallTile.tile;
             tileInfos[pos] = new TileInfo(wallTile, pos);
-            index++;
         }
 
         for (int i = 0; i < wallsHeight; i++)
@@ -375,9 +352,7 @@ public class Level : MonoBehaviour
     private (TileData, TileData) GetTile(Vector3Int pos,
         HellCircleSettings circleConfig,
         int noiseSeed,
-        float thresholdSub,
-        float totalProbability,
-        float totalSurfaceProbability
+        float thresholdSub
     )
     {
         var x = pos.x;
@@ -395,12 +370,33 @@ public class Level : MonoBehaviour
         }
 
         var isSurface = !HasTile(pos + Vector3Int.up);
-        var totalProb = isSurface ? totalSurfaceProbability : totalProbability;
+        var totalProb = 0f;
+
+        float GetTileProb(TileData td)
+        {
+            var tileProb = td.spawnChance;
+            if (isSurface) tileProb *= td.surfaceSpawnChanceMult;
+            tileProb *= td.spawnChanceCurve.Evaluate(-(float)y / height);
+            if (td.ridged)
+            {
+                var ridgedNoise = Mathf.Pow(Noise.GradientNoise(x * 0.1f, y* 0.1f, 
+                    td.tile.GetEntityId().GetHashCode() + noiseSeed), 4);
+                tileProb *= ridgedNoise * 100f;
+            }
+           
+            return tileProb;
+        }
+        
+        
+        foreach (var td in circleConfig.tileData)
+        {
+            totalProb += GetTileProb(td);
+        }
         var randomValue = Random.value * totalProb;
         for (int i = 0; i < circleConfig.tileData.Length; i++)
         {
             var data = circleConfig.tileData[i];
-            var chance = !isSurface ? data.spawnChance : data.spawnChance * data.surfaceSpawnChanceMult;
+            var chance = GetTileProb(data);
             if (randomValue < chance)
             {
                 return (data, bgTile);

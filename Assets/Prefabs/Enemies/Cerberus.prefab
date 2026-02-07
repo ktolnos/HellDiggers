@@ -186,6 +186,7 @@ MonoBehaviour:
   agroOnHurt: 1
   enemyMovement: {fileID: 0}
   disableOffScreen: 1
+  rotateAtTarget: 0
 --- !u!114 &5575930699715242445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,7 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53980114da74a3c93d4e48995964951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 50
   currentHealth: 0
   isPlayer: 0
   isInvulnerable: 0
@@ -331,11 +332,13 @@ MonoBehaviour:
     - {fileID: -6343372208914517778, guid: 4534091136a335f4ab13027fbb973531, type: 3}
     fps: 10
   invertSprite: 1
+  flipSpriteWhenMovingLeft: 1
   speed: 8
   jumpForce: 30
   jumpReload: 2
   mainCollider: {fileID: 0}
   maxJumps: 1
+  allowDiggingWithAttack: 1
 --- !u!114 &5336521303594351288
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -23,6 +23,8 @@ public class Enemy : MonoBehaviour
     public EnemyMovement enemyMovement;
     private EnemyAttack enemyAttack;
     public bool disableOffScreen = true;
+    public bool rotateAtTarget;
+    private float randomOffsetAngle;
 
     void Start()
     {
@@ -47,6 +49,7 @@ public class Enemy : MonoBehaviour
                 if (type == DamageDealerType.Player) StartCoroutine(Agro());
             };
         }
+        randomOffsetAngle  = Random.Range(-90, 90);
     }
 
     private IEnumerator Agro()
@@ -64,6 +67,7 @@ public class Enemy : MonoBehaviour
             return;
         }
         Move();
+        
         float distToPlayer = Vector2.Distance(transform.position, player.transform.position);
 
         if (distToPlayer < attackDistance && isAgro)
@@ -74,18 +78,26 @@ public class Enemy : MonoBehaviour
 
     private void Move()
     {
-        float distToPlayer = Vector2.Distance(transform.position, player.transform.position);
+        var targetPos = player.transform.position;
+        float distToPlayer = Vector2.Distance(transform.position, targetPos);
         enemyMovement = isAgro ? defaultMovement : standbyMovement ?? defaultMovement;
         isAgro = isAgro || distToPlayer < agroDistance;
-        if (distToPlayer < stoppingDistance)
+        if (rotateAtTarget)
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Vector3.forward,
+                targetPos - transform.position) * Quaternion.Euler(0,0,90f), 360f*Time.fixedDeltaTime);
+        }
+        if (distToPlayer < stoppingDistance && !Level.I.HasTile(transform.position))
         {
             return;
         }
+        targetPos += Quaternion.Euler(0,0,randomOffsetAngle) * (targetPos - transform.position).normalized * stoppingDistance;
+        
         if (stopWhenAttacking && enemyAttack.isAttacking)
         {
             enemyMovement.Stop();
             return;
         }
-        enemyMovement.Move(player.transform.position, target => StartCoroutine(enemyAttack.Attack(target)));
+        enemyMovement.Move(targetPos, target => StartCoroutine(enemyAttack.Attack(target)));
     }
 }

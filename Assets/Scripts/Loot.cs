@@ -57,7 +57,7 @@ public class Loot : MonoBehaviour
         }
         var startPosition = t.position;
         var startTime = Time.time;
-        var timeToPlayer = (Mathf.Clamp01((playerTransform.position - startPosition).magnitude / GetCollectionDistance()) + 0.2f) *
+        var timeToPlayer = (Mathf.Clamp01((playerTransform.position - startPosition).magnitude / GetCollectionDistance()) + 0.4f) *
                            collectionTime;
         while (Time.time < startTime + timeToPlayer)
         {

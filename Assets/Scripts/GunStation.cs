@@ -17,14 +17,13 @@ public class GunStation : MonoBehaviour, IInteractionHandler
         gun = Instantiate(gunPrefab, transform.position + gunOffset, Quaternion.identity, transform);
         gun.gunStation = this;
         interactable = GetComponent<Interactable>();
-        if (gun.id == Player.I.currentGunId || gun.id == Player.I.secondaryGunId)
-        {
-            SetGun();
-        }
-
         if (gun.price == 0)
         {
             purchasedGuns.Add(gun.id);
+        }
+        if (gun.id == Player.I.currentGunId || gun.id == Player.I.secondaryGunId)
+        {
+            SetGun();
         }
         gun.gunName.StringChanged += OnGunNameChanged;
         OnGunNameChanged(gun.gunName.GetLocalizedString());

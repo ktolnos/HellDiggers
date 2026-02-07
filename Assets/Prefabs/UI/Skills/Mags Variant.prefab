@@ -274,7 +274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: prices.Array.size
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[0]'
@@ -298,31 +298,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[5]'
-      value: 100
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[6]'
-      value: 200
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[7]'
-      value: 500
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[8]'
-      value: 1000
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[9]'
-      value: 10000
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[10]'
-      value: 100000
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: 'prices.Array.data[11]'
-      value: 1000000
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
+      propertyPath: 'prices.Array.data[12]'
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 6982786453536179106, guid: 63d48675fe23fca458286948fe8b00bc, type: 3}
       propertyPath: skillName.m_TableEntryReference.m_KeyId

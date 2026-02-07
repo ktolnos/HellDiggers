@@ -4,6 +4,7 @@ using UnityEngine;
 public class EnemyMovementFly : EnemyMovementBase
 {
     public float speed;
+    public bool allowDiggingWithAttack = true;
 
     private float movementAccumulator;
     private float timeSinceLastCheck;
@@ -28,7 +29,7 @@ public class EnemyMovementFly : EnemyMovementBase
         timeSinceLastCheck += Time.deltaTime;
         if (timeSinceLastCheck >= checkInterval)
         {
-            if (movementAccumulator < movementThreshold)
+            if (allowDiggingWithAttack && movementAccumulator < movementThreshold)
             {
                 Vector3 dir = (target - transform.position).normalized;
                 digCallback?.Invoke(transform.position + dir);

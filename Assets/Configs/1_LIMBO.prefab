@@ -734,6 +734,49 @@ MonoBehaviour:
     outForce: 0
     lootLifetime: 10
     allowLava: 0
+  - name: MultBlock
+    tile: {fileID: 11400000, guid: 4baaaf325443c9d4c81d8463f9f767c0, type: 2}
+    variants: []
+    maxHp: 1
+    spawnChance: 3
+    spawnChanceCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 1
+        outSlope: 1
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 1
+        outSlope: 1
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ridged: 0
+    surfaceSpawnChanceMult: 0
+    randomRotation: 0
+    drop: {fileID: 3094065808536684211, guid: ec410fe7d217b804bb7a41533f72b321, type: 3}
+    mandatoryDrops: []
+    coSpawns:
+    - {fileID: 9033442676018336320, guid: e60762831ff428943bdbcd7e22853ae6, type: 3}
+    dropChance: 1
+    contactDamage: 0
+    isSlippery: 0
+    isMud: 0
+    outForce: 0
+    lootLifetime: 10
+    allowLava: 0
   noiseThreshold: -0.3
   noiseFrequency: 0.15
   bossRoom:

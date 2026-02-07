@@ -20,7 +20,7 @@ public class EnemyAStarMovement : EnemyMovement
     private List<Vector3> currentPath;
     private float lastRepathTime;
     private int currentPathIndex;
-
+    
     public override void Move(Vector3 targetPos, DigCallback digCallback)
     {
         if (Time.time - lastRepathTime >= repathRate)
@@ -56,7 +56,8 @@ public class EnemyAStarMovement : EnemyMovement
 
     private void FollowPath(Vector3 targetPos, DigCallback digCallback)
     {
-        if (currentPath == null || currentPath.Count == 0)
+        var dist = Vector2.Distance(transform.position, targetPos);
+        if (currentPath == null || currentPath.Count == 0 || dist < 2 || dist > maxPathDepth)
         {
             baseMovement.Move(targetPos, digCallback);
             return;

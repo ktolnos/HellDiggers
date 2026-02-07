@@ -16,6 +16,7 @@ public class HUD: MonoBehaviour
     public TextMeshProUGUI goldText;
     public TextMeshProUGUI emeraldText;
     public TextMeshProUGUI diamondText;
+    public TextMeshProUGUI multText;
     
     public Image healthImage;
     public Material healthMaterial;
@@ -55,12 +56,14 @@ public class HUD: MonoBehaviour
         goldText.text = GM.I.resources.gold.ToString();
         emeraldText.text = GM.I.resources.emerald.ToString();
         diamondText.text = GM.I.resources.diamond.ToString();
+        multText.text = GM.I.resources.mult.ToString("F1");
         
         copperText.transform.parent.gameObject.SetActive(GM.I.resources.copper > 0);
         ironText.transform.parent.gameObject.SetActive(GM.I.resources.iron > 0);
         goldText.transform.parent.gameObject.SetActive(GM.I.resources.gold > 0);
         emeraldText.transform.parent.gameObject.SetActive(GM.I.resources.emerald > 0);
         diamondText.transform.parent.gameObject.SetActive(GM.I.resources.diamond > 0);
+        multText.transform.parent.gameObject.SetActive(GM.I.resources.mult > 1f);
         
         var ammoCount = Player.I.gun.AmmoInMagLeft;
         ammoText.text = ammoCount + "/" + Player.I.gun.AmmoOutOfMagLeft;

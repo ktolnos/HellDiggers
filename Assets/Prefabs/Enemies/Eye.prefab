@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5388221814552815758}
   - component: {fileID: 6192451480533484078}
   - component: {fileID: -2319457912011217301}
+  - component: {fileID: 2865150473262487728}
   m_Layer: 11
   m_Name: Eye
   m_TagString: Untagged
@@ -53,11 +54,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f121e5e62a2946948a33511c460cc6da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hardness: 120
-  stoppingDistance: 4
+  hardness: 30
+  stoppingDistance: 5
   attackDistance: 9
   animator: {fileID: 6192451480533484078}
+  defaultMovement: {fileID: 2865150473262487728}
+  standbyMovement: {fileID: 0}
+  defaultAttack: {fileID: 0}
   stopWhenAttacking: 1
+  isAgro: 0
+  agroDistance: 5
+  agroOnHurt: 1
+  enemyMovement: {fileID: 0}
+  disableOffScreen: 1
+  rotateAtTarget: 1
 --- !u!114 &5345984672992060488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,10 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackGun
   attackCoolDown: 0.5
-  attackDelay: 0.7
-  attackWindUp:
-    frames: []
-    fps: 0
+  isAttacking: 0
   gun: {fileID: 8523573277249663922}
   aimGun: 0
 --- !u!114 &6069220325336187468
@@ -103,7 +110,9 @@ MonoBehaviour:
     - {fileID: -1822881877771977374, guid: 4449578eb05bc3e4a8bc5ed2e60b31e5, type: 3}
     fps: 0
   invertSprite: 1
-  speed: 10
+  flipSpriteWhenMovingLeft: 0
+  speed: 100
+  allowDiggingWithAttack: 0
 --- !u!114 &6326658846326912912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53980114da74a3c93d4e48995964951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 3
   currentHealth: 0
   isPlayer: 0
   isInvulnerable: 0
@@ -125,6 +134,8 @@ MonoBehaviour:
   hurtAnimation: {fileID: 221777621848407505}
   hurtMaterial: {fileID: 2100000, guid: bfe122b358b5b644b8c55eadb8c88ebb, type: 2}
   vignetteVolume: {fileID: 0}
+  rb: {fileID: 0}
+  hasRb: 0
 --- !u!114 &4561176998936719293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c26e1fcc3a28084da5814bb4a36b689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loot: {fileID: 3094065808536684211, guid: 127f2309e80b55149b12f0629e9789cd, type: 3}
+  loot: {fileID: 3094065808536684211, guid: ac05320947c1b194e82e3a703fe395eb, type: 3}
   effect: {fileID: 8550663166000491436, guid: f7590b10fe1023d4781edc2d207cb3f4, type: 3}
 --- !u!58 &5388221814552815758
 CircleCollider2D:
@@ -173,8 +184,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.095793486, y: 0.011052966}
-  m_Radius: 1.0342287
+  m_Offset: {x: -0.45840412, y: 0.011052966}
+  m_Radius: 0.6716179
 --- !u!114 &6192451480533484078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,7 +217,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 5
-  m_LinearDamping: 10
+  m_LinearDamping: 3
   m_AngularDamping: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -220,6 +231,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2865150473262487728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724802236466292881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9719390d702a72749afb6e08e2577bde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAStarMovement
+  baseMovement: {fileID: 6069220325336187468}
+  horizontalCost: 1
+  upCost: 2
+  downCost: 0.5
+  digCost: 10
+  maxPathDepth: 100
+  collisionRadius: 0
+  repathRate: 0.5
+  nextWaypointDistance: 0.5
 --- !u!1 &7902087528567659235
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,6 +286,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &221777621848407505
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -299,16 +332,16 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
+  m_MaskInteraction: 0
   m_Sprite: {fileID: -90080318016315431, guid: 4449578eb05bc3e4a8bc5ed2e60b31e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 2.0625, y: 1.3125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &1062911347151608007
 PrefabInstance:
@@ -431,12 +464,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8685728998280293237, guid: 14ba2285c0d6ef444bfe2e6a1c983e4b, type: 3}
+      propertyPath: fireDelay
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8685728998280293237, guid: 14ba2285c0d6ef444bfe2e6a1c983e4b, type: 3}
       propertyPath: shootSound
       value: 
       objectReference: {fileID: 8300000, guid: df1bb0c10c6063f4987c38cf285be07b, type: 3}
     - target: {fileID: 8685728998280293237, guid: 14ba2285c0d6ef444bfe2e6a1c983e4b, type: 3}
       propertyPath: bulletSpeed
-      value: 17
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8685728998280293237, guid: 14ba2285c0d6ef444bfe2e6a1c983e4b, type: 3}
       propertyPath: bulletPrefab

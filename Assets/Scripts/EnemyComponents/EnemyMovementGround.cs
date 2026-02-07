@@ -13,6 +13,8 @@ public class EnemyMovementGround : EnemyMovementBase
     private float lastHorizontalMovementTime;
     private float gravityScale;
 
+    public bool allowDiggingWithAttack = true;
+
     protected override void Awake()
     {
         base.Awake();
@@ -71,7 +73,7 @@ public class EnemyMovementGround : EnemyMovementBase
         if (rightHit && rb.linearVelocityX > 0 ||
             leftHit && rb.linearVelocityX < 0)
         {
-            if (Time.time - lastHorizontalMovementTime > 0.5f)
+            if (allowDiggingWithAttack && Time.time - lastHorizontalMovementTime > 0.5f)
             {
                 digCallback?.Invoke(targetPos);
             }

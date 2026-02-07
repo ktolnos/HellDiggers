@@ -19,6 +19,7 @@ public class HighScoreManager : MonoBehaviour
     public TextMeshProUGUI goldText;
     public TextMeshProUGUI emeraldText;
     public TextMeshProUGUI diamondText;
+    public TextMeshProUGUI multText;
     
     public GameObject highScorePanel;
     
@@ -55,13 +56,17 @@ public class HighScoreManager : MonoBehaviour
         goldText.transform.parent.gameObject.SetActive(false);
         emeraldText.transform.parent.gameObject.SetActive(false);
         diamondText.transform.parent.gameObject.SetActive(false);
+        multText.transform.parent.gameObject.SetActive(false);
     }
     
     public void CloseHighScorePanel()
     {
         highScorePanel.SetActive(false);
         GM.I.money = GM.I.GetTotalMoney();
-        GM.I.resources = new GM.Resources();
+        GM.I.resources = new GM.Resources
+        {
+            mult = 1f
+        };
         StopCoroutine("HighScoreAnimation");
     }
 
@@ -131,6 +136,17 @@ public class HighScoreManager : MonoBehaviour
             diamondText.transform.parent.gameObject.SetActive(true);
             GM.I.resources.diamond = 0;
             GM.I.money = initialMoney + lastIncomeTotal;    
+            currentIncomeText.text = lastIncomeTotal.ToString();
+        }
+
+        if (GM.I.resources.mult > 1f)
+        {
+            yield return appearanceDelay;
+            lastIncomeTotal = Mathf.RoundToInt(lastIncomeTotal * GM.I.resources.mult);
+            multText.text = "x" + GM.I.resources.mult.ToString("F1");
+            multText.transform.parent.gameObject.SetActive(true);
+            GM.I.resources.mult = 1f;
+            GM.I.money = initialMoney + lastIncomeTotal;
             currentIncomeText.text = lastIncomeTotal.ToString();
         }
         

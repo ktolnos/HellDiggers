@@ -35,6 +35,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3479888539641925543
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -80,7 +81,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 1027693686, guid: dc0591d220070da4c81ed15d7ccadf86, type: 3}
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: -731725577, guid: eacec59fb133af44391eb6bbe4d5c6cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -89,7 +91,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &8362390806292825961
 MonoBehaviour:
@@ -105,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animation:
     frames:
-    - {fileID: 1027693686, guid: dc0591d220070da4c81ed15d7ccadf86, type: 3}
+    - {fileID: 32028098, guid: eacec59fb133af44391eb6bbe4d5c6cd, type: 3}
     fps: 3
   autoplay: 0
   loop: 1
@@ -167,24 +168,25 @@ MonoBehaviour:
     m_WaitForCompletion: 0
     m_LocalVariables: []
   bulletPrefab: {fileID: -8224019564269720104, guid: d03717a0f208eb2488df547863cc8b7f, type: 3}
-  fireDelay: 0.2
+  fireDelay: 0.7
   numberOfBullets: 1
-  bulletLifeTime: 0.5
+  bulletLifeTime: 0.03
   spread: 4
-  randomSpread: 10
-  price: 1
-  magSize: 30
+  randomSpread: 0
+  price: 0
+  magSize: 300000000
   mags: 1
-  bulletSpeed: 30
+  bulletSpeed: 1
   ignoreStatsScaling: 0
   isSecondary: 1
   animator: {fileID: 8362390806292825961}
   reloadIndicator: {fileID: 0}
-  shootSound: {fileID: 8300000, guid: 34f38a0e04c503546b74d2230fd58fb4, type: 3}
+  shootSound: {fileID: 8300000, guid: 7f1c4732b98cb0741aff7991e7e6f1f6, type: 3}
   gunStation: {fileID: 0}
   reloadTime: 5
   infiniteAmmo: 1
   bulletSpawn: {fileID: 6451553725065689209}
+  recoilForce: 1
   references:
     version: 2
     RefIds: []

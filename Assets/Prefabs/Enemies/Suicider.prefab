@@ -188,6 +188,7 @@ MonoBehaviour:
   agroOnHurt: 1
   enemyMovement: {fileID: 0}
   disableOffScreen: 1
+  rotateAtTarget: 0
 --- !u!114 &5575930699715242445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,7 +236,7 @@ CircleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6ee5b9a85531da245b1fb7c02a8b9a5d, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -301,11 +302,13 @@ MonoBehaviour:
     - {fileID: -7268133047450232529, guid: 19d68a4b7c5b0c84b9cb456fa06ef500, type: 3}
     fps: 10
   invertSprite: 0
+  flipSpriteWhenMovingLeft: 1
   speed: 10
   jumpForce: 35
   jumpReload: 0.4
   mainCollider: {fileID: 0}
   maxJumps: 2
+  allowDiggingWithAttack: 0
 --- !u!114 &3767397719255507787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -525,9 +528,17 @@ PrefabInstance:
       propertyPath: explosionRadius
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6268015153835673065, guid: 5fdd2eef803fcc6479ed051ae90d3d33, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8642613160540180333, guid: 5fdd2eef803fcc6479ed051ae90d3d33, type: 3}
       propertyPath: m_Name
       value: Bomb
+      objectReference: {fileID: 0}
+    - target: {fileID: 8642613160540180333, guid: 5fdd2eef803fcc6479ed051ae90d3d33, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

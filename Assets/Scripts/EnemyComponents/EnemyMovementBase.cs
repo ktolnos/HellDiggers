@@ -6,9 +6,10 @@ public class EnemyMovementBase : EnemyMovement
     protected SpriteAnimator animator;
     public SpriteAnimator.Animation movementAnimation;
     public bool invertSprite;
+    public bool flipSpriteWhenMovingLeft = true;
     private float lastDirectionFlipTime = -100f;
     protected bool currentFacingDirectionRight;
-    
+
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -19,7 +20,8 @@ public class EnemyMovementBase : EnemyMovement
     {
         animator.animation = movementAnimation;
         animator.autoplay = true;
-        if (Mathf.Abs(target.x - transform.position.x) > 0.1f && Mathf.Abs(rb.linearVelocityX) > 0.1f && Time.time - lastDirectionFlipTime > 0.5f)
+        if (flipSpriteWhenMovingLeft && Mathf.Abs(target.x - transform.position.x) > 0.1f &&
+            Mathf.Abs(rb.linearVelocityX) > 0.1f && Time.time - lastDirectionFlipTime > 0.5f)
         {
             currentFacingDirectionRight = target.x > transform.position.x;
             animator.spriteRenderer.flipX = invertSprite ^ !currentFacingDirectionRight;

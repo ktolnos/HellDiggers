@@ -26,6 +26,7 @@ public class GM: MonoBehaviour
         closeAction = InputSystem.actions.FindAction("Cancel");
         
         closeAction.performed += ctx => PopTopUI();
+        resources.mult = 1f;
     }
     
     public static HashSet<Health> DamageEntities(Vector3 position, float radius, float damage, DamageDealerType type, HashSet<Health> excluded = null, float recoil = 0, bool showDamageNumbers = false)
@@ -87,6 +88,8 @@ public class GM: MonoBehaviour
         public int gold;
         public int emerald;
         public int diamond;
+		public float mult;
+
         
         public static Resources operator +(Resources a, Resources b)
         {
@@ -97,6 +100,7 @@ public class GM: MonoBehaviour
                 gold = a.gold + b.gold,
                 emerald = a.emerald + b.emerald,
                 diamond = a.diamond + b.diamond,
+                mult = a.mult + b.mult,
             };
         }   
     }
@@ -109,12 +113,18 @@ public class GM: MonoBehaviour
 
     public int GetTotalMoney()
     {
-        var total = money;
+        return money + GetGainedMoney();
+    }
+
+    public int GetGainedMoney()
+    {
+        var total = 0;
         total += resources.copper * copperPrice;
         total += resources.iron * ironPrice;
         total += resources.gold * goldPrice;
         total += resources.emerald * emeraldPrice;
         total += resources.diamond * diamondPrice;
+        total = Mathf.RoundToInt(total * resources.mult);
         return total;
     }
     

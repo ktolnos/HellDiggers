@@ -186,7 +186,7 @@ public class Player : MonoBehaviour
                 dashGun.bulletPrefab.enemyDamage = 0; // stats.dashDamage;
                 dashGun.bulletPrefab.maxPenetrationDepth = stats.dashRadius;
                 dashGun.bulletLifeTime = stats.dashRadius / dashGun.bulletSpeed;
-                dashGun.Shoot();
+                StartCoroutine(dashGun.Shoot());
             }
         }
         
